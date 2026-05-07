@@ -1005,6 +1005,17 @@
 </footer>
 
 <script>
+// Force page to top on load (prevents iframe from triggering scroll to #contact)
+if (window.location.hash === '' || window.location.hash === '#') {
+  window.scrollTo(0, 0);
+}
+history.scrollRestoration = 'manual';
+window.addEventListener('load', function() {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
+
 function toggleMenu() {
   const h = document.getElementById('hamburger');
   const m = document.getElementById('mobileMenu');
