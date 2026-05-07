@@ -347,11 +347,19 @@
     }
     .booking-frame-wrapper {
       width: 100%;
-      height: 2100px;
+      max-width: 900px;
+      margin: 0 auto;
       border: 1px solid var(--border);
       border-radius: 3px;
       overflow: hidden;
       background: #fff;
+      min-height: 600px;
+    }
+    .booking-frame-wrapper iframe {
+      display: block;
+      width: 100%;
+      min-height: 600px;
+      border: 0;
     }
 
     /* FOOTER */
@@ -862,32 +870,62 @@
     <h2 class="section-title">Book a Working Session</h2>
     <p class="booking-sub">Let's identify exactly where your agency has the most to gain. Pick a time that works for you.</p>
   </div>
-  <div class="booking-frame-wrapper">
+  <div class="booking-frame-wrapper" id="bookingWrapper">
     <iframe
       id="bookingIframe"
       data-src="https://outlook.office.com/book/WebsiteBookingPage@epicoptimizer.com/"
       width="100%"
-      height="100%"
       scrolling="yes"
-      style="border:0"
+      style="border:0;display:block;width:100%;min-height:600px;"
       title="Book a session with Epic Optimizer">
     </iframe>
   </div>
 </section>
 
 <script>
-  // Only load the booking iframe when the user scrolls to it,
-  // preventing it from stealing focus and jumping the page on load.
-  (function() {
-    var iframe = document.getElementById('bookingIframe');
-    var observer = new IntersectionObserver(function(entries) {
-      if (entries[0].isIntersecting) {
-        iframe.src = iframe.dataset.src;
-        observer.disconnect();
+(function() {
+  var iframe  = document.getElementById('bookingIframe');
+  var wrapper = document.getElementById('bookingWrapper');
+
+  // 1. Lazy-load: only set src when scrolled into view
+  var loadObserver = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      iframe.src = iframe.dataset.src;
+      loadObserver.disconnect();
+    }
+  }, { threshold: 0.05 });
+  loadObserver.observe(iframe);
+
+  // 2. Auto-resize: listen for height messages from the Outlook widget
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+    var data = typeof e.data === 'string' ? {} : e.data;
+    // Outlook booking sends { type: 'msbookings-iframe-size', height: N }
+    if (data.type === 'msbookings-iframe-size' && data.height) {
+      var h = parseInt(data.height, 10);
+      if (h > 400) {
+        iframe.style.height  = h + 'px';
+        wrapper.style.minHeight = h + 'px';
       }
-    }, { threshold: 0.1 });
-    observer.observe(iframe);
-  })();
+    }
+  });
+
+  // 3. Fallback: after load, try to read contentDocument height
+  iframe.addEventListener('load', function() {
+    try {
+      var h = iframe.contentDocument.body.scrollHeight;
+      if (h > 400) {
+        iframe.style.height  = h + 'px';
+        wrapper.style.minHeight = h + 'px';
+      }
+    } catch(e) {
+      // Cross-origin — postMessage handler above will handle it
+      // Set a reasonable default that avoids excess whitespace
+      iframe.style.height  = '820px';
+      wrapper.style.minHeight = '820px';
+    }
+  });
+})();
 </script>
 
 <!-- FOOTER -->
