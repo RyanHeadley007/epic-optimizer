@@ -66,6 +66,54 @@
     }
     .nav-cta:hover { background: var(--gold); color: var(--dark); }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px;
+      background: none; border: none; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tan); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE DRAWER */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(23,30,38,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul {
+      list-style: none; text-align: center; margin-bottom: 40px;
+    }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
+    .mobile-menu ul li a {
+      display: block; padding: 20px 48px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 14px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+
     /* PAGE HERO */
     .page-hero {
       padding: 160px 60px 80px;
@@ -490,6 +538,8 @@
     @media (max-width: 960px) {
       nav { padding: 14px 24px; }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
       .page-hero, .posts-area, .load-more-bar { padding-left: 24px; padding-right: 24px; }
       .filter-bar { padding-left: 24px; padding-right: 24px; }
       .blog-layout { grid-template-columns: 1fr; }
@@ -527,7 +577,39 @@
     <li><a href="blog.html" class="active">Insights</a></li>
   </ul>
   <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars"   onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools"     onclick="closeMobile()">Tools</a></li>
+    <li><a href="index.html#partners"  onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process"   onclick="closeMobile()">Process</a></li>
+    <li><a href="index.html#about"     onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html"            onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
 
 <!-- ARTICLE VIEW (shown when a post is clicked) -->
 <div class="article-view" id="articleView">
