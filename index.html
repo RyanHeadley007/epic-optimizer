@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Epic Optimizer | Business Process Automation</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <style>
     :root {
       --dark:        #171e26;
@@ -62,42 +65,6 @@
       text-decoration: none; transition: background 0.2s, color 0.2s;
     }
     .nav-cta:hover { background: var(--gold); color: var(--dark); }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none; flex-direction: column; justify-content: center; gap: 5px;
-      width: 36px; height: 36px; cursor: pointer; background: none; border: none; padding: 4px;
-    }
-    .hamburger span {
-      display: block; height: 2px; background: var(--tan); border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s, width 0.3s;
-      transform-origin: center;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* MOBILE DRAWER */
-    .mobile-menu {
-      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 99;
-      background: rgba(23,30,38,0.98); backdrop-filter: blur(20px);
-      flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu a {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 28px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--tan); text-decoration: none; padding: 10px 24px;
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--gold); }
-    .mobile-menu .mobile-cta {
-      margin-top: 24px; border: 1px solid var(--gold-border); color: var(--gold);
-      padding: 13px 36px; border-radius: 2px;
-      font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
-    }
-    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
 
     /* HERO */
     .hero {
@@ -330,19 +297,14 @@
       font-size: 18px; font-weight: 300; color: var(--grey);
       max-width: 440px; margin: 0 auto; line-height: 1.6;
     }
-    .booking-btn-wrap {
-      display: flex; justify-content: center;
+    .booking-frame-wrapper {
+      width: 100%;
+      height: 2100px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      background: #fff;
     }
-    .booking-btn {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--gold); color: var(--dark);
-      padding: 18px 48px; border-radius: 2px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 16px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
-    }
-    .booking-btn:hover { opacity: 0.88; transform: translateY(-2px); }
-    .booking-btn svg { flex-shrink: 0; }
 
     /* FOOTER */
     footer {
@@ -360,66 +322,101 @@
 
     hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 60px; }
 
-    /* PARTNERS TEASER */
+    /* PARTNERS */
     .partners-section { background: var(--dark); }
-    .partners-teaser-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; margin-bottom: 36px;
+    .partners-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
     }
-    .partners-teaser-card {
-      display: flex; align-items: center; gap: 16px;
-      padding: 24px 28px;
-      border: 1px solid var(--border); border-radius: 3px;
-      background: var(--tan-faint);
-      position: relative; transition: background 0.2s;
+    .partner-card {
+      padding: 48px 42px;
+      border-right: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
     }
-    .partners-teaser-card::before {
+    .partner-card:last-child { border-right: none; }
+    .partner-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
     }
-    .partners-teaser-card:hover { background: rgba(255,253,234,0.07); }
+    .partner-card:hover { background: var(--tan-faint); }
+    .partner-card:hover::before { opacity: 1; }
+    .partner-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .partner-logo-row { display: flex; align-items: center; gap: 14px; }
     .partner-icon {
       width: 44px; height: 44px; border-radius: 8px;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .partner-icon-outmarket { background: var(--gold-dim); border: 1px solid var(--gold-border); }
     .partner-icon-gaya      { background: rgba(55,138,221,0.10); border: 1px solid rgba(55,138,221,0.22); }
-    .partners-teaser-info { flex: 1; }
-    .partners-teaser-name {
+    .partner-name {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
       color: var(--tan); line-height: 1.1; margin-bottom: 3px;
     }
-    .partners-teaser-tag {
+    .partner-tagline {
       font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
       color: var(--gold);
     }
+    .partner-tagline-blue { color: #6aabee; }
     .recommended-badge {
       font-family: 'Rajdhani', sans-serif;
       font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
       background: var(--gold-dim); color: var(--gold);
       border: 1px solid var(--gold-border);
-      border-radius: 2px; padding: 4px 10px; white-space: nowrap; flex-shrink: 0;
+      border-radius: 2px; padding: 4px 10px; white-space: nowrap;
     }
-    .partners-teaser-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 32px; flex-wrap: wrap;
-      padding: 28px 32px;
-      background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 3px;
+    .partner-description {
+      font-size: 15px; color: var(--grey); line-height: 1.65; margin-bottom: 28px;
     }
-    .partners-teaser-note {
-      font-size: 16px; font-weight: 300; color: var(--tan);
-      line-height: 1.6; max-width: 560px;
-    }
-    .partners-teaser-link {
+    .partner-services-label {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--gold); text-decoration: none; white-space: nowrap;
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid var(--gold-border); padding: 11px 22px; border-radius: 2px;
-      transition: background 0.2s, color 0.2s;
+      font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px; opacity: 0.7;
     }
-    .partners-teaser-link:hover { background: var(--gold); color: var(--dark); }
+    .partner-services { list-style: none; margin-bottom: 32px; }
+    .partner-services li {
+      font-size: 14px; color: var(--grey);
+      padding: 8px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; line-height: 1.45;
+    }
+    .partner-services li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .partner-services li.blue-dot::before { background: #6aabee; }
+    .partner-card-footer {
+      border-top: 1px solid var(--border); padding-top: 22px;
+      display: flex; align-items: center;
+    }
+    .partner-stat { flex: 1; text-align: center; }
+    .partner-stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--gold); display: block; line-height: 1.1;
+    }
+    .partner-stat-num.blue { color: #6aabee; }
+    .partner-stat-label { font-size: 11px; color: var(--grey); margin-top: 3px; }
+    .partner-stat-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
+    .partner-visit {
+      margin-left: auto; padding-left: 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .partner-visit:hover { color: var(--tan); }
+    .partners-callout {
+      margin-top: 48px; padding: 34px 40px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 3px;
+      font-size: 19px; font-weight: 300; color: var(--tan);
+      line-height: 1.55; max-width: 780px;
+    }
+    .partners-callout strong { font-weight: 600; color: var(--gold); }
 
     /* MIGRATION */
     .migration-section { background: var(--mid); }
@@ -484,9 +481,6 @@
     @media (max-width: 960px) {
       nav { padding: 14px 24px; }
       .nav-links { display: none; }
-      .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .mobile-menu { display: flex; }
       section, .hero, .problem-strip, footer { padding-left: 24px; padding-right: 24px; }
       hr.divider { margin: 0 24px; }
       .pillars-grid { grid-template-columns: 1fr 1fr; }
@@ -500,8 +494,9 @@
       .process-grid { grid-template-columns: 1fr 1fr; }
       .about-grid   { grid-template-columns: 1fr; gap: 48px; }
       .migration-inner { grid-template-columns: 1fr; gap: 48px; }
-      .partners-teaser-grid { grid-template-columns: 1fr; }
-      .partners-teaser-footer { flex-direction: column; align-items: flex-start; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .partner-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .partner-card:last-child { border-bottom: none; }
     }
     @media (max-width: 600px) {
       .pillars-grid   { grid-template-columns: 1fr; }
@@ -514,23 +509,8 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">
-    <svg width="36" height="42" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Hex shape -->
-      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
-        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
-      <!-- T (top center) -->
-      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
-      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
-      <!-- E (bottom left) -->
-      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
-      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
-      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
-      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
-      <!-- O (bottom right) -->
-      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
-      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
-    </svg>
+    <a class="nav-brand" href="#">
+    <img src="logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Epic Optimizer</span>
       <span class="nav-brand-sub">Business Process Automation</span>
@@ -540,28 +520,13 @@
     <li><a href="#pillars">Services</a></li>
     <li><a href="#migration">Migration</a></li>
     <li><a href="#tools">Tools</a></li>
-    <li><a href="partners.html">Partners</a></li>
+    <li><a href="#partners">Partners</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="blog.html">Insights</a></li>
   </ul>
   <a class="nav-cta" href="#contact">Book a Session</a>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#pillars"   onclick="closeMenu()">Services</a>
-  <a href="#migration" onclick="closeMenu()">Migration</a>
-  <a href="#tools"     onclick="closeMenu()">Tools</a>
-  <a href="partners.html" onclick="closeMenu()">Partners</a>
-  <a href="#process"   onclick="closeMenu()">Process</a>
-  <a href="#about"     onclick="closeMenu()">About</a>
-  <a href="blog.html"  onclick="closeMenu()">Insights</a>
-  <a href="#contact"   onclick="closeMenu()" class="mobile-cta">Book a Session</a>
-</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -756,48 +721,113 @@
 
 <hr class="divider"/>
 
-<!-- PARTNERS TEASER -->
+<!-- PARTNERS -->
 <section id="partners" class="partners-section">
   <div class="section-eyebrow">Trusted Technology Partners</div>
   <h2 class="section-title">Recommended Tools<br>for Insurance Agencies</h2>
   <p class="section-sub">Vetted SaaS partners I rely on to help agencies streamline operations, reduce manual work, and grow with confidence.</p>
 
-  <div class="partners-teaser-grid">
-    <div class="partners-teaser-card">
-      <div class="partner-icon partner-icon-outmarket">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L3 7v10l9 5 9-5V7z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M12 2v20M3 7l9 5 9-5" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
+  <div class="partners-grid">
+
+    <!-- Outmarket AI -->
+    <div class="partner-card">
+      <div class="partner-card-header">
+        <div class="partner-logo-row">
+          <div class="partner-icon partner-icon-outmarket">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L3 7v10l9 5 9-5V7z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M12 2v20M3 7l9 5 9-5" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="partner-name">Outmarket AI</div>
+            <div class="partner-tagline">Insurance AI Operating System</div>
+          </div>
+        </div>
+        <span class="recommended-badge">Recommended</span>
       </div>
-      <div class="partners-teaser-info">
-        <div class="partners-teaser-name">Outmarket AI</div>
-        <div class="partners-teaser-tag">Insurance AI Operating System</div>
+
+      <p class="partner-description">The AI platform built specifically for insurance brokers and agencies. Outmarket thinks like a broker — helping teams grow revenue, cut costs, and reduce risk through intelligent automation across the full quoting and proposal workflow.</p>
+
+      <div class="partner-services-label">Key Capabilities</div>
+      <ul class="partner-services">
+        <li>AI-powered quote &amp; policy comparison — 75% faster turnaround</li>
+        <li>Custom-branded proposal builder in minutes, not hours</li>
+        <li>Carrier appetite matching with natural language search</li>
+        <li>Upsell &amp; cross-sell intelligence built into every workflow</li>
+      </ul>
+
+      <div class="partner-card-footer">
+        <div class="partner-stat">
+          <span class="partner-stat-num">75%</span>
+          <div class="partner-stat-label">Faster quotes</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num">3 hrs</span>
+          <div class="partner-stat-label">Saved per proposal</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num">15%</span>
+          <div class="partner-stat-label">Less client churn</div>
+        </div>
+        <a href="https://outmarket.ai" target="_blank" class="partner-visit">Visit ↗</a>
       </div>
-      <span class="recommended-badge">Recommended</span>
     </div>
-    <div class="partners-teaser-card">
-      <div class="partner-icon partner-icon-gaya">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="3" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
-          <rect x="13" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
-          <path d="M11 8h2M7 17h10M7 20h7" stroke="#6aabee" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+
+    <!-- Gaya AI -->
+    <div class="partner-card">
+      <div class="partner-card-header">
+        <div class="partner-logo-row">
+          <div class="partner-icon partner-icon-gaya">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+              <rect x="13" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+              <path d="M11 8h2M7 17h10M7 20h7" stroke="#6aabee" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="partner-name">Gaya AI</div>
+            <div class="partner-tagline partner-tagline-blue">Super Copy &amp; Paste for Quoting</div>
+          </div>
+        </div>
+        <span class="recommended-badge">Recommended</span>
       </div>
-      <div class="partners-teaser-info">
-        <div class="partners-teaser-name">Gaya AI</div>
-        <div class="partners-teaser-tag" style="color:#6aabee;">Super Copy &amp; Paste for Quoting</div>
+
+      <p class="partner-description">Gaya eliminates the biggest time drain in insurance quoting — manual data entry across carrier portals. Their Super Copy &amp; Super Paste technology lets agents move data across any system in a single click, dramatically accelerating the quoting process.</p>
+
+      <div class="partner-services-label">Key Capabilities</div>
+      <ul class="partner-services">
+        <li class="blue-dot">One-click data transfer across all major carrier portals</li>
+        <li class="blue-dot">Eliminates repetitive manual data entry for agents</li>
+        <li class="blue-dot">Dramatically speeds up the quoting process end-to-end</li>
+        <li class="blue-dot">Reduces errors from re-entering data across systems</li>
+      </ul>
+
+      <div class="partner-card-footer">
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">1-click</span>
+          <div class="partner-stat-label">Data transfer</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">Any</span>
+          <div class="partner-stat-label">Carrier portal</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">Zero</span>
+          <div class="partner-stat-label">Manual re-entry</div>
+        </div>
+        <a href="https://gaya.ai" target="_blank" class="partner-visit">Visit ↗</a>
       </div>
-      <span class="recommended-badge">Recommended</span>
     </div>
+
   </div>
 
-  <div class="partners-teaser-footer">
-    <p class="partners-teaser-note">These are tools I've personally vetted and recommend to every agency I work with. Each one has been tested in live agency environments — not just demoed.</p>
-    <a href="partners.html" class="partners-teaser-link">
-      View All Partners &amp; Details
-      <span>→</span>
-    </a>
+  <div class="partners-callout">
+    <strong>These are tools I've personally vetted and recommend to every agency I work with.</strong> Together, Outmarket and Gaya can dramatically reduce time spent on quoting, data entry, and proposal creation — so your team can focus on serving clients and growing the book.
   </div>
 </section>
 
@@ -875,15 +905,15 @@
     <h2 class="section-title">Book a Working Session</h2>
     <p class="booking-sub">Let's identify exactly where your agency has the most to gain. Pick a time that works for you.</p>
   </div>
-  <div class="booking-btn-wrap">
-    <a class="booking-btn"
-       href="https://outlook.office.com/bookwithme/user/6c9562c2ab3f4d20a90b312d38d8951f@epicoptimizer.com?anonymous&ep=pcard"
-       target="_blank" rel="noopener noreferrer">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-      </svg>
-      Book Time with Ryan
-    </a>
+  <div class="booking-frame-wrapper">
+    <iframe
+      src="https://outlook.office.com/book/WebsiteBookingPage@epicoptimizer.com/"
+      width="100%"
+      height="100%"
+      scrolling="yes"
+      style="border:0"
+      title="Book a session with Epic Optimizer">
+    </iframe>
   </div>
 </section>
 
@@ -907,21 +937,6 @@
   <p>© 2025 Epic Optimizer · Ryan Headley</p>
   <p>Insurance Operations &amp; Technology Consulting</p>
 </footer>
-
-<script>
-function toggleMenu() {
-  const h = document.getElementById('hamburger');
-  const m = document.getElementById('mobileMenu');
-  h.classList.toggle('open');
-  m.classList.toggle('open');
-  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
-}
-function closeMenu() {
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.body.style.overflow = '';
-}
-</script>
 
 </body>
 </html>
