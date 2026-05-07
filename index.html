@@ -371,100 +371,51 @@
     hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 60px; }
 
     /* PARTNERS */
+    /* PARTNERS TEASER */
     .partners-section { background: var(--dark); }
-    .partners-grid {
+    .partners-teaser { margin-top: 56px; }
+    .partners-teaser-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
-      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+      gap: 24px; margin-bottom: 40px;
     }
-    .partner-card {
-      padding: 48px 42px;
-      border-right: 1px solid var(--border);
-      position: relative; transition: background 0.25s;
+    .partners-teaser-card {
+      border: 1px solid var(--border); border-radius: 3px;
+      padding: 36px 32px; position: relative;
+      transition: background 0.25s, border-color 0.25s;
     }
-    .partner-card:last-child { border-right: none; }
-    .partner-card::before {
+    .partners-teaser-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--gold), transparent);
       opacity: 0; transition: opacity 0.3s;
     }
-    .partner-card:hover { background: var(--tan-faint); }
-    .partner-card:hover::before { opacity: 1; }
-    .partner-card-header {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 24px;
-    }
-    .partner-logo-row { display: flex; align-items: center; gap: 14px; }
+    .partners-teaser-card:hover { background: var(--tan-faint); border-color: var(--gold-border); }
+    .partners-teaser-card:hover::before { opacity: 1; }
     .partner-icon {
       width: 44px; height: 44px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
     }
     .partner-icon-outmarket { background: var(--gold-dim); border: 1px solid var(--gold-border); }
     .partner-icon-gaya      { background: rgba(55,138,221,0.10); border: 1px solid rgba(55,138,221,0.22); }
-    .partner-name {
+    .partners-teaser-name {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--tan); line-height: 1.1; margin-bottom: 3px;
+      font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 4px;
     }
-    .partner-tagline {
+    .partners-teaser-tag {
       font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold); margin-bottom: 16px;
     }
-    .partner-tagline-blue { color: #6aabee; }
-    .recommended-badge {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      background: var(--gold-dim); color: var(--gold);
-      border: 1px solid var(--gold-border);
-      border-radius: 2px; padding: 4px 10px; white-space: nowrap;
-    }
-    .partner-description {
-      font-size: 15px; color: var(--grey); line-height: 1.65; margin-bottom: 28px;
-    }
-    .partner-services-label {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 14px; opacity: 0.7;
-    }
-    .partner-services { list-style: none; margin-bottom: 32px; }
-    .partner-services li {
-      font-size: 14px; color: var(--grey);
-      padding: 8px 0; border-top: 1px solid var(--border);
-      display: flex; align-items: center; gap: 10px; line-height: 1.45;
-    }
-    .partner-services li::before {
-      content: ''; width: 5px; height: 5px; border-radius: 50%;
-      background: var(--gold); flex-shrink: 0;
-    }
-    .partner-services li.blue-dot::before { background: #6aabee; }
-    .partner-card-footer {
-      border-top: 1px solid var(--border); padding-top: 22px;
-      display: flex; align-items: center;
-    }
-    .partner-stat { flex: 1; text-align: center; }
-    .partner-stat-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 22px; font-weight: 700;
-      color: var(--gold); display: block; line-height: 1.1;
-    }
-    .partner-stat-num.blue { color: #6aabee; }
-    .partner-stat-label { font-size: 11px; color: var(--grey); margin-top: 3px; }
-    .partner-stat-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
-    .partner-visit {
-      margin-left: auto; padding-left: 24px;
+    .partners-teaser-desc { font-size: 14px; color: var(--grey); line-height: 1.65; }
+    .partners-teaser-cta {
+      display: inline-block;
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 13px 32px; border-radius: 2px;
       font-family: 'Rajdhani', sans-serif;
       font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--gold); text-decoration: none;
-      display: flex; align-items: center; gap: 6px;
-      transition: color 0.2s;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
     }
-    .partner-visit:hover { color: var(--tan); }
-    .partners-callout {
-      margin-top: 48px; padding: 34px 40px;
-      background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 3px;
-      font-size: 19px; font-weight: 300; color: var(--tan);
-      line-height: 1.55; max-width: 780px;
-    }
-    .partners-callout strong { font-weight: 600; color: var(--gold); }
+    .partners-teaser-cta:hover { background: var(--gold); color: var(--dark); }
 
     /* MIGRATION */
     .migration-section { background: var(--mid); }
@@ -544,9 +495,7 @@
       .process-grid { grid-template-columns: 1fr 1fr; }
       .about-grid   { grid-template-columns: 1fr; gap: 48px; }
       .migration-inner { grid-template-columns: 1fr; gap: 48px; }
-      .partners-grid { grid-template-columns: 1fr; }
-      .partner-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .partner-card:last-child { border-bottom: none; }
+      .partners-teaser-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .pillars-grid   { grid-template-columns: 1fr; }
@@ -809,107 +758,33 @@
   <h2 class="section-title">Recommended Tools<br>for Insurance Agencies</h2>
   <p class="section-sub">Vetted SaaS partners I rely on to help agencies streamline operations, reduce manual work, and grow with confidence.</p>
 
-  <div class="partners-grid">
-
-    <!-- Outmarket AI -->
-    <div class="partner-card">
-      <div class="partner-card-header">
-        <div class="partner-logo-row">
-          <div class="partner-icon partner-icon-outmarket">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L3 7v10l9 5 9-5V7z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M12 2v20M3 7l9 5 9-5" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="partner-name">Outmarket AI</div>
-            <div class="partner-tagline">Insurance AI Operating System</div>
-          </div>
+  <div class="partners-teaser">
+    <div class="partners-teaser-grid">
+      <div class="partners-teaser-card">
+        <div class="partner-icon partner-icon-outmarket">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 7v10l9 5 9-5V7z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M12 2v20M3 7l9 5 9-5" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <span class="recommended-badge">Recommended</span>
+        <div class="partners-teaser-name">Outmarket AI</div>
+        <div class="partners-teaser-tag">Insurance AI Operating System</div>
+        <p class="partners-teaser-desc">AI-powered quoting, proposals, and carrier matching built specifically for insurance brokers and agencies.</p>
       </div>
-
-      <p class="partner-description">The AI platform built specifically for insurance brokers and agencies. Outmarket thinks like a broker — helping teams grow revenue, cut costs, and reduce risk through intelligent automation across the full quoting and proposal workflow.</p>
-
-      <div class="partner-services-label">Key Capabilities</div>
-      <ul class="partner-services">
-        <li>AI-powered quote &amp; policy comparison — 75% faster turnaround</li>
-        <li>Custom-branded proposal builder in minutes, not hours</li>
-        <li>Carrier appetite matching with natural language search</li>
-        <li>Upsell &amp; cross-sell intelligence built into every workflow</li>
-      </ul>
-
-      <div class="partner-card-footer">
-        <div class="partner-stat">
-          <span class="partner-stat-num">75%</span>
-          <div class="partner-stat-label">Faster quotes</div>
+      <div class="partners-teaser-card">
+        <div class="partner-icon partner-icon-gaya">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+            <rect x="13" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+            <path d="M11 8h2M7 17h10M7 20h7" stroke="#6aabee" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
         </div>
-        <div class="partner-stat-divider"></div>
-        <div class="partner-stat">
-          <span class="partner-stat-num">3 hrs</span>
-          <div class="partner-stat-label">Saved per proposal</div>
-        </div>
-        <div class="partner-stat-divider"></div>
-        <div class="partner-stat">
-          <span class="partner-stat-num">15%</span>
-          <div class="partner-stat-label">Less client churn</div>
-        </div>
-        <a href="https://outmarket.ai" target="_blank" class="partner-visit">Visit ↗</a>
+        <div class="partners-teaser-name">Gaya AI</div>
+        <div class="partners-teaser-tag" style="color:#6aabee;">Super Copy &amp; Paste for Quoting</div>
+        <p class="partners-teaser-desc">One-click data transfer across every carrier portal — eliminating manual re-entry and accelerating quoting end-to-end.</p>
       </div>
     </div>
-
-    <!-- Gaya AI -->
-    <div class="partner-card">
-      <div class="partner-card-header">
-        <div class="partner-logo-row">
-          <div class="partner-icon partner-icon-gaya">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="3" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
-              <rect x="13" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
-              <path d="M11 8h2M7 17h10M7 20h7" stroke="#6aabee" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div class="partner-name">Gaya AI</div>
-            <div class="partner-tagline partner-tagline-blue">Super Copy &amp; Paste for Quoting</div>
-          </div>
-        </div>
-        <span class="recommended-badge">Recommended</span>
-      </div>
-
-      <p class="partner-description">Gaya eliminates the biggest time drain in insurance quoting — manual data entry across carrier portals. Their Super Copy &amp; Super Paste technology lets agents move data across any system in a single click, dramatically accelerating the quoting process.</p>
-
-      <div class="partner-services-label">Key Capabilities</div>
-      <ul class="partner-services">
-        <li class="blue-dot">One-click data transfer across all major carrier portals</li>
-        <li class="blue-dot">Eliminates repetitive manual data entry for agents</li>
-        <li class="blue-dot">Dramatically speeds up the quoting process end-to-end</li>
-        <li class="blue-dot">Reduces errors from re-entering data across systems</li>
-      </ul>
-
-      <div class="partner-card-footer">
-        <div class="partner-stat">
-          <span class="partner-stat-num blue">1-click</span>
-          <div class="partner-stat-label">Data transfer</div>
-        </div>
-        <div class="partner-stat-divider"></div>
-        <div class="partner-stat">
-          <span class="partner-stat-num blue">Any</span>
-          <div class="partner-stat-label">Carrier portal</div>
-        </div>
-        <div class="partner-stat-divider"></div>
-        <div class="partner-stat">
-          <span class="partner-stat-num blue">Zero</span>
-          <div class="partner-stat-label">Manual re-entry</div>
-        </div>
-        <a href="https://gaya.ai" target="_blank" class="partner-visit">Visit ↗</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="partners-callout">
-    <strong>These are tools I've personally vetted and recommend to every agency I work with.</strong> Together, Outmarket and Gaya can dramatically reduce time spent on quoting, data entry, and proposal creation — so your team can focus on serving clients and growing the book.
+    <a href="partners.html" class="partners-teaser-cta">View All Partners &amp; Details ↗</a>
   </div>
 </section>
 
