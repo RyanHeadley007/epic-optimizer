@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Epic Optimizer | Business Process Automation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark:        #171e26;
+      --mid:         #212c3a;
+      --gold:        #ca9d64;
+      --gold-dim:    rgba(202,157,100,0.10);
+      --gold-border: rgba(202,157,100,0.28);
+      --grey:        #bdbbae;
+      --tan:         #fffdea;
+      --tan-faint:   rgba(255,253,234,0.04);
+      --border:      rgba(189,187,174,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--tan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(23,30,38,0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .nav-brand-sub {
+      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--tan); }
+    .nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 9px 24px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 160px 60px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 60% at 78% 38%, rgba(202,157,100,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 45% at 5% 80%,  rgba(33,44,58,0.95)   0%, transparent 55%);
+    }
+    .hero-watermark {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 580px; opacity: 0.035; pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 30px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .eyebrow-line { width: 44px; height: 1px; background: var(--gold); }
+    .eyebrow-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(50px, 6.5vw, 92px);
+      font-weight: 700; line-height: 0.94; letter-spacing: 1px; text-transform: uppercase;
+      max-width: 820px; margin-bottom: 28px; color: var(--tan);
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-sub {
+      font-size: 19px; font-weight: 300; color: var(--grey);
+      max-width: 500px; line-height: 1.65; margin-bottom: 52px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--dark);
+      padding: 15px 34px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost {
+      color: var(--grey); text-decoration: none; font-size: 15px; font-weight: 400;
+      display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--tan); }
+    .btn-ghost::after { content: '→'; font-size: 17px; }
+
+    /* PROBLEM STRIP */
+    .problem-strip {
+      background: var(--mid);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 52px 60px;
+      display: flex; align-items: flex-start; gap: 64px;
+    }
+    .problem-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); padding-top: 4px; min-width: 90px;
+    }
+    .problem-text {
+      font-size: 21px; font-weight: 300; color: var(--tan);
+      max-width: 660px; line-height: 1.55;
+    }
+    .problem-text strong { font-weight: 600; }
+
+    /* SECTION COMMONS */
+    section { padding: 100px 60px; }
+    .section-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      line-height: 1.0; margin-bottom: 18px; color: var(--tan);
+    }
+    .section-sub {
+      font-size: 18px; font-weight: 300; color: var(--grey);
+      max-width: 500px; line-height: 1.65; margin-bottom: 60px;
+    }
+
+    /* PILLARS */
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+    }
+    .pillar-card {
+      padding: 44px 38px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+    }
+    .pillar-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .pillar-card:hover { background: var(--tan-faint); }
+    .pillar-card:hover::before { opacity: 1; }
+    .pillar-card:nth-child(3n)  { border-right: none; }
+    .pillar-card:nth-child(4),
+    .pillar-card:nth-child(5),
+    .pillar-card:nth-child(6)   { border-bottom: none; }
+    .pillar-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 2.5px;
+      color: var(--gold); margin-bottom: 18px;
+    }
+    .pillar-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 21px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin-bottom: 12px; line-height: 1.2;
+    }
+    .pillar-card p { font-size: 15px; color: var(--grey); line-height: 1.65; margin-bottom: 22px; }
+    .pillar-outcomes { list-style: none; }
+    .pillar-outcomes li {
+      font-size: 13px; color: var(--grey);
+      padding: 7px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pillar-outcomes li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    /* TOOLS */
+    .tools-section { background: var(--mid); }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-badge {
+      background: var(--tan-faint); border: 1px solid var(--border);
+      color: var(--tan); padding: 11px 22px; border-radius: 2px;
+      font-size: 14px; font-weight: 400; letter-spacing: 0.3px;
+      display: flex; align-items: center; gap: 9px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .tool-badge:hover { background: var(--gold-dim); border-color: var(--gold-border); }
+    .tool-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+    .tools-callout {
+      margin-top: 48px; padding: 34px 40px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 3px;
+      font-size: 19px; font-weight: 300; color: var(--tan);
+      line-height: 1.55; max-width: 680px;
+    }
+    .tools-callout strong { font-weight: 600; color: var(--gold); }
+
+    /* PROCESS */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+    }
+    .process-step {
+      padding: 44px 34px; border-right: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--tan-faint); }
+    .process-step::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .process-step:hover::after { opacity: 1; }
+    .process-big-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 72px; font-weight: 700;
+      color: rgba(255,253,234,0.04); line-height: 1; margin-bottom: 12px;
+    }
+    .process-step h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--tan); margin-bottom: 10px;
+    }
+    .process-step p { font-size: 15px; color: var(--grey); line-height: 1.65; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+    .about-left h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(34px, 3.5vw, 52px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      line-height: 1.0; margin-bottom: 24px; color: var(--tan);
+    }
+    .about-left p { font-size: 17px; color: var(--grey); line-height: 1.7; margin-bottom: 18px; }
+    .focus-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 32px; }
+    .focus-tag {
+      background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 7px 16px; border-radius: 2px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .about-cards { display: flex; flex-direction: column; gap: 18px; }
+    .about-card {
+      background: var(--tan-faint); border: 1px solid var(--border);
+      border-radius: 3px; padding: 28px 32px; transition: background 0.2s;
+    }
+    .about-card:hover { background: rgba(255,253,234,0.07); }
+    .about-card-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .about-card p { font-size: 15px; color: var(--grey); line-height: 1.65; }
+
+    /* CTA */
+    .cta-section {
+      text-align: center; padding: 120px 60px;
+      background: var(--mid); border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(202,157,100,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      line-height: 1.0; margin-bottom: 20px; color: var(--tan);
+    }
+    .cta-section p {
+      font-size: 19px; font-weight: 300; color: var(--grey);
+      max-width: 440px; margin: 0 auto 48px; line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-block; background: var(--gold); color: var(--dark);
+      padding: 18px 44px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    footer p { font-size: 13px; color: var(--grey); }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 60px; }
+
+    /* PARTNERS */
+    .partners-section { background: var(--dark); }
+    .partners-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+    }
+    .partner-card {
+      padding: 48px 42px;
+      border-right: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+    }
+    .partner-card:last-child { border-right: none; }
+    .partner-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .partner-card:hover { background: var(--tan-faint); }
+    .partner-card:hover::before { opacity: 1; }
+    .partner-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .partner-logo-row { display: flex; align-items: center; gap: 14px; }
+    .partner-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .partner-icon-outmarket { background: var(--gold-dim); border: 1px solid var(--gold-border); }
+    .partner-icon-gaya      { background: rgba(55,138,221,0.10); border: 1px solid rgba(55,138,221,0.22); }
+    .partner-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--tan); line-height: 1.1; margin-bottom: 3px;
+    }
+    .partner-tagline {
+      font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .partner-tagline-blue { color: #6aabee; }
+    .recommended-badge {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      background: var(--gold-dim); color: var(--gold);
+      border: 1px solid var(--gold-border);
+      border-radius: 2px; padding: 4px 10px; white-space: nowrap;
+    }
+    .partner-description {
+      font-size: 15px; color: var(--grey); line-height: 1.65; margin-bottom: 28px;
+    }
+    .partner-services-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px; opacity: 0.7;
+    }
+    .partner-services { list-style: none; margin-bottom: 32px; }
+    .partner-services li {
+      font-size: 14px; color: var(--grey);
+      padding: 8px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; line-height: 1.45;
+    }
+    .partner-services li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .partner-services li.blue-dot::before { background: #6aabee; }
+    .partner-card-footer {
+      border-top: 1px solid var(--border); padding-top: 22px;
+      display: flex; align-items: center;
+    }
+    .partner-stat { flex: 1; text-align: center; }
+    .partner-stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--gold); display: block; line-height: 1.1;
+    }
+    .partner-stat-num.blue { color: #6aabee; }
+    .partner-stat-label { font-size: 11px; color: var(--grey); margin-top: 3px; }
+    .partner-stat-divider { width: 1px; height: 36px; background: var(--border); flex-shrink: 0; }
+    .partner-visit {
+      margin-left: auto; padding-left: 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .partner-visit:hover { color: var(--tan); }
+    .partners-callout {
+      margin-top: 48px; padding: 34px 40px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 3px;
+      font-size: 19px; font-weight: 300; color: var(--tan);
+      line-height: 1.55; max-width: 780px;
+    }
+    .partners-callout strong { font-weight: 600; color: var(--gold); }
+
+    /* MIGRATION */
+    .migration-section { background: var(--mid); }
+    .migration-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .migration-left h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 1.0; margin-bottom: 20px; color: var(--tan);
+    }
+    .migration-left p {
+      font-size: 17px; font-weight: 300; color: var(--grey);
+      line-height: 1.7; margin-bottom: 18px;
+    }
+    .migration-left p strong { font-weight: 600; color: var(--tan); }
+    .migration-callout {
+      margin-top: 32px; padding: 28px 32px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+      font-size: 16px; font-weight: 300; color: var(--tan); line-height: 1.6;
+    }
+    .migration-callout strong { font-weight: 600; color: var(--gold); }
+    .migration-phases { display: flex; flex-direction: column; gap: 0; }
+    .migration-phase {
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .migration-phase:first-child { border-radius: 3px 3px 0 0; }
+    .migration-phase:last-child  { border-bottom: 1px solid var(--border); border-radius: 0 0 3px 3px; }
+    .migration-phase:hover { background: var(--tan-faint); }
+    .migration-phase::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--gold); opacity: 0; transition: opacity 0.25s;
+    }
+    .migration-phase:hover::before { opacity: 1; }
+    .migration-phase-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+    }
+    .migration-phase-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); min-width: 28px;
+    }
+    .migration-phase h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan);
+    }
+    .migration-phase p { font-size: 14px; color: var(--grey); line-height: 1.65; padding-left: 42px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      section, .hero, .problem-strip, footer { padding-left: 24px; padding-right: 24px; }
+      hr.divider { margin: 0 24px; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .pillar-card:nth-child(3n) { border-right: 1px solid var(--border); }
+      .pillar-card:nth-child(2n) { border-right: none; }
+      .pillar-card:nth-child(4),
+      .pillar-card:nth-child(5),
+      .pillar-card:nth-child(6) { border-bottom: 1px solid var(--border); }
+      .pillar-card:nth-child(5),
+      .pillar-card:nth-child(6) { border-bottom: none; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid   { grid-template-columns: 1fr; gap: 48px; }
+      .migration-inner { grid-template-columns: 1fr; gap: 48px; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .partner-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .partner-card:last-child { border-bottom: none; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid   { grid-template-columns: 1fr; }
+      .process-grid   { grid-template-columns: 1fr; }
+      .problem-strip  { flex-direction: column; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <svg width="36" height="42" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Hex shape -->
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <!-- T (top center) -->
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <!-- E (bottom left) -->
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <!-- O (bottom right) -->
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#pillars">Services</a></li>
+    <li><a href="#migration">Migration</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Book a Session</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <svg class="hero-watermark" viewBox="0 0 110 127" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="55,3 107,31 107,96 55,124 3,96 3,31"
+      fill="none" stroke="#ca9d64" stroke-width="4"/>
+  </svg>
+  <div class="hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">Insurance Operations Consulting</span>
+  </div>
+  <h1>Optimize Your Agency.<br><span class="gold">Maximize Epic.</span><br>Scale with Confidence.</h1>
+  <p class="hero-sub">Specialized consulting for insurance agencies leveraging Applied Epic and its full ecosystem.</p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#contact">Book a Working Session</a>
+    <a class="btn-ghost" href="#pillars">Explore Services</a>
+  </div>
+</section>
+
+<!-- PROBLEM STRIP -->
+<div class="problem-strip">
+  <div class="problem-label">The Problem</div>
+  <p class="problem-text"><strong>Most agencies own Epic — but don't use it correctly.</strong> The result is messy data, inconsistent workflows, missed insights, and a system that costs more than it delivers.</p>
+</div>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-eyebrow">Core Services</div>
+  <h2 class="section-title">Built Around Your<br>Biggest Leverage Points</h2>
+  <p class="section-sub">End-to-end operational and technology consulting across six interconnected disciplines.</p>
+  <div class="pillars-grid">
+
+    <div class="pillar-card">
+      <div class="pillar-num">01</div>
+      <h3>Epic Optimization</h3>
+      <p>Deep configuration, security, workflows, and data structure — so Epic works the way your agency actually runs.</p>
+      <ul class="pillar-outcomes">
+        <li>Clean, consistent data</li>
+        <li>Reliable reporting</li>
+        <li>Reduced E&amp;O exposure</li>
+        <li>Standardized workflows</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">02</div>
+      <h3>Applied Ecosystem Expertise</h3>
+      <p>Design how every tool in the Applied ecosystem integrates and works together inside Epic.</p>
+      <ul class="pillar-outcomes">
+        <li>CSR24 certificate automation</li>
+        <li>Indio digital intake</li>
+        <li>Tarmika quoting &amp; submissions</li>
+        <li>Epic Quotes standardization</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">03</div>
+      <h3>Workflow &amp; Process Design</h3>
+      <p>Eliminate bottlenecks. Create documented, repeatable SOPs across every critical agency workflow.</p>
+      <ul class="pillar-outcomes">
+        <li>Certificates &amp; renewals</li>
+        <li>New business workflows</li>
+        <li>Faster execution</li>
+        <li>Clear accountability</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">04</div>
+      <h3>Data, Reporting &amp; Automation</h3>
+      <p>KPI dashboards, reporting alignment, and automation strategy — from API/SDK integration through execution.</p>
+      <ul class="pillar-outcomes">
+        <li>Real-time insights</li>
+        <li>Better decisions</li>
+        <li>Less manual work</li>
+        <li>Integration alignment</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">05</div>
+      <h3>Training &amp; Adoption</h3>
+      <p>Hands-on training for staff and leadership. Role-based guidance that ensures changes actually stick.</p>
+      <ul class="pillar-outcomes">
+        <li>Higher system adoption</li>
+        <li>Long-term sustainability</li>
+        <li>Leadership alignment</li>
+      </ul>
+    </div>
+
+    <div class="pillar-card">
+      <div class="pillar-num">06</div>
+      <h3>Strategic Advisory</h3>
+      <p>Long-term operational partnership — technology selection, vendor guidance, and continuous improvement.</p>
+      <ul class="pillar-outcomes">
+        <li>Technology strategy</li>
+        <li>Vendor guidance</li>
+        <li>Ongoing optimization</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- MIGRATION -->
+<section id="migration" class="migration-section">
+  <div class="section-eyebrow">AMS Data Migration</div>
+  <div class="migration-inner">
+
+    <div class="migration-left">
+      <h2>Moving to Epic?<br>Do It Right<br>the First Time.</h2>
+      <p>Agency acquisitions are one of the most complex operational events in the insurance industry. When data needs to move from one AMS to another, <strong>the margin for error is zero.</strong></p>
+      <p>Epic Optimizer provides end-to-end migration consulting — from the earliest proposal stages through go-live — ensuring your data arrives clean, your workflows are built for your agency's reality, and your team is ready to operate from day one.</p>
+      <p>This isn't just data transfer. It's a full operational transition, and it requires someone who understands both sides of the equation: the technical requirements of Epic and the business realities of running an agency through a major change.</p>
+      <div class="migration-callout">
+        <strong>Acquisition in progress?</strong> The earlier you bring in a migration specialist, the better the outcome. Early involvement during the proposal stage can save significant time, cost, and operational disruption down the road.
+      </div>
+    </div>
+
+    <div class="migration-phases">
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">01</span>
+          <h3>Proposal Advisory</h3>
+        </div>
+        <p>Engage during the acquisition or platform decision stage. Assess data complexity, flag risks early, and help set realistic timelines and expectations before contracts are signed.</p>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">02</span>
+          <h3>Data Assessment &amp; Mapping</h3>
+        </div>
+        <p>Audit the source system — whether it's AMS360, Hawksoft, QQ Catalyst, or another platform — and map data structures to Epic's schema. Identify gaps, duplicates, and cleanup requirements before migration begins.</p>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">03</span>
+          <h3>Epic Configuration &amp; Setup</h3>
+        </div>
+        <p>Build out the Epic environment to receive migrated data correctly. Configure branches, departments, divisions, security groups, and code tables ahead of import to ensure data lands in the right place.</p>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">04</span>
+          <h3>Workflow Design</h3>
+        </div>
+        <p>Design workflows specific to the acquiring agency before go-live — not generic templates, but processes built around how this team actually operates, mapped to Epic's capabilities from day one.</p>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">05</span>
+          <h3>Migration Execution &amp; QA</h3>
+        </div>
+        <p>Oversee the data import process, validate records post-migration, and resolve discrepancies before they become operational problems. Ensure policy, client, and financial data integrity throughout.</p>
+      </div>
+      <div class="migration-phase">
+        <div class="migration-phase-header">
+          <span class="migration-phase-num">06</span>
+          <h3>Go-Live Support &amp; Training</h3>
+        </div>
+        <p>Be on the ground — or on the call — when the switch flips. Train staff on the new environment, resolve issues in real time, and ensure the team is fully operational from day one.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TOOLS -->
+<section id="tools" class="tools-section">
+  <div class="section-eyebrow">Applied Ecosystem</div>
+  <h2 class="section-title">The Tools.<br>The Integrations.<br>The Full Picture.</h2>
+  <p class="section-sub">Deep expertise across every major Applied product and how they work together.</p>
+  <div class="tools-grid">
+    <div class="tool-badge"><div class="tool-dot"></div>Applied Epic</div>
+    <div class="tool-badge"><div class="tool-dot"></div>CSR24</div>
+    <div class="tool-badge"><div class="tool-dot"></div>Indio</div>
+    <div class="tool-badge"><div class="tool-dot"></div>Tarmika</div>
+    <div class="tool-badge"><div class="tool-dot"></div>Epic Quotes</div>
+    <div class="tool-badge"><div class="tool-dot"></div>Book of Business Import Tool</div>
+    <div class="tool-badge"><div class="tool-dot"></div>Dashboard Asset Builder</div>
+  </div>
+  <div class="tools-callout">
+    <strong>Design how all tools work together inside Epic</strong> — not just point solutions, but a unified operational ecosystem built for your agency's long-term growth.
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PARTNERS -->
+<section id="partners" class="partners-section">
+  <div class="section-eyebrow">Trusted Technology Partners</div>
+  <h2 class="section-title">Recommended Tools<br>for Insurance Agencies</h2>
+  <p class="section-sub">Vetted SaaS partners I rely on to help agencies streamline operations, reduce manual work, and grow with confidence.</p>
+
+  <div class="partners-grid">
+
+    <!-- Outmarket AI -->
+    <div class="partner-card">
+      <div class="partner-card-header">
+        <div class="partner-logo-row">
+          <div class="partner-icon partner-icon-outmarket">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L3 7v10l9 5 9-5V7z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M12 2v20M3 7l9 5 9-5" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="partner-name">Outmarket AI</div>
+            <div class="partner-tagline">Insurance AI Operating System</div>
+          </div>
+        </div>
+        <span class="recommended-badge">Recommended</span>
+      </div>
+
+      <p class="partner-description">The AI platform built specifically for insurance brokers and agencies. Outmarket thinks like a broker — helping teams grow revenue, cut costs, and reduce risk through intelligent automation across the full quoting and proposal workflow.</p>
+
+      <div class="partner-services-label">Key Capabilities</div>
+      <ul class="partner-services">
+        <li>AI-powered quote &amp; policy comparison — 75% faster turnaround</li>
+        <li>Custom-branded proposal builder in minutes, not hours</li>
+        <li>Carrier appetite matching with natural language search</li>
+        <li>Upsell &amp; cross-sell intelligence built into every workflow</li>
+      </ul>
+
+      <div class="partner-card-footer">
+        <div class="partner-stat">
+          <span class="partner-stat-num">75%</span>
+          <div class="partner-stat-label">Faster quotes</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num">3 hrs</span>
+          <div class="partner-stat-label">Saved per proposal</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num">15%</span>
+          <div class="partner-stat-label">Less client churn</div>
+        </div>
+        <a href="https://outmarket.ai" target="_blank" class="partner-visit">Visit ↗</a>
+      </div>
+    </div>
+
+    <!-- Gaya AI -->
+    <div class="partner-card">
+      <div class="partner-card-header">
+        <div class="partner-logo-row">
+          <div class="partner-icon partner-icon-gaya">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+              <rect x="13" y="5" width="8" height="6" rx="1.5" stroke="#6aabee" stroke-width="1.5"/>
+              <path d="M11 8h2M7 17h10M7 20h7" stroke="#6aabee" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="partner-name">Gaya AI</div>
+            <div class="partner-tagline partner-tagline-blue">Super Copy &amp; Paste for Quoting</div>
+          </div>
+        </div>
+        <span class="recommended-badge">Recommended</span>
+      </div>
+
+      <p class="partner-description">Gaya eliminates the biggest time drain in insurance quoting — manual data entry across carrier portals. Their Super Copy &amp; Super Paste technology lets agents move data across any system in a single click, dramatically accelerating the quoting process.</p>
+
+      <div class="partner-services-label">Key Capabilities</div>
+      <ul class="partner-services">
+        <li class="blue-dot">One-click data transfer across all major carrier portals</li>
+        <li class="blue-dot">Eliminates repetitive manual data entry for agents</li>
+        <li class="blue-dot">Dramatically speeds up the quoting process end-to-end</li>
+        <li class="blue-dot">Reduces errors from re-entering data across systems</li>
+      </ul>
+
+      <div class="partner-card-footer">
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">1-click</span>
+          <div class="partner-stat-label">Data transfer</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">Any</span>
+          <div class="partner-stat-label">Carrier portal</div>
+        </div>
+        <div class="partner-stat-divider"></div>
+        <div class="partner-stat">
+          <span class="partner-stat-num blue">Zero</span>
+          <div class="partner-stat-label">Manual re-entry</div>
+        </div>
+        <a href="https://gaya.ai" target="_blank" class="partner-visit">Visit ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="partners-callout">
+    <strong>These are tools I've personally vetted and recommend to every agency I work with.</strong> Together, Outmarket and Gaya can dramatically reduce time spent on quoting, data entry, and proposal creation — so your team can focus on serving clients and growing the book.
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-eyebrow">How We Work</div>
+  <h2 class="section-title">A Clear Path from<br>Assessment to Results</h2>
+  <p class="section-sub">Every engagement follows a structured framework built around measurable outcomes.</p>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-big-num">01</div>
+      <h3>Assess</h3>
+      <p>Deep-dive into your current Epic configuration, workflows, and data structure to identify gaps and opportunities.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-big-num">02</div>
+      <h3>Align</h3>
+      <p>Define clear objectives, success metrics, and a roadmap aligned with your agency's operational goals.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-big-num">03</div>
+      <h3>Optimize</h3>
+      <p>Execute targeted improvements — configuration, workflows, reporting, and integrations — with precision.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-big-num">04</div>
+      <h3>Enable</h3>
+      <p>Train your team, document the changes, and ensure full adoption so improvements deliver lasting value.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="section-eyebrow">About</div>
+      <h2>Ryan Headley<br>President,<br>Epic Optimizer</h2>
+      <p>Specialized in helping insurance agencies modernize how they operate — with deep expertise in Applied Epic, agency workflows, and the technology that connects it all.</p>
+      <p>This work sits at the intersection of process, data, and technology. Not just consulting — a long-term operational partnership built around measurable outcomes.</p>
+      <div class="focus-tags">
+        <span class="focus-tag">Process</span>
+        <span class="focus-tag">Data</span>
+        <span class="focus-tag">Technology</span>
+        <span class="focus-tag">Applied Ecosystem</span>
+        <span class="focus-tag">Insurance Operations</span>
+      </div>
+    </div>
+    <div class="about-cards">
+      <div class="about-card">
+        <div class="about-card-label">Background</div>
+        <p>Deep roots in insurance operations and Applied Epic — from agency-side experience to specialized consulting across the full Applied ecosystem.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Approach</div>
+        <p>Clear documentation. Defined objectives. Measurable outcomes. Close collaboration with client teams and leadership at every step.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Positioning</div>
+        <p>Not a vendor. Not a trainer. A specialized partner who stays engaged to ensure your agency keeps improving long after day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <h2>Ready to Get More<br>Out of Epic?</h2>
+  <p>Book a working session and let's identify exactly where your agency has the most to gain.</p>
+  <a class="cta-btn" href="#">Book a Working Session</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="#">
+    <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2025 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+</body>
+</html>
