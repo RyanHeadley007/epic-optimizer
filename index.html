@@ -346,7 +346,8 @@
       max-width: 440px; margin: 0 auto; line-height: 1.6;
     }
     .booking-frame-wrapper {
-      width: 100%;
+      width: calc(100% - 500px);
+      margin: 0 auto;
       border: 1px solid var(--border);
       border-radius: 3px;
       background: #fff;
@@ -354,14 +355,16 @@
     .booking-frame-wrapper iframe {
       display: block;
       width: 100%;
-      height: 1800px;
+      height: 1850px;
       border: 0;
     }
     @media (max-width: 960px) {
-      .booking-frame-wrapper iframe { height: 2000px; }
+      .booking-frame-wrapper { width: 100%; }
+      .booking-frame-wrapper iframe { height: 2050px; }
     }
     @media (max-width: 600px) {
-      .booking-frame-wrapper iframe { height: 2200px; }
+      .booking-frame-wrapper { width: 100%; }
+      .booking-frame-wrapper iframe { height: 2250px; }
       .booking-section { padding: 60px 20px; }
     }
 
@@ -879,7 +882,7 @@
       data-src="https://outlook.office.com/book/WebsiteBookingPage@epicoptimizer.com/"
       width="100%"
       scrolling="no"
-      style="border:0;display:block;width:100%;height:1800px;"
+      style="border:0;display:block;width:100%;height:1850px;"
       title="Book a session with Epic Optimizer">
     </iframe>
   </div>
