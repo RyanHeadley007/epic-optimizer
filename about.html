@@ -345,6 +345,54 @@
     }
     .personal-fact-value { font-size: 15px; font-weight: 400; color: var(--tan); }
 
+    /* PUBLICATIONS */
+    .publications-section { background: var(--dark); }
+    .pub-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 0; border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+      margin-top: 56px;
+    }
+    .pub-card {
+      padding: 38px 40px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+      text-decoration: none; display: flex; flex-direction: column; gap: 12px;
+    }
+    .pub-card:nth-child(2n) { border-right: none; }
+    .pub-card:nth-child(3),
+    .pub-card:nth-child(4) { border-bottom: none; }
+    .pub-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .pub-card:hover { background: var(--tan-faint); }
+    .pub-card:hover::before { opacity: 1; }
+    .pub-meta { display: flex; align-items: center; gap: 14px; }
+    .pub-outlet {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pub-year {
+      font-size: 11px; font-weight: 400; letter-spacing: 1px; color: var(--grey); opacity: 0.6;
+    }
+    .pub-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); line-height: 1.2;
+    }
+    .pub-desc {
+      font-size: 14px; font-weight: 300; color: var(--grey); line-height: 1.65; flex: 1;
+    }
+    .pub-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--gold); margin-top: 4px;
+    }
+    .pub-link::after { content: '↗'; font-size: 13px; }
+
     /* CTA */
     .about-cta {
       padding: 100px 60px; text-align: center;
@@ -406,6 +454,10 @@
       .profile-grid { grid-template-columns: 1fr; gap: 48px; }
       .profile-photo-col { max-width: 360px; }
       .personal-inner { grid-template-columns: 1fr; gap: 48px; }
+      .pub-grid { grid-template-columns: 1fr; }
+      .pub-card { border-right: none; }
+      .pub-card:nth-child(3), .pub-card:nth-child(4) { border-bottom: 1px solid var(--border); }
+      .pub-card:last-child { border-bottom: none; }
       .expertise-grid { grid-template-columns: 1fr; }
       .expertise-card { border-right: none; border-bottom: 1px solid var(--border); }
       .expertise-card:last-child { border-bottom: none; }
@@ -708,6 +760,57 @@
         <div class="personal-fact-value">Stratton Agency · San Carlos, CA · Sold to PCF Insurance, 2018</div>
       </div>
     </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PUBLICATIONS -->
+<section class="publications-section">
+  <div class="section-eyebrow">In the Press</div>
+  <h2 class="section-title">Featured in<br>Industry Publications.</h2>
+  <div class="pub-grid">
+
+    <a class="pub-card" href="https://roughnotes.com/grass-is-greener/" target="_blank" rel="noopener">
+      <div class="pub-meta">
+        <span class="pub-outlet">Rough Notes</span>
+        <span class="pub-year">2019</span>
+      </div>
+      <div class="pub-title">Grass Is Greener</div>
+      <p class="pub-desc">Agency of the Month feature on how a California agency used niche market focus to achieve double-digit growth — with Ryan's operational approach central to the story.</p>
+      <span class="pub-link">Read Article</span>
+    </a>
+
+    <a class="pub-card" href="https://www.iamagazine.com/2017/02/01/agency-profile-the-purple-cows/" target="_blank" rel="noopener">
+      <div class="pub-meta">
+        <span class="pub-outlet">IA Magazine</span>
+        <span class="pub-year">2017</span>
+      </div>
+      <div class="pub-title">Agency Profile: The Purple Cows</div>
+      <p class="pub-desc">A profile of Stratton Agency and its unconventional growth strategy — how a distinctive niche and tight operational focus drove consistent year-over-year results.</p>
+      <span class="pub-link">Read Article</span>
+    </a>
+
+    <a class="pub-card" href="https://www.businessinsurance.com/Technological-advances-are-improving-broker-buyer-relationships/" target="_blank" rel="noopener">
+      <div class="pub-meta">
+        <span class="pub-outlet">Business Insurance</span>
+        <span class="pub-year">Industry Feature</span>
+      </div>
+      <div class="pub-title">Technology &amp; Broker-Buyer Relationships</div>
+      <p class="pub-desc">Ryan's perspective on how technological advances are reshaping the relationship between brokers and buyers — and what forward-thinking agencies are doing differently.</p>
+      <span class="pub-link">Read Article</span>
+    </a>
+
+    <a class="pub-card" href="https://roughnotes.com/rnmagazine/2012/august2012/2012_08p072.htm" target="_blank" rel="noopener">
+      <div class="pub-meta">
+        <span class="pub-outlet">Rough Notes</span>
+        <span class="pub-year">2012</span>
+      </div>
+      <div class="pub-title">A Differentiator</div>
+      <p class="pub-desc">Featuring Ryan's development of ReadyLife — a personal resource management system built to help high-net-worth clients document and protect their assets, born out of Stratton Agency.</p>
+      <span class="pub-link">Read Article</span>
+    </a>
 
   </div>
 </section>
