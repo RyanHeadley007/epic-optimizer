@@ -120,6 +120,11 @@
       position: relative; overflow: hidden;
       border-bottom: 1px solid var(--border);
     }
+    .hero-watermark {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: 620px; opacity: 0.07; pointer-events: none;
+      user-select: none;
+    }
     .hero-glow {
       position: absolute; inset: 0; pointer-events: none;
       background:
@@ -634,6 +639,7 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="hero-glow"></div>
+    <img class="hero-watermark" src="Images/favicon_512.png" alt=""/>
     <div class="page-hero-eyebrow">
       <div class="eyebrow-line"></div>
       <span class="eyebrow-text">Insights & Perspectives</span>
