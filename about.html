@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Ryan Headley | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:        #171e26;
+      --mid:         #212c3a;
+      --gold:        #ca9d64;
+      --gold-dim:    rgba(202,157,100,0.10);
+      --gold-border: rgba(202,157,100,0.28);
+      --grey:        #bdbbae;
+      --tan:         #fffdea;
+      --tan-faint:   rgba(255,253,234,0.04);
+      --border:      rgba(189,187,174,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--tan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(23,30,38,0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .nav-brand-sub {
+      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--tan); }
+    .nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 9px 24px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px;
+      background: none; border: none; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tan); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE DRAWER */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(23,30,38,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul { list-style: none; text-align: center; margin-bottom: 40px; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
+    .mobile-menu ul li a {
+      display: block; padding: 20px 48px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan); text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 14px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* SECTION COMMONS */
+    section { padding: 100px 60px; }
+    .section-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      line-height: 1.0; margin-bottom: 18px; color: var(--tan);
+    }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 60px; }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 60px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 60% at 78% 38%, rgba(202,157,100,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 45% at 5% 80%,  rgba(33,44,58,0.95)   0%, transparent 55%);
+    }
+    .hero-watermark {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 580px; opacity: 0.035; pointer-events: none;
+    }
+    .page-hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .eyebrow-line { width: 44px; height: 1px; background: var(--gold); }
+    .eyebrow-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .page-hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(50px, 6.5vw, 92px);
+      font-weight: 700; line-height: 0.94; letter-spacing: 1px; text-transform: uppercase;
+      max-width: 820px; margin-bottom: 28px; color: var(--tan);
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .page-hero h1 .gold { color: var(--gold); }
+    .page-hero-sub {
+      font-size: 19px; font-weight: 300; color: var(--grey);
+      max-width: 520px; line-height: 1.65; margin-bottom: 44px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold); color: var(--dark);
+      padding: 15px 34px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* PROFILE SECTION */
+    .profile-section { background: var(--mid); }
+    .profile-grid {
+      display: grid; grid-template-columns: 380px 1fr;
+      gap: 80px; align-items: start;
+    }
+    .profile-photo-frame {
+      position: relative; border: 1px solid var(--gold-border);
+      border-radius: 3px; overflow: hidden;
+    }
+    .profile-photo-frame::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent); z-index: 1;
+    }
+    .profile-photo-frame img { width: 100%; display: block; filter: grayscale(12%); }
+    .profile-photo-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(23,30,38,0.92) 0%, transparent 100%);
+      padding: 48px 24px 20px;
+    }
+    .profile-photo-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .profile-photo-title {
+      font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-top: 2px;
+    }
+    .profile-content .section-eyebrow { margin-bottom: 12px; }
+    .profile-content h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(34px, 3.5vw, 52px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 1.0; margin-bottom: 24px; color: var(--tan);
+    }
+    .profile-content h2 .gold { color: var(--gold); }
+    .profile-body p {
+      font-size: 17px; font-weight: 300; color: var(--grey);
+      line-height: 1.75; margin-bottom: 18px;
+    }
+    .profile-body p strong { font-weight: 600; color: var(--tan); }
+    .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+    .profile-tag {
+      background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 7px 16px; border-radius: 2px;
+      font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    /* STATS STRIP */
+    .stats-strip {
+      background: var(--dark);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 64px 60px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    }
+    .stat-item {
+      padding: 0 40px; border-right: 1px solid var(--border); text-align: center;
+    }
+    .stat-item:first-child { padding-left: 0; text-align: left; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 56px; font-weight: 700; letter-spacing: -1px;
+      color: var(--gold); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 13px; font-weight: 400; color: var(--grey); line-height: 1.5; }
+
+    /* CAREER TIMELINE */
+    .timeline-section { background: var(--mid); }
+    .timeline-header { margin-bottom: 56px; }
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1px; background: var(--border);
+    }
+    .timeline-item { position: relative; padding: 0 0 52px 40px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -6px; top: 8px;
+      width: 13px; height: 13px; border-radius: 50%;
+      border: 2px solid var(--gold); background: var(--mid);
+    }
+    .timeline-dot.filled { background: var(--gold); }
+    .timeline-year {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .timeline-role {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--tan); margin-bottom: 4px;
+    }
+    .timeline-org {
+      font-size: 13px; font-weight: 400; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 14px;
+    }
+    .timeline-desc {
+      font-size: 16px; font-weight: 300; color: var(--grey); line-height: 1.7; max-width: 580px;
+    }
+    .timeline-desc strong { font-weight: 600; color: var(--tan); }
+
+    /* EXPERTISE */
+    .expertise-section { background: var(--dark); }
+    .expertise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+      margin-top: 56px;
+    }
+    .expertise-card {
+      padding: 40px 36px; border-right: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+    }
+    .expertise-card:last-child { border-right: none; }
+    .expertise-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .expertise-card:hover { background: var(--tan-faint); }
+    .expertise-card:hover::before { opacity: 1; }
+    .expertise-icon { width: 40px; height: 40px; margin-bottom: 20px; display: flex; align-items: center; }
+    .expertise-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin-bottom: 12px; line-height: 1.2;
+    }
+    .expertise-card p { font-size: 15px; color: var(--grey); line-height: 1.65; }
+
+    /* PERSONAL */
+    .personal-section { background: var(--mid); }
+    .personal-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .personal-left h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(34px, 3.5vw, 52px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 1.0; margin-bottom: 24px; color: var(--tan);
+    }
+    .personal-left p {
+      font-size: 17px; font-weight: 300; color: var(--grey); line-height: 1.75; margin-bottom: 18px;
+    }
+    .personal-left p strong { font-weight: 600; color: var(--tan); }
+    .personal-callout {
+      margin-top: 32px; padding: 28px 32px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold); border-radius: 2px;
+      font-size: 16px; font-weight: 300; color: var(--tan); line-height: 1.6;
+    }
+    .personal-callout strong { font-weight: 600; color: var(--gold); }
+    .personal-facts { display: flex; flex-direction: column; gap: 0; }
+    .personal-fact {
+      padding: 24px 28px; border: 1px solid var(--border); border-bottom: none;
+      position: relative; transition: background 0.2s;
+    }
+    .personal-fact:first-child { border-radius: 3px 3px 0 0; }
+    .personal-fact:last-child { border-bottom: 1px solid var(--border); border-radius: 0 0 3px 3px; }
+    .personal-fact:hover { background: var(--tan-faint); }
+    .personal-fact::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--gold); opacity: 0; transition: opacity 0.25s;
+    }
+    .personal-fact:hover::before { opacity: 1; }
+    .personal-fact-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 6px;
+    }
+    .personal-fact-value { font-size: 15px; font-weight: 400; color: var(--tan); }
+
+    /* CTA */
+    .about-cta {
+      padding: 100px 60px; text-align: center;
+      position: relative; overflow: hidden; background: var(--dark);
+    }
+    .cta-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(202,157,100,0.07) 0%, transparent 70%);
+    }
+    .about-cta .section-eyebrow { margin-bottom: 20px; }
+    .about-cta h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      line-height: 1.0; margin-bottom: 20px; color: var(--tan);
+    }
+    .about-cta p {
+      font-size: 18px; font-weight: 300; color: var(--grey);
+      max-width: 480px; margin: 0 auto 44px; line-height: 1.65;
+    }
+    .btn-cta {
+      display: inline-block; background: var(--gold); color: var(--dark);
+      padding: 15px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* FOOTER — matches index.html / blog.html / partners.html exactly */
+    footer {
+      padding: 36px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    footer p { font-size: 13px; color: var(--grey); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section, .page-hero, .about-cta { padding-left: 24px; padding-right: 24px; }
+      .stats-strip { padding-left: 24px; padding-right: 24px; }
+      footer { padding-left: 24px; padding-right: 24px; }
+      hr.divider { margin: 0 24px; }
+      .profile-grid { grid-template-columns: 1fr; gap: 48px; }
+      .profile-photo-col { max-width: 360px; }
+      .personal-inner { grid-template-columns: 1fr; gap: 48px; }
+      .expertise-grid { grid-template-columns: 1fr; }
+      .expertise-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .expertise-card:last-child { border-bottom: none; }
+      .stats-strip { grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 48px; padding-bottom: 48px; }
+      .stat-item { padding: 0 20px; border-right: none; text-align: center; }
+      .stat-item:first-child { text-align: center; padding-left: 20px; }
+    }
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 44px; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="blog.html">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars"   onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools"     onclick="closeMobile()">Tools</a></li>
+    <li><a href="partners.html"        onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process"   onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html"           onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html"            onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <svg class="hero-watermark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.24 590.32">
+    <path fill="#ca9d64" d="M255.62,0L0,147.58v295.16l255.62,147.58,255.62-147.58V147.58L255.62,0ZM243.01,365.23l-151.27-87.34v29.11l117.41,67.78v61.81l-117.41-67.78v29.11l151.27,87.34v68.68L25.21,428.19v-251.5l217.81,125.75v62.79ZM37.81,154.86L255.62,29.11l217.81,125.75-217.81,125.75L37.81,154.86ZM486.03,428.19l-217.81,125.75v-251.5l217.81-125.75v251.5Z"/>
+    <polygon fill="#ca9d64" points="410.35 293.38 343.9 331.94 343.9 447.61 410.35 409.05 410.35 293.38"/>
+    <polygon fill="#ca9d64" points="309.72 154.64 309.72 249.27 388.74 203.65 309.72 154.64"/>
+    <polygon fill="#ca9d64" points="201.53 249.05 201.53 154.64 122.69 203.54 201.53 249.05"/>
+  </svg>
+  <div class="page-hero-eyebrow">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">About Epic Optimizer</span>
+  </div>
+  <h1>The Experience<br>Behind the <span class="gold">Work.</span></h1>
+  <p class="page-hero-sub">Two decades in the insurance industry — from agency owner to operations consultant — built around one goal: helping agencies run better.</p>
+  <a class="btn-primary" href="index.html#contact">Book a Working Session</a>
+</div>
+
+<hr class="divider"/>
+
+<!-- PROFILE -->
+<section class="profile-section">
+  <div class="profile-grid">
+
+    <div class="profile-photo-col">
+      <div class="profile-photo-frame">
+        <img src="Images/ryan-headley.jpg" alt="Ryan Headley — President, Epic Optimizer"/>
+        <div class="profile-photo-label">
+          <div class="profile-photo-name">Ryan Headley</div>
+          <div class="profile-photo-title">President · Epic Optimizer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      <div class="section-eyebrow">Who I Am</div>
+      <h2>Insurance Operator<br>Turned <span class="gold">Specialist.</span></h2>
+      <div class="profile-body">
+        <p>Ryan Headley brings over two decades of hands-on insurance industry experience to every engagement — not as a distant consultant, but as someone who has <strong>lived every side of the operation.</strong></p>
+        <p>He began his career managing operations at a flight school before entering the insurance industry in 2003. That early experience instilled a precision-minded approach to operations that has defined his work ever since.</p>
+        <p>As the <strong>owner-operator of Stratton Agency</strong> in San Carlos, CA, Ryan built and led an independent insurance agency from the ground up — navigating the daily realities of client relationships, staff management, carrier negotiations, and the technology that holds it all together. When he sold the agency to PCF Insurance in 2018, it was a testament to what he built.</p>
+        <p>Following the sale, Ryan moved into specialized consulting, focusing on the <strong>Applied Epic management system</strong> — the platform most agencies rely on and few fully leverage. That expertise led to his partnership with Paul Hammack at Panorama starting in March 2020, and eventually to founding Epic Optimizer as a dedicated practice built around one discipline done exceptionally well.</p>
+      </div>
+      <div class="profile-tags">
+        <span class="profile-tag">Applied Epic</span>
+        <span class="profile-tag">Agency Operations</span>
+        <span class="profile-tag">Process Design</span>
+        <span class="profile-tag">Data &amp; Reporting</span>
+        <span class="profile-tag">AMS Migration</span>
+        <span class="profile-tag">Workflow Optimization</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Years in the insurance industry</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2003</div>
+    <div class="stat-label">Year Ryan entered insurance</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Years as agency owner-operator</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">1</div>
+    <div class="stat-label">Focused discipline — Applied Epic &amp; insurance operations</div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- CAREER TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-header">
+    <div class="section-eyebrow">Career History</div>
+    <h2 class="section-title">Built From the<br>Ground Up.</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">Early Career</div>
+      <div class="timeline-role">Operations Manager</div>
+      <div class="timeline-org">Flight School · Pre-2003</div>
+      <p class="timeline-desc">Ryan's professional foundation was built in operations management — developing the <strong>systems thinking and process discipline</strong> that would define his entire career in insurance.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2003</div>
+      <div class="timeline-role">Entered the Insurance Industry</div>
+      <div class="timeline-org">Independent Insurance Sector</div>
+      <p class="timeline-desc">Ryan transitioned into insurance, beginning a career-long journey building deep expertise in agency operations, carrier relationships, and the technology that connects them.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot filled"></div>
+      <div class="timeline-year">Owner-Operator Era</div>
+      <div class="timeline-role">Owner &amp; Principal</div>
+      <div class="timeline-org">Stratton Agency · San Carlos, CA</div>
+      <p class="timeline-desc">Ryan built and led Stratton Agency as its owner-operator — managing the full scope of an independent insurance agency, from client relationships and staff to carrier negotiations and operational systems. <strong>The agency thrived under his leadership</strong> for over a decade before being acquired by PCF Insurance.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">2018</div>
+      <div class="timeline-role">Agency Sold to PCF Insurance</div>
+      <div class="timeline-org">PCF Insurance · Acquisition</div>
+      <p class="timeline-desc">Stratton Agency was acquired by PCF Insurance in 2018. The successful exit validated Ryan's operational approach and set the stage for his transition into specialized consulting.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">Post-2018</div>
+      <div class="timeline-role">Insurance Operations Consultant</div>
+      <div class="timeline-org">Applied Epic Specialist</div>
+      <p class="timeline-desc">Ryan moved into consulting, specializing in the <strong>Applied Epic management system</strong> — drawing on his agency-side experience to help other agencies optimize the platform they already owned but weren't fully using.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-year">March 2020</div>
+      <div class="timeline-role">Consulting Partnership</div>
+      <div class="timeline-org">Panorama · with Paul Hammack</div>
+      <p class="timeline-desc">Ryan began collaborating with Paul Hammack at Panorama, deepening his practice in insurance operations and Applied Epic consulting across a broader range of agency clients.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot filled"></div>
+      <div class="timeline-year">Present</div>
+      <div class="timeline-role">President</div>
+      <div class="timeline-org">Epic Optimizer</div>
+      <p class="timeline-desc">Ryan founded Epic Optimizer as a <strong>dedicated practice</strong> focused entirely on helping insurance agencies maximize Applied Epic and their surrounding technology ecosystem — combining two decades of real agency experience with deep platform expertise.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EXPERTISE -->
+<section class="expertise-section">
+  <div class="section-eyebrow">Core Expertise</div>
+  <h2 class="section-title">What Sets This<br>Work Apart.</h2>
+  <div class="expertise-grid">
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="8" height="8" rx="1.5" stroke="#ca9d64" stroke-width="1.5"/>
+          <rect x="13" y="3" width="8" height="8" rx="1.5" stroke="#ca9d64" stroke-width="1.5"/>
+          <rect x="3" y="13" width="8" height="8" rx="1.5" stroke="#ca9d64" stroke-width="1.5"/>
+          <rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#ca9d64" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3>Agency-Side Credibility</h3>
+      <p>Ryan didn't learn insurance operations from the outside. He ran an agency — hired the staff, managed the carriers, dealt with the data problems, and used the same systems his clients use today. That perspective changes everything.</p>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" stroke="#ca9d64" stroke-width="1.5"/>
+          <path d="M12 7v5l3 3" stroke="#ca9d64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Deep Applied Epic Focus</h3>
+      <p>Epic Optimizer exists for one reason: to help agencies get the most out of Applied Epic and its ecosystem. This isn't a general consulting practice. It's a specialized discipline — and that focus is the advantage.</p>
+    </div>
+
+    <div class="expertise-card">
+      <div class="expertise-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#ca9d64" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="7" r="4" stroke="#ca9d64" stroke-width="1.5"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#ca9d64" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Long-Term Partnership</h3>
+      <p>Ryan doesn't deliver a report and disappear. He stays engaged — through implementation, training, and beyond — to ensure that every change actually holds and every agency keeps improving long after the initial engagement ends.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PERSONAL -->
+<section class="personal-section">
+  <div class="personal-inner">
+
+    <div class="personal-left">
+      <div class="section-eyebrow">Beyond the Work</div>
+      <h2>Rooted in<br>Community &amp;<br>Family.</h2>
+      <p>Ryan grew up in Redwood City, CA, and attended St. Francis High School — the Bay Area has always been home. Originally from Wisconsin, he carries that Midwest work ethic alongside a deep loyalty to his hometown teams.</p>
+      <p>He and his wife Erica married in 2003 — the same year he entered the insurance industry — and together they have three children: <strong>Tyler, Wyatt, and Kiyomi.</strong></p>
+      <div class="personal-callout">
+        <strong>A lifelong San Francisco fan.</strong> Whether it's the Giants on a summer afternoon or the 49ers on a Sunday, Ryan's Bay Area roots run as deep as his commitment to his clients.
+      </div>
+    </div>
+
+    <div class="personal-facts">
+      <div class="personal-fact">
+        <div class="personal-fact-label">Hometown</div>
+        <div class="personal-fact-value">Redwood City, CA · Originally from Wisconsin</div>
+      </div>
+      <div class="personal-fact">
+        <div class="personal-fact-label">Education</div>
+        <div class="personal-fact-value">St. Francis High School · Redwood City, CA</div>
+      </div>
+      <div class="personal-fact">
+        <div class="personal-fact-label">Family</div>
+        <div class="personal-fact-value">Married to Erica since 2003 · Three children: Tyler, Wyatt &amp; Kiyomi</div>
+      </div>
+      <div class="personal-fact">
+        <div class="personal-fact-label">Bay Area Teams</div>
+        <div class="personal-fact-value">San Francisco Giants · San Francisco 49ers</div>
+      </div>
+      <div class="personal-fact">
+        <div class="personal-fact-label">Industry Entry</div>
+        <div class="personal-fact-value">Insurance since 2003 · 20+ years of hands-on experience</div>
+      </div>
+      <div class="personal-fact">
+        <div class="personal-fact-label">Former Agency</div>
+        <div class="personal-fact-value">Stratton Agency · San Carlos, CA · Sold to PCF Insurance, 2018</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="cta-glow"></div>
+  <div class="section-eyebrow">Get Started</div>
+  <h2>Ready to Work Together?</h2>
+  <p>Let's identify exactly where your agency has the most to gain — and build a clear path to get there.</p>
+  <a class="btn-cta" href="index.html#contact">Book a Working Session</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="index.html">
+    <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2025 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+</body>
+</html>
