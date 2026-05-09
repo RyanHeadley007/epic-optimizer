@@ -176,7 +176,12 @@
     .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
 
     /* PROFILE SECTION */
-    .profile-section { background: var(--mid); }
+    .profile-section { background: var(--mid); position: relative; overflow: hidden; }
+    .profile-watermark {
+      position: absolute; right: -20px; bottom: -20px;
+      width: 680px; opacity: 0.12; pointer-events: none;
+      filter: invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(0.7);
+    }
     .profile-grid {
       display: grid; grid-template-columns: 380px 1fr;
       gap: 80px; align-items: start;
@@ -229,12 +234,12 @@
       background: var(--dark);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       padding: 64px 60px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
     }
     .stat-item {
       padding: 0 40px; border-right: 1px solid var(--border); text-align: center;
     }
-    .stat-item:first-child { padding-left: 0; text-align: left; }
+    .stat-item:first-child { padding-left: 0; text-align: center; }
     .stat-item:last-child { border-right: none; }
     .stat-num {
       font-family: 'Rajdhani', sans-serif;
@@ -345,7 +350,32 @@
     }
     .personal-fact-value { font-size: 15px; font-weight: 400; color: var(--tan); }
 
-    /* PUBLICATIONS */
+    /* TIMELINE + PUBLICATIONS 2-COL */
+    .timeline-pubs-section { background: var(--mid); padding: 100px 60px; }
+    .timeline-pubs-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .timeline-col {}
+    .pubs-col {}
+    .pubs-col .section-eyebrow { margin-bottom: 12px; }
+    .pubs-col .section-title { margin-bottom: 40px; }
+    .pub-list { display: flex; flex-direction: column; }
+    .pub-list-card {
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; position: relative;
+      transition: background 0.2s;
+    }
+    .pub-list-card:first-child { border-top: 1px solid var(--border); }
+    .pub-list-card::before {
+      content: ''; position: absolute; left: -20px; top: 0; bottom: 0; width: 2px;
+      background: var(--gold); opacity: 0; transition: opacity 0.25s;
+    }
+    .pub-list-card:hover::before { opacity: 1; }
+
+    /* PUBLICATIONS (old grid — kept for CSS completeness) */
     .publications-section { background: var(--dark); }
     .pub-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -454,6 +484,9 @@
       .profile-grid { grid-template-columns: 1fr; gap: 48px; }
       .profile-photo-col { max-width: 360px; }
       .personal-inner { grid-template-columns: 1fr; gap: 48px; }
+      .timeline-pubs-grid { grid-template-columns: 1fr; gap: 60px; }
+      .timeline-pubs-section { padding-left: 24px; padding-right: 24px; }
+      .pub-list-card::before { left: 0; }
       .pub-grid { grid-template-columns: 1fr; }
       .pub-card { border-right: none; }
       .pub-card:nth-child(3), .pub-card:nth-child(4) { border-bottom: 1px solid var(--border); }
@@ -461,9 +494,9 @@
       .expertise-grid { grid-template-columns: 1fr; }
       .expertise-card { border-right: none; border-bottom: 1px solid var(--border); }
       .expertise-card:last-child { border-bottom: none; }
-      .stats-strip { grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 48px; padding-bottom: 48px; }
+      .stats-strip { grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding-top: 48px; padding-bottom: 48px; }
       .stat-item { padding: 0 20px; border-right: none; text-align: center; }
-      .stat-item:first-child { text-align: center; padding-left: 20px; }
+      .stat-item:first-child { text-align: center; padding-left: 0; }
     }
     @media (max-width: 600px) {
       .page-hero h1 { font-size: 44px; }
@@ -486,7 +519,6 @@
     <li><a href="index.html#pillars">Services</a></li>
     <li><a href="index.html#migration">Migration</a></li>
     <li><a href="index.html#tools">Tools</a></li>
-    <li><a href="dashboards.html">Dashboards</a></li>
     <li><a href="partners.html">Partners</a></li>
     <li><a href="index.html#process">Process</a></li>
     <li><a href="about.html" class="active">About</a></li>
@@ -501,14 +533,13 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#pillars"   onclick="closeMobile()">Services</a></li>
     <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
-    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
-    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
-    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
-    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
-    <li><a href="about.html" onclick="closeMobile()">About</a></li>
-    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+    <li><a href="index.html#tools"     onclick="closeMobile()">Tools</a></li>
+    <li><a href="partners.html"        onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process"   onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html"           onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html"            onclick="closeMobile()">Insights</a></li>
   </ul>
   <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
 </div>
@@ -550,6 +581,7 @@
 
 <!-- PROFILE -->
 <section class="profile-section">
+  <img class="profile-watermark" src="Images/p51-silhouette.png" alt=""/>
   <div class="profile-grid">
 
     <div class="profile-photo-col">
@@ -567,9 +599,10 @@
       <h2>Insurance Operator<br>Turned <span class="gold">Specialist.</span></h2>
       <div class="profile-body">
         <p>Ryan Headley brings over two decades of hands-on insurance industry experience to every engagement — not as a distant consultant, but as someone who has <strong>lived every side of the operation.</strong></p>
-        <p>He began his career managing operations at a flight school before entering the insurance industry in 2003. That early experience instilled a precision-minded approach to operations that has defined his work ever since.</p>
-        <p>As the <strong>owner-operator of Stratton Agency</strong> in San Carlos, CA, Ryan built and led an independent insurance agency from the ground up — navigating the daily realities of client relationships, staff management, carrier negotiations, and the technology that holds it all together. When he sold the agency to PCF Insurance in 2018, it was a testament to what he built.</p>
-        <p>Following the sale, Ryan moved into specialized consulting, focusing on the <strong>Applied Epic management system</strong> — the platform most agencies rely on and few fully leverage. That expertise led to his partnership with Paul Hammack at Panorama starting in March 2020, and eventually to founding Epic Optimizer as a dedicated practice built around one discipline done exceptionally well.</p>
+        <p>A graduate of <strong>Sierra Academy of Aeronautics</strong> (with studies at San Jose State University), Ryan began his career as <strong>Director of Flight Operations at Sierra Academy</strong> — a role that demanded rigorous systems thinking and operational precision. That foundation proved invaluable when he transitioned into the insurance industry in 2003.</p>
+        <p>Early in his insurance career, Ryan honed his skills on the <strong>sales side</strong> — developing a producer's instinct for client needs and relationship-building that would inform every operational decision he made as a leader.</p>
+        <p>As a <strong>Partner at Stratton Agency</strong> in San Carlos, CA, Ryan helped build and lead an independent insurance agency — navigating the daily realities of client relationships, staff management, carrier negotiations, and the technology that holds it all together. When the agency was sold to PCF Insurance in 2018, it was a testament to what the team built together.</p>
+        <p>Following the sale, Ryan moved into specialized consulting, focusing on the <strong>Applied Epic management system</strong> — the platform most agencies rely on and few fully leverage. That expertise eventually led to founding Epic Optimizer as a dedicated practice built around one discipline done exceptionally well.</p>
       </div>
       <div class="profile-tags">
         <span class="profile-tag">Applied Epic</span>
@@ -587,16 +620,20 @@
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stat-item">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Epic databases worked in</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">System migrations completed</div>
+  </div>
+  <div class="stat-item">
     <div class="stat-num">20+</div>
     <div class="stat-label">Years in the insurance industry</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">2003</div>
-    <div class="stat-label">Year Ryan entered insurance</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num">15+</div>
-    <div class="stat-label">Years as agency owner-operator</div>
+    <div class="stat-num">7</div>
+    <div class="stat-label">Years consulting in Applied Epic</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">1</div>
@@ -606,68 +643,132 @@
 
 <hr class="divider"/>
 
-<!-- CAREER TIMELINE -->
-<section class="timeline-section">
-  <div class="timeline-header">
-    <div class="section-eyebrow">Career History</div>
-    <h2 class="section-title">Built From the<br>Ground Up.</h2>
-  </div>
-  <div class="timeline">
+<!-- CAREER TIMELINE + PUBLICATIONS (2-col) -->
+<section class="timeline-pubs-section">
+  <div class="timeline-pubs-grid">
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">Early Career</div>
-      <div class="timeline-role">Operations Manager</div>
-      <div class="timeline-org">Flight School · Pre-2003</div>
-      <p class="timeline-desc">Ryan's professional foundation was built in operations management — developing the <strong>systems thinking and process discipline</strong> that would define his entire career in insurance.</p>
+    <!-- LEFT: Timeline -->
+    <div class="timeline-col">
+      <div class="timeline-header">
+        <div class="section-eyebrow">Career History</div>
+        <h2 class="section-title">Built From the<br>Ground Up.</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">Education</div>
+          <div class="timeline-role">Sierra Academy of Aeronautics</div>
+          <div class="timeline-org">Sierra Academy of Aeronautics</div>
+          <p class="timeline-desc">Ryan attended San Jose State University before completing his training and graduating from <strong>Sierra Academy of Aeronautics</strong> — building the technical and operational foundation that shaped his entire career.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">Pre-2003</div>
+          <div class="timeline-role">Director of Flight Operations</div>
+          <div class="timeline-org">Sierra Academy of Aeronautics</div>
+          <p class="timeline-desc">Ryan's professional career began in aviation — leading flight operations at Sierra Academy. The role demanded <strong>exacting process discipline and systems thinking</strong> that would define every chapter of his career that followed.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2003</div>
+          <div class="timeline-role">Insurance Sales &amp; Production</div>
+          <div class="timeline-org">Independent Insurance Sector</div>
+          <p class="timeline-desc">Ryan entered insurance on the <strong>sales side</strong> — building his book of business and developing a producer's understanding of client needs, carrier relationships, and the nuances of coverage that only come from time in the field.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot filled"></div>
+          <div class="timeline-year">Partner</div>
+          <div class="timeline-role">Partner</div>
+          <div class="timeline-org">Stratton Agency · San Carlos, CA</div>
+          <p class="timeline-desc">Moving from producer to partner, Ryan helped shape Stratton Agency's direction — bringing his sales instincts into the operational and leadership fabric of the agency. He helped build and lead an independent insurance agency managing client relationships, staff, carrier negotiations, and a growing book of business.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot filled"></div>
+          <div class="timeline-year">Specialty Pivot</div>
+          <div class="timeline-role">Specialty Program Development</div>
+          <div class="timeline-org">Stratton Agency · Nine Point Strategies</div>
+          <p class="timeline-desc">Stratton Agency made a deliberate shift from generalist to specialty — pioneering <strong>non-owned auto coverage for the cannabis and pizza delivery sectors</strong>. Through their specialty program, <strong>Nine Point Strategies</strong>, the agency became one of the leading cannabis retail brokers in the country. Ryan spearheaded the development of proprietary software tools that drove profitability and delivered customer satisfaction scores <strong>second to none in the industry.</strong></p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2018</div>
+          <div class="timeline-role">Agency Sold to PCF Insurance</div>
+          <div class="timeline-org">PCF Insurance · Acquisition</div>
+          <p class="timeline-desc">Stratton Agency was acquired by PCF Insurance in 2018. The successful exit validated Ryan's operational approach and set the stage for his transition into specialized consulting.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">Post-2018</div>
+          <div class="timeline-role">Insurance Operations Consultant</div>
+          <div class="timeline-org">Applied Epic Specialist</div>
+          <p class="timeline-desc">Ryan moved into consulting, specializing in the <strong>Applied Epic management system</strong> — drawing on his agency-side experience to help other agencies optimize the platform they already owned but weren't fully using.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot filled"></div>
+          <div class="timeline-year">Present</div>
+          <div class="timeline-role">President</div>
+          <div class="timeline-org">Epic Optimizer</div>
+          <p class="timeline-desc">Ryan founded Epic Optimizer as a <strong>dedicated practice</strong> focused entirely on helping insurance agencies maximize Applied Epic and their surrounding technology ecosystem — combining two decades of real agency experience with deep platform expertise.</p>
+        </div>
+
+      </div>
     </div>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">2003</div>
-      <div class="timeline-role">Entered the Insurance Industry</div>
-      <div class="timeline-org">Independent Insurance Sector</div>
-      <p class="timeline-desc">Ryan transitioned into insurance, beginning a career-long journey building deep expertise in agency operations, carrier relationships, and the technology that connects them.</p>
-    </div>
+    <!-- RIGHT: Publications -->
+    <div class="pubs-col">
+      <div class="section-eyebrow">In the Press</div>
+      <h2 class="section-title">Featured in<br>Industry Publications.</h2>
+      <div class="pub-list">
 
-    <div class="timeline-item">
-      <div class="timeline-dot filled"></div>
-      <div class="timeline-year">Owner-Operator Era</div>
-      <div class="timeline-role">Owner &amp; Principal</div>
-      <div class="timeline-org">Stratton Agency · San Carlos, CA</div>
-      <p class="timeline-desc">Ryan built and led Stratton Agency as its owner-operator — managing the full scope of an independent insurance agency, from client relationships and staff to carrier negotiations and operational systems. <strong>The agency thrived under his leadership</strong> for over a decade before being acquired by PCF Insurance.</p>
-    </div>
+        <a class="pub-list-card" href="https://roughnotes.com/grass-is-greener/" target="_blank" rel="noopener">
+          <div class="pub-meta">
+            <span class="pub-outlet">Rough Notes</span>
+            <span class="pub-year">2019</span>
+          </div>
+          <div class="pub-title">Grass Is Greener</div>
+          <p class="pub-desc">Agency of the Month feature covering how a niche-focused California agency achieved double-digit growth through specialty lines and operational discipline — with Ryan's approach central to the story.</p>
+          <span class="pub-link">Read Article</span>
+        </a>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">2018</div>
-      <div class="timeline-role">Agency Sold to PCF Insurance</div>
-      <div class="timeline-org">PCF Insurance · Acquisition</div>
-      <p class="timeline-desc">Stratton Agency was acquired by PCF Insurance in 2018. The successful exit validated Ryan's operational approach and set the stage for his transition into specialized consulting.</p>
-    </div>
+        <a class="pub-list-card" href="https://www.iamagazine.com/2017/02/01/agency-profile-the-purple-cows/" target="_blank" rel="noopener">
+          <div class="pub-meta">
+            <span class="pub-outlet">IA Magazine</span>
+            <span class="pub-year">2017</span>
+          </div>
+          <div class="pub-title">Agency Profile: The Purple Cows</div>
+          <p class="pub-desc">A national profile of Stratton Agency's unconventional strategy — how a tightly defined niche in non-owned auto and specialty programs drove consistent year-over-year growth and set the agency apart from competitors.</p>
+          <span class="pub-link">Read Article</span>
+        </a>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">Post-2018</div>
-      <div class="timeline-role">Insurance Operations Consultant</div>
-      <div class="timeline-org">Applied Epic Specialist</div>
-      <p class="timeline-desc">Ryan moved into consulting, specializing in the <strong>Applied Epic management system</strong> — drawing on his agency-side experience to help other agencies optimize the platform they already owned but weren't fully using.</p>
-    </div>
+        <a class="pub-list-card" href="https://www.businessinsurance.com/Technological-advances-are-improving-broker-buyer-relationships/" target="_blank" rel="noopener">
+          <div class="pub-meta">
+            <span class="pub-outlet">Business Insurance</span>
+            <span class="pub-year">Industry Feature</span>
+          </div>
+          <div class="pub-title">Technology &amp; Broker-Buyer Relationships</div>
+          <p class="pub-desc">Ryan's perspective on how technological advances are reshaping the relationship between brokers and buyers — and what forward-thinking agencies are doing to stay ahead of the curve.</p>
+          <span class="pub-link">Read Article</span>
+        </a>
 
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-year">March 2020</div>
-      <div class="timeline-role">Consulting Partnership</div>
-      <div class="timeline-org">Panorama · with Paul Hammack</div>
-      <p class="timeline-desc">Ryan began collaborating with Paul Hammack at Panorama, deepening his practice in insurance operations and Applied Epic consulting across a broader range of agency clients.</p>
-    </div>
+        <a class="pub-list-card" href="https://roughnotes.com/rnmagazine/2012/august2012/2012_08p072.htm" target="_blank" rel="noopener">
+          <div class="pub-meta">
+            <span class="pub-outlet">Rough Notes</span>
+            <span class="pub-year">2012</span>
+          </div>
+          <div class="pub-title">A Differentiator</div>
+          <p class="pub-desc">Featuring Ryan's development of ReadyLife — a personal resource management system built to help high-net-worth clients document and protect their assets, conceived and built out of Stratton Agency alongside a co-founder.</p>
+          <span class="pub-link">Read Article</span>
+        </a>
 
-    <div class="timeline-item">
-      <div class="timeline-dot filled"></div>
-      <div class="timeline-year">Present</div>
-      <div class="timeline-role">President</div>
-      <div class="timeline-org">Epic Optimizer</div>
-      <p class="timeline-desc">Ryan founded Epic Optimizer as a <strong>dedicated practice</strong> focused entirely on helping insurance agencies maximize Applied Epic and their surrounding technology ecosystem — combining two decades of real agency experience with deep platform expertise.</p>
+      </div>
     </div>
 
   </div>
@@ -729,7 +830,7 @@
     <div class="personal-left">
       <div class="section-eyebrow">Beyond the Work</div>
       <h2>Rooted in<br>Community &amp;<br>Family.</h2>
-      <p>Ryan grew up in Redwood City, CA, and attended St. Francis High School — the Bay Area has always been home. Originally from Wisconsin, he carries that Midwest work ethic alongside a deep loyalty to his hometown teams.</p>
+      <p>Ryan grew up in Redwood City, CA, and attended St. Francis High School — the Bay Area has always been home. Originally from Wisconsin, he carries that Midwest work ethic alongside a deep loyalty to his hometown teams. He went on to attend San Jose State University before graduating from <strong>Sierra Academy of Aeronautics</strong> before launching his career as Director of Flight Operations.</p>
       <p>He and his wife Erica married in 2003 — the same year he entered the insurance industry — and together they have three children: <strong>Tyler, Wyatt, and Kiyomi.</strong></p>
       <div class="personal-callout">
         <strong>A lifelong San Francisco fan.</strong> Whether it's the Giants on a summer afternoon or the 49ers on a Sunday, Ryan's Bay Area roots run as deep as his commitment to his clients.
@@ -743,7 +844,7 @@
       </div>
       <div class="personal-fact">
         <div class="personal-fact-label">Education</div>
-        <div class="personal-fact-value">St. Francis High School · Redwood City, CA</div>
+        <div class="personal-fact-value">St. Francis High School · Redwood City, CA<br>Attended San Jose State University · Graduate, Sierra Academy of Aeronautics</div>
       </div>
       <div class="personal-fact">
         <div class="personal-fact-label">Family</div>
@@ -766,58 +867,6 @@
   </div>
 </section>
 
-<hr class="divider"/>
-
-<!-- PUBLICATIONS -->
-<section class="publications-section">
-  <div class="section-eyebrow">In the Press</div>
-  <h2 class="section-title">Featured in<br>Industry Publications.</h2>
-  <div class="pub-grid">
-
-    <a class="pub-card" href="https://roughnotes.com/grass-is-greener/" target="_blank" rel="noopener">
-      <div class="pub-meta">
-        <span class="pub-outlet">Rough Notes</span>
-        <span class="pub-year">2019</span>
-      </div>
-      <div class="pub-title">Grass Is Greener</div>
-      <p class="pub-desc">Agency of the Month feature on how a California agency used niche market focus to achieve double-digit growth — with Ryan's operational approach central to the story.</p>
-      <span class="pub-link">Read Article</span>
-    </a>
-
-    <a class="pub-card" href="https://www.iamagazine.com/2017/02/01/agency-profile-the-purple-cows/" target="_blank" rel="noopener">
-      <div class="pub-meta">
-        <span class="pub-outlet">IA Magazine</span>
-        <span class="pub-year">2017</span>
-      </div>
-      <div class="pub-title">Agency Profile: The Purple Cows</div>
-      <p class="pub-desc">A profile of Stratton Agency and its unconventional growth strategy — how a distinctive niche and tight operational focus drove consistent year-over-year results.</p>
-      <span class="pub-link">Read Article</span>
-    </a>
-
-    <a class="pub-card" href="https://www.businessinsurance.com/Technological-advances-are-improving-broker-buyer-relationships/" target="_blank" rel="noopener">
-      <div class="pub-meta">
-        <span class="pub-outlet">Business Insurance</span>
-        <span class="pub-year">Industry Feature</span>
-      </div>
-      <div class="pub-title">Technology &amp; Broker-Buyer Relationships</div>
-      <p class="pub-desc">Ryan's perspective on how technological advances are reshaping the relationship between brokers and buyers — and what forward-thinking agencies are doing differently.</p>
-      <span class="pub-link">Read Article</span>
-    </a>
-
-    <a class="pub-card" href="https://roughnotes.com/rnmagazine/2012/august2012/2012_08p072.htm" target="_blank" rel="noopener">
-      <div class="pub-meta">
-        <span class="pub-outlet">Rough Notes</span>
-        <span class="pub-year">2012</span>
-      </div>
-      <div class="pub-title">A Differentiator</div>
-      <p class="pub-desc">Featuring Ryan's development of ReadyLife — a personal resource management system built to help high-net-worth clients document and protect their assets, born out of Stratton Agency.</p>
-      <span class="pub-link">Read Article</span>
-    </a>
-
-  </div>
-</section>
-
-<hr class="divider"/>
 
 <!-- CTA -->
 <section class="about-cta">
