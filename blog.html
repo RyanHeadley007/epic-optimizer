@@ -261,6 +261,7 @@
       cursor: pointer;
     }
     .post-card:nth-child(2n) { border-right: none; }
+    .post-card:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
     .post-card:hover { background: var(--tan-faint); }
     .post-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -664,6 +665,7 @@
     <button class="filter-btn" data-category="Migration" onclick="filterPosts('Migration', this)">Migration</button>
     <button class="filter-btn" data-category="Industry" onclick="filterPosts('Industry', this)">Industry</button>
     <button class="filter-btn" data-category="Technology" onclick="filterPosts('Technology', this)">Technology</button>
+    <button class="filter-btn" data-category="CSR24" onclick="filterPosts('CSR24', this)">CSR24</button>
   </div>
 
   <!-- BLOG CONTENT -->
@@ -766,6 +768,59 @@
 // ============================================================
 const POSTS = [
   {
+    id: 8,
+    title: "One Setting. Hundreds of Unwanted Emails.",
+    category: "Epic Tips",
+    date: "May 11, 2025",
+    readTime: "6 min read",
+    excerpt: "There's one CSR24 account-level setting that behaves completely differently during a renewal batch vs. a daily certificate run. If your CSRs don't know about it, they will cause a problem — probably right in the middle of your busiest renewal cycle.",
+    tags: ["CSR24", "Certificates", "Applied Epic", "Workflow", "Agency Operations"],
+    featured: true,
+    body: `
+      <p>If you've ever had an insured call furious because they just received 200 emails in the span of an hour — all from your agency — you already know what this post is about. If you haven't had that call yet, keep reading. Because it's a matter of when, not if.</p>
+
+      <h2>The Setup</h2>
+      <p>CSR24 is a powerful tool. Certificate processing, self-service portals, renewal batches — when it's configured correctly, it saves your team hours every week and keeps your insureds happy. But there's one account-level setting that behaves completely differently depending on whether you're issuing a daily certificate or running a renewal batch. And if your CSRs don't know about it, they will cause a problem — probably right in the middle of your busiest renewal cycle.</p>
+      <p>The setting is called <strong>"Send a copy of all certificates to this insured."</strong></p>
+
+      <h2>What It Does (And Why It's a Problem at Renewal)</h2>
+      <p>For daily certificates — the one-off, ad hoc requests your team handles throughout the week — this setting is straightforward. If it's set to <strong>By Email</strong>, the insured gets a copy of each cert as it's issued. That's usually exactly what they want.</p>
+      <p>But at renewal time, everything changes.</p>
+      <p>When you run a renewal batch, CSR24 issues certificates to every active holder on the account in a single run. A mid-size commercial account might have 50 holders. A large contractor or property manager? Easily 200 or more.</p>
+
+      <div class="article-callout">
+        If that "Send a copy to insured" field is still set to <strong>By Email</strong> when the batch runs, your insured doesn't get one email. They get one email per holder cert — all at once, all in the same inbox, all with subject lines that look nearly identical. That's the call you don't want to take.
+      </div>
+
+      <h2>It's Not Just About That One Setting</h2>
+      <p>The renewal batch vs. daily distinction affects more than just the copy-to-insured field. Here are the other things your CSRs should be reviewing before every renewal run:</p>
+      <ul>
+        <li><strong>Renewal Subject and Message</strong> — These fields control the email subject line and body that goes to your certificate holders during renewal. Leave them blank and holders get generic, boilerplate messaging with no context. Customize them and you look professional and prepared.</li>
+        <li><strong>Renewals / Batch Instructions</strong> — If your organization uses certificate instructions, these display on the batch page before processing begins. It's worth reviewing them each cycle to make sure they reflect any changes in the account.</li>
+        <li><strong>Confirmation Email Address</strong> — Staff changes happen. If that address hasn't been updated since last year, every cert confirmation is going to the wrong person — or worse, someone who no longer works at the company.</li>
+        <li><strong>Cert Naming Structure</strong> — Whatever naming convention is set at the account level will populate on every single cert in the batch. Easy to fix before you run it. Painful to fix after 300 certs have already been issued.</li>
+      </ul>
+
+      <h2>What Good Looks Like</h2>
+      <p>Before a renewal batch, a well-trained CSR should be running through a quick mental (or literal) checklist:</p>
+      <ul>
+        <li>Turn off "Send copy to insured" for the duration of the batch</li>
+        <li>Verify the confirmation email address is still current</li>
+        <li>Customize the Renewal Subject and Message</li>
+        <li>Confirm the cert naming structure is correct</li>
+        <li>Review batch instructions</li>
+      </ul>
+      <p>After the batch is done? Restore "Send copy to insured" back to <strong>By Email</strong> if that insured normally receives copies. It's a small step that's easy to forget — and forgetting it means the next daily cert won't copy the insured the way it should.</p>
+
+      <h2>Why This Matters Beyond the Mechanics</h2>
+      <p>This isn't just a software training issue. It's a client experience issue. An insured who gets flooded with certificate emails during renewal loses trust in your agency's ability to manage their account professionally. A certificate holder who gets a generic, context-free email wonders if something is wrong with their coverage. A confirmation that goes to the wrong address means someone at your agency isn't getting the verification they need.</p>
+      <p>The details of how CSR24 is configured at the account level are invisible to your clients — until they aren't. When something goes wrong, the client doesn't see a misconfigured setting. They see your agency.</p>
+
+      <h2>The Fix Is Simple</h2>
+      <p>Build account-level reviews into your renewal workflow. Make it part of your process, not an afterthought. Document the differences between daily and batch processing so your CSRs aren't discovering them for the first time during a live renewal run. Your technology should be working for you — and a few minutes of preparation before each batch run makes sure that it is.</p>
+    `
+  },
+  {
     id: 0,
     title: "Why Most Agencies Own Epic But Don't Actually Use It",
     category: "Epic Tips",
@@ -773,7 +828,7 @@ const POSTS = [
     readTime: "6 min read",
     excerpt: "The gap between owning Applied Epic and using it correctly is costing agencies more than they realize — in wasted time, messy data, and missed insights. Here's what's really happening inside most installs.",
     tags: ["Applied Epic", "Operations", "Data Quality"],
-    featured: true,
+    featured: false,
     body: `
       <p>There's a pattern I see in almost every agency I work with. They've invested in Applied Epic — often tens of thousands of dollars per year in licensing — and yet the system is running at maybe 30% of its actual capability. The other 70% is untapped potential sitting behind settings nobody has ever configured correctly.</p>
 
@@ -1016,7 +1071,7 @@ const POSTS = [
 // STATE
 // ============================================================
 let currentFilter = 'all';
-let visibleCount = 5; // featured + 4 grid posts
+let visibleCount = 7; // featured + 6 grid posts
 const POSTS_PER_LOAD = 4;
 
 // ============================================================
@@ -1024,7 +1079,7 @@ const POSTS_PER_LOAD = 4;
 // ============================================================
 function getFilteredPosts() {
   if (currentFilter === 'all') return POSTS;
-  return POSTS.filter(p => p.category === currentFilter);
+  return POSTS.filter(p => p.category === currentFilter || p.tags.includes(currentFilter));
 }
 
 function renderBlog() {
