@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Real Cost of an AMS Migration Done Wrong | Epic Optimizer</title>
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.epicoptimizer.com/insights/ams-migration-done-wrong.html" />
+  <meta property="og:title" content="The Real Cost of an AMS Migration Done Wrong" />
+  <meta property="og:description" content="Data migrations are one of the highest-risk operational events an agency will go through. Most agencies discover the problems six months after go-live — when it's far harder and more expensive to fix them." />
+  <meta property="og:image" content="https://www.epicoptimizer.com/Images/og-default.png" />
+  <meta property="og:site_name" content="Epic Optimizer" />
+
+  <!-- Article meta -->
+  <meta property="article:published_time" content="April 18, 2025" />
+  <meta property="article:author" content="Ryan Headley" />
+  <meta property="article:section" content="Migration" />
+  <meta property="article:tag" content="Migration" /><meta property="article:tag" content="AMS" /><meta property="article:tag" content="Applied Epic" /><meta property="article:tag" content="Risk" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Real Cost of an AMS Migration Done Wrong" />
+  <meta name="twitter:description" content="Data migrations are one of the highest-risk operational events an agency will go through. Most agencies discover the problems six months after go-live — when it's far harder and more expensive to fix them." />
+  <meta name="twitter:image" content="https://www.epicoptimizer.com/Images/og-default.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.epicoptimizer.com/insights/ams-migration-done-wrong.html" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png"/>
+  <style>
+
+    :root {
+      --dark:        #171e26;
+      --mid:         #212c3a;
+      --gold:        #ca9d64;
+      --gold-dim:    rgba(202,157,100,0.10);
+      --gold-border: rgba(202,157,100,0.28);
+      --grey:        #bdbbae;
+      --tan:         #fffdea;
+      --tan-faint:   rgba(255,253,234,0.04);
+      --border:      rgba(189,187,174,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--tan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(23,30,38,0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .nav-brand-sub {
+      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--tan); }
+    .nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 9px 24px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px;
+      background: none; border: none; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tan); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE DRAWER */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(23,30,38,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul {
+      list-style: none; text-align: center; margin-bottom: 40px;
+    }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
+    .mobile-menu ul li a {
+      display: block; padding: 20px 48px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan); text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 14px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* ARTICLE */
+    .article-wrap {
+      padding: 120px 60px 80px;
+      max-width: 820px; margin: 0 auto;
+      animation: fadeUp 0.4s ease both;
+    }
+    .article-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      transition: color 0.2s; margin-bottom: 48px;
+    }
+    .article-back:hover { color: var(--tan); }
+    .article-back::before { content: '←'; font-size: 14px; }
+    .article-category {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .article-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 0.96; color: var(--tan); margin-bottom: 24px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .article-author { font-size: 14px; color: var(--tan); font-weight: 500; }
+    .article-date { font-size: 14px; color: var(--grey); }
+    .article-read-time { margin-left: auto; font-size: 13px; color: var(--grey); }
+    .article-body { font-size: 17px; color: var(--grey); line-height: 1.8; }
+    .article-body h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 48px 0 16px;
+    }
+    .article-body h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 32px 0 12px;
+    }
+    .article-body p { margin-bottom: 22px; }
+    .article-body strong { color: var(--tan); font-weight: 600; }
+    .article-body ul { margin: 0 0 22px 0; list-style: none; }
+    .article-body ul li {
+      padding: 8px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 12px; font-size: 16px;
+    }
+    .article-body ul li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 9px;
+    }
+    .article-callout {
+      margin: 40px 0; padding: 28px 32px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold); border-radius: 2px;
+      font-size: 17px; font-weight: 300; color: var(--tan); line-height: 1.6;
+    }
+    .article-callout strong { color: var(--gold); font-weight: 600; }
+    .article-footer {
+      margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .article-tag {
+      background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 5px 13px; border-radius: 2px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .book-cta {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .book-cta:hover { color: var(--tan); }
+    .book-cta::after { content: '→'; font-size: 15px; }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    footer p { font-size: 13px; color: var(--grey); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .article-wrap { padding: 100px 24px 60px; }
+      footer { padding-left: 24px; padding-right: 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html" class="active">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<main class="article-wrap">
+  <a class="article-back" href="blog.html">Back to Insights</a>
+  <div class="article-category">Migration</div>
+  <h1 class="article-title">The Real Cost of an AMS Migration Done Wrong</h1>
+  <div class="article-meta">
+    <span class="article-author">Ryan Headley</span>
+    <span class="article-date">April 18, 2025</span>
+    <span class="article-read-time">7 min read</span>
+  </div>
+  <div class="article-body">
+
+      <p>When an agency decides to migrate from one AMS to another — or when an acquisition forces the issue — the focus is almost always on the technical side. Can we move the data? What's the timeline? How fast can we get live?</p>
+      <p>These are the wrong questions to lead with.</p>
+
+      <h2>What Actually Goes Wrong</h2>
+      <p>The problems in a migration rarely show up at go-live. They show up three to six months later, when someone tries to run a renewal report and finds gaps, when a client calls about a certificate that doesn't exist in the new system, or when the accounting team realizes that policy data didn't map correctly to the right division.</p>
+
+      <div class="article-callout">
+        <strong>Migration debt is real.</strong> Every shortcut taken during an AMS migration becomes a problem that someone has to clean up later — usually at a much higher cost in time, money, and operational disruption than doing it right the first time.
+      </div>
+
+      <h2>The Source System Problem</h2>
+      <p>Most legacy AMS platforms — AMS360, Hawksoft, QQ Catalyst — have data structures that don't map cleanly to Epic's schema. Fields that exist in one system don't exist in another. Data that was loosely structured in the old system needs to be clean and consistent in the new one. Duplicates that nobody noticed in the old system become real problems in Epic's stricter environment.</p>
+      <p>A proper migration starts with a full audit of the source data before a single record is moved. What's there? What's missing? What needs to be cleaned up before it can even be imported?</p>
+
+      <h2>Why Early Involvement Matters</h2>
+      <p>The earlier a migration specialist is brought in, the better the outcome. Ideally, this happens at the proposal stage — before contracts are signed, before timelines are committed to, before anyone has told their staff what the go-live date will be.</p>
+      <p>Early involvement means realistic timelines. It means flagging the data complexity before it becomes an emergency. It means designing the Epic environment correctly the first time, not retrofitting it after go-live.</p>
+
+  </div>
+  <div class="article-footer">
+    <div class="article-tags"><span class="article-tag">Migration</span> <span class="article-tag">AMS</span> <span class="article-tag">Applied Epic</span> <span class="article-tag">Risk</span></div>
+    <a href="index.html#contact" class="book-cta">Book a Session</a>
+  </div>
+</main>
+
+<footer>
+  <a class="footer-brand" href="index.html">
+    <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2025 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+</body>
+</html>
