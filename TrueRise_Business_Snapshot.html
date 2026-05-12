@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrueRise Lifts — Business Snapshot May 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #062B6B;
+    --navy-mid: #0D3D8A;
+    --navy-light: #1A4FA0;
+    --orange: #F76B1C;
+    --orange-light: #FF8A45;
+    --steel: #5F6673;
+    --steel-light: #8C919C;
+    --steel-bg: #F2F3F5;
+    --white: #ffffff;
+    --cream: #F8F9FB;
+    --border: #DDE0E6;
+    --text: #1A1E2E;
+    --text-mid: #5F6673;
+    --green: #1A6B52;
+    --green-bg: #EAF5F0;
+    --red: #B02020;
+    --red-bg: #FDF0F0;
+    --amber: #885010;
+    --amber-bg: #FDF6E7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 220px 220px 0;
+    border-color: transparent var(--orange) transparent transparent;
+    opacity: 0.12;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--navy-light) 100%);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 3rem;
+  }
+  .header-logo {
+    height: 90px;
+    width: auto;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+  }
+  .header-divider {
+    width: 2px;
+    height: 70px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  .header-text { flex: 1; }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+  .header-meta {
+    display: flex;
+    gap: 0;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .header-meta-item {
+    flex: 1;
+    padding: 0.9rem 1.5rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+  .header-meta-item:last-child { border-right: none; }
+  .hm-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 3px;
+  }
+  .hm-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* ── NAV ── */
+  .nav-wrap {
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    padding: 0 3rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(6,43,107,0.08);
+  }
+  .nav-tab {
+    padding: 1rem 1.3rem;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--steel);
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 11.5px;
+    margin-bottom: -2px;
+  }
+  .nav-tab:hover { color: var(--navy); }
+  .nav-tab.active {
+    color: var(--navy);
+    border-bottom-color: var(--orange);
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 5rem;
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── SECTION TITLES ── */
+  .sec-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sec-title:first-child { margin-top: 0; }
+  .sec-title .dot {
+    width: 8px; height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── METRIC CARDS ── */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .mc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.3rem;
+    border-top: 3px solid var(--border);
+  }
+  .mc.orange { border-top-color: var(--orange); }
+  .mc.navy { background: var(--navy); border-top-color: var(--orange); }
+  .mc.green { border-top-color: var(--green); }
+  .mc.red { border-top-color: var(--red); }
+  .mc .ml {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel);
+    margin-bottom: 5px;
+  }
+  .mc.navy .ml { color: rgba(255,255,255,0.45); }
+  .mc .mv {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--navy);
+  }
+  .mc.navy .mv { color: var(--orange); }
+  .mc.green .mv { color: var(--green); }
+  .mc.red .mv { color: var(--red); }
+  .mc .ms {
+    font-size: 11px;
+    color: var(--steel-light);
+    margin-top: 3px;
+  }
+  .mc.navy .ms { color: rgba(255,255,255,0.35); }
+
+  /* ── TABLES ── */
+  .dt {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-bottom: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .dt thead tr { background: var(--navy); }
+  .dt thead th {
+    padding: 10px 14px;
+    color: rgba(255,255,255,0.65);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .dt thead th.r { text-align: right; }
+  .dt tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .dt tbody tr:last-child td { border-bottom: none; }
+  .dt tbody tr:hover { background: var(--cream); }
+  .dt .sub td {
+    font-weight: 700;
+    background: var(--steel-bg);
+    color: var(--navy);
+  }
+  .dt .tot td {
+    font-weight: 700;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 14px;
+  }
+  .dt td.r { text-align: right; }
+  .dt td.grn { color: var(--green); font-weight: 600; }
+  .dt td.red { color: var(--red); font-weight: 600; }
+  .dt td.amb { color: var(--amber); font-weight: 600; }
+  .dt td.muted { color: var(--steel-light); font-size: 12px; }
+  .dt td.ind { padding-left: 26px; color: var(--steel); }
+
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .badge.red { background: var(--red-bg); color: var(--red); }
+  .badge.amber { background: var(--amber-bg); color: var(--amber); }
+  .badge.green { background: var(--green-bg); color: var(--green); }
+  .badge.gray { background: var(--steel-bg); color: var(--steel); }
+  .badge.orange { background: rgba(247,107,28,0.12); color: #B84D00; }
+  .badge.navy { background: rgba(6,43,107,0.1); color: var(--navy); }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    line-height: 1.6;
+    border-left: 4px solid;
+  }
+  .callout.info { background: rgba(6,43,107,0.05); border-color: var(--navy); color: var(--navy); }
+  .callout.warn { background: var(--amber-bg); border-color: #C9A84C; color: var(--amber); }
+  .callout.success { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+  .callout.danger { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+  .callout.orange { background: rgba(247,107,28,0.07); border-color: var(--orange); color: #7A3800; }
+  .callout strong { font-weight: 700; }
+
+  /* ── BAR CHART ── */
+  .bar-chart { margin-bottom: 2rem; }
+  .bar-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .bar-lbl { font-size: 12px; font-weight: 600; color: var(--steel); width: 120px; flex-shrink: 0; text-align: right; }
+  .bar-track { flex: 1; height: 32px; background: var(--steel-bg); border-radius: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 12px; font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: 0.02em; }
+  .bar-fill.navy { background: var(--navy); }
+  .bar-fill.orange { background: var(--orange); }
+  .bar-fill.steel { background: var(--steel); }
+  .bar-val { font-size: 12px; font-weight: 600; color: var(--steel); width: 90px; flex-shrink: 0; }
+
+  /* ── GOODWILL GRID ── */
+  .gw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .gw-card {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 1.2rem 1.3rem;
+    border-bottom: 3px solid var(--orange);
+  }
+  .gw-icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .gw-title { font-size: 13px; font-weight: 700; color: var(--orange); margin-bottom: 5px; letter-spacing: 0.02em; }
+  .gw-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* ── YEAR PILLS ── */
+  .yr-pills { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .yr-pill {
+    padding: 6px 18px;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--steel);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .yr-pill.active {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .yr-panel { display: none; }
+  .yr-panel.active { display: block; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-logo { height: 36px; filter: brightness(0) invert(1); opacity: 0.7; }
+  .footer-text { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .footer-text strong { color: rgba(255,255,255,0.55); }
+  .footer-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--navy-light));
+  }
+
+  @media (max-width: 640px) {
+    .header-inner { flex-direction: column; padding: 1.5rem; gap: 1rem; }
+    .header-divider { display: none; }
+    .header-meta { flex-wrap: wrap; }
+    .header-meta-item { min-width: 50%; }
+    .nav-wrap { padding: 0 1rem; }
+    .content { padding: 1.5rem 1rem 4rem; }
+    .footer { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <img class="header-logo" src="TrueRise_Logo.png" alt="TrueRise Lifts logo">
+    <div class="header-divider"></div>
+    <div class="header-text">
+      <div class="header-eyebrow">Confidential · Partner Review</div>
+      <div class="header-title">Business Snapshot</div>
+      <div class="header-sub">Southwest Florida Acquisition &amp; Operations Overview</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div class="header-meta-item"><div class="hm-label">Prepared</div><div class="hm-value">May 2026</div></div>
+    <div class="header-meta-item"><div class="hm-label">Market</div><div class="hm-value">Southwest Florida</div></div>
+    <div class="header-meta-item"><div class="hm-label">Years in Business</div><div class="hm-value">20 Years</div></div>
+    <div class="header-meta-item"><div class="hm-label">Google Ranking</div><div class="hm-value">#1 Organic</div></div>
+    <div class="header-meta-item"><div class="hm-label">2025 Revenue</div><div class="hm-value">$357,780</div></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <button class="nav-tab active" onclick="showTab('pl',this)">P&amp;L</button>
+  <button class="nav-tab" onclick="showTab('assets',this)">Assets</button>
+  <button class="nav-tab" onclick="showTab('liabilities',this)">Liabilities</button>
+  <button class="nav-tab" onclick="showTab('ops',this)">Operations</button>
+  <button class="nav-tab" onclick="showTab('marketing',this)">Marketing</button>
+  <button class="nav-tab" onclick="showTab('risks',this)">Risks &amp; Flags</button>
+</div>
+
+<div class="content">
+
+<!-- ══════════════════ P&L ══════════════════ -->
+<div id="panel-pl" class="panel active">
+
+  <div class="sec-title"><span class="dot"></span>Revenue by Year</div>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <div class="bar-lbl">2024</div>
+      <div class="bar-track"><div class="bar-fill navy" style="width:61%">$217,545</div></div>
+      <div class="bar-val">71 invoices</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl">2025</div>
+      <div class="bar-track"><div class="bar-fill orange" style="width:100%">$357,780</div></div>
+      <div class="bar-val">75 invoices</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-lbl">2026 (Jan–Apr)</div>
+      <div class="bar-track"><div class="bar-fill steel" style="width:31%">$111,266</div></div>
+      <div class="bar-val">12 invoices</div>
+    </div>
+  </div>
+
+  <div class="metric-grid">
+    <div class="mc navy"><div class="ml">2025 Revenue</div><div class="mv">$357K</div><div class="ms">+64% vs 2024</div></div>
+    <div class="mc"><div class="ml">Avg Invoice 2024</div><div class="mv">$3,064</div></div>
+    <div class="mc"><div class="ml">Avg Invoice 2025</div><div class="mv">$4,770</div></div>
+    <div class="mc orange"><div class="ml">Avg Invoice 2026</div><div class="mv">$9,272</div><div class="ms">Larger job mix</div></div>
+  </div>
+
+  <div class="sec-title"><span class="dot"></span>Monthly Operating Expenses</div>
+  <table class="dt">
+    <thead><tr><th>Item</th><th class="r">Per Month</th><th class="r">Per Year</th></tr></thead>
+    <tbody>
+      <tr><td class="ind">Joe — Service Manager</td><td class="r">$5,400</td><td class="r">$64,800</td></tr>
+      <tr><td class="ind">Rick — Sales (base)</td><td class="r">$2,500</td><td class="r">$30,000</td></tr>
+      <tr><td class="ind">Part-time (~20 hrs/wk)</td><td class="r">$2,500</td><td class="r">$30,000</td></tr>
+      <tr class="sub"><td>Salary Subtotal</td><td class="r">$10,400</td><td class="r">$124,800</td></tr>
+      <tr><td class="ind">Office rent</td><td class="r">$550</td><td class="r">$6,600</td></tr>
+      <tr><td class="ind">Garage rent</td><td class="r">$140</td><td class="r">$1,680</td></tr>
+      <tr><td class="ind">Accounting (CPA)</td><td class="r">$400</td><td class="r">$4,800</td></tr>
+      <tr><td class="ind">Method CRM</td><td class="r">$200</td><td class="r">$2,400</td></tr>
+      <tr><td class="ind">QuickBooks</td><td class="r">$200</td><td class="r">$2,400</td></tr>
+      <tr><td class="ind">Office 365</td><td class="r">$250</td><td class="r">$3,000</td></tr>
+      <tr><td class="ind">Insurance (GL + product liability)</td><td class="r">$300</td><td class="r">$3,600</td></tr>
+      <tr><td class="ind">Workers' comp</td><td class="r">$200</td><td class="r">$2,400</td></tr>
+      <tr><td class="ind">GL upgrade (contracting work)</td><td class="r">$150</td><td class="r">$1,800</td></tr>
+      <tr><td class="ind">Vehicle / fuel / maintenance</td><td class="r">$300</td><td class="r">$3,600</td></tr>
+      <tr><td class="ind">Trailer rentals (cargo lifts)</td><td class="r">$100</td><td class="r">$1,200</td></tr>
+      <tr class="tot"><td>Total Operating Expenses</td><td class="r">$13,190</td><td class="r">$158,280</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>P&amp;L Summary (with COGS)</div>
+  <div class="yr-pills">
+    <button class="yr-pill active" onclick="showYr('2024',this)">2024</button>
+    <button class="yr-pill" onclick="showYr('2025',this)">2025</button>
+    <button class="yr-pill" onclick="showYr('2026',this)">2026 YTD</button>
+  </div>
+
+  <div id="yr-2024" class="yr-panel active">
+    <div class="metric-grid">
+      <div class="mc"><div class="ml">Revenue</div><div class="mv">$217,545</div></div>
+      <div class="mc red"><div class="ml">COGS</div><div class="mv">$119,100</div></div>
+      <div class="mc green"><div class="ml">Gross Profit</div><div class="mv">$98,445</div><div class="ms">45.3% margin</div></div>
+      <div class="mc red"><div class="ml">Net Profit / (Loss)</div><div class="mv">-$59,835</div></div>
+    </div>
+    <div class="callout warn">2024 was a lean year — gross profit of $98K fell short of the $158K operating expense load. Revenue would need to reach ~$352K at this margin to break even. Some costs (insurance upgrades, workers' comp) may not have been fully active yet.</div>
+  </div>
+
+  <div id="yr-2025" class="yr-panel">
+    <div class="metric-grid">
+      <div class="mc"><div class="ml">Revenue</div><div class="mv">$357,780</div></div>
+      <div class="mc red"><div class="ml">COGS</div><div class="mv">$187,875</div></div>
+      <div class="mc green"><div class="ml">Gross Profit</div><div class="mv">$169,905</div><div class="ms">47.5% margin</div></div>
+      <div class="mc green"><div class="ml">Net Profit</div><div class="mv">$11,625</div></div>
+    </div>
+    <div class="callout success"><strong>2025 flipped to net profitable.</strong> If the $50,045 in outstanding receivables are collected, net profit climbs to ~$61,670 — a strong result for the business.</div>
+  </div>
+
+  <div id="yr-2026" class="yr-panel">
+    <div class="metric-grid">
+      <div class="mc"><div class="ml">Revenue (Jan–Apr)</div><div class="mv">$111,266</div></div>
+      <div class="mc red"><div class="ml">COGS</div><div class="mv">$47,375</div></div>
+      <div class="mc green"><div class="ml">Gross Profit</div><div class="mv">$63,891</div><div class="ms">57.4% margin</div></div>
+      <div class="mc green"><div class="ml">Net YTD Profit</div><div class="mv">$11,131</div></div>
+    </div>
+    <div class="callout success"><strong>2026 is already profitable through April</strong> with improving margins. Annualized pace ~$334K. Collecting the $50,400 Budget Mobile Home Solution invoice pushes YTD net profit to ~$61K.</div>
+  </div>
+
+  <div class="sec-title"><span class="dot"></span>Breakeven Analysis</div>
+  <table class="dt">
+    <thead><tr><th>Gross Margin Scenario</th><th class="r">Annual Revenue Needed</th><th class="r">Monthly Average Needed</th></tr></thead>
+    <tbody>
+      <tr><td>At 45% gross margin</td><td class="r">$351,733</td><td class="r">$29,311</td></tr>
+      <tr><td>At 50% gross margin</td><td class="r">$316,560</td><td class="r">$26,380</td></tr>
+      <tr><td>At 57% gross margin (2026 pace)</td><td class="r amb">$277,684</td><td class="r amb">$23,140</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════ ASSETS ══════════════════ -->
+<div id="panel-assets" class="panel">
+
+  <div class="sec-title"><span class="dot"></span>Vehicles</div>
+  <table class="dt">
+    <thead><tr><th>Vehicle</th><th>Condition</th><th class="r">Est. Value</th><th class="r">Amount Owed</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2015 Ram ProMaster Van</strong></td><td>Beat up · tires needed · 100–140K miles · Joe drives daily</td><td class="r amb">~$12,000</td><td class="r red">$17,900</td></tr>
+      <tr><td><strong>2018 Cadillac</strong> (Rick personal)</td><td>Personal vehicle</td><td class="r amb">~$15,000</td><td class="r red">$17,900</td></tr>
+      <tr><td><strong>Third SUV</strong> (blown engine)</td><td>Engine blown — no oil · uninsured · possibly salvageable</td><td class="r red">$0–$500</td><td class="r muted">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Office &amp; Field Equipment</div>
+  <table class="dt">
+    <thead><tr><th>Item</th><th class="r">Age (Years)</th></tr></thead>
+    <tbody>
+      <tr><td>Laptop computer</td><td class="r">2</td></tr>
+      <tr><td>Large screen monitor</td><td class="r">1</td></tr>
+      <tr><td>iPad — Rick</td><td class="r">3</td></tr>
+      <tr><td>iPad — Joe</td><td class="r">3</td></tr>
+      <tr><td>Laptop — Joe</td><td class="r">1</td></tr>
+      <tr><td>Laptop — Rick</td><td class="r">1</td></tr>
+      <tr><td>3 desks</td><td class="r">5</td></tr>
+      <tr><td>4 desk chairs</td><td class="r">5</td></tr>
+      <tr><td>2 wood file cabinets</td><td class="r">3</td></tr>
+      <tr><td>Shelving unit</td><td class="r">2</td></tr>
+      <tr><td>iTalk telephone system</td><td class="r">1</td></tr>
+      <tr><td>iPhone 17 — Rick</td><td class="r">1</td></tr>
+      <tr><td>iPhone 17 — Joe</td><td class="r">1</td></tr>
+      <tr><td>3 heavy duty shelving units</td><td class="r">3</td></tr>
+      <tr><td>Skid dolly</td><td class="r">5</td></tr>
+      <tr><td>Printer</td><td class="r">2</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info">Rick is open to <strong>gifting physical assets</strong> to the new entity rather than selling them — keeping startup acquisition costs low.</div>
+
+  <div class="sec-title"><span class="dot"></span>Goodwill &amp; Intangible Assets</div>
+  <div class="gw-grid">
+    <div class="gw-card"><div class="gw-icon">📞</div><div class="gw-title">239-999-9987</div><div class="gw-desc">Established number tied to SEO rankings — critical to preserve in any asset transfer.</div></div>
+    <div class="gw-card"><div class="gw-icon">🔍</div><div class="gw-title">#1 Google Organic</div><div class="gw-desc">Top listing in SW Florida — built entirely on reviews and local presence. Zero ad spend.</div></div>
+    <div class="gw-card"><div class="gw-icon">⭐</div><div class="gw-title">75+ Five-Star Reviews</div><div class="gw-desc">Authentic local reviews. Core differentiator against Acorn and Leaf Healthcare.</div></div>
+    <div class="gw-card"><div class="gw-icon">👥</div><div class="gw-title">200+ Customer Base</div><div class="gw-desc">Active PM pipeline and referral source. Target: 20–25 PM visits/month at $175 each.</div></div>
+    <div class="gw-card"><div class="gw-icon">🏷️</div><div class="gw-title">10-Year Brand</div><div class="gw-desc">Established identity in SW Florida accessibility market with strong manufacturer ties.</div></div>
+    <div class="gw-card"><div class="gw-icon">🤝</div><div class="gw-title">Manufacturer Pricing</div><div class="gw-desc">Merit/Pilot local pickup (zero freight). Preferential pricing tiers earned over 20 years.</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════ LIABILITIES ══════════════════ -->
+<div id="panel-liabilities" class="panel">
+
+  <div class="metric-grid">
+    <div class="mc red"><div class="ml">Trade Debt</div><div class="mv">$46,413</div></div>
+    <div class="mc red"><div class="ml">Vehicle Loans</div><div class="mv">$35,800</div></div>
+    <div class="mc red"><div class="ml">Customer Disputes</div><div class="mv">$13,845</div></div>
+    <div class="mc red"><div class="ml">Personal Loan (Teryl)</div><div class="mv">$16,500</div></div>
+    <div class="mc red"><div class="ml">Total Liabilities</div><div class="mv">$112,558</div></div>
+    <div class="mc orange"><div class="ml">Less: BMH Receivable</div><div class="mv">-$25,200</div><div class="ms">Upon cargo lift install</div></div>
+  </div>
+
+  <div class="callout info"><strong>Important:</strong> Rick does NOT want to be listed as an owner in the new entity due to credit history and past lawsuits. These liabilities remain with SLSWF and do not transfer to TrueRise Lifts.</div>
+
+  <div class="sec-title"><span class="dot"></span>Trade Debt — Merit (Aging Detail)</div>
+  <table class="dt">
+    <thead><tr><th>Aging Bucket</th><th class="r">Amount</th></tr></thead>
+    <tbody>
+      <tr><td>Current</td><td class="r">$857</td></tr>
+      <tr><td>1–31 days</td><td class="r">$9,809</td></tr>
+      <tr><td>31–60 days</td><td class="r amb">$18,161</td></tr>
+      <tr><td>61–90 days</td><td class="r">$3,386</td></tr>
+      <tr><td>91–120 days</td><td class="r red">$3,284</td></tr>
+      <tr><td>120+ days</td><td class="r red">$2,566</td></tr>
+      <tr class="tot"><td>Total Owed to Merit</td><td class="r">$38,063</td></tr>
+    </tbody>
+  </table>
+  <div class="callout success">Merit is actively working with Rick and does not want to lose the relationship. A plan exists to apply sales credits toward the most overdue amounts. Rick holds the largest and best pricing structure with Merit.</div>
+
+  <div class="sec-title"><span class="dot"></span>Cargo Lift — Lift It USA</div>
+  <table class="dt">
+    <thead><tr><th>Detail</th><th class="r">Amount</th></tr></thead>
+    <tbody>
+      <tr><td>Already paid to Lift It USA</td><td class="r grn">$26,500</td></tr>
+      <tr><td>Balance remaining (due install day — certified check)</td><td class="r red">$8,350</td></tr>
+      <tr><td>Loan from Teryl (funded the purchase)</td><td class="r red">$16,500</td></tr>
+      <tr><td>BMH payment upon install (certified check)</td><td class="r grn">$25,200</td></tr>
+      <tr class="tot"><td>Net position after install</td><td class="r">+$350 net</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Customer Disputes</div>
+  <table class="dt">
+    <thead><tr><th>Customer</th><th class="r">Amount</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Kevin Robb</strong></td><td class="r red">$6,695</td><td>Judge awarded in customer's favor (July 2025). Court noted Rick was unaware of communication issues. Claim is against SLSWF only.</td></tr>
+      <tr><td><strong>Rick Beckstead</strong></td><td class="r amb">$7,150</td><td>Deposit refund requested. Spoke May 7, 2026 — customer said "pay when you can" and expects to take a cut. Cooperative.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Outstanding Receivables (Offsets)</div>
+  <table class="dt">
+    <thead><tr><th>Year</th><th>Top Outstanding</th><th class="r">Total Outstanding</th></tr></thead>
+    <tbody>
+      <tr><td>2025</td><td>Hazell $7,380 · Rappaport $7,100 · Robb $6,600 · Earle $6,425 · Cozzene $5,950</td><td class="r amb">$50,045</td></tr>
+      <tr><td>2026 YTD</td><td>Budget Mobile Home $50,400 · Norwood $28,645 · Beckstead $7,150 · Brown $6,400</td><td class="r red">$94,822</td></tr>
+      <tr class="tot"><td colspan="2">Total Receivables Outstanding</td><td class="r">$144,867</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════════════ OPERATIONS ══════════════════ -->
+<div id="panel-ops" class="panel">
+
+  <div class="sec-title"><span class="dot"></span>Team</div>
+  <table class="dt">
+    <thead><tr><th>Person</th><th>Role</th><th>Compensation</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rick Headley</strong></td><td>Sales · lead generation · manufacturer relationships</td><td>$2,500/mo base</td><td><span class="badge green">Active</span></td></tr>
+      <tr><td><strong>Joe Loveland</strong></td><td>Service manager · installs · cargo lift sign-off · photos</td><td>$25/hr · ~$5,400/mo</td><td><span class="badge amber">At Risk</span></td></tr>
+      <tr><td><strong>Dave Newell</strong></td><td>Part-time installs support · tech background · on-call only</td><td>1099 subcontractor</td><td><span class="badge green">Active</span></td></tr>
+      <tr><td><strong>Part-time (TBD)</strong></td><td>~20 hours/week</td><td>$2,500/mo</td><td><span class="badge gray">Unnamed</span></td></tr>
+      <tr><td><strong>Tyler Headley</strong></td><td>Future ops manager · installs · vehicle maintenance</td><td>TBD</td><td><span class="badge orange">Potential</span></td></tr>
+      <tr><td><strong>Ex Office Assistant</strong></td><td>Clerical / admin · organized · experienced</td><td>Part-time · TBD</td><td><span class="badge orange">Potential</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout warn"><strong>Joe risk:</strong> Single point of failure — rated A+ technically but has attitude issues and uses his leverage. Incentive program + Tyler onboarding is the mitigation plan.</div>
+
+  <div class="sec-title"><span class="dot"></span>Manufacturers &amp; Product Lines</div>
+  <table class="dt">
+    <thead><tr><th>Manufacturer</th><th>Products</th><th>Freight Advantage</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Merit / Pilot</strong> — Fort Myers, FL</td><td>Stair lifts: Navigator &amp; Aviator</td><td><span class="badge green">Local Pickup — $0 Freight</span></td></tr>
+      <tr><td><strong>Staying Home Corp</strong> — Missouri</td><td>VPLs · some stair lifts</td><td><span class="badge gray">Ships In</span></td></tr>
+      <tr><td><strong>Lift It USA</strong> — North Carolina</td><td>Cargo lifts</td><td><span class="badge amber">~$340/unit on 4-unit orders</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Unit Economics by Product</div>
+  <table class="dt">
+    <thead><tr><th>Product</th><th class="r">Avg Sell Price</th><th class="r">Avg COGS</th><th class="r">Unit Margin</th><th class="r">Margin %</th></tr></thead>
+    <tbody>
+      <tr><td>PM / maintenance visit</td><td class="r">$155</td><td class="r">$25</td><td class="r grn">$130</td><td class="r grn">84%</td></tr>
+      <tr><td>Straight stair lift — inside</td><td class="r">$3,850</td><td class="r">$1,600</td><td class="r grn">$2,250</td><td class="r grn">58%</td></tr>
+      <tr><td>Straight stair lift — outside</td><td class="r">$5,900</td><td class="r">$2,000</td><td class="r grn">$3,900</td><td class="r grn">66%</td></tr>
+      <tr><td>Curved stair lift — inside</td><td class="r">$12,500</td><td class="r">$7,500</td><td class="r amb">$5,000</td><td class="r amb">40%</td></tr>
+      <tr><td>Cargo lift</td><td class="r">$16,500</td><td class="r">$8,150</td><td class="r grn">$8,350</td><td class="r grn">51%</td></tr>
+      <tr><td>Curved stair lift — outside / large</td><td class="r">$24,000</td><td class="r">$9,000</td><td class="r grn">$15,000</td><td class="r grn">63%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Tech Stack</div>
+  <table class="dt">
+    <thead><tr><th>System</th><th>Purpose</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Method CRM</strong></td><td>Sales pipeline · estimates · work orders · invoicing · SMS to customers</td><td><span class="badge amber">Set Up, Underutilized</span></td></tr>
+      <tr><td><strong>QuickBooks</strong></td><td>Accounting — integrated bidirectionally with Method</td><td><span class="badge amber">2 Sync Conflicts · 2025 Incomplete</span></td></tr>
+      <tr><td><strong>Office 365</strong></td><td>Email · documents · collaboration</td><td><span class="badge green">Active</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--steel);line-height:1.7;margin-bottom:1.5rem;"><strong style="color:var(--navy);">Recommended CRM flow:</strong> Lead → Opportunity → Estimate → Sales Order (deposit) → Purchase Order → Work Order → Invoice → Mark paid</p>
+</div>
+
+<!-- ══════════════════ MARKETING ══════════════════ -->
+<div id="panel-marketing" class="panel">
+
+  <div class="metric-grid">
+    <div class="mc navy"><div class="ml">Google Ranking</div><div class="mv">#1</div><div class="ms">Organic · zero ad spend</div></div>
+    <div class="mc navy"><div class="ml">5-Star Reviews</div><div class="mv">75+</div><div class="ms">All local &amp; organic</div></div>
+    <div class="mc"><div class="ml">Customer Database</div><div class="mv">200+</div></div>
+    <div class="mc orange"><div class="ml">Current Ad Spend</div><div class="mv">$0</div><div class="ms">Massive upside</div></div>
+  </div>
+
+  <div class="callout orange"><strong>Key competitive advantage:</strong> Merit has moved manufacturing to Fort Myers — delivery now 2–3 weeks vs. 7 weeks previously. TrueRise Lifts will significantly outpace Acorn on lead times heading into fall season.</div>
+
+  <div class="sec-title"><span class="dot"></span>Market Opportunity</div>
+  <table class="dt">
+    <thead><tr><th>Factor</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Demographics</strong></td><td>Aging, affluent population · high-income migration into SW Florida from high-tax states</td></tr>
+      <tr><td><strong>Florida Product Mix</strong></td><td>~75% curved stair lifts (vs. 75% straight nationally) — higher average ticket in this market</td></tr>
+      <tr><td><strong>Local Competition</strong></td><td>Florida Home Access is a one-man show. National brands (Acorn, Leaf) are slower and more expensive.</td></tr>
+      <tr><td><strong>Seasonality</strong></td><td>Strong Sep–Apr season. Summer is slow. PM program and cargo lifts are the year-round revenue plays.</td></tr>
+      <tr><td><strong>PM Program Upside</strong></td><td>Currently 5–10 visits/month · target 20–25 · $175/visit · ~30 min work · 84% unit margin</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Planned Marketing Push (Sep 2026 – Apr 2027)</div>
+  <table class="dt">
+    <thead><tr><th>Channel</th><th>Plan</th><th>Lead</th></tr></thead>
+    <tbody>
+      <tr><td><strong>TV Advertising</strong></td><td>Aggressive campaign targeting aging SW Florida demographic</td><td>Ryan (design) · Rick/Tyler (monitor)</td></tr>
+      <tr><td><strong>Google Ads</strong></td><td>First paid campaign — significant untapped upside on top of existing #1 organic</td><td>Ryan</td></tr>
+      <tr><td><strong>Social Media</strong></td><td>Currently underutilized · large opportunity for before/after content and testimonials</td><td>Ryan / Tyler</td></tr>
+      <tr><td><strong>Cold Outreach</strong></td><td>Expanded sales effort as part of new entity push</td><td>Rick</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Franchise Concept (Long-Term Vision)</div>
+  <div class="callout info">Parent company <strong>TrueRise Lifts</strong> with franchise territories — <em>TrueRise Lifts of Fort Myers</em>, <em>TrueRise Lifts of Fort Lauderdale</em>, etc. Build the playbook in SW Florida, then replicate across Florida markets.</div>
+</div>
+
+<!-- ══════════════════ RISKS ══════════════════ -->
+<div id="panel-risks" class="panel">
+
+  <div class="sec-title"><span class="dot"></span>Urgent Items</div>
+  <table class="dt">
+    <thead><tr><th style="width:180px">Area</th><th>Issue</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge red">Urgent</span><br>Cash Flow</td><td>$50,400 Budget Mobile Home Solution invoice unpaid (Jan 2026) · $50,045 in 2025 receivables still outstanding · $144K total across both years.</td></tr>
+      <tr><td><span class="badge red">Urgent</span><br>Trade Debt</td><td>$38,063 owed to Merit (aging, some 120+ days) · $8,350 to Lift It USA due on install day via certified check.</td></tr>
+      <tr><td><span class="badge red">Urgent</span><br>2025 Books</td><td>Financials incomplete — prior CPA went on medical leave. New CPA quote: $550 to close out 2025. Required before new entity can be properly established.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>High Priority</div>
+  <table class="dt">
+    <thead><tr><th style="width:180px">Area</th><th>Issue</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge amber">High</span><br>Staffing</td><td>Joe is a single point of failure and knows it. No backup tech. Tyler needs mentorship before Joe can be phased out.</td></tr>
+      <tr><td><span class="badge amber">High</span><br>Insurance Gaps</td><td>No workers' comp · GL doesn't cover contracting work (pouring concrete, building walls) · both need immediate upgrade.</td></tr>
+      <tr><td><span class="badge amber">High</span><br>Joe Classification</td><td>Joe works daily and uses the company vehicle — likely W2, not 1099. Creates workers' comp and tax exposure.</td></tr>
+      <tr><td><span class="badge amber">High</span><br>Legal Disputes</td><td>Kevin Robb judgment: $6,695 against SLSWF · Beckstead deposit: $7,150 (cooperative — "pay when you can").</td></tr>
+      <tr><td><span class="badge amber">High</span><br>ProMaster Van</td><td>7 months behind on payments ($462/mo) · tires needed · no backup work vehicle. Full payoff ~$36,396.</td></tr>
+      <tr><td><span class="badge amber">High</span><br>Entity Structure</td><td>Rick cannot be listed as owner (credit/legal history). Stock transfer to Ryan needs legal review. Attorney consult started.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>Medium Priority</div>
+  <table class="dt">
+    <thead><tr><th style="width:180px">Area</th><th>Issue</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge gray">Medium</span><br>SOPs</td><td>No written policies or procedures. All process knowledge lives with Rick. Critical for Tyler onboarding and business continuity.</td></tr>
+      <tr><td><span class="badge gray">Medium</span><br>QuickBooks / Method</td><td>2 sync conflicts in QuickBooks · product catalog using wrong inventory type (should be non-inventory SKUs) · ~18–20 SKUs to clean up.</td></tr>
+      <tr><td><span class="badge gray">Medium</span><br>Seasonality</td><td>Business is Sep–Apr driven. Summer revenue drops significantly. PM program expansion and cargo lifts are the year-round revenue plays.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title"><span class="dot"></span>New Entity Startup Costs</div>
+  <table class="dt">
+    <thead><tr><th>Item</th><th class="r">Estimated Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Close 2025 books (CPA)</td><td class="r">$550</td></tr>
+      <tr><td>Legal / entity formation</td><td class="r">$2,000 – $5,000</td></tr>
+      <tr><td>Vehicle wrap + repairs (ProMaster)</td><td class="r">$3,000 – $6,000</td></tr>
+      <tr><td>Marketing setup / SEO transition</td><td class="r">$1,000 – $3,000</td></tr>
+      <tr><td>Insurance upgrades</td><td class="r">$500 – $1,500</td></tr>
+      <tr class="tot"><td>Total Estimate (midpoint)</td><td class="r">~$11,275</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- /content -->
+
+<div class="footer-bar"></div>
+<div class="footer">
+  <img class="footer-logo" src="TrueRise_Logo.png" alt="TrueRise Lifts">
+  <div class="footer-text"><strong>TrueRise Lifts — Business Snapshot</strong> &nbsp;·&nbsp; Confidential · Partner Review &nbsp;·&nbsp; Prepared May 2026 &nbsp;·&nbsp; Based on Method CRM invoice data 2024–2026 and operational documents</div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showYr(id, btn) {
+  document.querySelectorAll('.yr-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.yr-pill').forEach(t => t.classList.remove('active'));
+  document.getElementById('yr-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
