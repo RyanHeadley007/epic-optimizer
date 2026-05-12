@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stop Letting Staff Write Every Email From Scratch | Epic Optimizer</title>
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.epicoptimizer.com/insights/epic-email-templates.html" />
+  <meta property="og:title" content="Stop Letting Staff Write Every Email From Scratch" />
+  <meta property="og:description" content="Epic has a built-in email template system that most agencies have never touched. Here's what it does, why it matters, and how to set it up correctly." />
+  <meta property="og:image" content="https://www.epicoptimizer.com/Images/og-default.png" />
+  <meta property="og:site_name" content="Epic Optimizer" />
+
+  <!-- Article meta -->
+  <meta property="article:published_time" content="May 11, 2026" />
+  <meta property="article:author" content="Ryan Headley" />
+  <meta property="article:section" content="Epic Tips" />
+  <meta property="article:tag" content="Applied Epic" />
+  <meta property="article:tag" content="Email Templates" />
+  <meta property="article:tag" content="Configuration" />
+  <meta property="article:tag" content="Workflow" />
+  <meta property="article:tag" content="Branding" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Stop Letting Staff Write Every Email From Scratch" />
+  <meta name="twitter:description" content="Epic has a built-in email template system that most agencies have never touched. Here's what it does, why it matters, and how to set it up correctly." />
+  <meta name="twitter:image" content="https://www.epicoptimizer.com/Images/og-default.png" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.epicoptimizer.com/insights/epic-email-templates.html" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:        #171e26;
+      --mid:         #212c3a;
+      --gold:        #ca9d64;
+      --gold-dim:    rgba(202,157,100,0.10);
+      --gold-border: rgba(202,157,100,0.28);
+      --grey:        #bdbbae;
+      --tan:         #fffdea;
+      --tan-faint:   rgba(255,253,234,0.04);
+      --border:      rgba(189,187,174,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--tan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(23,30,38,0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .nav-brand-sub {
+      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--tan); }
+    .nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 9px 24px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px;
+      background: none; border: none; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tan); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(23,30,38,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul { list-style: none; text-align: center; margin-bottom: 40px; }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
+    .mobile-menu ul li a {
+      display: block; padding: 20px 48px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan); text-decoration: none; transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 14px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+    .article-wrap {
+      padding: 120px 60px 80px;
+      max-width: 820px; margin: 0 auto;
+      animation: fadeUp 0.4s ease both;
+    }
+    .article-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      transition: color 0.2s; margin-bottom: 48px;
+    }
+    .article-back:hover { color: var(--tan); }
+    .article-back::before { content: '←'; font-size: 14px; }
+    .article-category {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .article-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 0.96; color: var(--tan); margin-bottom: 24px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .article-author { font-size: 14px; color: var(--tan); font-weight: 500; }
+    .article-date { font-size: 14px; color: var(--grey); }
+    .article-read-time { margin-left: auto; font-size: 13px; color: var(--grey); }
+    .article-body { font-size: 17px; color: var(--grey); line-height: 1.8; }
+    .article-body h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 48px 0 16px;
+    }
+    .article-body h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 32px 0 12px;
+    }
+    .article-body p { margin-bottom: 22px; }
+    .article-body strong { color: var(--tan); font-weight: 600; }
+    .article-body ul { margin: 0 0 22px 0; list-style: none; }
+    .article-body ul li {
+      padding: 8px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 12px; font-size: 16px;
+    }
+    .article-body ul li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 9px;
+    }
+    .article-callout {
+      margin: 40px 0; padding: 28px 32px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold); border-radius: 2px;
+      font-size: 17px; font-weight: 300; color: var(--tan); line-height: 1.6;
+    }
+    .article-callout strong { color: var(--gold); font-weight: 600; }
+    .article-footer {
+      margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .article-tag {
+      background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 5px 13px; border-radius: 2px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .book-cta {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .book-cta:hover { color: var(--tan); }
+    .book-cta::after { content: '→'; font-size: 15px; }
+    footer {
+      padding: 36px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    footer p { font-size: 13px; color: var(--grey); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .article-wrap { padding: 100px 24px 60px; }
+      footer { padding-left: 24px; padding-right: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#pillars">Services</a></li>
+    <li><a href="../index.html#migration">Migration</a></li>
+    <li><a href="../index.html#tools">Tools</a></li>
+    <li><a href="../dashboards.html">Dashboards</a></li>
+    <li><a href="../partners.html">Partners</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../blog.html" class="active">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="../index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="../index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="../index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="../index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="../dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="../partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="../index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="../about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="../blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="../index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<main class="article-wrap">
+  <a class="article-back" href="../blog.html">Back to Insights</a>
+  <div class="article-category">Epic Tips</div>
+  <h1 class="article-title">Stop Letting Staff Write Every Email From Scratch</h1>
+  <div class="article-meta">
+    <span class="article-author">Ryan Headley</span>
+    <span class="article-date">May 11, 2026</span>
+    <span class="article-read-time">5 min read</span>
+  </div>
+  <div class="article-body">
+
+    <p>Every day, somewhere in your agency, a CSR is typing an email they've typed a hundred times before. The renewal follow-up. The certificate confirmation. The "we need your updated driver list" request. They're writing it from memory, or copying from a sent folder, or building it fresh because they can't find the last version they used.</p>
+    <p>This is a solved problem in Applied Epic. Most agencies just haven't solved it yet.</p>
+
+    <h2>What Email Templates Actually Are</h2>
+    <p>Epic's Email Template Configuration — found under Configure &gt; Email &gt; Email Templates — lets you build a library of pre-written emails that staff can select during distribution workflows or directly from the Applied Epic Outlook Add-in. Think of it as your agency's official messaging playbook, built into the system itself.</p>
+    <p>This isn't just a convenience feature. It's a consistency and compliance tool. When your team pulls from a library of approved templates, everyone is saying the same thing, in the same way, under your brand. The version control problem disappears. The "I thought I had a template for this somewhere" conversation goes away.</p>
+
+    <div class="article-callout">
+      <strong>Every email your team writes from scratch is a branding decision left to individual judgment.</strong> Templates remove that variability — not by constraining your staff, but by giving them a better starting point every time.
+    </div>
+
+    <h2>The Features Most Agencies Miss</h2>
+    <p>The basic concept — pre-written email text — is simple enough. But there are three layers of functionality that make Epic's email templates genuinely powerful, and most agencies haven't touched any of them.</p>
+
+    <h3>Branding Profiles</h3>
+    <p>Before you build a single template, set up a Branding Profile in Epic's Branding Profile Configuration. A branding profile controls the visual formatting of your emails — fonts, colors, header, footer, logo placement. Once it's built, you apply it to every template in one click. The result is that every templated email your agency sends looks like it came from the same professional organization, not from whatever formatting choices a CSR made on a Tuesday afternoon.</p>
+
+    <h3>Merge Variables</h3>
+    <p>This is the feature that makes templates feel personal instead of generic. Merge variables are placeholders you insert into the subject line or body of a template — things like the contact's name, the policy number, the account name, or the expiration date. When a CSR uses the template, Epic pulls the actual data from the record and populates it automatically.</p>
+    <p>The important nuance: merge variables are context-sensitive. The variables available depend on where the email workflow is initiated. A template used during the Distribute Attachments workflow will have access to different data than one used during a renewal distribution. This is worth understanding before you build, so you match your templates to the right workflows.</p>
+
+    <h3>User Signature Pull</h3>
+    <p>Templates can be configured to automatically include the sending user's Epic email signature. This means your staff don't have to remember to add their signature — and clients always get a properly signed email without anyone thinking about it.</p>
+
+    <h2>The Attachment Defaults Tab</h2>
+    <p>One piece of template configuration that often gets skipped entirely: the Attachment Defaults tab. This controls how emails sent using the template get stored as attachments in Epic. You can define the folder path, set a security access level, mark emails as important policy documents, and even control whether they're accessible through the CSR24 client portal.</p>
+    <p>For agencies serious about documentation standards, this is where you enforce consistent filing at the template level — so CSRs aren't making storage decisions every time they send an email.</p>
+
+    <h2>Connecting Templates to Email Events</h2>
+    <p>Templates become part of your workflow when you associate them with Email Events in the Email Event Configuration. This is how you control which templates are available during specific distribution workflows. A renewal distribution event should surface renewal templates. A certificate workflow should surface certificate templates. The right tool shows up at the right moment — which means staff aren't scrolling through a list of 40 templates to find the one they need.</p>
+
+    <div class="article-callout">
+      <strong>Template design and event configuration work together.</strong> A well-named template library that isn't wired to the right events is just a list. Connect them correctly and the system guides your team automatically.
+    </div>
+
+    <h2>A Note on Naming and Descriptions</h2>
+    <p>You can't delete email templates in Epic — only inactivate them. This means your template library will grow over time, and poor naming decisions made early become permanent friction. Before you build, agree on a naming convention. Something like <strong>[Workflow] — [Purpose]</strong> works well: "Renewal — Commercial Lines Follow-Up" or "Certificate — New Holder Confirmation." Descriptions matter too — they're what staff see when selecting a template during a distribution workflow, so make them specific enough to choose from at a glance.</p>
+
+    <h2>Where to Start</h2>
+    <p>If you're building email templates for the first time, don't try to template everything at once. Start with your highest-volume, most repetitive email types — renewal follow-ups, certificate confirmations, and missing information requests are usually the right first three. Build those well, connect them to the right email events, and train your team on how to use them. Then expand from there.</p>
+    <p>The goal is a library your staff actually uses — not an ambitious system that feels like more work than just typing the email themselves.</p>
+
+  </div>
+  <div class="article-footer">
+    <div class="article-tags">
+      <span class="article-tag">Applied Epic</span>
+      <span class="article-tag">Email Templates</span>
+      <span class="article-tag">Configuration</span>
+      <span class="article-tag">Workflow</span>
+      <span class="article-tag">Branding</span>
+    </div>
+    <a href="../index.html#contact" class="book-cta">Book a Session</a>
+  </div>
+</main>
+
+<footer>
+  <a class="footer-brand" href="../index.html">
+    <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2025 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+</body>
+</html>

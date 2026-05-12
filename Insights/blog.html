@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insights | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:        #171e26;
+      --mid:         #212c3a;
+      --gold:        #ca9d64;
+      --gold-dim:    rgba(202,157,100,0.10);
+      --gold-border: rgba(202,157,100,0.28);
+      --grey:        #bdbbae;
+      --tan:         #fffdea;
+      --tan-faint:   rgba(255,253,234,0.04);
+      --border:      rgba(189,187,174,0.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--tan);
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(23,30,38,0.96);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+    .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    .nav-brand-sub {
+      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--tan); }
+    .nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 9px 24px; border-radius: 2px;
+      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; cursor: pointer; padding: 6px;
+      background: none; border: none; z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--tan); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE DRAWER */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(23,30,38,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu ul {
+      list-style: none; text-align: center; margin-bottom: 40px;
+    }
+    .mobile-menu ul li { border-bottom: 1px solid var(--border); }
+    .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
+    .mobile-menu ul li a {
+      display: block; padding: 20px 48px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 14px 40px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: 160px 60px 80px;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-watermark {
+      position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+      width: 620px; opacity: 0.07; pointer-events: none; user-select: none;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 70% at 90% 30%, rgba(202,157,100,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 40% at 5% 90%,  rgba(33,44,58,0.95)   0%, transparent 55%);
+    }
+    .page-hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .eyebrow-line { width: 44px; height: 1px; background: var(--gold); }
+    .eyebrow-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .page-hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 700; line-height: 0.94; letter-spacing: 1px; text-transform: uppercase;
+      max-width: 700px; margin-bottom: 24px; color: var(--tan);
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .page-hero h1 .gold { color: var(--gold); }
+    .page-hero-sub {
+      font-size: 18px; font-weight: 300; color: var(--grey);
+      max-width: 480px; line-height: 1.65;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    /* FILTER BAR */
+    .filter-bar {
+      padding: 28px 60px;
+      background: var(--mid);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .filter-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-right: 6px; white-space: nowrap;
+    }
+    .filter-btn {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--grey); padding: 7px 18px; border-radius: 2px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 400; letter-spacing: 0.3px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--gold-border); color: var(--tan); background: var(--gold-dim); }
+    .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    /* MAIN LAYOUT */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* POSTS AREA */
+    .posts-area {
+      padding: 60px;
+      border-right: 1px solid var(--border);
+    }
+
+    /* FEATURED POST */
+    .featured-post {
+      background: var(--tan-faint);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 48px;
+      position: relative;
+      transition: background 0.25s;
+      cursor: pointer;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+    .featured-post::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .featured-post:hover { background: rgba(255,253,234,0.07); }
+    .featured-inner { padding: 44px 48px; }
+    .featured-meta {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
+    }
+    .post-featured-badge {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      background: var(--gold-dim); color: var(--gold);
+      border: 1px solid var(--gold-border);
+      border-radius: 2px; padding: 4px 10px;
+    }
+    .post-category {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .post-date {
+      font-size: 13px; color: var(--grey); margin-left: auto;
+    }
+    .featured-post h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 1.05; margin-bottom: 16px; color: var(--tan);
+    }
+    .featured-post .post-excerpt {
+      font-size: 16px; font-weight: 300; color: var(--grey);
+      line-height: 1.7; max-width: 600px; margin-bottom: 28px;
+    }
+    .post-read-link {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .post-read-link:hover { color: var(--tan); }
+    .post-read-link::after { content: '→'; font-size: 15px; }
+
+    /* POST GRID */
+    .posts-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+      animation: fadeUp 0.5s 0.4s ease both;
+    }
+    .post-card {
+      background: var(--dark);
+      padding: 36px 34px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; transition: background 0.25s;
+      cursor: pointer;
+    }
+    .post-card:nth-child(2n) { border-right: none; }
+    .post-card:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
+    .post-card:hover { background: var(--tan-faint); }
+    .post-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .post-card:hover::before { opacity: 1; }
+    .post-card-meta {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .post-card-cat {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .post-card-date { font-size: 12px; color: var(--grey); margin-left: auto; }
+    .post-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin-bottom: 10px; line-height: 1.15;
+    }
+    .post-card p {
+      font-size: 14px; color: var(--grey); line-height: 1.65; margin-bottom: 20px;
+    }
+    .post-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .post-read-time {
+      font-size: 12px; color: var(--grey);
+    }
+    .post-card-link {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .post-card-link:hover { color: var(--tan); }
+    .post-card-link::after { content: '→'; }
+
+    /* SIDEBAR */
+    .blog-sidebar {
+      padding: 52px 36px;
+      display: flex; flex-direction: column; gap: 44px;
+    }
+
+    .sidebar-section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sidebar-section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* CATEGORIES */
+    .category-list { display: flex; flex-direction: column; gap: 2px; }
+    .category-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 2px;
+      cursor: pointer; transition: all 0.2s; text-decoration: none;
+    }
+    .category-item:hover { background: var(--gold-dim); border-color: var(--gold-border); }
+    .category-item-name {
+      font-size: 14px; color: var(--tan);
+    }
+    .category-count {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    /* ABOUT SIDEBAR */
+    .sidebar-about {
+      background: var(--tan-faint); border: 1px solid var(--border);
+      border-radius: 3px; padding: 26px 24px;
+      position: relative; overflow: hidden;
+    }
+    .sidebar-about::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .sidebar-about-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin-bottom: 6px;
+    }
+    .sidebar-about p {
+      font-size: 13px; color: var(--grey); line-height: 1.6; margin-bottom: 18px;
+    }
+    .sidebar-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 8px 18px; border-radius: 2px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      text-decoration: none; font-family: 'Rajdhani', sans-serif;
+      display: inline-block; transition: background 0.2s, color 0.2s;
+    }
+    .sidebar-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* POPULAR POSTS */
+    .popular-posts { display: flex; flex-direction: column; gap: 0; }
+    .popular-post-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 0; border-top: 1px solid var(--border);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .popular-post-item:first-child { border-top: none; padding-top: 0; }
+    .popular-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 24px; font-weight: 700;
+      color: rgba(202,157,100,0.20); line-height: 1; flex-shrink: 0; min-width: 28px;
+    }
+    .popular-post-text {}
+    .popular-post-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+      color: var(--tan); line-height: 1.2; margin-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .popular-post-item:hover .popular-post-title { color: var(--gold); }
+    .popular-post-meta { font-size: 12px; color: var(--grey); }
+
+    /* NEWSLETTER */
+    .sidebar-newsletter {
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-radius: 3px; padding: 26px 24px;
+    }
+    .sidebar-newsletter p {
+      font-size: 14px; color: var(--grey); line-height: 1.6; margin-bottom: 16px;
+    }
+    .newsletter-input-row { display: flex; gap: 8px; }
+    .newsletter-input {
+      flex: 1; background: var(--dark); border: 1px solid var(--border);
+      color: var(--tan); padding: 9px 14px; border-radius: 2px;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .newsletter-input::placeholder { color: var(--grey); opacity: 0.6; }
+    .newsletter-input:focus { border-color: var(--gold-border); }
+    .newsletter-btn {
+      background: var(--gold); color: var(--dark);
+      border: none; padding: 9px 18px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .newsletter-btn:hover { opacity: 0.85; }
+
+    /* LOAD MORE */
+    .load-more-bar {
+      padding: 48px 60px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .btn-load-more {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 13px 36px; border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; background: transparent; transition: all 0.2s;
+    }
+    .btn-load-more:hover { background: var(--gold); color: var(--dark); }
+
+    /* ARTICLE VIEW (hidden by default) */
+    .article-view {
+      display: none;
+      padding: 100px 60px 80px;
+      max-width: 820px; margin: 0 auto;
+      animation: fadeUp 0.4s ease both;
+    }
+    .article-view.active { display: block; }
+    .article-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; cursor: pointer;
+      transition: color 0.2s; margin-bottom: 48px;
+    }
+    .article-back:hover { color: var(--tan); }
+    .article-back::before { content: '←'; font-size: 14px; }
+    .article-category {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .article-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      line-height: 0.96; color: var(--tan); margin-bottom: 24px;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 20px;
+      padding: 18px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .article-author {
+      font-size: 14px; color: var(--tan); font-weight: 500;
+    }
+    .article-date { font-size: 14px; color: var(--grey); }
+    .article-read-time {
+      margin-left: auto;
+      font-size: 13px; color: var(--grey);
+    }
+    .article-body { font-size: 17px; color: var(--grey); line-height: 1.8; }
+    .article-body h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 48px 0 16px;
+    }
+    .article-body h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--tan); margin: 32px 0 12px;
+    }
+    .article-body p { margin-bottom: 22px; }
+    .article-body strong { color: var(--tan); font-weight: 600; }
+    .article-body ul { margin: 0 0 22px 0; list-style: none; }
+    .article-body ul li {
+      padding: 8px 0; border-top: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 12px; font-size: 16px;
+    }
+    .article-body ul li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 9px;
+    }
+    .article-callout {
+      margin: 40px 0; padding: 28px 32px;
+      background: var(--gold-dim); border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold); border-radius: 2px;
+      font-size: 17px; font-weight: 300; color: var(--tan); line-height: 1.6;
+    }
+    .article-callout strong { color: var(--gold); font-weight: 600; }
+    .article-footer {
+      margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .article-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .article-tag {
+      background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 5px 13px; border-radius: 2px;
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+
+    /* BLOG LIST */
+    .blog-list { display: none; }
+    .blog-list.active { display: block; }
+
+    /* DIVIDER */
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 60px; }
+
+    /* FOOTER */
+    footer {
+      padding: 36px 60px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .footer-brand-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--tan);
+    }
+    footer p { font-size: 13px; color: var(--grey); }
+
+    /* EMPTY STATE */
+    .empty-state {
+      padding: 80px 40px; text-align: center; color: var(--grey);
+    }
+    .empty-state p { font-size: 15px; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      nav { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .page-hero, .posts-area, .load-more-bar { padding-left: 24px; padding-right: 24px; }
+      .filter-bar { padding-left: 24px; padding-right: 24px; }
+      .blog-layout { grid-template-columns: 1fr; }
+      .blog-sidebar { display: none; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .post-card:nth-child(2n) { border-right: none; }
+      .article-view { padding-left: 24px; padding-right: 24px; }
+      footer { padding-left: 24px; padding-right: 24px; }
+      hr.divider { margin: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .featured-inner { padding: 28px 24px; }
+      .newsletter-input-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html" class="active">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<!-- BLOG LIST -->
+<div class="blog-list active" id="blogList">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="hero-glow"></div>
+    <svg class="hero-watermark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.24 590.32">
+      <path fill="#ca9d64" d="M255.62,0L0,147.58v295.16l255.62,147.58,255.62-147.58V147.58L255.62,0ZM243.01,365.23l-151.27-87.34v29.11l117.41,67.78v61.81l-117.41-67.78v29.11l151.27,87.34v68.68L25.21,428.19v-251.5l217.81,125.75v62.79ZM37.81,154.86L255.62,29.11l217.81,125.75-217.81,125.75L37.81,154.86ZM486.03,428.19l-217.81,125.75v-251.5l217.81-125.75v251.5Z"/>
+      <polygon fill="#ca9d64" points="410.35 293.38 343.9 331.94 343.9 447.61 410.35 409.05 410.35 293.38"/>
+      <polygon fill="#ca9d64" points="309.72 154.64 309.72 249.27 388.74 203.65 309.72 154.64"/>
+      <polygon fill="#ca9d64" points="201.53 249.05 201.53 154.64 122.69 203.54 201.53 249.05"/>
+    </svg>
+    <div class="page-hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Insights & Perspectives</span>
+    </div>
+    <h1>Operational<br><span class="gold">Intelligence</span><br>for Insurance Agencies</h1>
+    <p class="page-hero-sub">Practical perspectives on Epic, agency operations, data, and the technology shaping the industry.</p>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" data-category="all" onclick="filterPosts('all', this)">All Posts</button>
+    <button class="filter-btn" data-category="Epic Tips" onclick="filterPosts('Epic Tips', this)">Epic Tips</button>
+    <button class="filter-btn" data-category="Workflow" onclick="filterPosts('Workflow', this)">Workflow</button>
+    <button class="filter-btn" data-category="Data & Reporting" onclick="filterPosts('Data & Reporting', this)">Data & Reporting</button>
+    <button class="filter-btn" data-category="Migration" onclick="filterPosts('Migration', this)">Migration</button>
+    <button class="filter-btn" data-category="Industry" onclick="filterPosts('Industry', this)">Industry</button>
+    <button class="filter-btn" data-category="Technology" onclick="filterPosts('Technology', this)">Technology</button>
+    <button class="filter-btn" data-category="CSR24" onclick="filterPosts('CSR24', this)">CSR24</button>
+  </div>
+
+  <!-- BLOG CONTENT -->
+  <div class="blog-layout">
+
+    <!-- POSTS AREA -->
+    <div class="posts-area">
+
+      <!-- FEATURED POST -->
+      <div class="featured-post" id="featuredPost" onclick="openArticle(0)">
+        <div class="featured-inner">
+          <div class="featured-meta">
+            <span class="post-featured-badge">Featured</span>
+            <span class="post-category" id="featuredCategory"></span>
+            <span class="post-date" id="featuredDate"></span>
+          </div>
+          <h2 id="featuredTitle"></h2>
+          <p class="post-excerpt" id="featuredExcerpt"></p>
+          <a class="post-read-link">Read Article</a>
+        </div>
+      </div>
+
+      <!-- POSTS GRID -->
+      <div class="posts-grid" id="postsGrid"></div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar">
+
+      <!-- ABOUT -->
+      <div>
+        <div class="sidebar-section-title">About</div>
+        <div class="sidebar-about">
+          <div class="sidebar-about-name">Ryan Headley</div>
+          <p>Specialized consulting for insurance agencies using Applied Epic. Practical perspectives from real agency work — no fluff.</p>
+          <a href="index.html#contact" class="sidebar-cta">Book a Session</a>
+        </div>
+      </div>
+
+      <!-- CATEGORIES -->
+      <div>
+        <div class="sidebar-section-title">Topics</div>
+        <div class="category-list" id="categoryList"></div>
+      </div>
+
+      <!-- POPULAR -->
+      <div>
+        <div class="sidebar-section-title">Popular</div>
+        <div class="popular-posts" id="popularPosts"></div>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div>
+        <div class="sidebar-section-title">Stay Updated</div>
+        <div class="sidebar-newsletter">
+          <p>New insights on Epic, operations, and insurance tech — delivered when it matters.</p>
+          <div class="newsletter-input-row">
+            <input class="newsletter-input" type="email" placeholder="Your email" id="emailInput"/>
+            <button class="newsletter-btn" onclick="handleSubscribe()">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- LOAD MORE -->
+  <div class="load-more-bar" id="loadMoreBar">
+    <button class="btn-load-more" onclick="loadMore()">Load More Posts</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="index.html">
+    <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
+        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="62" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="77" width="18" height="5" rx="1" fill="#ca9d64"/>
+      <rect x="16" y="90" width="22" height="6" rx="1" fill="#ca9d64"/>
+      <rect x="66" y="62" width="28" height="34" rx="4" fill="none" stroke="#ca9d64" stroke-width="6"/>
+      <rect x="73" y="69" width="14" height="20" rx="1" fill="#171e26"/>
+    </svg>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2025 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+<script>
+// ============================================================
+// BLOG DATA — Add new posts here
+// ============================================================
+const POSTS = [
+  {
+    id: 9,
+    slug: "insights/epic-email-templates.html",
+    title: "Stop Letting Staff Write Every Email From Scratch",
+    category: "Epic Tips",
+    date: "May 11, 2026",
+    readTime: "5 min read",
+    excerpt: "Epic has a built-in email template system that most agencies have never touched. Here's what it does, why it matters for branding and consistency — and how to set it up correctly.",
+    tags: ["Applied Epic", "Email Templates", "Configuration", "Workflow", "Branding"],
+    featured: true,
+    body: ``
+  },
+  {
+    id: 8,
+    slug: "insights/csr24-certificate-email-settings.html",
+    title: "One Setting. Hundreds of Unwanted Emails.",
+    category: "Epic Tips",
+    date: "April 28, 2026",
+    readTime: "6 min read",
+    excerpt: "There's one CSR24 account-level setting that behaves completely differently during a renewal batch vs. a daily certificate run. If your CSRs don't know about it, they will cause a problem — probably right in the middle of your busiest renewal cycle.",
+    tags: ["CSR24", "Certificates", "Applied Epic", "Workflow", "Agency Operations"],
+    featured: false,
+    body: `
+      <p>If you've ever had an insured call furious because they just received 200 emails in the span of an hour — all from your agency — you already know what this post is about. If you haven't had that call yet, keep reading. Because it's a matter of when, not if.</p>
+
+      <h2>The Setup</h2>
+      <p>CSR24 is a powerful tool. Certificate processing, self-service portals, renewal batches — when it's configured correctly, it saves your team hours every week and keeps your insureds happy. But there's one account-level setting that behaves completely differently depending on whether you're issuing a daily certificate or running a renewal batch. And if your CSRs don't know about it, they will cause a problem — probably right in the middle of your busiest renewal cycle.</p>
+      <p>The setting is called <strong>"Send a copy of all certificates to this insured."</strong></p>
+
+      <h2>What It Does (And Why It's a Problem at Renewal)</h2>
+      <p>For daily certificates — the one-off, ad hoc requests your team handles throughout the week — this setting is straightforward. If it's set to <strong>By Email</strong>, the insured gets a copy of each cert as it's issued. That's usually exactly what they want.</p>
+      <p>But at renewal time, everything changes.</p>
+      <p>When you run a renewal batch, CSR24 issues certificates to every active holder on the account in a single run. A mid-size commercial account might have 50 holders. A large contractor or property manager? Easily 200 or more.</p>
+
+      <div class="article-callout">
+        If that "Send a copy to insured" field is still set to <strong>By Email</strong> when the batch runs, your insured doesn't get one email. They get one email per holder cert — all at once, all in the same inbox, all with subject lines that look nearly identical. That's the call you don't want to take.
+      </div>
+
+      <h2>It's Not Just About That One Setting</h2>
+      <p>The renewal batch vs. daily distinction affects more than just the copy-to-insured field. Here are the other things your CSRs should be reviewing before every renewal run:</p>
+      <ul>
+        <li><strong>Renewal Subject and Message</strong> — These fields control the email subject line and body that goes to your certificate holders during renewal. Leave them blank and holders get generic, boilerplate messaging with no context. Customize them and you look professional and prepared.</li>
+        <li><strong>Renewals / Batch Instructions</strong> — If your organization uses certificate instructions, these display on the batch page before processing begins. It's worth reviewing them each cycle to make sure they reflect any changes in the account.</li>
+        <li><strong>Confirmation Email Address</strong> — Staff changes happen. If that address hasn't been updated since last year, every cert confirmation is going to the wrong person — or worse, someone who no longer works at the company.</li>
+        <li><strong>Cert Naming Structure</strong> — Whatever naming convention is set at the account level will populate on every single cert in the batch. Easy to fix before you run it. Painful to fix after 300 certs have already been issued.</li>
+      </ul>
+
+      <h2>What Good Looks Like</h2>
+      <p>Before a renewal batch, a well-trained CSR should be running through a quick mental (or literal) checklist:</p>
+      <ul>
+        <li>Turn off "Send copy to insured" for the duration of the batch</li>
+        <li>Verify the confirmation email address is still current</li>
+        <li>Customize the Renewal Subject and Message</li>
+        <li>Confirm the cert naming structure is correct</li>
+        <li>Review batch instructions</li>
+      </ul>
+      <p>After the batch is done? Restore "Send copy to insured" back to <strong>By Email</strong> if that insured normally receives copies. It's a small step that's easy to forget — and forgetting it means the next daily cert won't copy the insured the way it should.</p>
+
+      <h2>Why This Matters Beyond the Mechanics</h2>
+      <p>This isn't just a software training issue. It's a client experience issue. An insured who gets flooded with certificate emails during renewal loses trust in your agency's ability to manage their account professionally. A certificate holder who gets a generic, context-free email wonders if something is wrong with their coverage. A confirmation that goes to the wrong address means someone at your agency isn't getting the verification they need.</p>
+      <p>The details of how CSR24 is configured at the account level are invisible to your clients — until they aren't. When something goes wrong, the client doesn't see a misconfigured setting. They see your agency.</p>
+
+      <h2>The Fix Is Simple</h2>
+      <p>Build account-level reviews into your renewal workflow. Make it part of your process, not an afterthought. Document the differences between daily and batch processing so your CSRs aren't discovering them for the first time during a live renewal run. Your technology should be working for you — and a few minutes of preparation before each batch run makes sure that it is.</p>
+    `
+  },
+  {
+    id: 0,
+    slug: "insights/why-agencies-dont-use-epic.html",
+    title: "Why Most Agencies Own Epic But Don't Actually Use It",
+    category: "Epic Tips",
+    date: "March 24, 2026",
+    readTime: "6 min read",
+    excerpt: "The gap between owning Applied Epic and using it correctly is costing agencies more than they realize — in wasted time, messy data, and missed insights. Here's what's really happening inside most installs.",
+    tags: ["Applied Epic", "Operations", "Data Quality"],
+    featured: false,
+    body: `
+      <p>There's a pattern I see in almost every agency I work with. They've invested in Applied Epic — often tens of thousands of dollars per year in licensing — and yet the system is running at maybe 30% of its actual capability. The other 70% is untapped potential sitting behind settings nobody has ever configured correctly.</p>
+
+      <h2>The Configuration Gap</h2>
+      <p>Epic isn't a turn-key system. It's a platform with an enormous amount of configurability built in. Code tables, security groups, document types, activity types, ACORD integrations — all of it requires intentional setup aligned to how your agency actually operates. When that setup doesn't happen, you end up with a system that technically works but doesn't work for you.</p>
+      <p>The most common symptom? Data inconsistency. One CSR codes a policy one way, another codes it differently, and your renewal reports become meaningless. Nobody trusts the numbers, so nobody uses them. And since nobody's using the data to make decisions, nobody prioritizes fixing it.</p>
+
+      <div class="article-callout">
+        <strong>The real cost isn't the licensing fee.</strong> It's the hours spent on manual workarounds, the E&O exposure from inconsistent documentation, and the strategic decisions being made without reliable data.
+      </div>
+
+      <h2>What Correct Usage Actually Looks Like</h2>
+      <p>Agencies that use Epic correctly share a few things in common:</p>
+      <ul>
+        <li>Standardized code tables that everyone follows — not suggestions, but enforced structures</li>
+        <li>Workflow automation that removes the "memory burden" from staff — the system reminds, routes, and tracks</li>
+        <li>Dashboards that leadership actually looks at, because the underlying data is trustworthy</li>
+        <li>Integrations that work — CSR24 certificates, Indio intake, Epic Quotes — not just installed but actually wired up correctly</li>
+      </ul>
+
+      <h2>The Path Forward</h2>
+      <p>The good news is that most of this is fixable. It doesn't require a new system, a new vendor, or a massive project. It requires a structured assessment of what's broken, a prioritized plan to fix it, and the discipline to enforce standards going forward.</p>
+      <p>Start with your data. If you can't trust your reports, everything else is guesswork. Clean data is the foundation — configuration, workflows, and automation all build on top of it.</p>
+      <p>If you're not sure where your agency stands, that's usually the first sign you need an outside perspective. The problems hiding inside an Epic install are almost always bigger than they look from the inside.</p>
+    `
+  },
+  {
+    id: 1,
+    slug: "insights/ams-migration-done-wrong.html",
+    title: "The Real Cost of an AMS Migration Done Wrong",
+    category: "Migration",
+    date: "April 10, 2026",
+    readTime: "7 min read",
+    excerpt: "Data migrations are one of the highest-risk operational events an agency will go through. Most agencies discover the problems six months after go-live — when it's far harder and more expensive to fix them.",
+    tags: ["Migration", "AMS", "Applied Epic", "Risk"],
+    featured: false,
+    body: `
+      <p>When an agency decides to migrate from one AMS to another — or when an acquisition forces the issue — the focus is almost always on the technical side. Can we move the data? What's the timeline? How fast can we get live?</p>
+      <p>These are the wrong questions to lead with.</p>
+
+      <h2>What Actually Goes Wrong</h2>
+      <p>The problems in a migration rarely show up at go-live. They show up three to six months later, when someone tries to run a renewal report and finds gaps, when a client calls about a certificate that doesn't exist in the new system, or when the accounting team realizes that policy data didn't map correctly to the right division.</p>
+
+      <div class="article-callout">
+        <strong>Migration debt is real.</strong> Every shortcut taken during an AMS migration becomes a problem that someone has to clean up later — usually at a much higher cost in time, money, and operational disruption than doing it right the first time.
+      </div>
+
+      <h2>The Source System Problem</h2>
+      <p>Most legacy AMS platforms — AMS360, Hawksoft, QQ Catalyst — have data structures that don't map cleanly to Epic's schema. Fields that exist in one system don't exist in another. Data that was loosely structured in the old system needs to be clean and consistent in the new one. Duplicates that nobody noticed in the old system become real problems in Epic's stricter environment.</p>
+      <p>A proper migration starts with a full audit of the source data before a single record is moved. What's there? What's missing? What needs to be cleaned up before it can even be imported?</p>
+
+      <h2>Why Early Involvement Matters</h2>
+      <p>The earlier a migration specialist is brought in, the better the outcome. Ideally, this happens at the proposal stage — before contracts are signed, before timelines are committed to, before anyone has told their staff what the go-live date will be.</p>
+      <p>Early involvement means realistic timelines. It means flagging the data complexity before it becomes an emergency. It means designing the Epic environment correctly the first time, not retrofitting it after go-live.</p>
+    `
+  },
+  {
+    id: 2,
+    slug: "insights/renewal-workflows-in-epic.html",
+    title: "Building Renewal Workflows That Actually Work in Epic",
+    category: "Workflow",
+    date: "March 7, 2026",
+    readTime: "5 min read",
+    excerpt: "Renewal season is where agency chaos peaks. The difference between agencies that handle renewals smoothly and those that scramble comes down to one thing: workflow design built around Epic's actual capabilities.",
+    tags: ["Workflow", "Renewals", "Applied Epic"],
+    featured: false,
+    body: `
+      <p>Renewals are the heartbeat of an insurance agency. They're also where most operational breakdowns happen. Missed follow-ups, policies that lapse because nobody caught the expiration date, renewal proposals that go out days before the deadline — these aren't just service failures. They're retention risks.</p>
+
+      <h2>What a Broken Renewal Workflow Looks Like</h2>
+      <p>The most common version I see: the agency relies on individual CSRs remembering what's due. There's a spreadsheet somewhere, updated inconsistently. Managers check in by asking questions instead of looking at data. When something falls through the cracks, the post-mortem is "we need to be more careful next time."</p>
+      <p>This isn't a people problem. It's a workflow problem.</p>
+
+      <h2>What Epic Can Actually Do</h2>
+      <p>Applied Epic has powerful built-in tools for renewal management — activities, suspenses, automated workflows — that most agencies haven't configured. When set up correctly, the system can:</p>
+      <ul>
+        <li>Generate renewal activities automatically based on expiration dates</li>
+        <li>Route tasks to the right CSR or team without manual assignment</li>
+        <li>Track every step in the renewal process with timestamps and accountability</li>
+        <li>Escalate overdue items to management automatically</li>
+      </ul>
+
+      <div class="article-callout">
+        <strong>The goal is to remove memory from the equation.</strong> A well-designed renewal workflow means no one has to remember anything — the system does the remembering, and people do the work.
+      </div>
+
+      <h2>Designing the Right Workflow</h2>
+      <p>There's no universal renewal workflow that works for every agency. The right design depends on your book of business, your team structure, and how you communicate with clients. That's exactly why generic templates fail — they're built for a hypothetical agency, not yours.</p>
+      <p>The starting point is always documentation: map out exactly how renewals should work today, identify every handoff point, and then design Epic to enforce that process — not a version of it, the actual process.</p>
+    `
+  },
+  {
+    id: 3,
+    slug: "insights/certificates-of-insurance-workflow.html",
+    title: "Certificates of Insurance: The Hidden Workflow Problem",
+    category: "Workflow",
+    date: "February 21, 2026",
+    readTime: "5 min read",
+    excerpt: "For most commercial agencies, certificate requests are the highest volume, most repetitive operational task — and the most error-prone. Here's how to fix it in Epic.",
+    tags: ["Certificates", "CSR24", "Workflow", "Applied Epic"],
+    featured: false,
+    body: `
+      <p>If you ask most agency staff what takes the most time in their day, certificates are near the top of the list. Client requests come in by email, by phone, sometimes by fax. Someone has to pull the policy, verify the limits, issue the cert, save it, send it, and document that it was sent. Repeat this dozens of times a day and you start to understand why CSRs feel buried.</p>
+
+      <h2>Where the Errors Come From</h2>
+      <p>Most certificate errors aren't careless mistakes. They're process failures. The CSR is working from memory, pulling the wrong policy version, using a template that hasn't been updated, or sending to the wrong holder. Without a documented process enforced by the system, variability is inevitable.</p>
+
+      <h2>How CSR24 Changes the Equation</h2>
+      <p>CSR24 — Applied's client self-service portal — allows certificate holders to request and, in some cases, generate certificates directly, without agency staff involvement. When configured correctly with Epic, this can dramatically reduce the volume of inbound certificate requests hitting your team.</p>
+      <p>The key phrase is "when configured correctly." I've seen agencies that have CSR24 installed but don't actually have it connected to their Epic data in a way that makes self-service possible. The tool exists; the workflow doesn't.</p>
+
+      <div class="article-callout">
+        <strong>The goal for certificates isn't just accuracy — it's speed at scale.</strong> An agency that can handle a 3x increase in certificate volume without adding headcount has a structural advantage.
+      </div>
+    `
+  },
+  {
+    id: 4,
+    slug: "insights/what-good-epic-data-looks-like.html",
+    title: "What Good Epic Data Actually Looks Like",
+    category: "Data & Reporting",
+    date: "February 7, 2026",
+    readTime: "6 min read",
+    excerpt: "Most agencies know their Epic data is 'messy' but don't have a clear picture of what clean actually looks like — or how to get there. Here's a framework for thinking about data quality in Applied Epic.",
+    tags: ["Data Quality", "Applied Epic", "Reporting"],
+    featured: false,
+    body: `
+      <p>When agencies tell me their Epic data is messy, they usually mean one of a few specific things: reports that don't tie out, duplicate clients, policies coded inconsistently across the team, or premium data that doesn't match what was actually written. Each of these points to a different underlying problem — and a different fix.</p>
+
+      <h2>The Four Dimensions of Epic Data Quality</h2>
+      <p>I think about Epic data quality across four dimensions:</p>
+      <ul>
+        <li><strong>Consistency</strong> — Are the same types of data always coded the same way? Are policy types, activity types, and document types used consistently across the team?</li>
+        <li><strong>Completeness</strong> — Are required fields populated? Are policies linked to the right client records? Are there gaps in the history that could create problems in an audit?</li>
+        <li><strong>Accuracy</strong> — Does the data match reality? Are policy limits, effective dates, and carrier information correct?</li>
+        <li><strong>Timeliness</strong> — Is data being entered when it should be? Are activities being closed out, or are there open items sitting for weeks?</li>
+      </ul>
+
+      <div class="article-callout">
+        <strong>Clean data isn't a project you do once.</strong> It's a standard you maintain through configuration, training, and accountability. The goal is to make it easier to enter data correctly than incorrectly.
+      </div>
+
+      <h2>Where to Start</h2>
+      <p>Most agencies should start with consistency, because it's the lever that has the highest impact on reporting. If your code tables are a mess — dozens of policy types that mean the same thing, activity types that nobody uses consistently — your reports will never be reliable no matter how accurate the underlying data is.</p>
+      <p>Start there. Audit your code tables. Standardize. Train your team. Then tackle completeness and accuracy as a second phase. Timeliness usually improves as a byproduct of the other fixes.</p>
+    `
+  },
+  {
+    id: 5,
+    slug: "insights/ai-changing-insurance-quoting.html",
+    title: "How AI Is Changing the Insurance Quoting Process",
+    category: "Technology",
+    date: "January 24, 2026",
+    readTime: "5 min read",
+    excerpt: "The quoting process is one of the most time-intensive parts of an agent's day. New AI tools are beginning to change that — and agencies that adopt early will have a real competitive edge.",
+    tags: ["AI", "Quoting", "Technology", "Outmarket", "Gaya"],
+    featured: false,
+    body: `
+      <p>Insurance quoting hasn't changed much structurally in decades. An agent gets a submission, logs into one or more carrier portals, manually re-enters data, waits for results, and assembles a proposal — often by copying and pasting from multiple sources into a Word document or spreadsheet. It's slow, error-prone, and doesn't scale well.</p>
+
+      <h2>Where AI Is Making an Actual Difference</h2>
+      <p>There's a lot of noise in the AI space right now, but a few specific applications are delivering real ROI for insurance agencies today:</p>
+      <ul>
+        <li><strong>Quote comparison intelligence</strong> — Tools like Outmarket AI can compare carrier quotes, identify gaps in coverage, and surface upsell opportunities automatically — work that used to take an experienced agent significant time</li>
+        <li><strong>Data transfer automation</strong> — Gaya's "Super Copy / Super Paste" eliminates the manual re-entry of data across carrier portals, which is one of the biggest time drains in the quoting process</li>
+        <li><strong>Proposal generation</strong> — Building a professional, client-ready proposal used to take hours. With AI-assisted tools, that's down to minutes</li>
+      </ul>
+
+      <div class="article-callout">
+        <strong>The agencies winning with AI aren't replacing their people.</strong> They're removing the repetitive, low-value work so their experienced staff can focus on client relationships and complex coverage decisions.
+      </div>
+
+      <h2>How This Connects to Epic</h2>
+      <p>The value of these tools compounds when they're integrated correctly with Applied Epic. Quote data that flows back into the system accurately, without manual entry, means better data and less rework. The more cleanly your tools talk to each other, the more your team can focus on the work that actually requires human judgment.</p>
+      <p>The agencies I work with that are furthest ahead are the ones treating their technology stack as a connected ecosystem — not a collection of point solutions. Epic is the hub. Everything else plugs into it.</p>
+    `
+  },
+  {
+    id: 6,
+    slug: "insights/early-migration-specialist-involvement.html",
+    title: "The Case for Early Migration Specialist Involvement",
+    category: "Migration",
+    date: "January 17, 2026",
+    readTime: "4 min read",
+    excerpt: "Most agencies bring in a migration consultant after the deal is done and the timeline is set. That's the wrong order of operations — and it's costing them.",
+    tags: ["Migration", "Acquisitions", "Applied Epic"],
+    featured: false,
+    body: `
+      <p>Acquisitions move fast. There's deal pressure, timeline pressure, and organizational pressure to get the acquired book onto the parent agency's platform as quickly as possible. In that environment, migration specialists often get brought in late — after the timeline is committed, after the staff have been told the go-live date, after everyone's expectations have been set.</p>
+      <p>This is a setup for problems.</p>
+
+      <h2>What Early Involvement Actually Means</h2>
+      <p>Early involvement means being engaged at the proposal stage — before the deal closes, before the timeline is locked, before the decisions that constrain everything else have been made. At that stage, a migration specialist can do things that simply aren't possible later:</p>
+      <ul>
+        <li>Assess the actual complexity of the source data and give a realistic timeline estimate</li>
+        <li>Flag issues that could affect deal structure or transition planning</li>
+        <li>Help set expectations with both parties about what "go-live" actually means</li>
+        <li>Design the Epic environment that will receive the data before the migration begins</li>
+      </ul>
+
+      <div class="article-callout">
+        <strong>The cost of early involvement is always lower than the cost of fixing a rushed migration.</strong> Always. The cleanup work is harder, more expensive, and more disruptive than doing it right the first time.
+      </div>
+
+      <h2>What to Ask Before Signing</h2>
+      <p>If you're in the middle of an acquisition and haven't yet engaged a migration specialist, here are the questions you should be asking: How clean is the source data? What's the actual timeline for a quality migration — not the fastest possible migration? What needs to be built in Epic before data can be imported? And who's going to train the staff on the new environment?</p>
+      <p>These questions are much easier to answer before the deal closes than after.</p>
+    `
+  },
+  {
+    id: 7,
+    slug: "insights/epic-security-model.html",
+    title: "Understanding Epic's Security Model",
+    category: "Epic Tips",
+    date: "January 6, 2026",
+    readTime: "6 min read",
+    excerpt: "Security groups in Applied Epic are one of the most underutilized and least understood parts of the system. When configured correctly, they protect your data and create cleaner workflows. When configured poorly, they create constant friction.",
+    tags: ["Applied Epic", "Security", "Configuration"],
+    featured: false,
+    body: `
+      <p>Epic's security model is built around security groups — sets of permissions that control what each user can see, do, and access within the system. Every user belongs to one or more security groups. Every action in Epic — viewing a policy, editing a client record, running a report — is controlled by those permissions.</p>
+      <p>Most agencies set up their security groups once, during initial implementation, and never revisit them. The result is a security model that doesn't match how the agency actually operates today.</p>
+
+      <h2>Common Security Group Problems</h2>
+      <ul>
+        <li>Everyone has admin-level access because it was "easier" during setup</li>
+        <li>Security groups haven't been updated to reflect new roles or organizational changes</li>
+        <li>Staff can access — and accidentally modify — data they shouldn't be touching</li>
+        <li>Report access isn't restricted appropriately for different roles</li>
+      </ul>
+
+      <h2>Why This Matters Beyond Security</h2>
+      <p>The most important reason to get security groups right isn't actually security in the traditional sense — though that matters too. It's data integrity. When the wrong person can accidentally edit a policy record, change a code, or delete an activity, your data gets corrupted in ways that are hard to detect and harder to fix.</p>
+
+      <div class="article-callout">
+        <strong>Good security group design isn't about restricting your team.</strong> It's about making sure everyone can do their job correctly without accidentally breaking something they didn't mean to touch.
+      </div>
+
+      <h2>The Right Approach</h2>
+      <p>Security group design should start with a role map — a clear picture of who does what in your agency, what data they need access to, and what actions they should and shouldn't be able to take. From there, you build security groups that match those roles, test them, and train staff on why the restrictions exist.</p>
+      <p>It's not a one-time project. As your agency grows and roles change, your security model needs to keep pace.</p>
+    `
+  }
+];
+
+// ============================================================
+// STATE
+// ============================================================
+let currentFilter = 'all';
+let visibleCount = 7; // featured + 6 grid posts
+const POSTS_PER_LOAD = 4;
+
+// ============================================================
+// RENDER
+// ============================================================
+function getFilteredPosts() {
+  if (currentFilter === 'all') return POSTS;
+  return POSTS.filter(p => p.category === currentFilter || p.tags.includes(currentFilter));
+}
+
+function renderBlog() {
+  const posts = getFilteredPosts();
+
+  // FEATURED (always first in filtered set)
+  const featured = posts[0];
+  if (featured) {
+    document.getElementById('featuredPost').style.display = '';
+    document.getElementById('featuredCategory').textContent = featured.category;
+    document.getElementById('featuredDate').textContent = featured.date;
+    document.getElementById('featuredTitle').textContent = featured.title;
+    document.getElementById('featuredExcerpt').textContent = featured.excerpt;
+    document.getElementById('featuredPost').onclick = () => openArticle(featured.id);
+  } else {
+    document.getElementById('featuredPost').style.display = 'none';
+  }
+
+  // GRID POSTS
+  const gridPosts = posts.slice(1, visibleCount);
+  const grid = document.getElementById('postsGrid');
+  grid.innerHTML = '';
+
+  if (gridPosts.length === 0 && !featured) {
+    grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><p>No posts in this category yet.</p></div>';
+  }
+
+  gridPosts.forEach(post => {
+    const card = document.createElement('div');
+    card.className = 'post-card';
+    card.innerHTML = `
+      <div class="post-card-meta">
+        <span class="post-card-cat">${post.category}</span>
+        <span class="post-card-date">${post.date}</span>
+      </div>
+      <h3>${post.title}</h3>
+      <p>${post.excerpt}</p>
+      <div class="post-card-footer">
+        <span class="post-read-time">${post.readTime}</span>
+        <a class="post-card-link">Read</a>
+      </div>
+    `;
+    card.onclick = () => openArticle(post.id);
+    grid.appendChild(card);
+  });
+
+  // LOAD MORE
+  const loadMoreBar = document.getElementById('loadMoreBar');
+  loadMoreBar.style.display = posts.length > visibleCount ? '' : 'none';
+
+  // SIDEBAR CATEGORIES
+  renderSidebar();
+}
+
+function renderSidebar() {
+  // Categories
+  const catCounts = {};
+  POSTS.forEach(p => { catCounts[p.category] = (catCounts[p.category] || 0) + 1; });
+  const catList = document.getElementById('categoryList');
+  catList.innerHTML = '';
+  Object.entries(catCounts).forEach(([cat, count]) => {
+    const item = document.createElement('a');
+    item.className = 'category-item';
+    item.href = '#';
+    item.innerHTML = `<span class="category-item-name">${cat}</span><span class="category-count">${count}</span>`;
+    item.onclick = (e) => { e.preventDefault(); filterPosts(cat, null); };
+    catList.appendChild(item);
+  });
+
+  // Popular (top 3 by id order, or you could sort by any metric)
+  const popular = document.getElementById('popularPosts');
+  popular.innerHTML = '';
+  POSTS.slice(0, 3).forEach((post, i) => {
+    const item = document.createElement('div');
+    item.className = 'popular-post-item';
+    item.innerHTML = `
+      <div class="popular-num">0${i+1}</div>
+      <div class="popular-post-text">
+        <div class="popular-post-title">${post.title}</div>
+        <div class="popular-post-meta">${post.date} · ${post.readTime}</div>
+      </div>
+    `;
+    item.onclick = () => openArticle(post.id);
+    popular.appendChild(item);
+  });
+}
+
+function filterPosts(category, btn) {
+  currentFilter = category;
+  visibleCount = 5;
+
+  // Update buttons
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      if (b.dataset.category === category) b.classList.add('active');
+    });
+  }
+
+  renderBlog();
+}
+
+function loadMore() {
+  visibleCount += POSTS_PER_LOAD;
+  renderBlog();
+  // Smooth scroll to grid
+  document.getElementById('postsGrid').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ============================================================
+// NAVIGATION — go to individual post page
+// ============================================================
+function openArticle(id) {
+  const post = POSTS.find(p => p.id === id);
+  if (!post) return;
+  window.location.href = post.slug;
+}
+
+function handleSubscribe() {
+  const email = document.getElementById('emailInput').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  document.getElementById('emailInput').value = '';
+  alert('Thank you! You\'ve been added to the list.');
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderBlog();
+</script>
+
+</body>
+</html>
