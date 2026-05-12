@@ -618,23 +618,6 @@
   }
 </script>
 
-<!-- ARTICLE VIEW (shown when a post is clicked) -->
-<div class="article-view" id="articleView">
-  <span class="article-back" onclick="closeArticle()">Back to Insights</span>
-  <div class="article-category" id="articleCategory"></div>
-  <h1 class="article-title" id="articleTitle"></h1>
-  <div class="article-meta">
-    <span class="article-author">Ryan Headley</span>
-    <span class="article-date" id="articleDate"></span>
-    <span class="article-read-time" id="articleReadTime"></span>
-  </div>
-  <div class="article-body" id="articleBody"></div>
-  <div class="article-footer">
-    <div class="article-tags" id="articleTags"></div>
-    <a href="index.html#contact" class="post-read-link">Book a Session</a>
-  </div>
-</div>
-
 <!-- BLOG LIST -->
 <div class="blog-list active" id="blogList">
 
@@ -769,6 +752,7 @@
 const POSTS = [
   {
     id: 8,
+    slug: "insights/csr24-certificate-email-settings.html",
     title: "One Setting. Hundreds of Unwanted Emails.",
     category: "Epic Tips",
     date: "May 11, 2025",
@@ -822,6 +806,7 @@ const POSTS = [
   },
   {
     id: 0,
+    slug: "insights/why-agencies-dont-use-epic.html",
     title: "Why Most Agencies Own Epic But Don't Actually Use It",
     category: "Epic Tips",
     date: "May 1, 2025",
@@ -857,6 +842,7 @@ const POSTS = [
   },
   {
     id: 1,
+    slug: "insights/ams-migration-done-wrong.html",
     title: "The Real Cost of an AMS Migration Done Wrong",
     category: "Migration",
     date: "April 18, 2025",
@@ -886,6 +872,7 @@ const POSTS = [
   },
   {
     id: 2,
+    slug: "insights/renewal-workflows-in-epic.html",
     title: "Building Renewal Workflows That Actually Work in Epic",
     category: "Workflow",
     date: "April 5, 2025",
@@ -920,6 +907,7 @@ const POSTS = [
   },
   {
     id: 3,
+    slug: "insights/certificates-of-insurance-workflow.html",
     title: "Certificates of Insurance: The Hidden Workflow Problem",
     category: "Workflow",
     date: "March 22, 2025",
@@ -944,6 +932,7 @@ const POSTS = [
   },
   {
     id: 4,
+    slug: "insights/what-good-epic-data-looks-like.html",
     title: "What Good Epic Data Actually Looks Like",
     category: "Data & Reporting",
     date: "March 8, 2025",
@@ -974,6 +963,7 @@ const POSTS = [
   },
   {
     id: 5,
+    slug: "insights/ai-changing-insurance-quoting.html",
     title: "How AI Is Changing the Insurance Quoting Process",
     category: "Technology",
     date: "February 20, 2025",
@@ -1003,6 +993,7 @@ const POSTS = [
   },
   {
     id: 6,
+    slug: "insights/early-migration-specialist-involvement.html",
     title: "The Case for Early Migration Specialist Involvement",
     category: "Migration",
     date: "February 5, 2025",
@@ -1034,6 +1025,7 @@ const POSTS = [
   },
   {
     id: 7,
+    slug: "insights/epic-security-model.html",
     title: "Understanding Epic's Security Model",
     category: "Epic Tips",
     date: "January 22, 2025",
@@ -1191,31 +1183,12 @@ function loadMore() {
 }
 
 // ============================================================
-// ARTICLE VIEW
+// NAVIGATION — go to individual post page
 // ============================================================
 function openArticle(id) {
   const post = POSTS.find(p => p.id === id);
   if (!post) return;
-
-  document.getElementById('articleCategory').textContent = post.category;
-  document.getElementById('articleTitle').textContent = post.title;
-  document.getElementById('articleDate').textContent = post.date;
-  document.getElementById('articleReadTime').textContent = post.readTime;
-  document.getElementById('articleBody').innerHTML = post.body;
-
-  // Tags
-  const tagsEl = document.getElementById('articleTags');
-  tagsEl.innerHTML = post.tags.map(t => `<span class="article-tag">${t}</span>`).join('');
-
-  document.getElementById('blogList').classList.remove('active');
-  document.getElementById('articleView').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function closeArticle() {
-  document.getElementById('articleView').classList.remove('active');
-  document.getElementById('blogList').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.location.href = post.slug;
 }
 
 function handleSubscribe() {
