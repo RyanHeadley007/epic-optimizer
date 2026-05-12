@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cannot Assign: Line Type Mismatch in Suspense | Epic Optimizer</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon_32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon_16.png"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon_16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
   <style>
     :root {
       --dark:        #171e26;
@@ -110,6 +110,21 @@
       text-decoration: none; transition: background 0.2s, color 0.2s;
     }
     .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--grey); margin-bottom: 20px;
+      font-weight: 300; letter-spacing: 0.3px;
+    }
+    .breadcrumb a {
+      color: var(--grey); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb-sep { color: var(--gold-border); }
+    .breadcrumb-current { color: var(--tan); }
 
     /* PAGE HEADER */
     .page-hero {
@@ -275,7 +290,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="index.html">
-    <img src="Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
     <div class="nav-brand-text">
       <span class="nav-brand-name">Epic Optimizer</span>
       <span class="nav-brand-sub">Business Process Automation</span>
@@ -314,6 +329,11 @@
 
 <!-- PAGE HERO -->
 <div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">← Epic Processing Guide</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Interface &amp; Download</span>
+  </div>
   <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Epic Processing Guide</span></div>
   <div class="page-title">Cannot Assign: <span>Line Type</span><br>Mismatch in Suspense</div>
   <p class="page-sub">How to resolve a line type mismatch when a downloaded transaction cannot be assigned to a matching policy line in Epic's Interface Suspense.</p>
