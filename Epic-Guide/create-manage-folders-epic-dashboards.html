@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Create and Manage Folders in Applied Epic Dashboards | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:#171e26; --mid:#212c3a; --gold:#ca9d64;
+      --gold-dim:rgba(202,157,100,0.10); --gold-border:rgba(202,157,100,0.28);
+      --grey:#bdbbae; --tan:#fffdea; --tan-faint:rgba(255,253,234,0.04);
+      --border:rgba(189,187,174,0.10);
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body { background:var(--dark); color:var(--tan); font-family:'Outfit',sans-serif; font-size:17px; line-height:1.65; overflow-x:hidden }
+
+    /* ── NAV ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 60px; background:rgba(23,30,38,0.96); backdrop-filter:blur(18px); border-bottom:1px solid var(--border) }
+    .nav-brand { display:flex; align-items:center; gap:13px; text-decoration:none }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.1 }
+    .nav-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    .nav-brand-sub { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:500 }
+    .nav-links { display:flex; gap:36px; list-style:none }
+    .nav-links a { text-decoration:none; color:var(--grey); font-size:14px; font-weight:400; transition:color 0.2s }
+    .nav-links a:hover { color:var(--tan) }
+    .nav-cta { border:1px solid var(--gold-border); color:var(--gold); padding:9px 24px; border-radius:2px; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s,color 0.2s }
+    .nav-cta:hover { background:var(--gold); color:var(--dark) }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:6px; background:none; border:none; z-index:200 }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--tan); border-radius:2px; transition:transform 0.3s,opacity 0.3s }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg) }
+    .hamburger.open span:nth-child(2) { opacity:0 }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg) }
+    .mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(23,30,38,0.98); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center }
+    .mobile-menu.open { display:flex }
+    .mobile-menu ul { list-style:none; text-align:center; margin-bottom:40px }
+    .mobile-menu ul li { border-bottom:1px solid var(--border) }
+    .mobile-menu ul li:first-child { border-top:1px solid var(--border) }
+    .mobile-menu ul li a { display:block; padding:20px 48px; font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--tan); text-decoration:none; transition:color 0.2s }
+    .mobile-menu ul li a:hover { color:var(--gold) }
+    .mobile-menu .mobile-cta { border:1px solid var(--gold-border); color:var(--gold); padding:14px 40px; border-radius:2px; font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none }
+
+    /* ── HERO ── */
+    .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
+    .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
+    .breadcrumb { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--grey); margin-bottom:20px; font-weight:300 }
+    .breadcrumb a { color:var(--grey); text-decoration:none; transition:color 0.2s }
+    .breadcrumb a:hover { color:var(--gold) }
+    .breadcrumb-sep { color:var(--gold); opacity:0.5 }
+    .breadcrumb-current { color:var(--tan) }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
+    .eyebrow-line { width:36px; height:1px; background:var(--gold) }
+    .eyebrow-text { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold) }
+    .page-title { font-family:'Rajdhani',sans-serif; font-size:clamp(28px,4vw,52px); font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--tan); line-height:1.05; margin-bottom:16px }
+    .page-title span { color:var(--gold) }
+    .page-sub { color:var(--grey); font-size:16px; font-weight:300; max-width:620px; line-height:1.65; margin-bottom:28px }
+    .hero-meta { display:flex; gap:28px; flex-wrap:wrap; align-items:center }
+    .hero-meta-item { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:300; color:var(--grey) }
+    .hero-meta-dot { width:4px; height:4px; border-radius:50%; background:var(--gold) }
+    .hero-meta-item strong { color:var(--tan); font-weight:500 }
+
+    /* ── OUTER LAYOUT ── */
+    .workflow-layout { display:grid; grid-template-columns:240px 1fr; min-height:calc(100vh - 200px) }
+
+    /* ── SIDEBAR ── */
+    .sidebar { border-right:1px solid var(--border); padding:40px 0; position:sticky; top:73px; height:calc(100vh - 73px); overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--gold-border) transparent }
+    .sidebar-section { margin-bottom:8px }
+    .sidebar-section-header { display:flex; align-items:center; justify-content:space-between; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); cursor:pointer; user-select:none; transition:background 0.15s }
+    .sidebar-section-header:hover { background:var(--tan-faint) }
+    .sidebar-section-arrow { font-size:9px; color:var(--gold-border); transition:transform 0.2s }
+    .sidebar-section.open .sidebar-section-arrow { transform:rotate(90deg) }
+    .sidebar-links { display:none }
+    .sidebar-section.open .sidebar-links { display:block }
+    .sidebar-link { display:block; padding:8px 24px 8px 32px; font-size:13px; font-weight:300; color:var(--grey); text-decoration:none; transition:color 0.2s,background 0.15s; border-left:2px solid transparent; line-height:1.4 }
+    .sidebar-link:hover { color:var(--tan); background:var(--tan-faint) }
+    .sidebar-link.active { color:var(--gold); border-left-color:var(--gold); background:var(--gold-dim) }
+    .sidebar-divider { height:1px; background:var(--border); margin:16px 24px }
+
+    /* ── MAIN CONTENT ── */
+    .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .back-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:400; color:var(--grey); text-decoration:none; margin-bottom:36px; transition:color 0.2s }
+    .back-link:hover { color:var(--gold) }
+    .back-link-arrow { font-size:16px }
+
+    /* ── SCENARIO ── */
+    .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:40px }
+    .scenario-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
+    .scenario-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+
+    /* ── TWO-COLUMN LAYOUT ── */
+    .content-columns { position:relative; padding-right:calc((100% + 240px) * 0.48) }
+    .steps-column { min-width:0 }
+    .scribe-column {
+      position: fixed;
+      top: calc(73px + 16px);
+      right: 0;
+      width: calc((100vw - 240px) * 0.48);
+      height: calc(100vh - 73px - 32px);
+      display: flex;
+      flex-direction: column;
+      padding-right: 52px;
+      z-index: 10;
+    }
+    .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
+    .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
+    .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
+    .scribe-panel-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold) }
+    .scribe-panel iframe { display:block; width:100%; border:none; flex:1; min-height:0 }
+
+    /* ── PHASE + STEPS ── */
+    .phase-header { display:flex; align-items:center; gap:14px; margin:44px 0 20px; padding-bottom:12px; border-bottom:1px solid var(--border) }
+    .phase-header:first-of-type { margin-top:0 }
+    .phase-number { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background:var(--gold-dim); border:1px solid var(--gold-border); padding:3px 10px; border-radius:1px; white-space:nowrap }
+    .phase-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--tan) }
+    .steps { display:flex; flex-direction:column }
+    .step { display:grid; grid-template-columns:48px 1fr; position:relative }
+    .step-connector { display:flex; flex-direction:column; align-items:center; padding-top:4px }
+    .step-num { width:28px; height:28px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; color:var(--gold); flex-shrink:0; z-index:1 }
+    .step-line { width:1px; flex:1; background:var(--border); margin-top:6px; min-height:20px }
+    .step:last-child .step-line { display:none }
+    .step-body { padding:0 0 28px 16px }
+    .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
+    .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
+    .step-list { list-style:none; margin:6px 0 10px }
+    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
+    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
+    .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
+    .step-alert strong { color:var(--gold); font-weight:600 }
+    .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
+    .step-tip strong { color:var(--tan); font-weight:500 }
+
+    /* ── FAQ ── */
+    .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
+    .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
+    .faq-list { display:flex; flex-direction:column; gap:3px; margin-bottom:40px }
+    .faq-item { border:1px solid var(--border); border-radius:2px; overflow:hidden; transition:border-color 0.2s }
+    .faq-item:hover { border-color:var(--gold-border) }
+    .faq-q { padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:500; color:var(--tan); user-select:none }
+    .faq-q span { font-size:11px; color:var(--grey); flex-shrink:0; transition:transform 0.25s }
+    .faq-item.open .faq-q span { transform:rotate(180deg) }
+    .faq-a { display:none; padding:0 18px 16px; font-size:14px; color:var(--grey); font-weight:300; line-height:1.7; border-top:1px solid var(--border) }
+    .faq-a p { padding-top:12px }
+    .faq-item.open .faq-a { display:block }
+
+    /* ── BADGES ── */
+    .badge-section { margin-bottom:0 }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px }
+    .badge { border:1px solid var(--gold-border); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:2px }
+
+    /* ── FOOTER ── */
+    footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
+    .footer-brand { display:flex; align-items:center; gap:12px; text-decoration:none }
+    .footer-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:17px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    footer p { font-size:13px; color:var(--grey) }
+
+    /* ── RESPONSIVE: tablet ── */
+    @media (max-width:960px) {
+      nav { padding:14px 24px }
+      .nav-links { display:none }
+      .nav-cta { display:none }
+      .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px }
+      .workflow-layout { grid-template-columns:1fr }
+      .sidebar { display:none }
+      .workflow-content { padding:36px 24px 60px }
+      .content-columns { padding-right:calc(50vw + 16px) }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px }
+      footer { padding:36px 24px }
+    }
+    /* ── RESPONSIVE: mobile ── */
+    @media (max-width:600px) {
+      .content-columns { padding-right:0 }
+      .scribe-column { position:static; width:100%; height:auto; padding-right:0; margin-top:40px }
+      .scribe-panel iframe { height:580px }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="index-guide.html">Epic Processing Guide</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Dashboards</span>
+  </div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Applied Epic · Dashboards</span></div>
+  <div class="page-title">Create &amp; Manage <span>Folders</span><br>in Epic Dashboards</div>
+  <p class="page-sub">Organize your Applied Epic Dashboard panels into folders to reduce clutter, group related views, and quickly navigate to the data that matters most.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>Dashboards</strong></div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>~2 Minutes</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
+  </div>
+</div>
+
+<div class="workflow-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section open" id="sb-dashboards">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-dashboards')">
+        Dashboards <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link active" href="create-manage-folders-epic-dashboards.html">Create &amp; Manage Folders</a>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section open" id="sb-interface">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-interface')">
+        Interface &amp; Download <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="access-suspense-items.html">How to Access Suspense Items</a>
+        <a class="sidebar-link" href="assigning-download-files-from-suspense.html">Assigning Download Files from Suspense</a>
+        <a class="sidebar-link" href="cannot-assign-line-type-mismatch.html">Cannot Assign: Line Type Mismatch</a>
+        <a class="sidebar-link" href="cannot-assign-service-summary-action.html">Cannot Assign: Service Summary Action Variation</a>
+        <a class="sidebar-link" href="cannot-assign-transaction-date-mismatch.html">Cannot Assign: Transaction Date Mismatch</a>
+        <a class="sidebar-link" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+  </aside>
+
+  <main class="workflow-content">
+    <a class="back-link" href="index-guide.html"><span class="back-link-arrow">←</span> Back to Epic Processing Guide</a>
+
+    <div class="content-columns">
+
+      <div class="steps-column">
+
+        <div class="scenario-box">
+          <div class="scenario-label">Scenario</div>
+          <p>Your Applied Epic Dashboard has grown with multiple panels spread across a single view — renewals, suspense counts, AR aging, and more — making it hard to navigate quickly. This workflow shows you how to create folders inside the Dashboard to group related panels together, rename them, and reorder them so your workspace stays organized as it scales.</p>
+        </div>
+
+        <!-- PHASE 1: Open Dashboard Settings -->
+        <div class="phase-header">
+          <span class="phase-number">Phase 01</span>
+          <span class="phase-title">Open Dashboard Settings</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Navigate to the Dashboards module</div>
+              <div class="step-detail">From the Epic home screen, click the <strong>Dashboards</strong> icon in the left-hand navigation rail or select it from the top menu bar. Your current dashboard view will load.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Click the gear / settings icon</div>
+              <div class="step-detail">Locate the settings (gear) icon at the top-right of the Dashboard panel area and click it to open the Dashboard configuration options.</div>
+              <div class="step-tip"><strong>Tip:</strong> If you don't see the gear icon, make sure you're viewing a dashboard you own or have edit rights to. Shared read-only dashboards won't expose configuration controls.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Select "Manage Folders" from the settings menu</div>
+              <div class="step-detail">From the dropdown that appears, choose <strong>Manage Folders</strong> (or the equivalent folder management option). This opens the folder management panel where you can view, create, and edit folders.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps -->
+
+        <!-- PHASE 2: Create a New Folder -->
+        <div class="phase-header">
+          <span class="phase-number">Phase 02</span>
+          <span class="phase-title">Create a New Folder</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Click the "Add Folder" or "+" button</div>
+              <div class="step-detail">In the folder management panel, locate the <strong>Add Folder</strong> button (often shown as a "+" or labeled explicitly) and click it. A new folder entry will appear in the list, ready for naming.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">5</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Enter a name for the folder</div>
+              <div class="step-detail">Type a descriptive name into the folder name field — for example, <em>Renewals</em>, <em>AR &amp; Billing</em>, or <em>Suspense Queue</em>. Keep names short so they display cleanly in the dashboard navigation.</div>
+              <div class="step-tip"><strong>Tip:</strong> Use consistent naming conventions across folders if multiple team members share the same dashboard configuration. This prevents confusion when folders are later edited by someone else.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">6</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Save or confirm the new folder</div>
+              <div class="step-detail">Press <strong>Enter</strong> or click the checkmark / Save button to confirm the folder name. The new folder will appear in the folder list and become available as a destination for your dashboard panels.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps -->
+
+        <!-- PHASE 3: Assign Panels to the Folder -->
+        <div class="phase-header">
+          <span class="phase-number">Phase 03</span>
+          <span class="phase-title">Assign Panels to the Folder</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">7</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Open the panel's individual settings</div>
+              <div class="step-detail">Return to the main dashboard view. Hover over or click into the panel you want to move into the folder, then click the panel's own gear or edit icon to open its settings.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">8</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Locate the "Folder" assignment field</div>
+              <div class="step-detail">In the panel settings, find the <strong>Folder</strong> dropdown or field. This is where you assign which folder this panel belongs to. It may default to "None" or "Unassigned" if no folder has been set.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">9</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Select the target folder from the dropdown</div>
+              <div class="step-detail">Click the dropdown and choose the folder you just created. The panel will be associated with that folder once you save.</div>
+              <div class="step-alert"><strong>Note:</strong> A panel can only belong to one folder at a time. If you reassign it to a different folder later, it will be removed from the previous one automatically.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">10</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Save the panel settings</div>
+              <div class="step-detail">Click <strong>Save</strong> or <strong>OK</strong> to confirm the panel's folder assignment. Repeat steps 7–10 for each additional panel you want to move into the folder.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps -->
+
+        <!-- PHASE 4: Rename or Delete a Folder -->
+        <div class="phase-header">
+          <span class="phase-number">Phase 04</span>
+          <span class="phase-title">Rename or Delete a Folder</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">11</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Return to Manage Folders</div>
+              <div class="step-detail">Click the gear icon on the dashboard again and select <strong>Manage Folders</strong> to reopen the folder management panel. Your existing folders will be listed.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">12</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Click the edit (pencil) icon next to the folder name</div>
+              <div class="step-detail">To rename a folder, click the pencil or edit icon beside the folder. The name field becomes editable — clear it and type the new name, then press Enter or Save to confirm.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">13</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Delete a folder using the trash / remove icon</div>
+              <div class="step-detail">To remove a folder, click the trash or remove icon beside it. Confirm the deletion in the prompt that appears.</div>
+              <div class="step-alert"><strong>Important:</strong> Deleting a folder does not delete the panels inside it — those panels will revert to "Unassigned" and remain accessible on the dashboard. The folder structure is just an organizational layer.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">14</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Reorder folders using drag-and-drop</div>
+              <div class="step-detail">If the folder management panel supports drag-and-drop reordering, grab the handle icon (usually three horizontal lines) to the left of a folder name and drag it to the desired position in the list. The order here controls the display order in the dashboard navigation.</div>
+              <div class="step-tip"><strong>Tip:</strong> Put your highest-priority folder (e.g., the one you open first every morning) at the top of the list so it renders first in the dashboard tab bar.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector">
+              <div class="step-num">15</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-body">
+              <div class="step-title">Close the folder management panel and confirm layout</div>
+              <div class="step-detail">Click <strong>Done</strong> or close the panel. Your dashboard should now display the folder tabs or navigation labels at the top or side of the panel area. Click each folder tab to verify the correct panels are grouped within it.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps -->
+
+        <!-- FAQ -->
+        <div class="faq-section">
+          <div class="section-label">Common Questions</div>
+          <div class="faq-list">
+
+            <div class="faq-item" id="faq1">
+              <div class="faq-q" onclick="togF('faq1')">
+                Can other users see the folders I create?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>It depends on whether your dashboard is a personal or shared dashboard. Personal dashboards and their folder structures are visible only to you. If you're working on a shared team dashboard, other users with access will see the same folder layout — and changes you make may affect their view. Confirm with your administrator before restructuring a shared dashboard.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq2">
+              <div class="faq-q" onclick="togF('faq2')">
+                What happens to panels that aren't assigned to a folder?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>Unassigned panels will typically appear in a default "root" view or under an "All" tab, depending on how your dashboard is configured. They remain fully functional — they just won't be grouped under any folder label.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq3">
+              <div class="faq-q" onclick="togF('faq3')">
+                Is there a limit to how many folders I can create?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>Applied Epic does not publish a hard limit on the number of dashboard folders, but practical usability tends to cap out around 6–10 folders before navigation becomes unwieldy. Focus on logical groupings rather than creating a folder for every single panel.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq4">
+              <div class="faq-q" onclick="togF('faq4')">
+                Can I nest folders inside other folders?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>No — Applied Epic's dashboard folder system is a single-level structure. You can create multiple sibling folders, but you cannot nest one folder inside another. If you need sub-grouping, consider using panel naming conventions (e.g., "AR — Aging 30 Days", "AR — Aging 60 Days") to create a logical hierarchy within a single folder.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="section-label">Skills Used</div>
+          <div class="badge-section">
+            <div class="badge-row">
+              <span class="badge">Applied Epic</span>
+              <span class="badge">Dashboards</span>
+              <span class="badge">Folder Management</span>
+              <span class="badge">Navigation</span>
+              <span class="badge">Organization</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps-column -->
+
+      <div class="scribe-column">
+        <div class="scribe-panel">
+          <div class="scribe-panel-header">
+            <div class="scribe-panel-dot"></div>
+            <span class="scribe-panel-label">Interactive Walkthrough — 15 Steps</span>
+          </div>
+          <iframe src="https://scribehow.com/embed/How_to_Create_and_Manage_Folders_in_Applied_Epic_Dashboards__0Ck9GblBTL6h7VVd0uZdwQ?as=scrollable" width="100%" height="800" allow="fullscreen" style="border:0;min-height:640px" title="How to Create and Manage Folders in Applied Epic Dashboards"></iframe>
+        </div>
+      </div><!-- /scribe-column -->
+
+    </div><!-- /content-columns -->
+  </main>
+</div>
+
+<footer>
+  <a class="footer-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2026 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
+  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
+  function togF(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>
