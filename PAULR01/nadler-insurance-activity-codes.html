@@ -111,24 +111,10 @@
     .hero-meta-item strong { color:var(--tan); font-weight:500 }
 
     /* ── OUTER LAYOUT ── */
-    .workflow-layout { display:grid; grid-template-columns:240px 1fr; min-height:calc(100vh - 200px) }
-
-    /* ── SIDEBAR ── */
-    .sidebar { border-right:1px solid var(--border); padding:40px 0; position:sticky; top:73px; height:calc(100vh - 73px); overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--gold-border) transparent }
-    .sidebar-section { margin-bottom:8px }
-    .sidebar-section-header { display:flex; align-items:center; justify-content:space-between; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); cursor:pointer; user-select:none; transition:background 0.15s }
-    .sidebar-section-header:hover { background:var(--tan-faint) }
-    .sidebar-section-arrow { font-size:9px; color:var(--gold-border); transition:transform 0.2s }
-    .sidebar-section.open .sidebar-section-arrow { transform:rotate(90deg) }
-    .sidebar-links { display:none }
-    .sidebar-section.open .sidebar-links { display:block }
-    .sidebar-link { display:block; padding:8px 24px 8px 32px; font-size:13px; font-weight:300; color:var(--grey); text-decoration:none; transition:color 0.2s,background 0.15s; border-left:2px solid transparent; line-height:1.4 }
-    .sidebar-link:hover { color:var(--tan); background:var(--tan-faint) }
-    .sidebar-link.active { color:var(--gold); border-left-color:var(--gold); background:var(--gold-dim) }
-    .sidebar-divider { height:1px; background:var(--border); margin:16px 24px }
+    .workflow-layout { display:block; min-height:calc(100vh - 200px) }
 
     /* ── MAIN CONTENT ── */
-    .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .workflow-content { padding:52px 60px 80px; max-width:900px; margin:0 auto }
 
 
     /* ── SCENARIO / GOLDEN RULE ── */
@@ -234,8 +220,6 @@
       .nav-cta { display:none }
       .hamburger { display:flex }
       .page-hero { padding:110px 24px 40px }
-      .workflow-layout { grid-template-columns:1fr }
-      .sidebar { display:none }
       .workflow-content { padding:36px 24px 60px }
       footer { padding:36px 24px }
     }
@@ -306,40 +290,6 @@
 
 <!-- LAYOUT -->
 <div class="workflow-layout">
-
-  <!-- ═══════════════════════════════════════════════════════════════
-       SIDEBAR
-       Add or remove sidebar-link entries to match the guide pages
-       that exist for this client's site deployment.
-       ═══════════════════════════════════════════════════════════════ -->
-  <aside class="sidebar">
-    <div class="sidebar-section open" id="sb-interface">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-interface')">
-        Interface &amp; Download <span class="sidebar-section-arrow">▶</span>
-      </div>
-      <div class="sidebar-links">
-        <a class="sidebar-link" href="access-suspense-items.html">How to Access Suspense Items</a>
-        <a class="sidebar-link" href="assigning-download-files-from-suspense.html">Assigning Download Files from Suspense</a>
-        <a class="sidebar-link" href="cannot-assign-line-type-mismatch.html">Cannot Assign: Line Type Mismatch</a>
-        <a class="sidebar-link" href="cannot-assign-service-summary-action.html">Cannot Assign: Service Summary Action Variation</a>
-        <a class="sidebar-link" href="cannot-assign-transaction-date-mismatch.html">Cannot Assign: Transaction Date Mismatch</a>
-        <a class="sidebar-link" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
-      </div>
-    </div>
-    <div class="sidebar-divider"></div>
-    <div class="sidebar-section open" id="sb-activity">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
-        Activity Management <span class="sidebar-section-arrow">▶</span>
-      </div>
-      <div class="sidebar-links">
-        <a class="sidebar-link" href="activity-code-reference.html">Add Attachment Activity Codes</a>
-        <!-- ADD MORE AGENCY PAGES HERE AS MORE ARE CREATED -->
-        <!-- <a class="sidebar-link active" href="%%PAGE_FILENAME%%">%%AGENCY_NAME%% — Activity Codes</a> -->
-        <a class="sidebar-link active" href="nadler-insurance-activity-codes.html">Nadler Insurance</a>
-      </div>
-    </div>
-    <div class="sidebar-divider"></div>
-  </aside>
 
   <!-- MAIN CONTENT -->
   <main class="workflow-content">
@@ -514,8 +464,6 @@
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
-  function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
-  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
 
   /* ══════════════════════════════════════════════════════════════════
