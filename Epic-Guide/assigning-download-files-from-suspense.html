@@ -30,8 +30,6 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
-
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -42,252 +40,118 @@
     }
     .nav-brand { display: flex; align-items: center; gap: 13px; text-decoration: none; }
     .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .nav-brand-name {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--tan);
-    }
-    .nav-brand-sub {
-      font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--gold); font-weight: 500;
-    }
+    .nav-brand-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); }
+    .nav-brand-sub { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-weight: 500; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--grey);
-      font-size: 14px; font-weight: 400; letter-spacing: 0.4px;
-      transition: color 0.2s;
-    }
+    .nav-links a { text-decoration: none; color: var(--grey); font-size: 14px; font-weight: 400; letter-spacing: 0.4px; transition: color 0.2s; }
     .nav-links a:hover { color: var(--tan); }
-    .nav-cta {
-      border: 1px solid var(--gold-border); color: var(--gold);
-      padding: 9px 24px; border-radius: 2px;
-      font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-      text-decoration: none; transition: background 0.2s, color 0.2s;
-    }
+    .nav-cta { border: 1px solid var(--gold-border); color: var(--gold); padding: 9px 24px; border-radius: 2px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; }
     .nav-cta:hover { background: var(--gold); color: var(--dark); }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none; flex-direction: column; justify-content: center;
-      gap: 5px; cursor: pointer; padding: 6px;
-      background: none; border: none; z-index: 200;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--tan); border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
-    }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--tan); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* MOBILE DRAWER */
-    .mobile-menu {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(23,30,38,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 150;
-      flex-direction: column; align-items: center; justify-content: center;
-      gap: 0;
-    }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(23,30,38,0.98); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; }
     .mobile-menu.open { display: flex; }
     .mobile-menu ul { list-style: none; text-align: center; margin-bottom: 40px; }
     .mobile-menu ul li { border-bottom: 1px solid var(--border); }
     .mobile-menu ul li:first-child { border-top: 1px solid var(--border); }
-    .mobile-menu ul li a {
-      display: block; padding: 20px 48px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--tan); text-decoration: none; transition: color 0.2s;
-    }
+    .mobile-menu ul li a { display: block; padding: 20px 48px; font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); text-decoration: none; transition: color 0.2s; }
     .mobile-menu ul li a:hover { color: var(--gold); }
-    .mobile-menu .mobile-cta {
-      border: 1px solid var(--gold-border); color: var(--gold);
-      padding: 14px 40px; border-radius: 2px;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      text-decoration: none; transition: background 0.2s, color 0.2s;
-    }
+    .mobile-menu .mobile-cta { border: 1px solid var(--gold-border); color: var(--gold); padding: 14px 40px; border-radius: 2px; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; }
     .mobile-menu .mobile-cta:hover { background: var(--gold); color: var(--dark); }
-
-    /* BREADCRUMB */
-    .breadcrumb {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 12px; color: var(--grey); margin-bottom: 20px;
-      font-weight: 300; letter-spacing: 0.3px;
-    }
-    .breadcrumb a {
-      color: var(--grey); text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: color 0.2s;
-    }
+    .page-hero { padding: 130px 60px 52px; background: var(--mid); border-bottom: 1px solid var(--gold-border); position: relative; overflow: hidden; }
+    .hero-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 50% 70% at 85% 50%, rgba(202,157,100,0.07) 0%, transparent 65%); }
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--grey); margin-bottom: 20px; font-weight: 300; letter-spacing: 0.3px; }
+    .breadcrumb a { color: var(--grey); text-decoration: none; transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--gold); }
-    .breadcrumb-sep { color: var(--gold-border); }
+    .breadcrumb-sep { color: var(--gold); opacity: 0.5; }
     .breadcrumb-current { color: var(--tan); }
-
-    /* PAGE HEADER */
-    .page-hero {
-      padding: 140px 60px 60px;
-      background: var(--mid);
-      border-bottom: 1px solid var(--gold-border);
-    }
-    .eyebrow {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-    }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
     .eyebrow-line { width: 36px; height: 1px; background: var(--gold); }
-    .eyebrow-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 11px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase;
-      color: var(--gold);
-    }
-    .page-title {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: clamp(30px, 5vw, 56px);
-      font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      color: var(--tan); line-height: 1.0; margin-bottom: 14px;
-    }
+    .eyebrow-text { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--gold); }
+    .page-title { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4vw, 52px); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--tan); line-height: 1.05; margin-bottom: 16px; }
     .page-title span { color: var(--gold); }
-    .page-sub {
-      color: var(--grey); font-size: 17px; font-weight: 300;
-      max-width: 620px; line-height: 1.65; margin-bottom: 24px;
-    }
-    .meta { display: flex; gap: 24px; flex-wrap: wrap; }
-    .meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--grey); font-weight: 300; }
-    .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-
-    /* CONTENT */
-    .content { padding: 60px 60px 80px; }
-
-    .scenario-box {
-      background: var(--mid); border: 1px solid var(--gold-border);
-      border-left: 3px solid var(--gold); border-radius: 2px;
-      padding: 22px 26px; margin-bottom: 48px;
-    }
-    .scenario-label {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 8px;
-    }
-    .scenario-text { color: var(--tan); font-size: 16px; font-weight: 300; line-height: 1.7; }
-
-    .section-heading {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .section-heading::after { content: ''; flex: 1; height: 1px; background: var(--gold-border); }
-
-    /* SCRIBE EMBED */
-    .scribe-wrapper {
-      border: 1px solid var(--gold-border); border-radius: 2px;
-      overflow: hidden; margin-bottom: 52px; background: var(--mid);
-    }
-    .scribe-label {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); padding: 12px 18px; background: var(--mid);
-      border-bottom: 1px solid var(--gold-border);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .scribe-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
-
-    /* STEPS */
-    .phase { margin-bottom: 32px; }
-    .phase-label {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
-      color: var(--grey); margin-bottom: 10px; padding-left: 4px;
-    }
-    .steps-list { display: flex; flex-direction: column; gap: 3px; }
-    .step {
-      background: var(--tan-faint); border: 1px solid var(--border);
-      border-radius: 2px; overflow: hidden; transition: border-color 0.2s;
-    }
-    .step:hover { border-color: var(--gold-border); }
-    .step-header {
-      display: flex; align-items: center; gap: 14px;
-      padding: 13px 18px; cursor: pointer; user-select: none;
-    }
-    .step-num {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 18px; font-weight: 700; color: var(--gold); min-width: 30px; line-height: 1;
-    }
-    .step-title { font-size: 14px; font-weight: 500; color: var(--tan); flex: 1; }
-    .step-icon { font-size: 11px; color: var(--grey); transition: transform 0.25s; margin-left: auto; flex-shrink: 0; }
-    .step.open .step-icon { transform: rotate(180deg); }
-    .step-body { display: none; padding: 0 18px 16px 62px; border-top: 1px solid var(--border); }
-    .step.open .step-body { display: block; }
-    .step-body p { color: var(--grey); font-size: 14px; font-weight: 300; margin-top: 12px; line-height: 1.7; }
-    .sub-steps { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
-    .sub-steps li { display: flex; gap: 9px; font-size: 14px; color: var(--grey); font-weight: 300; line-height: 1.6; }
-    .sub-steps li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
-    .sub-steps li strong { color: var(--tan); font-weight: 500; }
-    .callout {
-      background: rgba(202,157,100,0.07); border: 1px solid var(--gold-border);
-      border-radius: 2px; padding: 9px 13px; margin-top: 12px;
-      font-size: 13px; color: var(--grey); display: flex; gap: 8px;
-      align-items: flex-start; line-height: 1.6;
-    }
-    .callout-icon { color: var(--gold); flex-shrink: 0; }
-
-    /* FAQ */
-    .faq-list { display: flex; flex-direction: column; gap: 3px; margin-bottom: 48px; }
+    .page-sub { color: var(--grey); font-size: 16px; font-weight: 300; max-width: 620px; line-height: 1.65; margin-bottom: 28px; }
+    .hero-meta { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .hero-meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 300; color: var(--grey); }
+    .hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+    .hero-meta-item strong { color: var(--tan); font-weight: 500; }
+    .workflow-layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 200px); }
+    .sidebar { border-right: 1px solid var(--border); padding: 40px 0; position: sticky; top: 73px; height: calc(100vh - 73px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--gold-border) transparent; }
+    .sidebar-section { margin-bottom: 8px; }
+    .sidebar-section-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 24px; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); cursor: pointer; user-select: none; transition: background 0.15s; }
+    .sidebar-section-header:hover { background: var(--tan-faint); }
+    .sidebar-section-arrow { font-size: 9px; color: var(--gold-border); transition: transform 0.2s; }
+    .sidebar-section.open .sidebar-section-arrow { transform: rotate(90deg); }
+    .sidebar-links { display: none; }
+    .sidebar-section.open .sidebar-links { display: block; }
+    .sidebar-link { display: block; padding: 8px 24px 8px 32px; font-size: 13px; font-weight: 300; color: var(--grey); text-decoration: none; transition: color 0.2s, background 0.15s; border-left: 2px solid transparent; line-height: 1.4; }
+    .sidebar-link:hover { color: var(--tan); background: var(--tan-faint); }
+    .sidebar-link.active { color: var(--gold); border-left-color: var(--gold); background: var(--gold-dim); }
+    .sidebar-divider { height: 1px; background: var(--border); margin: 16px 24px; }
+    .workflow-content { padding: 52px 60px 80px; min-width: 0; max-width: 860px; }
+    .scenario-box { background: var(--gold-dim); border: 1px solid var(--gold-border); border-left: 3px solid var(--gold); border-radius: 2px; padding: 20px 24px; margin-bottom: 40px; }
+    .scenario-label { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .scenario-box p { font-size: 14px; font-weight: 300; color: var(--tan); line-height: 1.65; }
+    .phase-header { display: flex; align-items: center; gap: 14px; margin: 44px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .phase-number { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); background: var(--gold-dim); border: 1px solid var(--gold-border); padding: 3px 10px; border-radius: 1px; white-space: nowrap; }
+    .phase-title { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--tan); }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 0; position: relative; }
+    .step-connector { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--gold-dim); border: 1px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-family: 'Rajdhani', sans-serif; font-size: 12px; font-weight: 700; color: var(--gold); flex-shrink: 0; z-index: 1; }
+    .step-line { width: 1px; flex: 1; background: var(--border); margin-top: 6px; min-height: 20px; }
+    .step:last-child .step-line { display: none; }
+    .step-body { padding: 0 0 28px 16px; }
+    .step-title { font-size: 15px; font-weight: 500; color: var(--tan); margin-bottom: 6px; line-height: 1.4; padding-top: 3px; }
+    .step-detail { font-size: 13px; font-weight: 300; color: var(--grey); line-height: 1.6; margin-bottom: 10px; }
+    .step-alert { background: rgba(202,157,100,0.08); border: 1px solid var(--gold-border); border-left: 2px solid var(--gold); border-radius: 1px; padding: 10px 14px; font-size: 13px; font-weight: 300; color: var(--tan); line-height: 1.55; margin-top: 8px; }
+    .step-alert strong { color: var(--gold); font-weight: 600; }
+    .step-tip { background: rgba(189,187,174,0.06); border: 1px solid var(--border); border-left: 2px solid var(--grey); border-radius: 1px; padding: 10px 14px; font-size: 13px; font-weight: 300; color: var(--grey); line-height: 1.55; margin-top: 8px; }
+    .step-tip strong { color: var(--tan); font-weight: 500; }
+    .faq-section { margin-top: 52px; border-top: 1px solid var(--border); padding-top: 36px; }
+    .section-label { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .faq-list { display: flex; flex-direction: column; gap: 3px; margin-bottom: 40px; }
     .faq-item { border: 1px solid var(--border); border-radius: 2px; overflow: hidden; transition: border-color 0.2s; }
     .faq-item:hover { border-color: var(--gold-border); }
-    .faq-q {
-      padding: 14px 18px; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      font-size: 15px; font-weight: 500; color: var(--tan); user-select: none;
-    }
+    .faq-q { padding: 14px 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 15px; font-weight: 500; color: var(--tan); user-select: none; }
     .faq-q span { font-size: 11px; color: var(--grey); flex-shrink: 0; transition: transform 0.25s; }
     .faq-item.open .faq-q span { transform: rotate(180deg); }
     .faq-a { display: none; padding: 0 18px 16px; font-size: 14px; color: var(--grey); font-weight: 300; line-height: 1.7; border-top: 1px solid var(--border); }
     .faq-a p { padding-top: 12px; }
     .faq-item.open .faq-a { display: block; }
-
-    /* QUICK REFERENCE */
-    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 60px; }
-    .badge {
-      border: 1px solid var(--gold-border); color: var(--gold);
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-      padding: 6px 14px; border-radius: 2px;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 36px 60px; border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 16px;
-    }
+    .badge-section { margin-top: 0; margin-bottom: 0; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge { border: 1px solid var(--gold-border); color: var(--gold); font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 2px; }
+    .scribe-section { margin-top: 52px; border-top: 1px solid var(--border); padding-top: 36px; }
+    .scribe-title { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--tan); margin-bottom: 8px; }
+    .scribe-desc { font-size: 14px; font-weight: 300; color: var(--grey); margin-bottom: 20px; line-height: 1.6; }
+    .scribe-embed-wrap { position: relative; width: 100%; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+    .scribe-embed-wrap iframe { display: block; width: 100%; border: none; min-height: 640px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 400; color: var(--grey); text-decoration: none; margin-bottom: 36px; transition: color 0.2s; }
+    .back-link:hover { color: var(--gold); }
+    .back-link-arrow { font-size: 16px; }
+    footer { padding: 36px 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
     .footer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .footer-brand-name {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--tan);
-    }
+    .footer-brand-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 17px; letter-spacing: 2px; text-transform: uppercase; color: var(--tan); }
     footer p { font-size: 13px; color: var(--grey); }
-
-    /* RESPONSIVE */
     @media (max-width: 960px) {
       nav { padding: 14px 24px; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .hamburger { display: flex; }
-      .page-hero { padding: 120px 24px 48px; }
-      .content { padding: 40px 24px 60px; }
+      .page-hero { padding: 110px 24px 40px; }
+      .workflow-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .workflow-content { padding: 36px 24px 60px; }
       footer { padding: 36px 24px; }
-    }
-    @media (max-width: 600px) {
-      .meta { gap: 14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-brand" href="index.html">
     <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block;"/>
@@ -312,7 +176,6 @@
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <ul>
     <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
@@ -327,217 +190,210 @@
   <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
 </div>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
+  <div class="hero-glow"></div>
   <div class="breadcrumb">
-    <a href="index-guide.html">← Epic Processing Guide</a>
+    <a href="index.html">Home</a>
     <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Interface &amp; Download</span>
+    <a href="index-guide.html">Epic Processing Guide</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="index-guide.html#interface-download">Interface &amp; Download</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Assigning Download Files from Suspense</span>
   </div>
-  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Epic Processing Guide</span></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Interface &amp; Download · Applied Epic</span></div>
   <div class="page-title">Assigning <span>Download Files</span><br>From Suspense</div>
   <p class="page-sub">How to locate and assign a download file sitting in Interface Suspense to the correct existing policy — including filtering, sorting, and confirming the policy update.</p>
-  <div class="meta">
-    <div class="meta-item"><div class="meta-dot"></div>9 Steps</div>
-    <div class="meta-item"><div class="meta-dot"></div>~1 Minute</div>
-    <div class="meta-item"><div class="meta-dot"></div>Applied Epic</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>9 Steps</strong></div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>~1 Minute</strong></div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Interface Suspense</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Policy Assignment</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Lookup Code</div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
-<div class="content">
-
-  <div class="scenario-box">
-    <div class="scenario-label">Scenario</div>
-    <div class="scenario-text">A download file has landed in <strong style="color:var(--tan);font-weight:500;">Interface Suspense</strong> and needs to be manually assigned to the correct policy on the account. This workflow covers how to search for the matching policy — including enabling the <strong style="color:var(--tan);font-weight:500;">Prospective</strong> and <strong style="color:var(--tan);font-weight:500;">History</strong> filters to surface all available policies — sort by expiration date to find the right term, and select the existing policy to complete the assignment.</div>
-  </div>
-
-  <!-- SCRIBE EMBED -->
-  <div class="section-heading">Interactive Walkthrough</div>
-  <div class="scribe-wrapper">
-    <div class="scribe-label"><div class="scribe-dot"></div>Live Step-by-Step Guide — Epic Optimizer · 9 Steps</div>
-    <iframe src="https://scribehow.com/page-embed/Assigning_Download_Files_from_Suspense__-t3VMz2YQV-CyPoEklAZWw" width="100%" height="800" allow="fullscreen" style="border:0;min-height:640px;display:block;"></iframe>
-  </div>
-
-  <!-- STEPS -->
-  <div class="section-heading">Processing Steps</div>
-
-  <div class="phase">
-    <div class="phase-label">Phase 1 — Account Search and Filtering</div>
-    <div class="steps-list">
-
-      <div class="step" id="s1">
-        <div class="step-header" onclick="tog('s1')">
-          <div class="step-num">01</div>
-          <div class="step-title">Select the Policy Transaction from Suspense</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Starting in the suspense area of Epic, select the policy transaction from the list that needs to be assigned.</p>
-          <div class="callout"><span class="callout-icon">ℹ</span> This opens the assignment search screen where you will locate the matching policy on the account.</div>
-        </div>
+<div class="workflow-layout">
+  <aside class="sidebar">
+    <div class="sidebar-section open" id="sb-interface">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-interface')">
+        Interface &amp; Download
+        <span class="sidebar-section-arrow">▶</span>
       </div>
-
-      <div class="step" id="s2">
-        <div class="step-header" onclick="tog('s2')">
-          <div class="step-num">02</div>
-          <div class="step-title">Enable "Prospective" and "History" Checkboxes</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Select both the <strong>Prospective</strong> and <strong>History</strong> checkboxes under the Existing Clients/Policies section to expand the search results beyond only active policies.</p>
-          <div class="callout"><span class="callout-icon">⚠</span> Without these checked, prior-term or future-dated policies may not appear in the results — causing you to miss the correct policy.</div>
-        </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="access-suspense-items.html">How to Access Suspense Items</a>
+        <a class="sidebar-link active" href="assigning-download-files-from-suspense.html">Assigning Download Files from Suspense</a>
+        <a class="sidebar-link" href="cannot-assign-line-type-mismatch.html">Cannot Assign: Line Type Mismatch</a>
+        <a class="sidebar-link" href="cannot-assign-service-summary-action.html">Cannot Assign: Service Summary Action Variation</a>
+        <a class="sidebar-link" href="cannot-assign-transaction-date-mismatch.html">Cannot Assign: Transaction Date Mismatch</a>
+        <a class="sidebar-link" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
       </div>
-
-      <div class="step" id="s3">
-        <div class="step-header" onclick="tog('s3')">
-          <div class="step-num">03</div>
-          <div class="step-title">Click "Find"</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Click <strong>Find</strong> to refresh and reload the policy search results with the updated filter selections applied.</p>
-        </div>
-      </div>
-
     </div>
-  </div>
+    <div class="sidebar-divider"></div>
+  </aside>
 
-  <div class="phase">
-    <div class="phase-label">Phase 2 — Policy Selection and Assignment</div>
-    <div class="steps-list">
+  <main class="workflow-content">
+    <a class="back-link" href="index-guide.html">
+      <span class="back-link-arrow">←</span> Back to Epic Processing Guide
+    </a>
 
-      <div class="step" id="s4">
-        <div class="step-header" onclick="tog('s4')">
-          <div class="step-num">04</div>
-          <div class="step-title">Click the "Expiration" Column Header to Sort</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Click the <strong>Expiration</strong> column header to sort the policy list by expiration date, making it easier to identify the correct policy term.</p>
-        </div>
-      </div>
-
-      <div class="step" id="s5">
-        <div class="step-header" onclick="tog('s5')">
-          <div class="step-num">05</div>
-          <div class="step-title">Find the Policy with the Matching Effective Date Range</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Review the sorted list and locate the policy whose effective and expiration dates match the date range of the downloaded file.</p>
-          <div class="callout"><span class="callout-icon">⚠</span> Make sure the policy term dates align exactly with the transaction — do not select a policy with different dates or you may assign the file to the wrong term.</div>
-        </div>
-      </div>
-
-      <div class="step" id="s6">
-        <div class="step-header" onclick="tog('s6')">
-          <div class="step-num">06</div>
-          <div class="step-title">Click "Select Existing"</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>With the correct policy highlighted, click <strong>Select Existing</strong> to attach the downloaded transaction to the existing policy on the account rather than creating a new policy record.</p>
-          <div class="callout"><span class="callout-icon">ℹ</span> Selecting Existing keeps the account clean and avoids duplicate policy records.</div>
-        </div>
-      </div>
-
-      <div class="step" id="s7">
-        <div class="step-header" onclick="tog('s7')">
-          <div class="step-num">07</div>
-          <div class="step-title">Click "Update Existing"</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>In the Suspense Policy Line Detail window that opens, click <strong>Update Existing</strong> to proceed with updating the matched policy with the downloaded file's data.</p>
-        </div>
-      </div>
-
-      <div class="step" id="s8">
-        <div class="step-header" onclick="tog('s8')">
-          <div class="step-num">08</div>
-          <div class="step-title">Click "Yes" — Confirm the Policy Update</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Click <strong>Yes</strong> at the confirmation prompt to approve and finalize the policy update with the downloaded transaction.</p>
-        </div>
-      </div>
-
-      <div class="step" id="s9">
-        <div class="step-header" onclick="tog('s9')">
-          <div class="step-num">09</div>
-          <div class="step-title">Verify the Lookup Code Is Assigned</div>
-          <div class="step-icon">▼</div>
-        </div>
-        <div class="step-body">
-          <p>Confirm that the <strong>Lookup Code</strong> has been successfully assigned to the policy. The field should now reflect the carrier's lookup code, indicating the download file is properly linked.</p>
-          <div class="callout"><span class="callout-icon">✓</span> Workflow complete. The download file is now assigned to the correct existing policy and the transaction is removed from Suspense.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="section-heading">Frequently Asked Questions</div>
-  <div class="faq-list">
-
-    <div class="faq-item" id="f1">
-      <div class="faq-q" onclick="togF('f1')">Why do I need to check "Prospective" and "History" before searching?<span>▼</span></div>
-      <div class="faq-a"><p>By default, Epic's Suspense search only surfaces currently active policies. Enabling Prospective includes future-dated policies that haven't yet taken effect, and History includes expired prior-term policies. If the downloaded transaction relates to a renewal or a policy that has already expired, it will not appear without these filters checked — causing you to create a new policy record instead of matching to the correct one.</p></div>
+    <div class="scenario-box">
+      <div class="scenario-label">Scenario</div>
+      <p>A download file has landed in <strong>Interface Suspense</strong> and needs to be manually assigned to the correct policy on the account. This workflow covers how to search for the matching policy — including enabling the <strong>Prospective</strong> and <strong>History</strong> filters to surface all available policies — sort by expiration date to find the right term, and select the existing policy to complete the assignment.</p>
     </div>
 
-    <div class="faq-item" id="f2">
-      <div class="faq-q" onclick="togF('f2')">What does "Select Existing" do versus creating a new policy?<span>▼</span></div>
-      <div class="faq-a"><p>Select Existing attaches the downloaded transaction to an account's current policy record rather than generating a brand-new policy. This keeps the account clean and avoids duplicate policies. Always use Select Existing when you can confirm the correct policy is already on the account.</p></div>
+    <div class="phase-header">
+      <span class="phase-number">Phase 01</span>
+      <span class="phase-title">Account Search and Filtering</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Select the Policy Transaction from Suspense.</div>
+          <div class="step-detail">Starting in the suspense area of Epic, select the policy transaction from the list that needs to be assigned. This opens the assignment search screen where you will locate the matching policy on the account.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Enable <strong>Prospective</strong> and <strong>History</strong> checkboxes.</div>
+          <div class="step-detail">Select both the Prospective and History checkboxes under the Existing Clients/Policies section to expand the search results beyond only active policies.</div>
+          <div class="step-alert"><strong>Alert:</strong> Without these checked, prior-term or future-dated policies may not appear in the results — causing you to miss the correct policy.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Find</strong>.</div>
+          <div class="step-detail">Click Find to refresh and reload the policy search results with the updated filter selections applied.</div>
+        </div>
+      </div>
     </div>
 
-    <div class="faq-item" id="f3">
-      <div class="faq-q" onclick="togF('f3')">Why sort by the Expiration column?<span>▼</span></div>
-      <div class="faq-a"><p>Sorting by Expiration groups policies chronologically, making it much faster to scan for the term that matches the date range on the downloaded file. This is especially useful when an account has multiple years of policy history listed in the results.</p></div>
+    <div class="phase-header">
+      <span class="phase-number">Phase 02</span>
+      <span class="phase-title">Policy Selection and Assignment</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Click the <strong>Expiration</strong> column header to sort.</div>
+          <div class="step-detail">Click the Expiration column header to sort the policy list by expiration date, making it easier to identify the correct policy term.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Find the policy with the matching effective date range.</div>
+          <div class="step-detail">Review the sorted list and locate the policy whose effective and expiration dates match the date range of the downloaded file.</div>
+          <div class="step-alert"><strong>Alert:</strong> Make sure the policy term dates align exactly with the transaction — do not select a policy with different dates or you may assign the file to the wrong term.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Select Existing</strong>.</div>
+          <div class="step-detail">With the correct policy highlighted, click Select Existing to attach the downloaded transaction to the existing policy on the account rather than creating a new policy record.</div>
+          <div class="step-tip"><strong>Tip:</strong> Selecting Existing keeps the account clean and avoids duplicate policy records.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Update Existing</strong>.</div>
+          <div class="step-detail">In the Suspense Policy Line Detail window that opens, click Update Existing to proceed with updating the matched policy with the downloaded file's data.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Yes</strong> — Confirm the Policy Update.</div>
+          <div class="step-detail">Click Yes at the confirmation prompt to approve and finalize the policy update with the downloaded transaction.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Verify the Lookup Code is assigned.</div>
+          <div class="step-detail">Confirm that the Lookup Code has been successfully assigned to the policy. The field should now reflect the carrier's lookup code, indicating the download file is properly linked.</div>
+          <div class="step-alert"><strong>Workflow complete.</strong> The download file is now assigned to the correct existing policy and the transaction is removed from Suspense.</div>
+        </div>
+      </div>
     </div>
 
-    <div class="faq-item" id="f4">
-      <div class="faq-q" onclick="togF('f4')">What is the Lookup Code and why does it matter?<span>▼</span></div>
-      <div class="faq-a"><p>The Lookup Code is the carrier's identifier that links a downloaded transaction to a specific policy in Epic. Once the assignment is complete, this code should appear on the policy record, confirming that future downloads from the carrier will route directly to this policy without landing in Suspense again.</p></div>
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="section-label">Frequently Asked Questions</div>
+      <div class="faq-list">
+        <div class="faq-item" id="f1">
+          <div class="faq-q" onclick="togF('f1')">Why do I need to check "Prospective" and "History" before searching?<span>▼</span></div>
+          <div class="faq-a"><p>By default, Epic's Suspense search only surfaces currently active policies. Enabling Prospective includes future-dated policies that haven't yet taken effect, and History includes expired prior-term policies. If the downloaded transaction relates to a renewal or a policy that has already expired, it will not appear without these filters checked — causing you to create a new policy record instead of matching to the correct one.</p></div>
+        </div>
+        <div class="faq-item" id="f2">
+          <div class="faq-q" onclick="togF('f2')">What does "Select Existing" do versus creating a new policy?<span>▼</span></div>
+          <div class="faq-a"><p>Select Existing attaches the downloaded transaction to an account's current policy record rather than generating a brand-new policy. This keeps the account clean and avoids duplicate policies. Always use Select Existing when you can confirm the correct policy is already on the account.</p></div>
+        </div>
+        <div class="faq-item" id="f3">
+          <div class="faq-q" onclick="togF('f3')">Why sort by the Expiration column?<span>▼</span></div>
+          <div class="faq-a"><p>Sorting by Expiration groups policies chronologically, making it much faster to scan for the term that matches the date range on the downloaded file. This is especially useful when an account has multiple years of policy history listed in the results.</p></div>
+        </div>
+        <div class="faq-item" id="f4">
+          <div class="faq-q" onclick="togF('f4')">What is the Lookup Code and why does it matter?<span>▼</span></div>
+          <div class="faq-a"><p>The Lookup Code is the carrier's identifier that links a downloaded transaction to a specific policy in Epic. Once the assignment is complete, this code should appear on the policy record, confirming that future downloads from the carrier will route directly to this policy without landing in Suspense again.</p></div>
+        </div>
+        <div class="faq-item" id="f5">
+          <div class="faq-q" onclick="togF('f5')">What if I can't find a matching policy even after enabling the filters?<span>▼</span></div>
+          <div class="faq-a"><p>If no policy with matching dates appears after enabling Prospective and History, the policy may not yet exist in Epic for this account. In that case, you would need to create the policy manually before returning to Suspense to assign the download. Do not use "Select Existing" if none of the results match the transaction's effective date range.</p></div>
+        </div>
+        <div class="faq-item" id="f6">
+          <div class="faq-q" onclick="togF('f6')">Does this workflow apply to all download types in Suspense?<span>▼</span></div>
+          <div class="faq-a"><p>This workflow covers the standard assignment process for download files where the policy exists on the account but the Lookup Code has not yet been assigned. For more complex scenarios — such as a line type mismatch causing a "Cannot Assign" error — refer to the separate workflow for resolving Line Type Mismatches in Suspense.</p></div>
+        </div>
+      </div>
     </div>
 
-    <div class="faq-item" id="f5">
-      <div class="faq-q" onclick="togF('f5')">What if I can't find a matching policy even after enabling the filters?<span>▼</span></div>
-      <div class="faq-a"><p>If no policy with matching dates appears after enabling Prospective and History, the policy may not yet exist in Epic for this account. In that case, you would need to create the policy manually before returning to Suspense to assign the download. Do not use "Select Existing" if none of the results match the transaction's effective date range.</p></div>
+    <!-- QUICK REFERENCE -->
+    <div class="badge-section">
+      <div class="section-label">Quick Reference</div>
+      <div class="badge-row">
+        <div class="badge">Interface Suspense</div>
+        <div class="badge">Prospective + History</div>
+        <div class="badge">Find</div>
+        <div class="badge">Sort by Expiration</div>
+        <div class="badge">Match Date Range</div>
+        <div class="badge">Select Existing</div>
+        <div class="badge">Update Existing</div>
+        <div class="badge">Confirm Yes</div>
+        <div class="badge">Verify Lookup Code</div>
+      </div>
     </div>
 
-    <div class="faq-item" id="f6">
-      <div class="faq-q" onclick="togF('f6')">Does this workflow apply to all download types in Suspense?<span>▼</span></div>
-      <div class="faq-a"><p>This workflow covers the standard assignment process for download files where the policy exists on the account but the Lookup Code has not yet been assigned. For more complex scenarios — such as a line type mismatch causing a "Cannot Assign" error — refer to the separate workflow for resolving Line Type Mismatches in Suspense.</p></div>
+    <!-- SCRIBE EMBED -->
+    <div class="scribe-section">
+      <div class="section-label">Interactive Walkthrough</div>
+      <div class="scribe-title">Step-by-Step Visual Guide</div>
+      <p class="scribe-desc">Follow along with the full interactive Scribe below for annotated screenshots of every step in this workflow.</p>
+      <div class="scribe-embed-wrap">
+        <iframe
+          src="https://scribehow.com/page-embed/Assigning_Download_Files_from_Suspense__-t3VMz2YQV-CyPoEklAZWw"
+          width="100%"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          title="Assigning Download Files from Suspense | Scribe"
+        ></iframe>
+      </div>
     </div>
 
-  </div>
+  </main>
+</div>
 
-  <!-- QUICK REFERENCE -->
-  <div class="section-heading">Quick Reference</div>
-  <div class="badge-row">
-    <div class="badge">Interface Suspense</div>
-    <div class="badge">Prospective + History</div>
-    <div class="badge">Find</div>
-    <div class="badge">Sort by Expiration</div>
-    <div class="badge">Match Date Range</div>
-    <div class="badge">Select Existing</div>
-    <div class="badge">Update Existing</div>
-    <div class="badge">Confirm Yes</div>
-    <div class="badge">Verify Lookup Code</div>
-  </div>
-
-</div><!-- /content -->
-
-<!-- FOOTER -->
 <footer>
   <a class="footer-brand" href="index.html">
     <svg width="26" height="30" viewBox="0 0 110 127" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32"
-        fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
+      <polygon points="55,4 107,32 107,95 55,123 3,95 3,32" fill="rgba(202,157,100,0.10)" stroke="#ca9d64" stroke-width="6" stroke-linejoin="round"/>
       <rect x="40" y="22" width="30" height="6" rx="1" fill="#ca9d64"/>
       <rect x="51" y="22" width="8" height="34" rx="1" fill="#ca9d64"/>
       <rect x="16" y="62" width="6" height="34" rx="1" fill="#ca9d64"/>
@@ -566,9 +422,9 @@
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
-  function tog(id) { document.getElementById(id).classList.toggle('open'); }
+  function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
+  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
 </script>
-
 </body>
 </html>

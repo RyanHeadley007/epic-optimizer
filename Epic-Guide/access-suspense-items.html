@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cannot Assign: 6 Month Term but 12 Month in Epic | Epic Optimizer</title>
+  <title>How to Access Suspense Items in Applied Epic | Epic Optimizer</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
   <link rel="icon" type="image/png" sizes="16x16" href="../Images/favicon_16.png"/>
@@ -430,18 +430,18 @@
     <span class="breadcrumb-sep">›</span>
     <a href="index-guide.html#interface-download">Interface &amp; Download</a>
     <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Cannot Assign: 6 Month Term but 12 Month in Epic</span>
+    <span class="breadcrumb-current">How to Access Suspense Items</span>
   </div>
   <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Interface &amp; Download · Applied Epic</span></div>
-  <div class="page-title">Cannot Assign: <span>6 Month Term</span><br>but 12 Month in Epic</div>
-  <p class="page-sub">Resolve a download blocked from assignment because the policy term in the download (6 months) doesn't match the term entered in Epic (12 months). Covers identifying the mismatch, correcting the effective and expiration dates at the policy level, and completing the assignment.</p>
+  <div class="page-title">How to Access <span>Suspense</span><br>Items in Epic</div>
+  <p class="page-sub">Efficiently locate and assign premium payable items within the Applied Epic interface. Covers navigating to the suspense queue, filtering by item type and carrier, and running a targeted search to isolate the transactions you need to process.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>15 Steps</strong></div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>10 Steps</strong></div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>~1 Minute</strong></div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Interface Suspense</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Term Length</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Date Correction</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Premium Payable</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Carrier Filter</div>
   </div>
 </div>
 
@@ -456,12 +456,12 @@
         <span class="sidebar-section-arrow">▶</span>
       </div>
             <div class="sidebar-links">
-        <a class="sidebar-link" href="access-suspense-items.html">How to Access Suspense Items</a>
+        <a class="sidebar-link active" href="access-suspense-items.html">How to Access Suspense Items</a>
         <a class="sidebar-link" href="assigning-download-files-from-suspense.html">Assigning Download Files from Suspense</a>
         <a class="sidebar-link" href="cannot-assign-line-type-mismatch.html">Cannot Assign: Line Type Mismatch</a>
         <a class="sidebar-link" href="cannot-assign-service-summary-action.html">Cannot Assign: Service Summary Action Variation</a>
         <a class="sidebar-link" href="cannot-assign-transaction-date-mismatch.html">Cannot Assign: Transaction Date Mismatch</a>
-        <a class="sidebar-link active" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
+        <a class="sidebar-link" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
       </div>
     </div>
     <div class="sidebar-divider"></div>
@@ -477,13 +477,13 @@
     <!-- SCENARIO -->
     <div class="scenario-box">
       <div class="scenario-label">Scenario</div>
-      <p>A download arrives for a policy, but the transaction cannot be assigned. The root cause is a term length mismatch: the policy was entered in Epic with a <strong>12-month term</strong>, but the carrier's download reflects a <strong>6-month term</strong>. Because the effective date range in Epic doesn't match the downloaded transaction's effective date range, the assignment is blocked. Since the policy is still "Not Issued" and "In-Process," the standard Change Effective Dates function from the suspense screen will not work — the correction must be made at the client/policy level first.</p>
+      <p>You need to locate and work through suspended download transactions for a specific carrier — for example, <strong>Safeco</strong> premium payable items. Rather than scrolling through an unfiltered suspense queue, this workflow shows you how to navigate directly to Interface Management, filter the list to Premium Payable items, and search by carrier name so only the relevant transactions are displayed.</p>
     </div>
 
     <!-- PHASE 1 -->
     <div class="phase-header">
       <span class="phase-number">Phase 01</span>
-      <span class="phase-title">Suspense Item Selection</span>
+      <span class="phase-title">Initial Navigation</span>
     </div>
 
     <div class="steps">
@@ -494,8 +494,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Highlight the transaction in Interface Suspense and click <strong>Find</strong>.</div>
-          <div class="step-detail">Locate the download sitting in suspense that is failing to assign.</div>
+          <div class="step-title">Start on the Epic Home page.</div>
+          <div class="step-detail">Ensure you are logged in and viewing the main Epic Home dashboard before beginning this workflow.</div>
         </div>
       </div>
 
@@ -505,31 +505,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Review the key data fields on the download transaction.</div>
-          <div class="step-detail">Before attempting assignment, confirm the following from the download detail:</div>
-          <ul class="step-list">
-            <li>Effective Date Range (e.g., 6-month vs. 12-month term)</li>
-            <li>Transaction Type</li>
-            <li>Transaction Date</li>
-            <li>Line Type</li>
-          </ul>
-          <div class="step-alert">
-            <strong>Alert:</strong> If the Effective Date Range on the download does not match the term in Epic, assignment will fail. In this scenario, Epic shows an annual (12-month) term while the download reflects a 6-month term.
-          </div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">3</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Note the limitation before proceeding.</div>
-          <div class="step-detail">Because the policy is still <strong>Not Issued</strong> and <strong>In-Process</strong> in Epic, the "Change Effective Dates" option from the suspense assignment screen will not work. The correction must be made directly on the policy record at the client/account level.</div>
-          <div class="step-tip">
-            <strong>Tip:</strong> This is a key distinction from the Transaction Date Mismatch workflow. That scenario allows a date correction from within the suspense screen. This scenario requires navigating out to the policy record itself.
-          </div>
+          <div class="step-title">Navigate to <strong>Procedures</strong> via the Home menu dropdown.</div>
+          <div class="step-detail">Click the Home menu in the top navigation bar and select Procedures from the dropdown list that appears.</div>
         </div>
       </div>
 
@@ -538,10 +515,21 @@
     <!-- PHASE 2 -->
     <div class="phase-header">
       <span class="phase-number">Phase 02</span>
-      <span class="phase-title">Client Account Lookup</span>
+      <span class="phase-title">Accessing Suspense Items</span>
     </div>
 
     <div class="steps">
+
+      <div class="step">
+        <div class="step-connector">
+          <div class="step-num">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Interface Management</strong> in the left navigation menu.</div>
+          <div class="step-detail">Find and select Interface Management in the left-hand sidebar of the Procedures section.</div>
+        </div>
+      </div>
 
       <div class="step">
         <div class="step-connector">
@@ -549,8 +537,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Click <strong>Locate</strong> to search for the specific account.</div>
-          <div class="step-detail">Use the account lookup to navigate to the client record associated with the download.</div>
+          <div class="step-title">Click <strong>Assign Items in Suspense</strong>.</div>
+          <div class="step-detail">Select this option from the Interface Management panel to open the suspense queue.</div>
         </div>
       </div>
 
@@ -560,8 +548,19 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Select <strong>Policies</strong> from the sidebar menu.</div>
-          <div class="step-detail">Once inside the client account, navigate to the Policies section to locate the relevant policy record.</div>
+          <div class="step-title">Select <strong>Policies</strong> from the list.</div>
+          <div class="step-detail">Choose Policies as the item type you want to work with from the available options in the suspense queue.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-connector">
+          <div class="step-num">6</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-title">Click <strong>Run</strong>.</div>
+          <div class="step-detail">Execute the query to load all suspense items in the Policies queue before applying filters.</div>
         </div>
       </div>
 
@@ -570,21 +569,10 @@
     <!-- PHASE 3 -->
     <div class="phase-header">
       <span class="phase-number">Phase 03</span>
-      <span class="phase-title">Policy Date Adjustment</span>
+      <span class="phase-title">Filtering and Searching</span>
     </div>
 
     <div class="steps">
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">6</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Locate the policy with the incorrect expiration date.</div>
-          <div class="step-detail">Identify the policy in the list that reflects the 12-month term. The expiration date will need to be corrected to match the 6-month term from the download.</div>
-        </div>
-      </div>
 
       <div class="step">
         <div class="step-connector">
@@ -592,8 +580,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Open the <strong>Actions</strong> menu and select <strong>Change Effective/Expiration Dates</strong>.</div>
-          <div class="step-detail">This option is available at the policy level (unlike the suspense screen, which is blocked for Not Issued/In-Process policies).</div>
+          <div class="step-title">Select <strong>Premium Payable</strong> from the <strong>Search where</strong> dropdown.</div>
+          <div class="step-detail">Use the Search where dropdown to narrow the results to premium payable items only, excluding other transaction types from the queue.</div>
         </div>
       </div>
 
@@ -603,23 +591,13 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Enter the updated <strong>Effective</strong> and <strong>Expiration</strong> dates, then click <strong>Finish</strong>.</div>
-          <div class="step-detail">Use the dates from the download transaction to determine the correct 6-month expiration date. Update both fields as needed and confirm the change.</div>
-          <div class="step-alert">
-            <strong>Important:</strong> Double-check the downloaded transaction's effective date range before entering these values. The corrected expiration date in Epic must match exactly.
+          <div class="step-title">Type the carrier's PPE name into the search criteria field.</div>
+          <div class="step-detail">Enter the carrier name exactly as it appears in your carrier setup. In this example, the carrier is <strong>Safeco</strong>.</div>
+          <div class="step-tip">
+            <strong>Tip:</strong> Use the exact PPE name as configured in your carrier setup. A partial name may return incomplete results or no results at all.
           </div>
         </div>
       </div>
-
-    </div><!-- /steps phase 3 -->
-
-    <!-- PHASE 4 -->
-    <div class="phase-header">
-      <span class="phase-number">Phase 04</span>
-      <span class="phase-title">Suspense Item Assignment</span>
-    </div>
-
-    <div class="steps">
 
       <div class="step">
         <div class="step-connector">
@@ -627,8 +605,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Return to Interface Suspense and select the policy from the results.</div>
-          <div class="step-detail">Navigate back to the suspense item. The date correction has now been applied at the policy level.</div>
+          <div class="step-title">Click <strong>Find</strong> to execute the search.</div>
+          <div class="step-detail">Run the search to display all matching premium payable suspense transactions for the specified carrier.</div>
         </div>
       </div>
 
@@ -638,63 +616,15 @@
           <div class="step-line"></div>
         </div>
         <div class="step-body">
-          <div class="step-title">Click <strong>Find</strong> to refresh the policy results.</div>
+          <div class="step-title">Review the filtered results — you are now isolated to the carrier's downloads.</div>
+          <div class="step-detail">The suspense queue now displays only premium payable transactions for the carrier you searched. From here you can select individual items to review, assign, or troubleshoot.</div>
+          <div class="step-alert">
+            <strong>Workflow complete.</strong> You are now filtered to the carrier's suspense downloads and ready to begin assigning or resolving individual transactions.
+          </div>
         </div>
       </div>
 
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">11</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Verify the policy expiration date now matches the downloaded transaction's effective date range.</div>
-          <div class="step-detail">Confirm the policy in the results list reflects the corrected 6-month term before proceeding with assignment.</div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">12</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Click <strong>Select Existing</strong>.</div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">13</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Click <strong>Update Existing</strong> to apply the download to the policy.</div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">14</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Click <strong>Yes</strong> on the confirmation prompt.</div>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">15</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-body">
-          <div class="step-title">Verify the lookup code was assigned.</div>
-          <div class="step-detail">Confirm that the account lookup code now appears on the policy record, indicating the download has been successfully assigned.</div>
-        </div>
-      </div>
-
-    </div><!-- /steps phase 4 -->
+    </div><!-- /steps phase 3 -->
 
     <!-- SCRIBE EMBED -->
     <div class="scribe-section">
@@ -703,11 +633,11 @@
       <p class="scribe-desc">Follow along with the full interactive Scribe below for annotated screenshots of every step in this workflow.</p>
       <div class="scribe-embed-wrap">
         <iframe
-          src="https://scribehow.com/embed/Cannot_Assign_6_month_Term_but_12_month_in_Epic__NWjfIvTAQoyG1WTfjJjTng"
+          src="https://scribehow.com/embed/How_to_Access_Suspense_Items_in_Applied_Epic__FkpPet9GRZaQeOAhiY3OQA"
           width="100%"
           allowfullscreen
           referrerpolicy="strict-origin-when-cross-origin"
-          title="Cannot Assign - 6 Month Term but 12 Month in Epic | Scribe"
+          title="How to Access Suspense Items in Applied Epic | Scribe"
         ></iframe>
       </div>
     </div>
