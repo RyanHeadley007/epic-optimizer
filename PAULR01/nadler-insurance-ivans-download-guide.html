@@ -68,7 +68,24 @@
     .hero-meta-item strong { color:var(--tan); font-weight:500 }
 
     /* ── LAYOUT ── */
-    .page-content { padding:48px 60px 80px; max-width:1400px; margin:0 auto }
+    .workflow-layout { display:grid; grid-template-columns:240px 1fr; min-height:calc(100vh - 200px) }
+
+    /* ── SIDEBAR ── */
+    .sidebar { border-right:1px solid var(--border); padding:40px 0; position:sticky; top:73px; height:calc(100vh - 73px); overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--gold-border) transparent }
+    .sidebar-section { margin-bottom:8px }
+    .sidebar-section-header { display:flex; align-items:center; justify-content:space-between; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); cursor:pointer; user-select:none; transition:background 0.15s }
+    .sidebar-section-header:hover { background:var(--tan-faint) }
+    .sidebar-section-arrow { font-size:9px; color:var(--gold-border); transition:transform 0.2s }
+    .sidebar-section.open .sidebar-section-arrow { transform:rotate(90deg) }
+    .sidebar-links { display:none }
+    .sidebar-section.open .sidebar-links { display:block }
+    .sidebar-link { display:block; padding:8px 24px 8px 32px; font-size:13px; font-weight:300; color:var(--grey); text-decoration:none; transition:color 0.2s,background 0.15s; border-left:2px solid transparent; line-height:1.4 }
+    .sidebar-link:hover { color:var(--tan); background:var(--tan-faint) }
+    .sidebar-link.active { color:var(--gold); border-left-color:var(--gold); background:var(--gold-dim) }
+    .sidebar-link.coming-soon { opacity:0.4; cursor:default; pointer-events:none; font-style:italic }
+    .sidebar-divider { height:1px; background:var(--border); margin:16px 24px }
+
+    .page-content { padding:48px 52px 80px; min-width:0; overflow-x:auto }
 
     /* ── LEGEND ── */
     .legend { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px }
@@ -157,6 +174,8 @@
       .nav-cta { display:none }
       .hamburger { display:flex }
       .page-hero { padding:110px 24px 40px }
+      .workflow-layout { grid-template-columns:1fr }
+      .sidebar { display:none }
       .page-content { padding:36px 20px 60px }
       footer { padding:36px 24px }
     }
@@ -218,6 +237,49 @@
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>IVANS / Applied Epic</div>
   </div>
 </div>
+
+<!-- LAYOUT -->
+<div class="workflow-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section open" id="sb-hub">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-hub')">
+        Nadler Insurance <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="index-nadler.html">← Guide Library Home</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section open" id="sb-activity">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
+        Activity &amp; Download Resources <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="nadler-insurance-activity-codes.html">Add Attachment Activity Codes</a>
+        <a class="sidebar-link" href="nadler-insurance-submission-codes.html">Submission Event Activity Codes</a>
+        <a class="sidebar-link active" href="nadler-insurance-ivans-download-guide.html">IVANS Download Guide</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section open" id="sb-certs">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-certs')">
+        Certificate Processing <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link coming-soon">Guides coming soon</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+  </aside>
 
 <!-- CONTENT -->
 <div class="page-content">
@@ -357,6 +419,7 @@
   </div>
 
 </div><!-- /page-content -->
+</div><!-- /workflow-layout -->
 
 <!-- FOOTER -->
 <footer>
@@ -382,6 +445,8 @@
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
+  function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
+  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
 
   /* ══════════════════════════════════════════════════════════════════
