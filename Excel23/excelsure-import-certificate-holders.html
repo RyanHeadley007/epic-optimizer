@@ -17,8 +17,6 @@
     *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
     html { scroll-behavior:smooth }
     body { background:var(--dark); color:var(--tan); font-family:'Outfit',sans-serif; font-size:17px; line-height:1.65; overflow-x:hidden }
-
-    /* ── NAV ── */
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 60px; background:rgba(23,30,38,0.96); backdrop-filter:blur(18px); border-bottom:1px solid var(--border) }
     .nav-brand { display:flex; align-items:center; gap:13px; text-decoration:none }
     .nav-brand-text { display:flex; flex-direction:column; line-height:1.1 }
@@ -42,8 +40,6 @@
     .mobile-menu ul li a { display:block; padding:20px 48px; font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--tan); text-decoration:none; transition:color 0.2s }
     .mobile-menu ul li a:hover { color:var(--gold) }
     .mobile-menu .mobile-cta { border:1px solid var(--gold-border); color:var(--gold); padding:14px 40px; border-radius:2px; font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none }
-
-    /* ── HERO ── */
     .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
     .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
     .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
@@ -59,11 +55,7 @@
     .hero-meta-item { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:300; color:var(--grey) }
     .hero-meta-dot { width:4px; height:4px; border-radius:50%; background:var(--gold) }
     .hero-meta-item strong { color:var(--tan); font-weight:500 }
-
-    /* ── OUTER LAYOUT ── */
     .workflow-layout { display:grid; grid-template-columns:240px 1fr; min-height:calc(100vh - 200px) }
-
-    /* ── SIDEBAR ── */
     .sidebar { border-right:1px solid var(--border); padding:40px 0; position:sticky; top:73px; height:calc(100vh - 73px); overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--gold-border) transparent }
     .sidebar-section { margin-bottom:8px }
     .sidebar-section-header { display:flex; align-items:center; justify-content:space-between; padding:10px 24px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); cursor:pointer; user-select:none; transition:background 0.15s }
@@ -75,41 +67,24 @@
     .sidebar-link { display:block; padding:8px 24px 8px 32px; font-size:13px; font-weight:300; color:var(--grey); text-decoration:none; transition:color 0.2s,background 0.15s; border-left:2px solid transparent; line-height:1.4 }
     .sidebar-link:hover { color:var(--tan); background:var(--tan-faint) }
     .sidebar-link.active { color:var(--gold); border-left-color:var(--gold); background:var(--gold-dim) }
-    .sidebar-link.coming-soon { opacity:0.4; cursor:default; pointer-events:none; font-style:italic }
     .sidebar-divider { height:1px; background:var(--border); margin:16px 24px }
-
-    /* ── MAIN CONTENT ── */
     .workflow-content { padding:52px 52px 80px; min-width:0 }
     .back-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:400; color:var(--grey); text-decoration:none; margin-bottom:36px; transition:color 0.2s }
     .back-link:hover { color:var(--gold) }
     .back-link-arrow { font-size:16px }
-
-    /* ── SCENARIO ── */
     .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:40px }
     .scenario-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
     .scenario-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
-
-    /* ── TWO-COLUMN LAYOUT ── */
+    .scenario-box a { color:var(--gold); text-underline-offset:3px }
+    .scenario-box a:hover { color:var(--tan) }
     .content-columns { position:relative; padding-right:calc((100% + 240px) * 0.48) }
     .steps-column { min-width:0 }
-    .scribe-column {
-      position: fixed;
-      top: calc(73px + 16px);
-      right: 0;
-      width: calc((100vw - 240px) * 0.48);
-      height: calc(100vh - 73px - 32px);
-      display: flex;
-      flex-direction: column;
-      padding-right: 52px;
-      z-index: 10;
-    }
+    .scribe-column { position:fixed; top:calc(73px + 16px); right:0; width:calc((100vw - 240px) * 0.48); height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:52px; z-index:10 }
     .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
     .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
     .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
     .scribe-panel-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold) }
     .scribe-panel iframe { display:block; width:100%; border:none; flex:1; min-height:0 }
-
-    /* ── PHASE + STEPS ── */
     .phase-header { display:flex; align-items:center; gap:14px; margin:44px 0 20px; padding-bottom:12px; border-bottom:1px solid var(--border) }
     .phase-header:first-of-type { margin-top:0 }
     .phase-number { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background:var(--gold-dim); border:1px solid var(--gold-border); padding:3px 10px; border-radius:1px; white-space:nowrap }
@@ -123,15 +98,10 @@
     .step-body { padding:0 0 28px 16px }
     .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
     .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
-    .step-list { list-style:none; margin:6px 0 10px }
-    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
-    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
     .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
     .step-alert strong { color:var(--gold); font-weight:600 }
     .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
     .step-tip strong { color:var(--tan); font-weight:500 }
-
-    /* ── FAQ ── */
     .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
     .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
     .faq-list { display:flex; flex-direction:column; gap:3px; margin-bottom:40px }
@@ -143,26 +113,16 @@
     .faq-a { display:none; padding:0 18px 16px; font-size:14px; color:var(--grey); font-weight:300; line-height:1.7; border-top:1px solid var(--border) }
     .faq-a p { padding-top:12px }
     .faq-item.open .faq-a { display:block }
-
-    /* ── FOOTER ── */
     footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
     .footer-brand { display:flex; align-items:center; gap:12px; text-decoration:none }
     .footer-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:17px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
     footer p { font-size:13px; color:var(--grey) }
-
-    /* ── RESPONSIVE ── */
     @media (max-width:960px) {
-      nav { padding:14px 24px }
-      .nav-links { display:none }
-      .nav-cta { display:none }
-      .hamburger { display:flex }
-      .page-hero { padding:110px 24px 40px }
-      .workflow-layout { grid-template-columns:1fr }
-      .sidebar { display:none }
-      .workflow-content { padding:36px 24px 60px }
+      nav { padding:14px 24px } .nav-links,.nav-cta { display:none } .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px } .workflow-layout { grid-template-columns:1fr }
+      .sidebar { display:none } .workflow-content { padding:36px 24px 60px }
       .content-columns { padding-right:calc(50vw + 16px) }
-      .scribe-column { width:calc(50vw - 16px); padding-right:16px }
-      footer { padding:36px 24px }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px } footer { padding:36px 24px }
     }
     @media (max-width:600px) {
       .content-columns { padding-right:0 }
@@ -209,162 +169,174 @@
   <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
 </div>
 
-<!-- HERO -->
 <div class="page-hero">
   <div class="hero-glow"></div>
   <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Certificate Process</span></div>
-  <div class="agency-badge">
-    <span class="agency-badge-label">Agency</span>
-    <span class="agency-badge-name">Excelsure</span>
-  </div>
+  <div class="agency-badge"><span class="agency-badge-label">Agency</span><span class="agency-badge-name">Excelsure</span></div>
   <div class="page-title">Import Certificate Holders<br><span>into CSR24</span></div>
-  <p class="page-sub">Step-by-step walkthrough for importing a list of certificate holders into CSR24 for Excelsure. Use this process when onboarding a new client with multiple holders or updating a bulk holder list on an existing account.</p>
+  <p class="page-sub">How to import a bulk holder list into CSR24 using the approved Epic Optimizer import template. Covers file selection, template assignment, default settings, and post-import verification.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Phases</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>7</strong>&nbsp;Steps</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>3</strong>&nbsp;Phases</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>12</strong>&nbsp;Steps</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
   </div>
 </div>
 
 <div class="workflow-layout">
-
-  <!-- SIDEBAR -->
   <aside class="sidebar">
-
     <div class="sidebar-section open" id="sb-hub">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-hub')">
-        Excelsure <span class="sidebar-section-arrow">▶</span>
-      </div>
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-hub')">Excelsure <span class="sidebar-section-arrow">▶</span></div>
       <div class="sidebar-links">
         <a class="sidebar-link" href="index-excelsure.html">← Guide Library Home</a>
       </div>
     </div>
-
     <div class="sidebar-divider"></div>
-
     <div class="sidebar-section open" id="sb-cert">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-cert')">
-        Certificate Process <span class="sidebar-section-arrow">▶</span>
-      </div>
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-cert')">Certificate Process <span class="sidebar-section-arrow">▶</span></div>
       <div class="sidebar-links">
         <a class="sidebar-link active" href="excelsure-import-certificate-holders.html">Import Certificate Holders into CSR24</a>
         <a class="sidebar-link" href="excelsure-create-certificate-template.html">Create Certificate Template in CSR24</a>
       </div>
     </div>
-
     <div class="sidebar-divider"></div>
-
-    <div class="sidebar-section open" id="sb-activity">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
-        Activity Management <span class="sidebar-section-arrow">▶</span>
-      </div>
-      <div class="sidebar-links">
-        <a class="sidebar-link" href="excelsure-activity-codes.html">Add Attachment Activity Codes</a>
-      </div>
-    </div>
-
-    <div class="sidebar-divider"></div>
-
   </aside>
 
   <main class="workflow-content">
     <a class="back-link" href="index-excelsure.html"><span class="back-link-arrow">←</span> Back to Excelsure Guide Library</a>
 
     <div class="content-columns">
-
       <div class="steps-column">
 
-        <!-- KEY CONCEPT -->
         <div class="scenario-box">
-          <div class="scenario-label">Before You Begin</div>
-          <p>Certificate holder imports require a correctly formatted spreadsheet. Verify that your holder list matches CSR24's expected column structure before starting the import — an incorrectly formatted file will fail silently or load with blank fields. Have the client's policy open in Applied Epic before navigating to CSR24.</p>
+          <div class="scenario-label">Required Before You Start</div>
+          <p>You must use the approved Excel import template that has been mapped specifically to CSR24 import fields. Do not use a custom spreadsheet — field mapping will fail. <a href="https://github.com/RyanHeadley007/epic-optimizer/blob/main/Assets/Holder%20Import%20Template%20-%20CSR24%20v1.1.xlsx" target="_blank">Download the Holder Import Template (v1.1) →</a></p>
         </div>
 
         <!-- PHASE 1 -->
         <div class="phase-header">
           <span class="phase-number">Phase 01</span>
-          <span class="phase-title">Prepare &amp; Access CSR24</span>
+          <span class="phase-title">Navigate to the Import Screen</span>
         </div>
-
         <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Prepare the certificate holder spreadsheet</div>
-              <div class="step-detail">Before logging into CSR24, confirm your holder list is ready. CSR24 expects a specific column layout for import. Typical required fields include:</div>
-              <ul class="step-list">
-                <li>Certificate holder name</li>
-                <li>Address line 1, City, State, ZIP</li>
-                <li>Additional insured designation (if applicable)</li>
-                <li>Holder description or reference number</li>
-              </ul>
-              <div class="step-tip"><strong>Tip:</strong> Use a prior successful import file as a formatting reference. Column headers must match exactly — CSR24 is case-sensitive on field names.</div>
+              <div class="step-title">Start from the account details page in CSR24</div>
+              <div class="step-detail">Open CSR24 and navigate to the client's account details page. This is your starting point for the import workflow.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Log into CSR24 and navigate to the client account</div>
-              <div class="step-detail">Open CSR24 and locate the client whose certificate holders you are importing. Navigate to the Certificates section within the client's account before proceeding to the import tool.</div>
+              <div class="step-title">Click "Holders"</div>
+              <div class="step-detail">From the account details page, click the <strong style="color:var(--tan)">Holders</strong> tab to open the certificate holders list for this account.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Open the Certificate Holders module</div>
-              <div class="step-detail">Within the client's certificate section, locate and open the Certificate Holders module. This is where the import function is housed — do not attempt to add holders manually one-by-one when you have a list ready for import.</div>
-              <div class="step-alert"><strong>Important:</strong> Confirm you are inside the correct client account before initiating an import. Importing holders into the wrong account cannot be easily reversed.</div>
+              <div class="step-title">Click "Import"</div>
+              <div class="step-detail">Inside the Holders section, click the <strong style="color:var(--tan)">Import</strong> button to open the import dialog.</div>
             </div>
           </div>
 
-        </div><!-- /steps phase 1 -->
+        </div>
 
         <!-- PHASE 2 -->
         <div class="phase-header">
           <span class="phase-number">Phase 02</span>
-          <span class="phase-title">Run the Import</span>
+          <span class="phase-title">Configure the Import</span>
         </div>
-
         <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the Import option and upload your file</div>
-              <div class="step-detail">Click the Import button within the Certificate Holders module. CSR24 will prompt you to select your spreadsheet file. Browse to your prepared holder list and confirm the upload. Only upload one file per import session.</div>
+              <div class="step-title">Click "Choose File" and navigate to the saved Epic file</div>
+              <div class="step-detail">Click <strong style="color:var(--tan)">Choose File</strong> and navigate to the holder list file that was exported from Epic. Select the file to load it into the import dialog.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Map the columns to CSR24 fields</div>
-              <div class="step-detail">CSR24 will display a column-mapping screen. Match each column in your spreadsheet to the corresponding CSR24 field. Review every mapping before confirming — an unmapped required field will cause those rows to import with missing data.</div>
-              <div class="step-tip"><strong>Tip:</strong> If you used a correctly formatted template file, CSR24 may auto-map all columns. Still verify each one before proceeding.</div>
+              <div class="step-title">Select the appropriate template to add the holders to</div>
+              <div class="step-detail">Choose the certificate template you want to associate these holders with. Click the template row to select it.</div>
+              <div class="step-alert"><strong>Verify your selection:</strong> When you select a template, the row will turn blue — this confirms the template is selected and you are ready to proceed. If no row is highlighted blue, nothing is assigned.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Review the import preview and confirm</div>
-              <div class="step-detail">CSR24 will show a preview of the records to be imported. Scan the list for any obvious errors — misspelled names, blank address fields, or duplicate entries. Once satisfied, confirm the import to load all holders into the account.</div>
+              <div class="step-title">Check "Default Send Email/Fax to Yes"</div>
+              <div class="step-detail">Check the <strong style="color:var(--tan)">Default Send Email/Fax to Yes</strong> checkbox. This sets all imported holders to receive certificates via email or fax when certificates are issued.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Verify the imported holders</div>
-              <div class="step-detail">After the import completes, return to the Certificate Holders list and verify the record count matches your source file. Spot-check several holders for address accuracy. If records are missing or malformed, review your source spreadsheet formatting and re-import the affected rows.</div>
-              <div class="step-alert"><strong>Record count mismatch:</strong> If the imported count is lower than expected, CSR24 likely skipped rows with missing required fields. Check the import error log if available, correct the source file, and re-run for the failed records only.</div>
+              <div class="step-title">Check "Default Send Renewed Cert to Yes"</div>
+              <div class="step-detail">Check the <strong style="color:var(--tan)">Default Send Renewed Cert to Yes</strong> checkbox. This flags all imported holders to automatically receive renewal certificates when the policy renews.</div>
             </div>
           </div>
 
-        </div><!-- /steps phase 2 -->
+          <div class="step">
+            <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check "Default Lock Holder Info on Self-Service to Yes"</div>
+              <div class="step-detail">Check the <strong style="color:var(--tan)">Default Lock Holder Info on Self-Service to Yes</strong> checkbox. This prevents self-service portal users from modifying the imported holder information.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Import"</div>
+              <div class="step-detail">With the file selected, the template row highlighted blue, and all three checkboxes checked, click the <strong style="color:var(--tan)">Import</strong> button to run the import.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="phase-header">
+          <span class="phase-number">Phase 03</span>
+          <span class="phase-title">Verify the Results</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Review the results page</div>
+              <div class="step-detail">CSR24 will redirect you to a results page. Look for any discrepancies between <strong style="color:var(--tan)">Total Records</strong> and <strong style="color:var(--tan)">Records Inserted</strong> — these numbers should match.</div>
+              <div class="step-alert"><strong>If the counts don't match:</strong> Rows that failed to import will be listed on this page. Correct those entries in your spreadsheet and re-run the import for the failed records only — do not re-import the full list or you will create duplicates.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Holders"</div>
+              <div class="step-detail">Navigate back to the <strong style="color:var(--tan)">Holders</strong> tab to view the full list of certificate holders now associated with this account.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Verify all holders have been uploaded</div>
+              <div class="step-detail">Confirm the total holder count in the list matches the number of records in your source file. Spot-check a few entries to verify names and contact details imported correctly.</div>
+              <div class="step-tip"><strong>Workflow complete.</strong> All holders are now linked to the selected certificate template with the correct default send and lock settings applied.</div>
+            </div>
+          </div>
+
+        </div>
 
         <!-- FAQ -->
         <div class="faq-section">
@@ -372,39 +344,38 @@
           <div class="faq-list">
 
             <div class="faq-item" id="faq1">
-              <div class="faq-q" onclick="togF('faq1')">What file format does CSR24 accept for certificate holder imports?<span>▼</span></div>
-              <div class="faq-a"><p>CSR24 typically accepts .CSV or .XLSX files for certificate holder imports. Confirm with your CSR24 administrator which format is configured for your agency's instance, as this can vary. When in doubt, export your spreadsheet as .CSV to avoid any Excel formatting conflicts.</p></div>
+              <div class="faq-q" onclick="togF('faq1')">Where do I get the approved import template?<span>▼</span></div>
+              <div class="faq-a"><p>The approved Holder Import Template (v1.1) is linked at the top of this guide. It is also available in the Epic Optimizer GitHub repository. You must use this template — do not build your own spreadsheet, as the column headers must match CSR24's import field mapping exactly.</p></div>
             </div>
 
             <div class="faq-item" id="faq2">
-              <div class="faq-q" onclick="togF('faq2')">Can I import holders to update existing records, or only to add new ones?<span>▼</span></div>
-              <div class="faq-a"><p>CSR24's import function is generally additive — it adds new holders rather than updating existing ones. If you need to update existing holder information, do so manually on the individual holder record, or remove the outdated records and re-import the corrected list.</p></div>
+              <div class="faq-q" onclick="togF('faq2')">How do I confirm the correct template is selected in step 5?<span>▼</span></div>
+              <div class="faq-a"><p>When you click a template in the selection list, the row turns blue. That blue highlight is the only confirmation that a template has been assigned. If the row does not turn blue, click it again. Do not proceed past step 5 without a blue-highlighted row — holders imported without a template selection will not be linked to any certificate.</p></div>
             </div>
 
             <div class="faq-item" id="faq3">
-              <div class="faq-q" onclick="togF('faq3')">What happens if I accidentally import holders into the wrong client account?<span>▼</span></div>
-              <div class="faq-a"><p>You will need to manually delete the imported holders from the incorrect account. CSR24 does not have a bulk-undo for imports. To avoid this, always double-check the client account name in your browser tab and the CSR24 breadcrumb before clicking Import.</p></div>
+              <div class="faq-q" onclick="togF('faq3')">Total Records and Records Inserted don't match — what do I do?<span>▼</span></div>
+              <div class="faq-a"><p>CSR24 skips rows with missing or invalid data in required fields. On the results page, identify the failed rows, correct those specific entries in your source spreadsheet, and re-run the import with only those corrected rows. Never re-import the full file after a partial success — it will create duplicate holders for all the rows that already imported correctly.</p></div>
             </div>
 
           </div>
-        </div><!-- /faq -->
+        </div>
 
       </div><!-- /steps-column -->
 
-      <!-- SCRIBE PANEL -->
       <div class="scribe-column">
         <div class="scribe-panel">
           <div class="scribe-panel-header">
             <div class="scribe-panel-dot"></div>
-            <span class="scribe-panel-label">Interactive Walkthrough — 7 Steps</span>
+            <span class="scribe-panel-label">Interactive Walkthrough — 12 Steps</span>
           </div>
           <iframe src="https://scribehow.com/embed/How_to_Import_Certificate_Holders_into_CSR24__xH_vFKaHQnGLG2fkXx9YkA?as=scrollable" width="100%" height="800" allow="fullscreen" style="border:0;min-height:640px" title="Import Certificate Holders into CSR24"></iframe>
         </div>
-      </div><!-- /scribe-column -->
+      </div>
 
     </div><!-- /content-columns -->
   </main>
-</div><!-- /workflow-layout -->
+</div>
 
 <footer>
   <a class="footer-brand" href="index.html">
@@ -423,11 +394,7 @@
     mobileMenu.classList.toggle('open');
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
-  function closeMobile() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
   function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
   document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
