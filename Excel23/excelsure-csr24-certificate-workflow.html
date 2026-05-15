@@ -80,6 +80,9 @@
 
     /* ── MAIN CONTENT ── */
     .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .back-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:400; color:var(--grey); text-decoration:none; margin-bottom:36px; transition:color 0.2s }
+    .back-link:hover { color:var(--gold) }
+    .back-link-arrow { font-size:16px }
     .steps-column { min-width:0 }
 
     /* ── SCENARIO ── */
@@ -221,7 +224,7 @@
 <!-- LAYOUT -->
 <div class="workflow-layout">
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR — full, consistent with all other pages -->
   <aside class="sidebar">
     <div class="sidebar-section open" id="sb-hub">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-hub')">
@@ -232,8 +235,18 @@
       </div>
     </div>
     <div class="sidebar-divider"></div>
-    <div class="sidebar-section open" id="sb-certificate">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-certificate')">
+    <div class="sidebar-section open" id="sb-cert">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-cert')">
+        Certificate Process <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="excelsure-import-certificate-holders.html">Import Certificate Holders into CSR24</a>
+        <a class="sidebar-link" href="excelsure-create-certificate-template.html">Create Certificate Template in CSR24</a>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section open" id="sb-issuance">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-issuance')">
         Certificate Issuance <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
@@ -241,19 +254,11 @@
       </div>
     </div>
     <div class="sidebar-divider"></div>
-    <div class="sidebar-section open" id="sb-activity">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
-        Activity Management <span class="sidebar-section-arrow">▶</span>
-      </div>
-      <div class="sidebar-links">
-        <a class="sidebar-link coming-soon">Guides coming soon</a>
-      </div>
-    </div>
-    <div class="sidebar-divider"></div>
   </aside>
 
   <!-- MAIN CONTENT -->
   <main class="workflow-content">
+    <a class="back-link" href="index-excelsure.html"><span class="back-link-arrow">←</span> Back to Excelsure Guide Library</a>
 
     <div class="steps-column">
 
