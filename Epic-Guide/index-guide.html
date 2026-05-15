@@ -434,11 +434,11 @@
   <p class="page-sub">Step-by-step workflows for common Epic processing scenarios. Built for agency staff who need clear, reliable procedures — organized by category.</p>
   <div class="hero-stats">
     <div class="hero-stat">
-      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-num">4</div>
       <div class="hero-stat-label">Sections</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">8</div>
+      <div class="hero-stat-num">9</div>
       <div class="hero-stat-label">Workflows</div>
     </div>
     <div class="hero-stat">
@@ -455,6 +455,9 @@
   </a>
   <a class="section-nav-link" href="#interface-download">
     Interface &amp; Download <span class="section-nav-count">6</span>
+  </a>
+  <a class="section-nav-link" href="#certificate-issuance">
+    Certificate Issuance <span class="section-nav-count">1</span>
   </a>
   <a class="section-nav-link" href="#activity-management">
     Activity Management <span class="section-nav-count">1</span>
@@ -491,6 +494,18 @@
         <a class="sidebar-link" href="cannot-assign-service-summary-action.html">Cannot Assign: Service Summary Action Variation</a>
         <a class="sidebar-link" href="cannot-assign-transaction-date-mismatch.html">Cannot Assign: Transaction Date Mismatch</a>
         <a class="sidebar-link" href="cannot-assign-term-length-mismatch.html">Cannot Assign: 6 Month Term but 12 Month in Epic</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section open" id="sb-certificate-issuance">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-certificate-issuance')">
+        Certificate Issuance
+        <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="csr24-certificate-workflow.html">Certificate Processing: Daily vs. Renewal Batch</a>
       </div>
     </div>
 
@@ -751,11 +766,58 @@
       </div>
     </div>
 
+    <!-- ── CERTIFICATE ISSUANCE SECTION ── -->
+    <div class="guide-section" id="certificate-issuance">
+      <div class="guide-section-header">
+        <div class="guide-section-left">
+          <div class="guide-section-eyebrow">Section 03</div>
+          <div class="guide-section-title">Certificate Issuance</div>
+          <p class="guide-section-desc">Workflows for certificate processing in CSR24 — covering account-level settings, daily vs. renewal batch behavior, and the configuration steps that prevent common issuance errors.</p>
+        </div>
+        <div class="guide-section-meta">1 Workflow</div>
+      </div>
+
+      <div class="workflow-grid">
+
+        <!-- WORKFLOW CARD: CSR24 Certificate Processing -->
+        <a class="workflow-card" href="csr24-certificate-workflow.html">
+          <div class="workflow-card-inner">
+            <div class="workflow-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V9l-5-6z" stroke="#ca9d64" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M14 3v6h6" stroke="#ca9d64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 12h6M9 15.5h4" stroke="#ca9d64" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="17" cy="17" r="4" stroke="#ca9d64" stroke-width="1.4"/>
+                <path d="M15.5 17l1 1 2-2" stroke="#ca9d64" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="workflow-card-body">
+              <div class="workflow-card-title">Certificate Processing: Daily vs. Renewal Batch</div>
+              <div class="workflow-card-desc">Account-level settings in CSR24 behave differently for daily certificates versus renewal batches. Covers what to confirm before each — including the one setting that can flood your insured's inbox with hundreds of emails if left on during a batch run.</div>
+              <div class="workflow-card-tags">
+                <span class="workflow-tag">CSR24</span>
+                <span class="workflow-tag">Renewal Batch</span>
+                <span class="workflow-tag">Certificate Holders</span>
+                <span class="workflow-tag">Account Settings</span>
+              </div>
+            </div>
+            <div class="workflow-card-arrow">→</div>
+          </div>
+          <div class="workflow-card-meta">
+            <div class="workflow-meta-item"><div class="workflow-meta-dot"></div>13 Steps</div>
+            <div class="workflow-meta-item"><div class="workflow-meta-dot"></div>~5 Minutes</div>
+            <div class="workflow-meta-item"><div class="workflow-meta-dot"></div>CSR24</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
     <!-- ── ACTIVITY MANAGEMENT SECTION ── -->
     <div class="guide-section" id="activity-management">
       <div class="guide-section-header">
         <div class="guide-section-left">
-          <div class="guide-section-eyebrow">Section 03</div>
+          <div class="guide-section-eyebrow">Section 04</div>
           <div class="guide-section-title">Activity Management</div>
           <p class="guide-section-desc">Workflows and reference guides for creating, coding, and managing activities in Epic — including the Add Attachment process, activity code selection, and the golden rule of attachment.</p>
         </div>
