@@ -273,7 +273,7 @@
         Certificate Processing <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
-        <a class="sidebar-link coming-soon">Guides coming soon</a>
+        <a class="sidebar-link" href="nadler-csr24-certificate-workflow.html">Certificate Processing: Daily vs. Renewal Batch</a>
       </div>
     </div>
 
@@ -501,11 +501,10 @@
   ];
 
   /* Column visibility groups */
-  const CL_COLS = [3,4,5,6,7,8,9,10,11,12];   /* indices into d[] */
+  const CL_COLS = [3,4,5,6,7,8,9,10,11,12];
   const PL_COLS = [13,14,15,16,17,18,19,20,21];
   const ALL_COLS = [0,1,2,...CL_COLS,...PL_COLS];
 
-  /* Status → chip class */
   function chipClass(val) {
     if (!val) return null;
     if (val === 'DOWNLOADING') return 'dl';
@@ -550,7 +549,6 @@
     const allThs = table.querySelectorAll('thead th[data-col]');
     const allTds = table.querySelectorAll('tbody td[data-col]');
 
-    /* determine which col indices to show */
     let showCols;
     if (currentView === 'cl') showCols = new Set([0,1,2,...CL_COLS]);
     else if (currentView === 'pl') showCols = new Set([0,1,2,...PL_COLS]);
@@ -565,14 +563,13 @@
       td.style.display = showCols.has(idx) ? '' : 'none';
     });
 
-    /* Group header spans */
     const gh = table.querySelector('.group-header');
     if (gh) {
       const ghCells = gh.querySelectorAll('th:not(.carrier-col)');
       if (currentView === 'all') {
-        ghCells[0].colSpan = 3;  /* global */
-        ghCells[1].colSpan = 10; /* cl */
-        ghCells[2].colSpan = 9;  /* pl */
+        ghCells[0].colSpan = 3;
+        ghCells[1].colSpan = 10;
+        ghCells[2].colSpan = 9;
         ghCells[1].style.display = '';
         ghCells[2].style.display = '';
       } else if (currentView === 'cl') {
@@ -596,10 +593,8 @@
     rows.forEach(tr => {
       const name = tr.getAttribute('data-carrier').toLowerCase();
       const statuses = tr.getAttribute('data-statuses') || '';
-
       const matchName = !q || name.includes(q);
       const matchStatus = currentStatus === 'all' || statuses.includes(currentStatus);
-
       if (matchName && matchStatus) {
         tr.classList.remove('hidden');
         visible++;
@@ -612,7 +607,6 @@
       visible === carriers.length ? `${carriers.length} carriers` : `${visible} of ${carriers.length} carriers`;
   }
 
-  /* Build table rows */
   function buildTable() {
     const cols = [
       { idx:0,  cls:'global-col', label:'edocs' },
@@ -639,7 +633,6 @@
       { idx:21, cls:'',    label:'wc2' },
     ];
 
-    /* Tag col headers with data-col-idx */
     document.querySelectorAll('thead th[data-col]').forEach(th => {
       const label = th.getAttribute('data-col');
       const col = cols.find(c => c.label === label);
@@ -653,13 +646,11 @@
       tr.setAttribute('data-carrier', carrier.name);
       tr.setAttribute('data-statuses', allStatuses);
 
-      /* Carrier name cell */
       const nameTd = document.createElement('td');
       nameTd.className = 'carrier-name';
       nameTd.textContent = carrier.name;
       tr.appendChild(nameTd);
 
-      /* Status cells */
       cols.forEach(col => {
         const val = carrier.d[col.idx];
         const td = document.createElement('td');
