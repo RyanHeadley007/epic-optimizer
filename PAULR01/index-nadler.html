@@ -85,7 +85,7 @@
     .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:20px }
 
     /* ── GUIDE CARDS GRID ── */
-    .guides-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:60px }
+    .guides-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px }
 
     .guide-card { display:flex; flex-direction:column; background:var(--mid); border:1px solid var(--border); border-radius:2px; overflow:hidden; text-decoration:none; transition:border-color 0.2s, transform 0.2s }
     .guide-card:hover { border-color:var(--gold-border); transform:translateY(-2px) }
@@ -105,18 +105,27 @@
     .guide-card:hover .guide-card-arrow { opacity:1; transform:translateX(3px) }
 
     /* ── INFO BOX ── */
-    .info-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:52px }
+    .info-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:48px }
     .info-box-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
     .info-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+
+    /* ── CATEGORY GROUPS ── */
+    .category-group { margin-bottom:52px }
+    .category-header { display:flex; align-items:center; gap:0; margin-bottom:24px; border-bottom:1px solid var(--gold-border); padding-bottom:14px }
+    .category-header-left { display:flex; align-items:center; gap:14px; flex:1 }
+    .category-icon { width:32px; height:32px; border-radius:1px; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0 }
+    .category-title { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--tan) }
+    .category-desc { font-size:12px; font-weight:300; color:var(--grey); margin-top:2px }
+    .category-count { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); opacity:0.7; white-space:nowrap }
+
+    /* ── DIVIDER ── */
+    .section-divider { height:1px; background:var(--border); margin:8px 0 48px }
 
     /* ── QUICK LINKS ── */
     .quick-links-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-bottom:0 }
     .quick-link { display:flex; align-items:center; gap:12px; padding:13px 16px; border:1px solid var(--border); border-radius:2px; text-decoration:none; color:var(--grey); font-size:13px; font-weight:300; transition:border-color 0.2s, color 0.2s, background 0.15s }
     .quick-link:hover { border-color:var(--gold-border); color:var(--tan); background:var(--tan-faint) }
     .quick-link-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; opacity:0.7 }
-
-    /* ── DIVIDER ── */
-    .section-divider { height:1px; background:var(--border); margin:52px 0 40px }
 
     /* ── FOOTER ── */
     footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
@@ -193,7 +202,7 @@
   <p class="page-sub">All Applied Epic guides and reference materials configured for Nadler Insurance. Select a guide below to access step-by-step workflows, activity code references, and carrier download data.</p>
   <div class="hero-meta">
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>5</strong>&nbsp;Guides</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Reference Tools</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>4</strong>&nbsp;Categories</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
   </div>
 </div>
@@ -206,13 +215,22 @@
 
     <div class="sidebar-section open" id="sb-activity">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
-        Activity &amp; Download Resources <span class="sidebar-section-arrow">▶</span>
+        Activity Management <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
-        <a class="sidebar-link active" href="index-nadler.html">Guide Library Home</a>
         <a class="sidebar-link" href="nadler-insurance-activity-codes.html">Add Attachment Activity Codes</a>
         <a class="sidebar-link" href="nadler-insurance-submission-codes.html">Submission Event Activity Codes</a>
-        <a class="sidebar-link" href="nadler-insurance-ivans-download-guide.html">IVANS Download Guide</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section open" id="sb-ivans">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-ivans')">
+        IVANS Download <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="nadler-insurance-ivans-download-guide.html">IVANS Connections Download Guide</a>
       </div>
     </div>
 
@@ -223,7 +241,7 @@
         Certificate Processing <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
-        <a class="sidebar-link" href="nadler-csr24-certificate-workflow.html">Certificate Processing: Daily vs. Renewal Batch</a>
+        <a class="sidebar-link" href="nadler-csr24-certificate-workflow.html">Daily vs. Renewal Batch</a>
       </div>
     </div>
 
@@ -251,95 +269,165 @@
     <p>These guides are configured specifically for Nadler Insurance — the activity codes, carrier connections, and workflows on these pages reflect your agency's current Applied Epic setup. If something appears incorrect or out of date, contact your Epic administrator.</p>
   </div>
 
-  <!-- GUIDES -->
-  <div class="section-label">Available Guides</div>
-  <div class="guides-grid">
-
-    <!-- Activity Codes -->
-    <a class="guide-card" href="nadler-insurance-activity-codes.html">
-      <div class="guide-card-header">
-        <div class="guide-card-icon">&#128196;</div>
-        <div class="guide-card-category">Activity Management</div>
-        <div class="guide-card-title">Add Attachment<br><span>Activity Codes</span></div>
-        <p class="guide-card-desc">Identify the correct activity code when manually attaching documents and emails to policies. Includes document-driven # codes, billing $ codes, and alpha service codes with full coding format strings.</p>
-      </div>
-      <div class="guide-card-footer">
-        <div class="guide-card-stats">
-          <div class="guide-card-stat"><strong>3</strong>&nbsp;Categories</div>
-          <div class="guide-card-stat">Interactive Reference</div>
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 1 · ACTIVITY MANAGEMENT           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="category-group">
+    <div class="category-header">
+      <div class="category-header-left">
+        <div class="category-icon">&#128196;</div>
+        <div>
+          <div class="category-title">Activity Management</div>
+          <div class="category-desc">Activity codes for attaching documents, emails, and tracking submission events in Applied Epic</div>
         </div>
-        <span class="guide-card-arrow">→</span>
       </div>
-    </a>
+      <div class="category-count">2 Guides</div>
+    </div>
+    <div class="guides-grid">
 
-    <!-- Submission Codes -->
-    <a class="guide-card" href="nadler-insurance-submission-codes.html">
-      <div class="guide-card-header">
-        <div class="guide-card-icon">&#128228;</div>
-        <div class="guide-card-category">Activity Management</div>
-        <div class="guide-card-title">Submission Event<br><span>Activity Codes</span></div>
-        <p class="guide-card-desc">Understand the 8 activity codes generated automatically by the Submission event. Each method of submitting to a carrier creates a distinct code — use this to identify what was created and why.</p>
-      </div>
-      <div class="guide-card-footer">
-        <div class="guide-card-stats">
-          <div class="guide-card-stat"><strong>8</strong>&nbsp;Activity Codes</div>
-          <div class="guide-card-stat"><strong>3</strong>&nbsp;Trigger Types</div>
+      <!-- Activity Codes -->
+      <a class="guide-card" href="nadler-insurance-activity-codes.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128196;</div>
+          <div class="guide-card-category">Activity Management</div>
+          <div class="guide-card-title">Add Attachment<br><span>Activity Codes</span></div>
+          <p class="guide-card-desc">Identify the correct activity code when manually attaching documents and emails to policies. Includes document-driven # codes, billing $ codes, and alpha service codes with full coding format strings.</p>
         </div>
-        <span class="guide-card-arrow">→</span>
-      </div>
-    </a>
-
-    <!-- IVANS Download Guide -->
-    <a class="guide-card" href="nadler-insurance-ivans-download-guide.html">
-      <div class="guide-card-header">
-        <div class="guide-card-icon">&#128257;</div>
-        <div class="guide-card-category">IVANS Download</div>
-        <div class="guide-card-title">IVANS Connections<br><span>Download Guide</span></div>
-        <p class="guide-card-desc">What each carrier downloads into Applied Epic, organized by download type and line of business. Quickly identify whether a carrier connection is actively downloading, available to configure, or flagged for future setup.</p>
-      </div>
-      <div class="guide-card-footer">
-        <div class="guide-card-stats">
-          <div class="guide-card-stat"><strong>42</strong>&nbsp;Carriers</div>
-          <div class="guide-card-stat"><strong>22</strong>&nbsp;Download Types</div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>3</strong>&nbsp;Categories</div>
+            <div class="guide-card-stat">Interactive Reference</div>
+          </div>
+          <span class="guide-card-arrow">→</span>
         </div>
-        <span class="guide-card-arrow">→</span>
-      </div>
-    </a>
+      </a>
 
-    <!-- CSR24 Certificate Processing -->
-    <a class="guide-card" href="nadler-csr24-certificate-workflow.html">
-      <div class="guide-card-header">
-        <div class="guide-card-icon">&#128279;</div>
-        <div class="guide-card-category">Certificate Processing</div>
-        <div class="guide-card-title">Certificate Processing:<br><span>Daily vs. Renewal Batch</span></div>
-        <p class="guide-card-desc">Account-level CSR24 settings behave differently for single certificates versus renewal batch runs. Learn what to confirm before each workflow — and why the wrong setting can flood your insured's inbox during a batch.</p>
-      </div>
-      <div class="guide-card-footer">
-        <div class="guide-card-stats">
-          <div class="guide-card-stat"><strong>2</strong>&nbsp;Workflows</div>
-          <div class="guide-card-stat">CSR24</div>
+      <!-- Submission Codes -->
+      <a class="guide-card" href="nadler-insurance-submission-codes.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128228;</div>
+          <div class="guide-card-category">Activity Management</div>
+          <div class="guide-card-title">Submission Event<br><span>Activity Codes</span></div>
+          <p class="guide-card-desc">Understand the 8 activity codes generated automatically by the Submission event. Each method of submitting to a carrier creates a distinct code — use this to identify what was created and why.</p>
         </div>
-        <span class="guide-card-arrow">→</span>
-      </div>
-    </a>
-
-    <!-- CSR24 Create User -->
-    <a class="guide-card" href="nadler-csr24-create-user.html">
-      <div class="guide-card-header">
-        <div class="guide-card-icon">&#128100;</div>
-        <div class="guide-card-category">CSR24 User Management</div>
-        <div class="guide-card-title">Create &amp; Configure<br><span>a New CSR24 User</span></div>
-        <p class="guide-card-desc">Set up portal access for an Epic contact in CSR24 — from locating the contact in Applied Epic through assigning the correct user group, start page, and app screen. Covers the full 12-step process for creating a new portal user.</p>
-      </div>
-      <div class="guide-card-footer">
-        <div class="guide-card-stats">
-          <div class="guide-card-stat"><strong>12</strong>&nbsp;Steps</div>
-          <div class="guide-card-stat">~2 Min</div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>8</strong>&nbsp;Activity Codes</div>
+            <div class="guide-card-stat"><strong>3</strong>&nbsp;Trigger Types</div>
+          </div>
+          <span class="guide-card-arrow">→</span>
         </div>
-        <span class="guide-card-arrow">→</span>
-      </div>
-    </a>
+      </a>
 
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 2 · IVANS DOWNLOAD                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="category-group">
+    <div class="category-header">
+      <div class="category-header-left">
+        <div class="category-icon">&#128257;</div>
+        <div>
+          <div class="category-title">IVANS Download</div>
+          <div class="category-desc">Carrier connection status and download type reference for Applied Epic integrations</div>
+        </div>
+      </div>
+      <div class="category-count">1 Guide</div>
+    </div>
+    <div class="guides-grid">
+
+      <!-- IVANS Download Guide -->
+      <a class="guide-card" href="nadler-insurance-ivans-download-guide.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128257;</div>
+          <div class="guide-card-category">IVANS Download</div>
+          <div class="guide-card-title">IVANS Connections<br><span>Download Guide</span></div>
+          <p class="guide-card-desc">What each carrier downloads into Applied Epic, organized by download type and line of business. Quickly identify whether a carrier connection is actively downloading, available to configure, or flagged for future setup.</p>
+        </div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>42</strong>&nbsp;Carriers</div>
+            <div class="guide-card-stat"><strong>22</strong>&nbsp;Download Types</div>
+          </div>
+          <span class="guide-card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 3 · CERTIFICATE PROCESSING        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="category-group">
+    <div class="category-header">
+      <div class="category-header-left">
+        <div class="category-icon">&#128279;</div>
+        <div>
+          <div class="category-title">Certificate Processing</div>
+          <div class="category-desc">CSR24 certificate workflows — daily issuance and renewal batch processing</div>
+        </div>
+      </div>
+      <div class="category-count">1 Guide</div>
+    </div>
+    <div class="guides-grid">
+
+      <!-- CSR24 Certificate Processing -->
+      <a class="guide-card" href="nadler-csr24-certificate-workflow.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128279;</div>
+          <div class="guide-card-category">Certificate Processing</div>
+          <div class="guide-card-title">Certificate Processing:<br><span>Daily vs. Renewal Batch</span></div>
+          <p class="guide-card-desc">Account-level CSR24 settings behave differently for single certificates versus renewal batch runs. Learn what to confirm before each workflow — and why the wrong setting can flood your insured's inbox during a batch.</p>
+        </div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>2</strong>&nbsp;Workflows</div>
+            <div class="guide-card-stat">CSR24</div>
+          </div>
+          <span class="guide-card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 4 · CSR24 USER MANAGEMENT         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="category-group">
+    <div class="category-header">
+      <div class="category-header-left">
+        <div class="category-icon">&#128100;</div>
+        <div>
+          <div class="category-title">CSR24 User Management</div>
+          <div class="category-desc">Create and configure portal user accounts for Epic contacts in CSR24</div>
+        </div>
+      </div>
+      <div class="category-count">1 Guide</div>
+    </div>
+    <div class="guides-grid">
+
+      <!-- CSR24 Create User -->
+      <a class="guide-card" href="nadler-csr24-create-user.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128100;</div>
+          <div class="guide-card-category">CSR24 User Management</div>
+          <div class="guide-card-title">Create &amp; Configure<br><span>a New CSR24 User</span></div>
+          <p class="guide-card-desc">Set up portal access for an Epic contact in CSR24 — from locating the contact in Applied Epic through assigning the correct user group, start page, and app screen. Covers the full 12-step process for creating a new portal user.</p>
+        </div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>12</strong>&nbsp;Steps</div>
+            <div class="guide-card-stat">~2 Min</div>
+          </div>
+          <span class="guide-card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
   </div>
 
   <!-- DIVIDER + QUICK LINKS -->
