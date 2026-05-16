@@ -80,7 +80,19 @@
 
     /* ── MAIN CONTENT ── */
     .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .back-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:400; color:var(--grey); text-decoration:none; margin-bottom:36px; transition:color 0.2s }
+    .back-link:hover { color:var(--gold) }
+    .back-link-arrow { font-size:16px }
+
+    /* ── TWO-COLUMN CONTENT + FIXED SCRIBE ── */
+    .content-columns { position:relative; padding-right:calc((100% + 240px) * 0.48) }
     .steps-column { min-width:0 }
+    .scribe-column { position:fixed; top:calc(73px + 16px); right:0; width:calc((100vw - 240px) * 0.48); height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:52px; z-index:10 }
+    .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
+    .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
+    .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
+    .scribe-panel-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold) }
+    .scribe-panel iframe { display:block; width:100%; border:none; flex:1; min-height:0 }
 
     /* ── SCENARIO ── */
     .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:40px }
@@ -141,15 +153,16 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width:960px) {
-      nav { padding:14px 24px }
-      .nav-links { display:none }
-      .nav-cta { display:none }
-      .hamburger { display:flex }
-      .page-hero { padding:110px 24px 40px }
-      .workflow-layout { grid-template-columns:1fr }
-      .sidebar { display:none }
-      .workflow-content { padding:36px 24px 60px }
-      footer { padding:36px 24px }
+      nav { padding:14px 24px } .nav-links,.nav-cta { display:none } .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px } .workflow-layout { grid-template-columns:1fr }
+      .sidebar { display:none } .workflow-content { padding:36px 24px 60px }
+      .content-columns { padding-right:calc(50vw + 16px) }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px } footer { padding:36px 24px }
+    }
+    @media (max-width:600px) {
+      .content-columns { padding-right:0 }
+      .scribe-column { position:static; width:100%; height:auto; padding-right:0; margin-top:40px }
+      .scribe-panel iframe { height:580px }
     }
   </style>
 </head>
@@ -204,8 +217,8 @@
   <div class="page-title">Create &amp; Configure<br><span>a New CSR24 User</span></div>
   <p class="page-sub">Set up portal access for an Epic contact in CSR24 — from locating the contact in Applied Epic through assigning the correct user group, start page, and app screen. This guide covers the full 12-step process for creating a new portal user.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>12 Steps</strong></div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>~2 Minutes</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>3</strong>&nbsp;Phases</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>12</strong>&nbsp;Steps</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>User Setup</div>
@@ -268,250 +281,265 @@
 
   <!-- MAIN CONTENT -->
   <main class="workflow-content">
+    <a class="back-link" href="index-nadler.html"><span class="back-link-arrow">←</span> Back to Nadler Guide Library</a>
 
-    <div class="steps-column">
+    <div class="content-columns">
+      <div class="steps-column">
 
-      <div class="scenario-box">
-        <div class="scenario-label">Before You Start</div>
-        <p>The CSR24 user is created from an existing Epic contact — start in Applied Epic, not in CSR24. Information from the Epic contact record (name, email, phone) prepopulates into CSR24 when the portal account is created, so confirm the Epic contact details are correct first. At minimum, the contact must have a <strong>First Name</strong>, <strong>Last Name</strong>, and <strong>Email Address</strong> on file.</p>
+        <div class="scenario-box">
+          <div class="scenario-label">Before You Start</div>
+          <p>The CSR24 user is created from an existing Epic contact — start in Applied Epic, not in CSR24. Information from the Epic contact record (name, email, phone) prepopulates into CSR24 when the portal account is created, so confirm the Epic contact details are correct first. At minimum, the contact must have a <strong>First Name</strong>, <strong>Last Name</strong>, and <strong>Email Address</strong> on file.</p>
+        </div>
+
+        <div class="jump-nav">
+          <a class="jump-btn" href="#phase-contact">Contact Navigation <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-portal">Portal Configuration <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-save">Account Finalization <span class="jump-btn-arrow">↓</span></a>
+        </div>
+
+        <!-- PHASE 1: Contact Navigation -->
+        <div class="phase-header" id="phase-contact">
+          <span class="phase-number">Phase 01</span>
+          <span class="phase-title">Contact Navigation in Applied Epic</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Start on the Account Screen</div>
+              <div class="step-detail">Open the account in Applied Epic for which you are creating portal access. All CSR24 user setup begins from the account record — not from a global menu — because the new user will be tied to this specific account.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Contacts"</div>
+              <div class="step-detail">From the account screen, navigate to the <strong>Contacts</strong> area. This is where every contact associated with the account is listed, and where portal access is initiated for each one.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Locate and open the correct contact</div>
+              <div class="step-detail">Find the contact you want to create portal access for and double-click to open the contact record.</div>
+              <div class="step-tip"><strong>Example:</strong> If you are setting up Joe Cool as a CSR24 user, double-click his contact entry to open his record.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click the "Create Account" link</div>
+              <div class="step-detail">From the open contact record, click the <strong>Create Account</strong> link. This launches the CSR24 portal in a new window and begins the user creation process for the selected contact.</div>
+              <div class="step-alert"><strong>What this does:</strong> Applied Epic hands off the contact's information to CSR24, which uses it to prepopulate the new user record. You will not need to re-type the name, email, or phone — that data carries over automatically.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps phase 1 -->
+
+        <!-- PHASE 2: Portal User Configuration -->
+        <div class="phase-header" id="phase-portal">
+          <span class="phase-number">Phase 02</span>
+          <span class="phase-title">Portal User Configuration in CSR24</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">CSR24 opens the portal page for the contact</div>
+              <div class="step-detail">After clicking Create Account, CSR24 opens the new user setup screen for the selected contact. You are now in CSR24 — no longer in Applied Epic — and the remaining configuration is done from this screen.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Verify prepopulated contact information</div>
+              <div class="step-detail">Contact data from Applied Epic will prepopulate the user information fields in CSR24. Review for accuracy before continuing.</div>
+              <div class="step-detail"><strong>Minimum required fields:</strong></div>
+              <ul class="step-list">
+                <li>First Name</li>
+                <li>Last Name</li>
+                <li>Email Address</li>
+              </ul>
+              <div class="step-tip"><strong>If a required field is missing:</strong> Cancel out of CSR24, go back to the Epic contact record, fix the missing information, and then re-launch the Create Account workflow from step 4.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select the correct User Group</div>
+              <div class="step-detail">Check the <strong>Clients</strong> user group checkbox, then select the appropriate sub-group based on the account type:</div>
+              <ul class="step-list">
+                <li><strong style="color:var(--gold)">Personal Lines Portals</strong> — select <strong>Personal Lines</strong></li>
+                <li><strong style="color:var(--gold)">Commercial Lines Portals</strong> — select <strong>Commercial Lines</strong></li>
+              </ul>
+              <div class="step-alert"><strong>Why this matters:</strong> The user group determines what the insured sees and is allowed to do in the portal. Selecting the wrong group means the user will land on the wrong type of dashboard, see policies in the wrong format, and may not have access to features they should — or may have access to ones they shouldn't.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Enter the Username and click "Change Password"</div>
+              <div class="step-detail">Enter the username the new user will use to log in. The most common convention is to use the user's email address as the username — but it does not have to be an email; any unique identifier works.</div>
+              <div class="step-detail">Once the username is entered, click <strong>Change Password</strong> to set the initial password.</div>
+              <div class="step-tip"><strong>Best practice:</strong> Stay consistent across users — pick a convention (email-as-username or first.last) and use it for every new account. Mixed conventions create support headaches later when an insured can't remember which format you used for them.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Set a temporary password and submit</div>
+              <div class="step-detail">Enter the new temporary password and click <strong>Submit</strong>. This is the password the user will use for their first login.</div>
+              <div class="step-alert"><strong>Leave "Require User to change password on next login" checked.</strong> This forces the user to set their own password on first login, so the temporary password is only ever known briefly and only for the handoff.</div>
+              <div class="step-tip"><strong>Tip:</strong> Take note of the temporary password — you will need it when sending the login credentials to the client. Once you close this screen without recording it, you cannot retrieve it later; you would have to set a new one.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select the Start Page</div>
+              <div class="step-detail">From the <strong>Start Page</strong> dropdown, select the page the user will land on when they first log into the portal. The start page should reflect what the user actually needs to do most often.</div>
+              <div class="step-tip"><strong>Example:</strong> For a user whose primary purpose is issuing certificates, assign the <strong>Certificates Only Start Page</strong> from the dropdown — they will go directly to the certificate workflow on login instead of navigating from a generic dashboard.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select the App Screen</div>
+              <div class="step-detail">From the <strong>App Screen</strong> dropdown, select the default app screen layout the user will see:</div>
+              <ul class="step-list">
+                <li><strong style="color:var(--gold)">Commercial Lines accounts</strong> — select <strong>Initial Commercial Default</strong></li>
+                <li><strong style="color:var(--gold)">Personal Lines accounts</strong> — update to the corresponding <strong>Personal</strong> option</li>
+              </ul>
+              <div class="step-alert"><strong>Match the App Screen to the User Group:</strong> If you selected Commercial Lines in step 7, the App Screen should be the Commercial default. Mixing a Personal Lines group with a Commercial App Screen (or vice versa) leads to a portal experience that doesn't match what the user expects to see.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps phase 2 -->
+
+        <!-- PHASE 3: Account Finalization -->
+        <div class="phase-header" id="phase-save">
+          <span class="phase-number">Phase 03</span>
+          <span class="phase-title">Account Finalization</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Save"</div>
+              <div class="step-detail">Click <strong>Save</strong> to commit the new user account. The portal user is now created and active, and the username and temporary password can be sent to the client so they can complete their first login.</div>
+              <div class="step-alert"><strong>Before you walk away:</strong> Confirm the user appears in the CSR24 user list for the account. If the save fails silently (rare, but it happens with a network blip), the user will not be there — and you will need to redo the configuration from step 5.</div>
+              <div class="step-tip"><strong>Next:</strong> Send the credentials to the client — username + temporary password + the portal login URL. They will be prompted to change the password on first login.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps phase 3 -->
+
+        <!-- FAQ -->
+        <div class="faq-section">
+          <div class="section-label">Common Questions</div>
+          <div class="faq-list">
+
+            <div class="faq-item" id="faq1">
+              <div class="faq-q" onclick="togF('faq1')">
+                The contact's email or name didn't prepopulate correctly — what do I do?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>This almost always means the data is incorrect or missing on the Epic contact record. Cancel out of CSR24, go back to the Epic contact, fix the issue at the source, save the contact record, and then re-launch the Create Account workflow from step 4. Editing the data only inside CSR24 will work for that single user, but the Epic record will still be wrong — and the next process that pulls from it will be wrong as well. Fix it once, at the source, and it stays fixed.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq2">
+              <div class="faq-q" onclick="togF('faq2')">
+                Should the username be the email address or something else?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>Email-as-username is the most common convention because it's something the user already knows and is unlikely to forget. The downside is that if the user's email changes, you have to update it in two places — the contact record and the username. Either convention works fine; the important thing is to pick one and use it consistently across every CSR24 user you set up. Mixed conventions create avoidable support calls.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq3">
+              <div class="faq-q" onclick="togF('faq3')">
+                What happens if I forget to take note of the temporary password before saving?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>You cannot retrieve a temporary password once it's set — CSR24 doesn't display it back to you. If you forget to record it, the fix is to go back into the user record and set a new temporary password using the same Change Password workflow. Make sure "Require User to change password on next login" is still checked, then send the new temporary password to the client. It's a small redo, but easy to avoid by copying the password somewhere safe the moment you create it.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq4">
+              <div class="faq-q" onclick="togF('faq4')">
+                Can I change the User Group, Start Page, or App Screen after the user is saved?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>Yes — all of these can be edited later from the user's record in CSR24. If you assign the wrong group or start page initially, just open the user, change the setting, and save. The user will see the new configuration the next time they log in. That said, it's much cleaner to set them correctly from the start, particularly for the User Group, because changing group assignments can affect what content and policies the user can already see in their portal history.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq5">
+              <div class="faq-q" onclick="togF('faq5')">
+                What if I need to create a user who has access to both Personal and Commercial Lines?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>This is uncommon for standard insured users — most clients have one or the other. If a contact genuinely needs cross-line access (for example, a business owner who also has personal policies tied to the same agency contact), the User Group section in CSR24 supports multiple group selections. Check both Personal Lines and Commercial Lines boxes under the Clients group. The Start Page and App Screen will still need to be set to one default, so pick the one that reflects what the user does most often — they can navigate to the other from within the portal.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" id="faq6">
+              <div class="faq-q" onclick="togF('faq6')">
+                Where is the "Create Account" link on the contact record?
+                <span>▾</span>
+              </div>
+              <div class="faq-a">
+                <p>The Create Account link is on the contact record itself, visible once the contact is open (after the double-click in step 3). If you don't see it, the most common reasons are: the contact already has a CSR24 account (in which case the link will say something different, like "Edit Account"), the CSR24 integration is not enabled at your user level in Epic, or the contact record is missing required information that prevents account creation. Check those in order and most issues resolve quickly.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="section-label">Skills Used</div>
+          <div class="badge-section">
+            <div class="badge-row">
+              <span class="badge">CSR24</span>
+              <span class="badge">Applied Epic</span>
+              <span class="badge">User Management</span>
+              <span class="badge">Portal Access</span>
+              <span class="badge">Contact Management</span>
+              <span class="badge">Account Setup</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps-column -->
+
+      <!-- SCRIBE PANEL -->
+      <div class="scribe-column">
+        <div class="scribe-panel">
+          <div class="scribe-panel-header">
+            <div class="scribe-panel-dot"></div>
+            <span class="scribe-panel-label">Interactive Walkthrough — 12 Steps</span>
+          </div>
+          <iframe src="https://scribehow.com/embed/How_to_Create_and_Configure_a_New_CSR24_User__P4ACchsjTUmK_yp3TRIYUQ?as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="Create and Configure a New CSR24 User — Nadler Insurance"></iframe>
+        </div>
       </div>
 
-      <div class="jump-nav">
-        <a class="jump-btn" href="#phase-contact">Contact Navigation <span class="jump-btn-arrow">↓</span></a>
-        <a class="jump-btn" href="#phase-portal">Portal Configuration <span class="jump-btn-arrow">↓</span></a>
-        <a class="jump-btn" href="#phase-save">Account Finalization <span class="jump-btn-arrow">↓</span></a>
-      </div>
-
-      <!-- PHASE 1: Contact Navigation -->
-      <div class="phase-header" id="phase-contact">
-        <span class="phase-number">Phase 01</span>
-        <span class="phase-title">Contact Navigation in Applied Epic</span>
-      </div>
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Start on the Account Screen</div>
-            <div class="step-detail">Open the account in Applied Epic for which you are creating portal access. All CSR24 user setup begins from the account record — not from a global menu — because the new user will be tied to this specific account.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Click "Contacts"</div>
-            <div class="step-detail">From the account screen, navigate to the <strong>Contacts</strong> area. This is where every contact associated with the account is listed, and where portal access is initiated for each one.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Locate and open the correct contact</div>
-            <div class="step-detail">Find the contact you want to create portal access for and double-click to open the contact record.</div>
-            <div class="step-tip"><strong>Example:</strong> If you are setting up Joe Cool as a CSR24 user, double-click his contact entry to open his record.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Click the "Create Account" link</div>
-            <div class="step-detail">From the open contact record, click the <strong>Create Account</strong> link. This launches the CSR24 portal in a new window and begins the user creation process for the selected contact.</div>
-            <div class="step-alert"><strong>What this does:</strong> Applied Epic hands off the contact's information to CSR24, which uses it to prepopulate the new user record. You will not need to re-type the name, email, or phone — that data carries over automatically.</div>
-          </div>
-        </div>
-
-      </div><!-- /steps phase 1 -->
-
-      <!-- PHASE 2: Portal User Configuration -->
-      <div class="phase-header" id="phase-portal">
-        <span class="phase-number">Phase 02</span>
-        <span class="phase-title">Portal User Configuration in CSR24</span>
-      </div>
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">CSR24 opens the portal page for the contact</div>
-            <div class="step-detail">After clicking Create Account, CSR24 opens the new user setup screen for the selected contact. You are now in CSR24 — no longer in Applied Epic — and the remaining configuration is done from this screen.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Verify prepopulated contact information</div>
-            <div class="step-detail">Contact data from Applied Epic will prepopulate the user information fields in CSR24. Review for accuracy before continuing.</div>
-            <div class="step-detail"><strong>Minimum required fields:</strong></div>
-            <ul class="step-list">
-              <li>First Name</li>
-              <li>Last Name</li>
-              <li>Email Address</li>
-            </ul>
-            <div class="step-tip"><strong>If a required field is missing:</strong> Cancel out of CSR24, go back to the Epic contact record, fix the missing information, and then re-launch the Create Account workflow from step 4.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Select the correct User Group</div>
-            <div class="step-detail">Check the <strong>Clients</strong> user group checkbox, then select the appropriate sub-group based on the account type:</div>
-            <ul class="step-list">
-              <li><strong style="color:var(--gold)">Personal Lines Portals</strong> — select <strong>Personal Lines</strong></li>
-              <li><strong style="color:var(--gold)">Commercial Lines Portals</strong> — select <strong>Commercial Lines</strong></li>
-            </ul>
-            <div class="step-alert"><strong>Why this matters:</strong> The user group determines what the insured sees and is allowed to do in the portal. Selecting the wrong group means the user will land on the wrong type of dashboard, see policies in the wrong format, and may not have access to features they should — or may have access to ones they shouldn't.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Enter the Username and click "Change Password"</div>
-            <div class="step-detail">Enter the username the new user will use to log in. The most common convention is to use the user's email address as the username — but it does not have to be an email; any unique identifier works.</div>
-            <div class="step-detail">Once the username is entered, click <strong>Change Password</strong> to set the initial password.</div>
-            <div class="step-tip"><strong>Best practice:</strong> Stay consistent across users — pick a convention (email-as-username or first.last) and use it for every new account. Mixed conventions create support headaches later when an insured can't remember which format you used for them.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Set a temporary password and submit</div>
-            <div class="step-detail">Enter the new temporary password and click <strong>Submit</strong>. This is the password the user will use for their first login.</div>
-            <div class="step-alert"><strong>Leave "Require User to change password on next login" checked.</strong> This forces the user to set their own password on first login, so the temporary password is only ever known briefly and only for the handoff.</div>
-            <div class="step-tip"><strong>Tip:</strong> Take note of the temporary password — you will need it when sending the login credentials to the client. Once you close this screen without recording it, you cannot retrieve it later, you would have to set a new one.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Select the Start Page</div>
-            <div class="step-detail">From the <strong>Start Page</strong> dropdown, select the page the user will land on when they first log into the portal. The start page should reflect what the user actually needs to do most often.</div>
-            <div class="step-tip"><strong>Example:</strong> For a user whose primary purpose is issuing certificates, assign the <strong>Certificates Only Start Page</strong> from the dropdown — they will go directly to the certificate workflow on login instead of navigating from a generic dashboard.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Select the App Screen</div>
-            <div class="step-detail">From the <strong>App Screen</strong> dropdown, select the default app screen layout the user will see:</div>
-            <ul class="step-list">
-              <li><strong style="color:var(--gold)">Commercial Lines accounts</strong> — select <strong>Initial Commercial Default</strong></li>
-              <li><strong style="color:var(--gold)">Personal Lines accounts</strong> — update to the corresponding <strong>Personal</strong> option</li>
-            </ul>
-            <div class="step-alert"><strong>Match the App Screen to the User Group:</strong> If you selected Commercial Lines in step 7, the App Screen should be the Commercial default. Mixing a Personal Lines group with a Commercial App Screen (or vice versa) leads to a portal experience that doesn't match what the user expects to see.</div>
-          </div>
-        </div>
-
-      </div><!-- /steps phase 2 -->
-
-      <!-- PHASE 3: Account Finalization -->
-      <div class="phase-header" id="phase-save">
-        <span class="phase-number">Phase 03</span>
-        <span class="phase-title">Account Finalization</span>
-      </div>
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
-          <div class="step-body">
-            <div class="step-title">Click "Save"</div>
-            <div class="step-detail">Click <strong>Save</strong> to commit the new user account. The portal user is now created and active, and the username and temporary password can be sent to the client so they can complete their first login.</div>
-            <div class="step-alert"><strong>Before you walk away:</strong> Confirm the user appears in the CSR24 user list for the account. If the save fails silently (rare, but it happens with a network blip), the user will not be there — and you will need to redo the configuration from step 5.</div>
-            <div class="step-tip"><strong>Next:</strong> Send the credentials to the client — username + temporary password + the portal login URL. They will be prompted to change the password on first login.</div>
-          </div>
-        </div>
-
-      </div><!-- /steps phase 3 -->
-
-      <!-- FAQ -->
-      <div class="faq-section">
-        <div class="section-label">Common Questions</div>
-        <div class="faq-list">
-
-          <div class="faq-item" id="faq1">
-            <div class="faq-q" onclick="togF('faq1')">
-              The contact's email or name didn't prepopulate correctly — what do I do?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>This almost always means the data is incorrect or missing on the Epic contact record. Cancel out of CSR24, go back to the Epic contact, fix the issue at the source, save the contact record, and then re-launch the Create Account workflow from step 4. Editing the data only inside CSR24 will work for that single user, but the Epic record will still be wrong — and the next process that pulls from it will be wrong as well. Fix it once, at the source, and it stays fixed.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" id="faq2">
-            <div class="faq-q" onclick="togF('faq2')">
-              Should the username be the email address or something else?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>Email-as-username is the most common convention because it's something the user already knows and is unlikely to forget. The downside is that if the user's email changes, you have to update it in two places — the contact record and the username. Either convention works fine; the important thing is to pick one and use it consistently across every CSR24 user you set up. Mixed conventions create avoidable support calls.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" id="faq3">
-            <div class="faq-q" onclick="togF('faq3')">
-              What happens if I forget to take note of the temporary password before saving?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>You cannot retrieve a temporary password once it's set — CSR24 doesn't display it back to you. If you forget to record it, the fix is to go back into the user record and set a new temporary password using the same Change Password workflow. Make sure "Require User to change password on next login" is still checked, then send the new temporary password to the client. It's a small redo, but easy to avoid by copying the password somewhere safe the moment you create it.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" id="faq4">
-            <div class="faq-q" onclick="togF('faq4')">
-              Can I change the User Group, Start Page, or App Screen after the user is saved?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>Yes — all of these can be edited later from the user's record in CSR24. If you assign the wrong group or start page initially, just open the user, change the setting, and save. The user will see the new configuration the next time they log in. That said, it's much cleaner to set them correctly from the start, particularly for the User Group, because changing group assignments can affect what content and policies the user can already see in their portal history.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" id="faq5">
-            <div class="faq-q" onclick="togF('faq5')">
-              What if I need to create a user who has access to both Personal and Commercial Lines?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>This is uncommon for standard insured users — most clients have one or the other. If a contact genuinely needs cross-line access (for example, a business owner who also has personal policies tied to the same agency contact), the User Group section in CSR24 supports multiple group selections. Check both Personal Lines and Commercial Lines boxes under the Clients group. The Start Page and App Screen will still need to be set to one default, so pick the one that reflects what the user does most often — they can navigate to the other from within the portal.</p>
-            </div>
-          </div>
-
-          <div class="faq-item" id="faq6">
-            <div class="faq-q" onclick="togF('faq6')">
-              Where is the "Create Account" link on the contact record?
-              <span>▾</span>
-            </div>
-            <div class="faq-a">
-              <p>The Create Account link is on the contact record itself, visible once the contact is open (after the double-click in step 3). If you don't see it, the most common reasons are: the contact already has a CSR24 account (in which case the link will say something different, like "Edit Account"), the CSR24 integration is not enabled at your user level in Epic, or the contact record is missing required information that prevents account creation. Check those in order and most issues resolve quickly.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="section-label">Skills Used</div>
-        <div class="badge-section">
-          <div class="badge-row">
-            <span class="badge">CSR24</span>
-            <span class="badge">Applied Epic</span>
-            <span class="badge">User Management</span>
-            <span class="badge">Portal Access</span>
-            <span class="badge">Contact Management</span>
-            <span class="badge">Account Setup</span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /steps-column -->
+    </div><!-- /content-columns -->
   </main>
 </div>
 
@@ -532,11 +560,7 @@
     mobileMenu.classList.toggle('open');
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
-  function closeMobile() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
   function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
   document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
