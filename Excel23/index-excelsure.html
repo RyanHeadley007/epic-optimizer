@@ -85,7 +85,7 @@
     .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:20px }
 
     /* ── GUIDE CARDS GRID ── */
-    .guides-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:60px }
+    .guides-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px }
     .guide-card { display:flex; flex-direction:column; background:var(--mid); border:1px solid var(--border); border-radius:2px; overflow:hidden; text-decoration:none; transition:border-color 0.2s,transform 0.2s }
     .guide-card:hover { border-color:var(--gold-border); transform:translateY(-2px) }
     .guide-card-header { padding:20px 22px 16px; border-bottom:1px solid var(--border) }
@@ -102,9 +102,18 @@
     .guide-card:hover .guide-card-arrow { opacity:1; transform:translateX(3px) }
 
     /* ── INFO BOX ── */
-    .info-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:52px }
+    .info-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:48px }
     .info-box-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
     .info-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+
+    /* ── CATEGORY GROUPS ── */
+    .category-group { margin-bottom:52px }
+    .category-header { display:flex; align-items:center; gap:0; margin-bottom:24px; border-bottom:1px solid var(--gold-border); padding-bottom:14px }
+    .category-header-left { display:flex; align-items:center; gap:14px; flex:1 }
+    .category-icon { width:32px; height:32px; border-radius:1px; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0 }
+    .category-title { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--tan) }
+    .category-desc { font-size:12px; font-weight:300; color:var(--grey); margin-top:2px }
+    .category-count { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); opacity:0.7; white-space:nowrap }
 
     /* ── QUICK LINKS ── */
     .quick-links-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px }
@@ -113,7 +122,7 @@
     .quick-link-dot { width:5px; height:5px; border-radius:50%; background:var(--gold); flex-shrink:0; opacity:0.7 }
 
     /* ── DIVIDER ── */
-    .section-divider { height:1px; background:var(--border); margin:52px 0 40px }
+    .section-divider { height:1px; background:var(--border); margin:8px 0 48px }
 
     /* ── FOOTER ── */
     footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
@@ -186,10 +195,11 @@
     <span class="agency-badge-label">Agency</span>
     <span class="agency-badge-name">Excelsure</span>
   </div>
-  <div class="page-title">Certificate Process<br><span>Guide Library</span></div>
-  <p class="page-sub">Workflow guides built specifically for Excelsure's CSR24 certificate processes.</p>
+  <div class="page-title">Applied Epic<br><span>Guide Library</span></div>
+  <p class="page-sub">Workflow guides and reference materials built specifically for Excelsure's CSR24 and Applied Epic configuration.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>3</strong>&nbsp;Guides</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>4</strong>&nbsp;Guides</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>3</strong>&nbsp;Categories</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
   </div>
 </div>
@@ -200,25 +210,35 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="sidebar-section open" id="sb-hub">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-hub')">
-        Excelsure <span class="sidebar-section-arrow">▶</span>
+    <div class="sidebar-section open" id="sb-setup">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-setup')">
+        Certificate Setup <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
-        <a class="sidebar-link active" href="index-excelsure.html">Guide Library Home</a>
+        <a class="sidebar-link" href="excelsure-import-certificate-holders.html">Import Certificate Holders into CSR24</a>
+        <a class="sidebar-link" href="excelsure-create-certificate-template.html">Create Certificate Template in CSR24</a>
       </div>
     </div>
 
     <div class="sidebar-divider"></div>
 
-    <div class="sidebar-section open" id="sb-cert">
-      <div class="sidebar-section-header" onclick="toggleSidebar('sb-cert')">
-        Certificate Process <span class="sidebar-section-arrow">▶</span>
+    <div class="sidebar-section open" id="sb-workflow">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-workflow')">
+        Certificate Workflows <span class="sidebar-section-arrow">▶</span>
       </div>
       <div class="sidebar-links">
-        <a class="sidebar-link" href="excelsure-import-certificate-holders.html">Import Certificate Holders into CSR24</a>
-        <a class="sidebar-link" href="excelsure-create-certificate-template.html">Create Certificate Template in CSR24</a>
-        <a class="sidebar-link" href="excelsure-csr24-certificate-workflow.html">Certificate Processing: Daily vs. Renewal Batch</a>
+        <a class="sidebar-link" href="excelsure-csr24-certificate-workflow.html">Daily vs. Renewal Batch</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section open" id="sb-users">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-users')">
+        CSR24 User Management <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="excelsure-csr24-create-user.html">Create &amp; Configure a New CSR24 User</a>
       </div>
     </div>
 
@@ -235,58 +255,125 @@
       <p>This guide library contains workflows built specifically for Excelsure's CSR24 configuration. Process steps reflect Excelsure's setup and may differ from other agencies on the platform.</p>
     </div>
 
-    <!-- CERTIFICATE PROCESS SECTION -->
-    <div class="section-label">Certificate Process</div>
-    <div class="guides-grid">
-
-      <a class="guide-card" href="excelsure-import-certificate-holders.html">
-        <div class="guide-card-header">
-          <div class="guide-card-icon">&#128228;</div>
-          <div class="guide-card-category">Certificate Process</div>
-          <div class="guide-card-title">Import Certificate Holders<br><span>into CSR24</span></div>
-          <p class="guide-card-desc">Step-by-step walkthrough for bulk-importing certificate holders into CSR24. Covers file preparation, column mapping, import review, and post-import verification.</p>
-        </div>
-        <div class="guide-card-footer">
-          <div class="guide-card-stats">
-            <div class="guide-card-stat"><strong>3</strong>&nbsp;Phases</div>
-            <div class="guide-card-stat"><strong>12</strong>&nbsp;Steps</div>
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CATEGORY 1 · CERTIFICATE SETUP             -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="category-group">
+      <div class="category-header">
+        <div class="category-header-left">
+          <div class="category-icon">&#128228;</div>
+          <div>
+            <div class="category-title">Certificate Setup</div>
+            <div class="category-desc">Configure certificate holders and reusable templates before issuing certificates in CSR24</div>
           </div>
-          <span class="guide-card-arrow">→</span>
         </div>
-      </a>
+        <div class="category-count">2 Guides</div>
+      </div>
+      <div class="guides-grid">
 
-      <a class="guide-card" href="excelsure-create-certificate-template.html">
-        <div class="guide-card-header">
-          <div class="guide-card-icon">&#128279;</div>
-          <div class="guide-card-category">Certificate Process</div>
-          <div class="guide-card-title">Create Certificate Template<br><span>in CSR24</span></div>
-          <p class="guide-card-desc">How to build a reusable certificate template in CSR24 — including ACORD form selection, coverage line configuration, Description of Operations language, and output testing.</p>
-        </div>
-        <div class="guide-card-footer">
-          <div class="guide-card-stats">
-            <div class="guide-card-stat"><strong>4</strong>&nbsp;Phases</div>
-            <div class="guide-card-stat"><strong>40</strong>&nbsp;Steps</div>
+        <a class="guide-card" href="excelsure-import-certificate-holders.html">
+          <div class="guide-card-header">
+            <div class="guide-card-icon">&#128228;</div>
+            <div class="guide-card-category">Certificate Setup</div>
+            <div class="guide-card-title">Import Certificate Holders<br><span>into CSR24</span></div>
+            <p class="guide-card-desc">Step-by-step walkthrough for bulk-importing certificate holders into CSR24. Covers file preparation, column mapping, import review, and post-import verification.</p>
           </div>
-          <span class="guide-card-arrow">→</span>
-        </div>
-      </a>
-
-      <a class="guide-card" href="excelsure-csr24-certificate-workflow.html">
-        <div class="guide-card-header">
-          <div class="guide-card-icon">&#128196;</div>
-          <div class="guide-card-category">Certificate Process</div>
-          <div class="guide-card-title">Certificate Processing:<br><span>Daily vs. Renewal Batch</span></div>
-          <p class="guide-card-desc">Account-level settings in CSR24 behave differently for daily versus renewal batch processing. Covers what to confirm before each run and how to avoid flooding your insured's inbox during a batch.</p>
-        </div>
-        <div class="guide-card-footer">
-          <div class="guide-card-stats">
-            <div class="guide-card-stat"><strong>3</strong>&nbsp;Phases</div>
-            <div class="guide-card-stat"><strong>~5</strong>&nbsp;Min</div>
+          <div class="guide-card-footer">
+            <div class="guide-card-stats">
+              <div class="guide-card-stat"><strong>3</strong>&nbsp;Phases</div>
+              <div class="guide-card-stat"><strong>12</strong>&nbsp;Steps</div>
+            </div>
+            <span class="guide-card-arrow">→</span>
           </div>
-          <span class="guide-card-arrow">→</span>
-        </div>
-      </a>
+        </a>
 
+        <a class="guide-card" href="excelsure-create-certificate-template.html">
+          <div class="guide-card-header">
+            <div class="guide-card-icon">&#128279;</div>
+            <div class="guide-card-category">Certificate Setup</div>
+            <div class="guide-card-title">Create Certificate Template<br><span>in CSR24</span></div>
+            <p class="guide-card-desc">How to build a reusable certificate template in CSR24 — including ACORD form selection, coverage line configuration, Description of Operations language, and output testing.</p>
+          </div>
+          <div class="guide-card-footer">
+            <div class="guide-card-stats">
+              <div class="guide-card-stat"><strong>4</strong>&nbsp;Phases</div>
+              <div class="guide-card-stat"><strong>40</strong>&nbsp;Steps</div>
+            </div>
+            <span class="guide-card-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CATEGORY 2 · CERTIFICATE WORKFLOWS         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="category-group">
+      <div class="category-header">
+        <div class="category-header-left">
+          <div class="category-icon">&#128196;</div>
+          <div>
+            <div class="category-title">Certificate Workflows</div>
+            <div class="category-desc">Day-to-day and renewal batch processing — settings, timing, and inbox management</div>
+          </div>
+        </div>
+        <div class="category-count">1 Guide</div>
+      </div>
+      <div class="guides-grid">
+
+        <a class="guide-card" href="excelsure-csr24-certificate-workflow.html">
+          <div class="guide-card-header">
+            <div class="guide-card-icon">&#128196;</div>
+            <div class="guide-card-category">Certificate Workflows</div>
+            <div class="guide-card-title">Certificate Processing:<br><span>Daily vs. Renewal Batch</span></div>
+            <p class="guide-card-desc">Account-level settings in CSR24 behave differently for daily versus renewal batch processing. Covers what to confirm before each run and how to avoid flooding your insured's inbox during a batch.</p>
+          </div>
+          <div class="guide-card-footer">
+            <div class="guide-card-stats">
+              <div class="guide-card-stat"><strong>3</strong>&nbsp;Phases</div>
+              <div class="guide-card-stat"><strong>~5</strong>&nbsp;Min</div>
+            </div>
+            <span class="guide-card-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- CATEGORY 3 · CSR24 USER MANAGEMENT         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="category-group">
+      <div class="category-header">
+        <div class="category-header-left">
+          <div class="category-icon">&#128100;</div>
+          <div>
+            <div class="category-title">CSR24 User Management</div>
+            <div class="category-desc">Create and configure portal user accounts for Epic contacts in CSR24</div>
+          </div>
+        </div>
+        <div class="category-count">1 Guide</div>
+      </div>
+      <div class="guides-grid">
+
+        <a class="guide-card" href="excelsure-csr24-create-user.html">
+          <div class="guide-card-header">
+            <div class="guide-card-icon">&#128100;</div>
+            <div class="guide-card-category">CSR24 User Management</div>
+            <div class="guide-card-title">Create &amp; Configure<br><span>a New CSR24 User</span></div>
+            <p class="guide-card-desc">Set up portal access for an Epic contact in CSR24 — from locating the contact in Applied Epic through assigning the correct user group, start page, and app screen. Covers the full step-by-step process for creating a new portal user.</p>
+          </div>
+          <div class="guide-card-footer">
+            <div class="guide-card-stats">
+              <div class="guide-card-stat">CSR24</div>
+              <div class="guide-card-stat">Applied Epic</div>
+            </div>
+            <span class="guide-card-arrow">→</span>
+          </div>
+        </a>
+
+      </div>
     </div>
 
     <!-- QUICK JUMP LINKS -->
@@ -301,6 +388,9 @@
       </a>
       <a class="quick-link" href="excelsure-csr24-certificate-workflow.html">
         <span class="quick-link-dot"></span>Certificate Processing: Daily vs. Renewal Batch
+      </a>
+      <a class="quick-link" href="excelsure-csr24-create-user.html">
+        <span class="quick-link-dot"></span>Create &amp; Configure a New CSR24 User
       </a>
       <a class="quick-link" href="index-guide.html">
         <span class="quick-link-dot"></span>Epic Processing Guide Index
