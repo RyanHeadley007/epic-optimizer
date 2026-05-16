@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nadler Insurance — Create and Configure a New CSR24 User | Epic Optimizer</title>
+  <title>Nadler Insurance — Creating a Certificate Master Template in CSR24 | Epic Optimizer</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
@@ -209,19 +209,17 @@
 <!-- HERO -->
 <div class="page-hero">
   <div class="hero-glow"></div>
-  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">User Management · CSR24</span></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Certificate Processing · CSR24</span></div>
   <div class="agency-badge">
     <span class="agency-badge-label">Agency</span>
     <span class="agency-badge-name">Nadler Insurance</span>
   </div>
-  <div class="page-title">Create &amp; Configure<br><span>a New CSR24 User</span></div>
-  <p class="page-sub">Set up portal access for an Epic contact in CSR24 — from locating the contact in Applied Epic through assigning the correct user group, start page, and app screen. This guide covers the full 12-step process for creating a new portal user.</p>
+  <div class="page-title">Creating a Certificate<br><span>Master Template in CSR24</span></div>
+  <p class="page-sub">Build reusable certificate master templates in CSR24 — from selecting the correct account and policy through configuring holders, additional insureds, and saving the template for recurring use.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>3</strong>&nbsp;Phases</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>12</strong>&nbsp;Steps</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>User Setup</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Certificate Templates</div>
   </div>
 </div>
 
@@ -244,159 +242,148 @@
 
         <div class="scenario-box">
           <div class="scenario-label">Before You Start</div>
-          <p>The CSR24 user is created from an existing Epic contact — start in Applied Epic, not in CSR24. Information from the Epic contact record (name, email, phone) prepopulates into CSR24 when the portal account is created, so confirm the Epic contact details are correct first. At minimum, the contact must have a <strong>First Name</strong>, <strong>Last Name</strong>, and <strong>Email Address</strong> on file.</p>
+          <p>Certificate master templates are reusable starting points for frequently issued certificates — they store the holder, additional insured language, and policy selections so you don't rebuild them each time. You will need access to CSR24 and the account must already have active policies in Applied Epic for the template to reference. Confirm the correct policy lines are active before beginning.</p>
         </div>
 
         <div class="jump-nav">
-          <a class="jump-btn" href="#phase-contact">Contact Navigation <span class="jump-btn-arrow">↓</span></a>
-          <a class="jump-btn" href="#phase-portal">Portal Configuration <span class="jump-btn-arrow">↓</span></a>
-          <a class="jump-btn" href="#phase-save">Account Finalization <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-account">Account &amp; Policy <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-template">Template Setup <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-save">Save &amp; Reuse <span class="jump-btn-arrow">↓</span></a>
         </div>
 
-        <!-- PHASE 1: Contact Navigation -->
-        <div class="phase-header" id="phase-contact">
+        <!-- PHASE 1: Account & Policy Selection -->
+        <div class="phase-header" id="phase-account">
           <span class="phase-number">Phase 01</span>
-          <span class="phase-title">Contact Navigation in Applied Epic</span>
+          <span class="phase-title">Account &amp; Policy Selection</span>
         </div>
         <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Start on the Account Screen</div>
-              <div class="step-detail">Open the account in Applied Epic for which you are creating portal access. All CSR24 user setup begins from the account record — not from a global menu — because the new user will be tied to this specific account.</div>
+              <div class="step-title">Open the account in CSR24</div>
+              <div class="step-detail">Navigate to the insured's account in CSR24. Templates are account-specific — a master template created here will only be available for certificates issued under this account.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Contacts"</div>
-              <div class="step-detail">From the account screen, navigate to the <strong>Contacts</strong> area. This is where every contact associated with the account is listed, and where portal access is initiated for each one.</div>
+              <div class="step-title">Go to Certificates and select Master Templates</div>
+              <div class="step-detail">From the account view, navigate to the <strong>Certificates</strong> section and select the <strong>Master Templates</strong> option. This is where existing templates are listed and new ones are created.</div>
+              <div class="step-tip"><strong>Tip:</strong> If you don't see a Master Templates option, confirm your CSR24 user group has permissions for template management. Not all user roles include this capability.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Locate and open the correct contact</div>
-              <div class="step-detail">Find the contact you want to create portal access for and double-click to open the contact record.</div>
-              <div class="step-tip"><strong>Example:</strong> If you are setting up Joe Cool as a CSR24 user, double-click his contact entry to open his record.</div>
+              <div class="step-title">Click "Add New Template"</div>
+              <div class="step-detail">Select the option to create a new master template. A template creation form will open where you will configure all the reusable certificate details.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click the "Create Account" link</div>
-              <div class="step-detail">From the open contact record, click the <strong>Create Account</strong> link. This launches the CSR24 portal in a new window and begins the user creation process for the selected contact.</div>
-              <div class="step-alert"><strong>What this does:</strong> Applied Epic hands off the contact's information to CSR24, which uses it to prepopulate the new user record. You will not need to re-type the name, email, or phone — that data carries over automatically.</div>
+              <div class="step-title">Name the template</div>
+              <div class="step-detail">Give the template a clear, descriptive name that will make sense to anyone issuing certificates from this account in the future. A good naming convention includes the holder name or the use case.</div>
+              <div class="step-tip"><strong>Example naming conventions:</strong> "Standard GL – ABC General Contractor" or "Renewal Batch – Commercial Auto". Vague names like "Template 1" create confusion when multiple templates exist on the same account.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select the certificate form type</div>
+              <div class="step-detail">Choose the appropriate certificate form — typically <strong>ACORD 25</strong> for liability or <strong>ACORD 28</strong> for property. The form selection determines which policy fields and coverage sections appear in the template.</div>
+              <div class="step-alert"><strong>Important:</strong> The form type cannot be changed after the template is saved. If you select the wrong form, you will need to delete the template and start over. Confirm with the holder or your account manager which form is required before proceeding.</div>
             </div>
           </div>
 
         </div><!-- /steps phase 1 -->
 
-        <!-- PHASE 2: Portal User Configuration -->
-        <div class="phase-header" id="phase-portal">
+        <!-- PHASE 2: Template Configuration -->
+        <div class="phase-header" id="phase-template">
           <span class="phase-number">Phase 02</span>
-          <span class="phase-title">Portal User Configuration in CSR24</span>
+          <span class="phase-title">Template Configuration</span>
         </div>
         <div class="steps">
 
           <div class="step">
-            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">CSR24 opens the portal page for the contact</div>
-              <div class="step-detail">After clicking Create Account, CSR24 opens the new user setup screen for the selected contact. You are now in CSR24 — no longer in Applied Epic — and the remaining configuration is done from this screen.</div>
-            </div>
-          </div>
-
-          <div class="step">
             <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Verify prepopulated contact information</div>
-              <div class="step-detail">Contact data from Applied Epic will prepopulate the user information fields in CSR24. Review for accuracy before continuing.</div>
-              <div class="step-detail"><strong>Minimum required fields:</strong></div>
-              <ul class="step-list">
-                <li>First Name</li>
-                <li>Last Name</li>
-                <li>Email Address</li>
-              </ul>
-              <div class="step-tip"><strong>If a required field is missing:</strong> Cancel out of CSR24, go back to the Epic contact record, fix the missing information, and then re-launch the Create Account workflow from step 4.</div>
+              <div class="step-title">Enter the certificate holder information</div>
+              <div class="step-detail">Complete the holder name and address fields. This is the entity that will appear in the "Certificate Holder" box on the issued certificate. Accuracy here is critical — the holder name and address must match what the contract or holder requires exactly.</div>
+              <div class="step-alert"><strong>Watch for:</strong> Holders sometimes specify a very particular address format or legal entity name. When in doubt, ask the insured to provide the holder's required language rather than guessing.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the correct User Group</div>
-              <div class="step-detail">Check the <strong>Clients</strong> user group checkbox, then select the appropriate sub-group based on the account type:</div>
+              <div class="step-title">Select the policies to include</div>
+              <div class="step-detail">Check the boxes for each policy line that should appear on the certificate. Only active policies tied to this account in Applied Epic will be available for selection.</div>
               <ul class="step-list">
-                <li><strong style="color:var(--gold)">Personal Lines Portals</strong> — select <strong>Personal Lines</strong></li>
-                <li><strong style="color:var(--gold)">Commercial Lines Portals</strong> — select <strong>Commercial Lines</strong></li>
+                <li>General Liability — most commonly required</li>
+                <li>Auto Liability — required when vehicles are involved in the contract</li>
+                <li>Workers' Compensation — required for most construction and service contracts</li>
+                <li>Umbrella / Excess — include when the holder specifies minimum limits that require umbrella support</li>
               </ul>
-              <div class="step-alert"><strong>Why this matters:</strong> The user group determines what the insured sees and is allowed to do in the portal. Selecting the wrong group means the user will land on the wrong type of dashboard, see policies in the wrong format, and may not have access to features they should — or may have access to ones they shouldn't.</div>
+              <div class="step-tip"><strong>Only include what the holder requires.</strong> Including extra policy lines on a certificate that weren't requested can create unnecessary questions or confusion for the holder. If the contract says GL and Auto only, select GL and Auto only.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Enter the Username and click "Change Password"</div>
-              <div class="step-detail">Enter the username the new user will use to log in. The most common convention is to use the user's email address as the username — but it does not have to be an email; any unique identifier works.</div>
-              <div class="step-detail">Once the username is entered, click <strong>Change Password</strong> to set the initial password.</div>
-              <div class="step-tip"><strong>Best practice:</strong> Stay consistent across users — pick a convention (email-as-username or first.last) and use it for every new account. Mixed conventions create support headaches later when an insured can't remember which format you used for them.</div>
+              <div class="step-title">Add Additional Insured language (if required)</div>
+              <div class="step-detail">If the holder requires Additional Insured status, enter the endorsement language in the <strong>Description of Operations</strong> field or the designated Additional Insured section, depending on your CSR24 setup. This language carries over to every certificate issued from this template.</div>
+              <div class="step-alert"><strong>Use endorsed language only.</strong> Do not write custom AI language — only include language that is supported by an actual endorsement on the policy. If the policy does not have a Blanket Additional Insured endorsement, the language cannot legitimately appear on the certificate. Confirm with the underwriter or policy paperwork first.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Set a temporary password and submit</div>
-              <div class="step-detail">Enter the new temporary password and click <strong>Submit</strong>. This is the password the user will use for their first login.</div>
-              <div class="step-alert"><strong>Leave "Require User to change password on next login" checked.</strong> This forces the user to set their own password on first login, so the temporary password is only ever known briefly and only for the handoff.</div>
-              <div class="step-tip"><strong>Tip:</strong> Take note of the temporary password — you will need it when sending the login credentials to the client. Once you close this screen without recording it, you cannot retrieve it later; you would have to set a new one.</div>
+              <div class="step-title">Complete the Description of Operations</div>
+              <div class="step-detail">Enter any project-specific or contract-required language in the <strong>Description of Operations / Locations / Vehicles</strong> field. Common entries include project names, job numbers, waiver of subrogation notices, and primary &amp; non-contributory language.</div>
+              <div class="step-tip"><strong>Keep it clean:</strong> Only enter language that was specifically requested. Overloaded Description of Operations fields are a common source of certificate complaints — if something wasn't asked for, leave it out.</div>
             </div>
           </div>
+
+        </div><!-- /steps phase 2 -->
+
+        <!-- PHASE 3: Save & Reuse -->
+        <div class="phase-header" id="phase-save">
+          <span class="phase-number">Phase 03</span>
+          <span class="phase-title">Save &amp; Reuse the Template</span>
+        </div>
+        <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the Start Page</div>
-              <div class="step-detail">From the <strong>Start Page</strong> dropdown, select the page the user will land on when they first log into the portal. The start page should reflect what the user actually needs to do most often.</div>
-              <div class="step-tip"><strong>Example:</strong> For a user whose primary purpose is issuing certificates, assign the <strong>Certificates Only Start Page</strong> from the dropdown — they will go directly to the certificate workflow on login instead of navigating from a generic dashboard.</div>
+              <div class="step-title">Review all entries before saving</div>
+              <div class="step-detail">Before clicking Save, review the holder name and address, the selected policies, AI language, and Description of Operations. Templates get reused — any error saved here will repeat on every certificate issued from this template until someone catches it and fixes it.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the App Screen</div>
-              <div class="step-detail">From the <strong>App Screen</strong> dropdown, select the default app screen layout the user will see:</div>
-              <ul class="step-list">
-                <li><strong style="color:var(--gold)">Commercial Lines accounts</strong> — select <strong>Initial Commercial Default</strong></li>
-                <li><strong style="color:var(--gold)">Personal Lines accounts</strong> — update to the corresponding <strong>Personal</strong> option</li>
-              </ul>
-              <div class="step-alert"><strong>Match the App Screen to the User Group:</strong> If you selected Commercial Lines in step 7, the App Screen should be the Commercial default. Mixing a Personal Lines group with a Commercial App Screen (or vice versa) leads to a portal experience that doesn't match what the user expects to see.</div>
+              <div class="step-title">Click "Save" to store the template</div>
+              <div class="step-detail">Save the template. It will now appear in the Master Templates list for this account and can be selected as a starting point any time a certificate needs to be issued to this holder.</div>
+              <div class="step-alert"><strong>Confirm it saved:</strong> After saving, verify the template appears in the list with the correct name. If the save fails or the template doesn't appear, do not assume it saved — reattempt before leaving the screen.</div>
             </div>
           </div>
-
-        </div><!-- /steps phase 2 -->
-
-        <!-- PHASE 3: Account Finalization -->
-        <div class="phase-header" id="phase-save">
-          <span class="phase-number">Phase 03</span>
-          <span class="phase-title">Account Finalization</span>
-        </div>
-        <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Save"</div>
-              <div class="step-detail">Click <strong>Save</strong> to commit the new user account. The portal user is now created and active, and the username and temporary password can be sent to the client so they can complete their first login.</div>
-              <div class="step-alert"><strong>Before you walk away:</strong> Confirm the user appears in the CSR24 user list for the account. If the save fails silently (rare, but it happens with a network blip), the user will not be there — and you will need to redo the configuration from step 5.</div>
-              <div class="step-tip"><strong>Next:</strong> Send the credentials to the client — username + temporary password + the portal login URL. They will be prompted to change the password on first login.</div>
+              <div class="step-title">Issue a certificate from the template</div>
+              <div class="step-detail">When a certificate request comes in for this holder, select the saved master template from the account's template list. The holder details, policy selections, and Description of Operations will prepopulate — you can adjust any field before issuing without changing the saved template.</div>
+              <div class="step-tip"><strong>Templates do not auto-update policy limits.</strong> When a policy renews with new limits, CSR24 pulls the current policy data from Applied Epic — so the certificate will reflect the updated limits. However, if the policy number itself changes or a policy is replaced, review the template to confirm the correct policies are still selected.</div>
             </div>
           </div>
 
@@ -409,61 +396,51 @@
 
             <div class="faq-item" id="faq1">
               <div class="faq-q" onclick="togF('faq1')">
-                The contact's email or name didn't prepopulate correctly — what do I do?
+                Can I edit a master template after it's been saved?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>This almost always means the data is incorrect or missing on the Epic contact record. Cancel out of CSR24, go back to the Epic contact, fix the issue at the source, save the contact record, and then re-launch the Create Account workflow from step 4. Editing the data only inside CSR24 will work for that single user, but the Epic record will still be wrong — and the next process that pulls from it will be wrong as well. Fix it once, at the source, and it stays fixed.</p>
+                <p>Yes — master templates can be edited at any time from the Master Templates list. Open the template, make your changes, and save. The update will apply to all future certificates issued from that template. Certificates already issued are not retroactively affected. Note that the certificate form type (ACORD 25, ACORD 28, etc.) cannot be changed after the initial save — if the wrong form was selected, you will need to delete the template and create a new one.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq2">
               <div class="faq-q" onclick="togF('faq2')">
-                Should the username be the email address or something else?
+                How many master templates can I create per account?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>Email-as-username is the most common convention because it's something the user already knows and is unlikely to forget. The downside is that if the user's email changes, you have to update it in two places — the contact record and the username. Either convention works fine; the important thing is to pick one and use it consistently across every CSR24 user you set up. Mixed conventions create avoidable support calls.</p>
+                <p>CSR24 does not impose a hard cap on the number of templates per account in most configurations. However, accounts with a large number of templates can become difficult to manage — the template list does not have robust filtering, so finding the right template requires scrolling. Keep templates organized with consistent naming conventions, and archive or delete any templates that are no longer in use to keep the list manageable.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq3">
               <div class="faq-q" onclick="togF('faq3')">
-                What happens if I forget to take note of the temporary password before saving?
+                What happens to a template when a policy renews?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>You cannot retrieve a temporary password once it's set — CSR24 doesn't display it back to you. If you forget to record it, the fix is to go back into the user record and set a new temporary password using the same Change Password workflow. Make sure "Require User to change password on next login" is still checked, then send the new temporary password to the client. It's a small redo, but easy to avoid by copying the password somewhere safe the moment you create it.</p>
+                <p>When a policy renews in Applied Epic and the policy number stays the same (a rewrite of the same policy), CSR24 will pull the updated policy data — effective dates, limits, and carrier information — automatically when you issue a certificate from the template. If the renewal results in a new policy number (a new policy replacing the old one), the template may still be pointing at the old policy number. In that case, open the template, remove the old policy, add the new one, and re-save before the next certificate is issued from it.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq4">
               <div class="faq-q" onclick="togF('faq4')">
-                Can I change the User Group, Start Page, or App Screen after the user is saved?
+                Can the same template be used across multiple accounts?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>Yes — all of these can be edited later from the user's record in CSR24. If you assign the wrong group or start page initially, just open the user, change the setting, and save. The user will see the new configuration the next time they log in. That said, it's much cleaner to set them correctly from the start, particularly for the User Group, because changing group assignments can affect what content and policies the user can already see in their portal history.</p>
+                <p>No — master templates in CSR24 are account-specific. A template created under Account A is only available when issuing certificates for Account A. If the same holder requires certificates from multiple accounts, you will need to create a separate template under each account. There is no global or cross-account template library in CSR24.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq5">
               <div class="faq-q" onclick="togF('faq5')">
-                What if I need to create a user who has access to both Personal and Commercial Lines?
+                The holder address changed — do I update the template or the certificate?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>This is uncommon for standard insured users — most clients have one or the other. If a contact genuinely needs cross-line access (for example, a business owner who also has personal policies tied to the same agency contact), the User Group section in CSR24 supports multiple group selections. Check both Personal Lines and Commercial Lines boxes under the Clients group. The Start Page and App Screen will still need to be set to one default, so pick the one that reflects what the user does most often — they can navigate to the other from within the portal.</p>
-              </div>
-            </div>
-
-            <div class="faq-item" id="faq6">
-              <div class="faq-q" onclick="togF('faq6')">
-                Where is the "Create Account" link on the contact record?
-                <span>▾</span>
-              </div>
-              <div class="faq-a">
-                <p>The Create Account link is on the contact record itself, visible once the contact is open (after the double-click in step 3). If you don't see it, the most common reasons are: the contact already has a CSR24 account (in which case the link will say something different, like "Edit Account"), the CSR24 integration is not enabled at your user level in Epic, or the contact record is missing required information that prevents account creation. Check those in order and most issues resolve quickly.</p>
+                <p>Update the template. If you only update the individual certificate, the change will apply to that one issuance but the next certificate from the template will still have the old address. Open the master template, correct the holder address, save, and then issue the certificate. That way every future certificate from that template will have the correct address without needing a manual correction each time.</p>
               </div>
             </div>
 
@@ -474,10 +451,10 @@
             <div class="badge-row">
               <span class="badge">CSR24</span>
               <span class="badge">Applied Epic</span>
-              <span class="badge">User Management</span>
-              <span class="badge">Portal Access</span>
-              <span class="badge">Contact Management</span>
-              <span class="badge">Account Setup</span>
+              <span class="badge">Certificate Issuance</span>
+              <span class="badge">Master Templates</span>
+              <span class="badge">Certificate Processing</span>
+              <span class="badge">ACORD Forms</span>
             </div>
           </div>
         </div>
@@ -489,9 +466,9 @@
         <div class="scribe-panel">
           <div class="scribe-panel-header">
             <div class="scribe-panel-dot"></div>
-            <span class="scribe-panel-label">Interactive Walkthrough — 12 Steps</span>
+            <span class="scribe-panel-label">Interactive Walkthrough</span>
           </div>
-          <iframe src="https://scribehow.com/embed/How_to_Create_and_Configure_a_New_CSR24_User__P4ACchsjTUmK_yp3TRIYUQ?as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="Create and Configure a New CSR24 User — Nadler Insurance"></iframe>
+          <iframe src="https://scribehow.com/embed/Creating_a_Certificate_Master_Template_in_CSR24__FJKdxyBVTHCA76rbflhOHw?as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="Creating a Certificate Master Template in CSR24 — Nadler Insurance"></iframe>
         </div>
       </div>
 
