@@ -220,167 +220,286 @@
 
         <div class="scenario-box">
           <div class="scenario-label">Before You Start</div>
-          <p>Certificate issuance in CSR24 begins from the insured's account — confirm the account is open and the correct policy lines are active in Applied Epic before proceeding. The certificate holder's name and address must be on hand, and you should know whether any additional insured language or special Description of Operations language is required by the holder's contract before you begin.</p>
+          <p>This workflow covers navigating Applied Epic and generating a Certificate of Insurance for a commercial account in CSR24. It covers selecting templates, adding policy and holder information, setting delivery preferences, and confirming the certificate synced back to Epic. Have the holder's name, address, and any contract requirements on hand before you begin.</p>
         </div>
 
         <div class="jump-nav">
-          <a class="jump-btn" href="#phase-account">Account &amp; Policy <span class="jump-btn-arrow">↓</span></a>
-          <a class="jump-btn" href="#phase-cert">Certificate Setup <span class="jump-btn-arrow">↓</span></a>
-          <a class="jump-btn" href="#phase-deliver">Review &amp; Deliver <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-access">Access CSR24 <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-issue">Issue Certificate <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-holder">Select / Add Holder <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-deliver">Delivery &amp; Submit <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-epic">Epic Integration <span class="jump-btn-arrow">↓</span></a>
         </div>
 
         <!-- PHASE 1 -->
-        <div class="phase-header" id="phase-account">
+        <div class="phase-header" id="phase-access">
           <span class="phase-number">Phase 01</span>
-          <span class="phase-title">Account &amp; Policy Selection</span>
+          <span class="phase-title">Access CSR24 to Issue Certificate</span>
         </div>
         <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Open the account in CSR24</div>
-              <div class="step-detail">Navigate to the insured's account in CSR24. All certificate issuance is account-specific — you must be on the correct account before proceeding, as the policies and contacts available will be tied to that account only.</div>
+              <div class="step-title">Start on the Client home screen in Epic</div>
+              <div class="step-detail">Open the insured's account and confirm you are on the <strong>Client</strong> home screen in Applied Epic before proceeding.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Navigate to Certificates</div>
-              <div class="step-detail">From the account view, select the <strong>Certificates</strong> section. This is where all certificate activity for the account lives — both existing certificates and the option to issue new ones.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Click "Issue New Certificate"</div>
-              <div class="step-detail">Select the option to issue a new certificate. If the account has saved master templates, you will be prompted to either start from a template or build from scratch. Starting from a template is faster when one exists for this holder — the holder info and policy selections will prepopulate.</div>
-              <div class="step-tip"><strong>No template for this holder?</strong> Select the blank certificate option and complete all fields manually. Consider saving a master template afterward if this holder is likely to request certificates regularly.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Select the certificate form type</div>
-              <div class="step-detail">Choose the appropriate ACORD form for the certificate being issued:</div>
-              <ul class="step-list">
-                <li><strong style="color:var(--gold)">ACORD 25</strong> — Certificate of Liability Insurance (most common)</li>
-                <li><strong style="color:var(--gold)">ACORD 28</strong> — Evidence of Commercial Property Insurance</li>
-                <li><strong style="color:var(--gold)">ACORD 27</strong> — Evidence of Personal Property Insurance</li>
-              </ul>
-              <div class="step-alert"><strong>Confirm the required form before selecting.</strong> The holder's contract or request will specify which form they need. Issuing the wrong form type means the certificate will be rejected and you will need to reissue.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Select the policies to include</div>
-              <div class="step-detail">Check the boxes for each policy line the holder has requested. Only active policies tied to this account in Applied Epic will be available.</div>
-              <ul class="step-list">
-                <li>General Liability</li>
-                <li>Auto Liability</li>
-                <li>Workers' Compensation</li>
-                <li>Umbrella / Excess</li>
-              </ul>
-              <div class="step-tip"><strong>Only include what was requested.</strong> Adding unrequested policy lines creates confusion for the holder and may raise questions the insured hasn't authorized you to answer on their behalf.</div>
+              <div class="step-title">Navigate to Certificates via Proofs of Insurance</div>
+              <div class="step-detail">From the Client screen, click <strong>Proofs of Insurance</strong> → <strong>Premium Processing</strong> → <strong>Certificates</strong>. This will launch CSR24 and land you on the client home screen within the portal.</div>
             </div>
           </div>
 
         </div><!-- /steps phase 1 -->
 
         <!-- PHASE 2 -->
-        <div class="phase-header" id="phase-cert">
+        <div class="phase-header" id="phase-issue">
           <span class="phase-number">Phase 02</span>
-          <span class="phase-title">Certificate Setup</span>
+          <span class="phase-title">Issue a New Certificate</span>
         </div>
         <div class="steps">
 
           <div class="step">
+            <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Issue Cert"</div>
+              <div class="step-detail">From the CSR24 client home screen, click the <strong>Issue Cert</strong> button. You will be redirected to the Issue a Certificate screen, which displays a list of available master templates for this account.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check for red templates before proceeding</div>
+              <div class="step-detail">Review the template list before selecting anything.</div>
+              <div class="step-alert"><strong>Alert:</strong> If any template is displayed in RED, that means the template has expired due to a policy being out of its effective date range. Do not issue a certificate from a red template. See your direct support contact for more information.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select the correct template based on holder requirements</div>
+              <div class="step-detail">Based on what the holder is requesting, select the appropriate template. For example, if the holder needs to be listed as an Additional Insured for General Liability, select the <strong>"25/26 Master w/ AI endt"</strong> template.</div>
+              <div class="step-alert"><strong>No Template for this Holder?</strong> Stop the process. All certificates must be issued off a template. Contact your manager for clarification. If directed to create a new template, use the <a href="https://epicoptimizer.com/paulr01/nadler-csr24-cert-master-template" style="color:var(--gold);text-decoration:underline;" target="_blank">Create a Master Template workflow</a> before proceeding.</div>
+              <div class="step-tip"><strong>Select the correct template</strong> — attachments are assigned at the template level. If you select the AI template, a copy of the AI endorsement will automatically be attached to the certificate after issuance.</div>
+            </div>
+          </div>
+
+          <div class="step">
             <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Enter the certificate holder information</div>
-              <div class="step-detail">Complete the holder name and full mailing address. This is the entity that will appear in the Certificate Holder box on the issued certificate. The name and address must match exactly what the holder's contract specifies.</div>
-              <div class="step-alert"><strong>Exact match required.</strong> Holders frequently reject certificates when the legal entity name or address doesn't match their contract. When in doubt, ask the insured to provide the holder's required name and address verbatim rather than guessing.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Add Additional Insured language if required</div>
-              <div class="step-detail">If the holder requires Additional Insured status, confirm the policy has the appropriate endorsement — Blanket Additional Insured or a specifically scheduled endorsement — before adding the language. Enter the endorsed language in the designated Additional Insured or Description of Operations section.</div>
-              <div class="step-alert"><strong>Never add AI language without an endorsement.</strong> If the policy does not carry the endorsement, the language cannot legitimately appear on the certificate. Verify against the policy paperwork or confirm with the underwriter first.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Complete the Description of Operations</div>
-              <div class="step-detail">Enter any project, contract, or holder-required language in the <strong>Description of Operations / Locations / Vehicles</strong> field. Common entries include:</div>
-              <ul class="step-list">
-                <li>Project name or job number</li>
-                <li>Waiver of Subrogation notice</li>
-                <li>Primary &amp; Non-Contributory language</li>
-                <li>Additional Insured endorsement reference</li>
-              </ul>
-              <div class="step-tip"><strong>Less is more.</strong> Only enter what the holder specifically requested. Certificates with overloaded Description of Operations fields create unnecessary questions. If it wasn't asked for, leave it out.</div>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
-            <div class="step-body">
-              <div class="step-title">Verify the insured's contact information</div>
-              <div class="step-detail">Confirm the Named Insured name and address at the top of the certificate are correct. This information pulls from the Applied Epic account record — if it appears wrong, the fix should be made at the source in Epic, not directly on the certificate.</div>
+              <div class="step-title">Verify limits in the template view</div>
+              <div class="step-detail">After selecting a template, you will be taken to the template view where you can confirm the limits are correct and that you have the right template. Do not worry about the Additional Insured or Waiver of Subrogation selections here — you will update those per holder in the next steps.</div>
             </div>
           </div>
 
         </div><!-- /steps phase 2 -->
 
         <!-- PHASE 3 -->
-        <div class="phase-header" id="phase-deliver">
+        <div class="phase-header" id="phase-holder">
           <span class="phase-number">Phase 03</span>
-          <span class="phase-title">Review &amp; Deliver</span>
+          <span class="phase-title">Select / Add Holder</span>
         </div>
         <div class="steps">
 
           <div class="step">
+            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Select Holder" — always search first</div>
+              <div class="step-detail">Click <strong>Select Holder</strong> and search the existing list before assuming a holder is new. Even if you think the holder is new, always start here to avoid creating a duplicate holder on the account. If they are not found on the list, you can add them from the next screen.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Add the holder if not found</div>
+              <div class="step-detail">If the holder does not appear in the list, click <strong>Add Holder</strong>. Enter the holder's full legal name and mailing address exactly as required by their contract.</div>
+              <div class="step-alert"><strong>Exact match required.</strong> Holders frequently reject certificates when the legal name or address doesn't match their contract. When in doubt, ask the insured to provide the holder's required information verbatim.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Consider the "One Time Only" option</div>
+              <div class="step-detail">The <strong>One Time Only</strong> selection is used when the certificate holder only needs to be named once and will not require a renewal certificate. This is typically used for special events and short-term policies. If selecting this option, set the <strong>Date Interest Ends</strong> to the day after the contract ends.</div>
+            </div>
+          </div>
+
+          <div class="step">
             <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Preview the certificate before issuing</div>
-              <div class="step-detail">Use the preview function to review the completed certificate before it is issued. Check every field — holder name and address, policy effective and expiration dates, coverage limits, and Description of Operations — before moving forward.</div>
-              <div class="step-tip"><strong>Preview is your last check.</strong> Once the certificate is issued, it becomes a document of record. Correcting an error means voiding the original and reissuing, which can delay the insured's project or contract.</div>
+              <div class="step-title">Check "Do they Receive Renewals?" if applicable</div>
+              <div class="step-detail">If this is not a one-time certificate and the holder will require renewals, check the <strong>Do they Receive Renewals?</strong> box. In the delivery section, you will be able to elect to send those renewals via email automatically.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Set the delivery method and recipient</div>
-              <div class="step-detail">Select how the certificate will be delivered. Options typically include:</div>
-              <ul class="step-list">
-                <li><strong style="color:var(--gold)">Email</strong> — enter the holder's email address; the certificate is sent as a PDF attachment</li>
-                <li><strong style="color:var(--gold)">Download / Print</strong> — generate a PDF to send manually or hand-deliver</li>
-              </ul>
-              <div class="step-alert"><strong>Confirm the delivery email address.</strong> Sending to the wrong address means the holder never receives the certificate — and you may not know until they follow up. When the address is unfamiliar, verify it with the insured before sending.</div>
+              <div class="step-title">Enter the number of Cancellation Days</div>
+              <div class="step-detail">Enter the required number of cancellation notice days for this holder. The standard is typically <strong>30 days</strong> unless the holder's contract specifies otherwise.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Issue the certificate</div>
-              <div class="step-detail">Click <strong>Issue</strong> to finalize and send. The certificate is now a document of record under this account in CSR24 and will appear in the account's certificate history. A copy is also logged in Applied Epic against the account.</div>
-              <div class="step-tip"><strong>Confirm it issued:</strong> After clicking Issue, verify the certificate appears in the account's certificate list with the correct issue date and holder name. If it doesn't appear, do not assume it sent — check for an error and reissue if necessary before notifying the insured that it's been sent.</div>
+              <div class="step-title">Set Additional Insured and Waiver of Subrogation at the certificate line level</div>
+              <div class="step-detail">This is where you tell the certificate whether to include the holder as Additional Insured and/or Waiver of Subrogation on each policy line. Only mark Y for what the holder specifically requested.</div>
+              <div class="step-tip"><strong>Example:</strong> If the holder needs Additional Insured on GL only and did not request Waiver of Subrogation on GL or Workers' Comp, mark: GL Additional Insured = <strong>Y</strong>, GL Subrogation Waiver = <strong>N</strong>, WC Subrogation Waiver = <strong>N</strong>.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">13</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Review the Endorsements section</div>
+              <div class="step-detail">The Endorsements section allows you to attach additional documents to the certificate. If the AI endorsement was already added at the template level, you do not need to add it again here. Use this section only when you need to bring in additional attachments that are not already on the template.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">14</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Complete the Description of Operations — Holder Specific Portion</div>
+              <div class="step-detail">There are two boxes in the Description of Operations section. The <strong>Certificate Portion</strong> pulls from the template level and applies to all holders — it is hardcoded and cannot be updated here. The <strong>Holder Specific Portion</strong> is where you do your work for this individual holder.</div>
+              <div class="step-tip"><strong>Use Library Lookup</strong> to access the agency's approved Description of Operations wording. Select the corresponding language based on the certificate requirements rather than typing it manually, to ensure approved language is used consistently.</div>
             </div>
           </div>
 
         </div><!-- /steps phase 3 -->
+
+        <!-- PHASE 4 -->
+        <div class="phase-header" id="phase-deliver">
+          <span class="phase-number">Phase 04</span>
+          <span class="phase-title">Delivery Recipient Setup &amp; Distribution</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">15</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Review the Delivery section options</div>
+              <div class="step-detail">The delivery section allows you to send copies to up to 3 additional recipients. Note the following rules:</div>
+              <ul class="step-list">
+                <li>A copy will automatically be delivered to the Servicing Role CSR on file and an activity will be created in Epic with a copy attached</li>
+                <li>You may send to up to 3 additional parties</li>
+                <li>Do not enter the client's email in this section — delivery to the client is controlled elsewhere</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">16</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Decide on the "Send Me Confirmation" option</div>
+              <div class="step-detail">A copy will automatically be delivered to the Servicing Role CSR on file and an activity will be created in Epic. Unless you specifically want to receive a separate email copy yourself, it is recommended to leave the <strong>Send Me Confirmation</strong> option unchecked.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">17</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Select "Supersedes Prior Certificate" if applicable</div>
+              <div class="step-detail">If this certificate is replacing a previously issued certificate, select the <strong>Supersedes Prior Certificate</strong> option. This links the new certificate to the one it is replacing in the system record.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">18</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Complete Recipient #1 — always use the holder's delivery email</div>
+              <div class="step-detail">Always enter the holder's delivery email in Recipient #1 when available. Complete all fields:</div>
+              <ul class="step-list">
+                <li><strong>Attention</strong> — name of the person you are sending to</li>
+                <li><strong>Subject Line</strong> — keep it vague and do not include a year, as this will be reused at renewal (e.g., "Proof of Insurance for [Company Name]")</li>
+                <li><strong>Message</strong> — keep it generic for the same reason; the message will be reused for all future certificates to this holder</li>
+              </ul>
+              <div class="step-tip"><strong>Example message:</strong> "Hello, Please find the attached Certificate of Insurance for your records. If you have any questions or require additional information, please do not hesitate to reach out. Thank you, Certificate Processing Team – [Agency Name]"</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">19</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Set email distribution options per recipient</div>
+              <div class="step-detail">For each recipient, select which certificates they should receive:</div>
+              <ul class="step-list">
+                <li><strong>Email Current Certificate</strong> — sends the certificate being issued right now</li>
+                <li><strong>Email Renewal Cert</strong> — uses the same subject line, message, and email address for all future certificates to this holder, including renewals</li>
+              </ul>
+              <div class="step-tip"><strong>When in doubt, always check "Email Renewal Cert."</strong> If the holder is One Time Only, you do not need to check this since they will not receive future certificates. For all other holders, selecting this now maximizes automation at renewal time.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">20</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Enter the holder's email address for Recipient #1</div>
+              <div class="step-detail">Enter the holder's email address in the Recipient #1 email field. If additional recipients are required, complete Recipient #2 and Recipient #3 following the same steps.</div>
+              <div class="step-alert"><strong>Confirm the email address.</strong> Sending to the wrong address means the holder never receives the certificate. Verify any unfamiliar address with the insured before submitting.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">21</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click Preview, then Submit</div>
+              <div class="step-detail">Click <strong>Preview</strong> to review the completed certificate before it is issued — confirm the holder name and address, policy dates, limits, and Description of Operations are all correct. Once satisfied, click <strong>Submit</strong>. The Delivery Information screen will display showing all recipients who were emailed a copy.</div>
+              <div class="step-tip"><strong>Preview is your last check.</strong> Issued certificates cannot be edited. Catching an error before Submit avoids the voiding and reissuing process entirely.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps phase 4 -->
+
+        <!-- PHASE 5 -->
+        <div class="phase-header" id="phase-epic">
+          <span class="phase-number">Phase 05</span>
+          <span class="phase-title">Epic Integration Details</span>
+        </div>
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">22</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Informational: what happens in Epic after Submit</div>
+              <div class="step-detail">No action is required in this phase — it is for informational purposes only. Updates are written to Epic immediately upon submission. Return to the account in Epic to confirm the certificate synced correctly.</div>
+              <div class="step-tip"><strong>Good to know:</strong> CSR24 writes the certificate data back to Epic immediately on submission. You do not need to manually log or attach the certificate in Epic — the sync handles it.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">23</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Return to Epic and open the Activity section</div>
+              <div class="step-detail">Navigate back to the account in Epic and select the <strong>Activity</strong> section. Click <strong>Activities → All</strong> to see all activity records for the account.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">24</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Locate the 4CER activity created by CSR24</div>
+              <div class="step-detail">Sort the activity list by <strong>Entered On Date</strong> (most recent first) and look for the <strong>4CER</strong> activity code. This is the activity automatically created by CSR24 when it syncs to Epic upon certificate submission.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">25</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Access the activity and view the attached certificate PDF</div>
+              <div class="step-detail">Highlight the 4CER activity, click <strong>Access</strong>, then click <strong>Attachments</strong>. The activity will display the PDF copy of the issued certificate. Double-click to open it or view it in the preview pane to confirm the correct certificate is attached.</div>
+            </div>
+          </div>
+
+        </div><!-- /steps phase 5 -->
 
         <!-- FAQ -->
         <div class="faq-section">
