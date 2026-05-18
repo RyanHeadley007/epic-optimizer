@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Excelsure — How to Issue a Certificate of Insurance in CSR24 | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:#171e26; --mid:#212c3a; --gold:#ca9d64;
+      --gold-dim:rgba(202,157,100,0.10); --gold-border:rgba(202,157,100,0.28);
+      --grey:#bdbbae; --tan:#fffdea; --tan-faint:rgba(255,253,234,0.04);
+      --border:rgba(189,187,174,0.10);
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body { background:var(--dark); color:var(--tan); font-family:'Outfit',sans-serif; font-size:17px; line-height:1.65; overflow-x:hidden }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 60px; background:rgba(23,30,38,0.96); backdrop-filter:blur(18px); border-bottom:1px solid var(--border) }
+    .nav-brand { display:flex; align-items:center; gap:13px; text-decoration:none }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.1 }
+    .nav-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    .nav-brand-sub { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:500 }
+    .nav-links { display:flex; gap:36px; list-style:none }
+    .nav-links a { text-decoration:none; color:var(--grey); font-size:14px; font-weight:400; transition:color 0.2s }
+    .nav-links a:hover { color:var(--tan) }
+    .nav-cta { border:1px solid var(--gold-border); color:var(--gold); padding:9px 24px; border-radius:2px; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s,color 0.2s }
+    .nav-cta:hover { background:var(--gold); color:var(--dark) }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:6px; background:none; border:none; z-index:200 }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--tan); border-radius:2px; transition:transform 0.3s,opacity 0.3s }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg) }
+    .hamburger.open span:nth-child(2) { opacity:0 }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg) }
+    .mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(23,30,38,0.98); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center }
+    .mobile-menu.open { display:flex }
+    .mobile-menu ul { list-style:none; text-align:center; margin-bottom:40px }
+    .mobile-menu ul li { border-bottom:1px solid var(--border) }
+    .mobile-menu ul li:first-child { border-top:1px solid var(--border) }
+    .mobile-menu ul li a { display:block; padding:20px 48px; font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--tan); text-decoration:none; transition:color 0.2s }
+    .mobile-menu ul li a:hover { color:var(--gold) }
+    .mobile-menu .mobile-cta { border:1px solid var(--gold-border); color:var(--gold); padding:14px 40px; border-radius:2px; font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none }
+    .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
+    .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
+    .eyebrow-line { width:36px; height:1px; background:var(--gold) }
+    .eyebrow-text { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold) }
+    .agency-badge { display:inline-flex; align-items:center; gap:8px; background:var(--gold-dim); border:1px solid var(--gold-border); border-radius:1px; padding:5px 14px; margin-bottom:14px }
+    .agency-badge-label { font-family:'Rajdhani',sans-serif; font-size:9px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--grey) }
+    .agency-badge-name { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold) }
+    .page-title { font-family:'Rajdhani',sans-serif; font-size:clamp(28px,4vw,52px); font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--tan); line-height:1.05; margin-bottom:16px }
+    .page-title span { color:var(--gold) }
+    .page-sub { color:var(--grey); font-size:16px; font-weight:300; max-width:620px; line-height:1.65; margin-bottom:28px }
+    .hero-meta { display:flex; gap:28px; flex-wrap:wrap; align-items:center }
+    .hero-meta-item { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:300; color:var(--grey) }
+    .hero-meta-dot { width:4px; height:4px; border-radius:50%; background:var(--gold) }
+    .hero-meta-item strong { color:var(--tan); font-weight:500 }
+    .workflow-layout { display:grid; grid-template-columns:1fr; min-height:calc(100vh - 200px) }
+    .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .content-columns { position:relative; padding-right:calc((100% + 240px) * 0.48) }
+    .steps-column { min-width:0 }
+    .scribe-column { position:fixed; top:calc(73px + 16px); right:0; width:calc((100vw - 240px) * 0.48); height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:52px; z-index:10 }
+    .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
+    .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
+    .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
+    .scribe-panel-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold) }
+    .scribe-panel iframe { display:block; width:100%; border:none; flex:1; min-height:0 }
+    .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:40px }
+    .scenario-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
+    .scenario-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+    .jump-nav { display:flex; gap:12px; margin-bottom:36px; flex-wrap:wrap }
+    .jump-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border:1px solid var(--gold-border); border-radius:2px; background:var(--gold-dim); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; transition:background 0.2s,color 0.2s,border-color 0.2s }
+    .jump-btn:hover { background:var(--gold); color:var(--dark); border-color:var(--gold) }
+    .jump-btn-arrow { font-size:14px; opacity:0.7 }
+    .phase-header { display:flex; align-items:center; gap:14px; margin:44px 0 20px; padding-bottom:12px; border-bottom:1px solid var(--border) }
+    .phase-header:first-of-type { margin-top:0 }
+    .phase-number { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background:var(--gold-dim); border:1px solid var(--gold-border); padding:3px 10px; border-radius:1px; white-space:nowrap }
+    .phase-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--tan) }
+    .steps { display:flex; flex-direction:column }
+    .step { display:grid; grid-template-columns:48px 1fr; position:relative }
+    .step-connector { display:flex; flex-direction:column; align-items:center; padding-top:4px }
+    .step-num { width:28px; height:28px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; color:var(--gold); flex-shrink:0; z-index:1 }
+    .step-line { width:1px; flex:1; background:var(--border); margin-top:6px; min-height:20px }
+    .step:last-child .step-line { display:none }
+    .step-body { padding:0 0 28px 16px }
+    .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
+    .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
+    .step-list { list-style:none; margin:6px 0 10px }
+    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
+    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
+    .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
+    .step-alert strong { color:var(--gold); font-weight:600 }
+    .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
+    .step-tip strong { color:var(--tan); font-weight:500 }
+    .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
+    .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
+    .faq-list { display:flex; flex-direction:column; gap:3px; margin-bottom:40px }
+    .faq-item { border:1px solid var(--border); border-radius:2px; overflow:hidden; transition:border-color 0.2s }
+    .faq-item:hover { border-color:var(--gold-border) }
+    .faq-q { padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:500; color:var(--tan); user-select:none }
+    .faq-q span { font-size:11px; color:var(--grey); flex-shrink:0; transition:transform 0.25s }
+    .faq-item.open .faq-q span { transform:rotate(180deg) }
+    .faq-a { display:none; padding:0 18px 16px; font-size:14px; color:var(--grey); font-weight:300; line-height:1.7; border-top:1px solid var(--border) }
+    .faq-a p { padding-top:12px }
+    .faq-item.open .faq-a { display:block }
+    .badge-section { margin-bottom:0 }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px }
+    .badge { border:1px solid var(--gold-border); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:2px }
+    footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
+    .footer-brand { display:flex; align-items:center; gap:12px; text-decoration:none }
+    .footer-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:17px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    footer p { font-size:13px; color:var(--grey) }
+    @media (max-width:960px) {
+      nav { padding:14px 24px } .nav-links,.nav-cta { display:none } .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px } .workflow-layout { grid-template-columns:1fr }
+      .workflow-content { padding:36px 24px 60px }
+      .content-columns { padding-right:calc(50vw + 16px) }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px } footer { padding:36px 24px }
+    }
+    @media (max-width:600px) {
+      .content-columns { padding-right:0 }
+      .scribe-column { position:static; width:100%; height:auto; padding-right:0; margin-top:40px }
+      .scribe-panel iframe { height:580px }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Certificate Process · CSR24</span></div>
+  <div class="agency-badge">
+    <span class="agency-badge-label">Agency</span>
+    <span class="agency-badge-name">Excelsure</span>
+  </div>
+  <div class="page-title">How to Issue a<br><span>Certificate of Insurance in CSR24</span></div>
+  <p class="page-sub">Step-by-step walkthrough for issuing a Certificate of Insurance through CSR24 — from selecting the certificate template and holder through completing the Description of Operations, previewing, and submitting.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>4</strong>&nbsp;Phases</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>40</strong>&nbsp;Steps</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic · CSR24</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Certificate Issuance</div>
+  </div>
+</div>
+
+<div class="workflow-layout">
+<main class="workflow-content">
+
+  <div style="margin-bottom:32px;">
+    <a href="index-excelsure.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:2px;color:var(--gold);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="this.style.background='var(--gold-dim)';this.style.color='var(--gold)'">
+      <span style="font-size:18px;line-height:1">←</span> Back to Excelsure Guide Library
+    </a>
+  </div>
+
+  <div class="content-columns">
+    <div class="steps-column">
+
+      <div class="scenario-box">
+        <div class="scenario-label">Overview</div>
+        <p>Follow this guide to navigate Applied Epic and generate a certificate of insurance for a commercial account. This workflow covers accessing CSR24 from Epic, selecting the correct template, adding holder information, setting Additional Insured and Waiver of Subrogation status, completing the Description of Operations, configuring delivery, and verifying the certificate back in Epic.</p>
+      </div>
+
+      <div class="jump-nav">
+        <a class="jump-btn" href="#phase-access">Access CSR24 <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-issue">Issue Certificate <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-holder">Select / Add Holder <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-delivery">Delivery &amp; Submit <span class="jump-btn-arrow">↓</span></a>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="phase-header" id="phase-access">
+        <span class="phase-number">Phase 01</span>
+        <span class="phase-title">Access CSR24 to Issue Certificate</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Start on the "Client" home screen of Epic</div>
+            <div class="step-detail">Open the insured's account in Applied Epic and confirm you are on the Client home screen for the correct account before proceeding.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Proofs of Insurance" → "Premium Processing" → "Certificates"</div>
+            <div class="step-detail">From the Epic navigation, click <strong style="color:var(--tan)">Proofs of Insurance</strong>, then <strong style="color:var(--tan)">Premium Processing</strong>, then <strong style="color:var(--tan)">Certificates</strong>. This launches CSR24 for the account.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">You will be directed to CSR24 and land on the client home screen</div>
+            <div class="step-detail">CSR24 opens to the client's account home screen. All certificate issuance for this insured is done from here.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 1 -->
+
+      <!-- PHASE 2 -->
+      <div class="phase-header" id="phase-issue">
+        <span class="phase-number">Phase 02</span>
+        <span class="phase-title">Issue a New Certificate</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Issue Cert"</div>
+            <div class="step-detail">Click the <strong style="color:var(--tan)">Issue Cert</strong> button on the client home screen in CSR24 to begin the certificate issuance process.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the list of available templates</div>
+            <div class="step-detail">You will be redirected to the Issue a Certificate screen showing all available templates for this account.</div>
+            <div class="step-alert"><strong>If a template is RED, do not issue.</strong> A red template means it has expired — typically because a policy is outside its effective date range. Do not issue a certificate from a red template. See your direct support contact for next steps.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select the correct template based on the holder's requirements</div>
+            <div class="step-detail">Based on what the holder is requesting, select the appropriate template. For example, if the holder needs to be listed as an Additional Insured for General Liability, select the <strong style="color:var(--tan)">25/26 Master w/ AI endt</strong> template.</div>
+            <div class="step-tip"><strong>Template selection drives attachments.</strong> Endorsement documents are assigned at the template level. If you select the AI template, a copy of the AI endorsement will automatically be attached to the certificate upon issuance.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Verify limits on the template view</div>
+            <div class="step-detail">After selecting a template you will be taken to the template view where you can verify coverage limits and confirm it is the correct template. Do not worry about the Additional Insured or Waiver of Subrogation selections here — you will set those per holder in the next steps.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 2 -->
+
+      <!-- PHASE 3 -->
+      <div class="phase-header" id="phase-holder">
+        <span class="phase-number">Phase 03</span>
+        <span class="phase-title">Select / Add Holder</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Select Holder" to search before adding</div>
+            <div class="step-detail">Even if you believe the holder is new, always start by clicking <strong style="color:var(--tan)">Select Holder</strong> to search the existing list and confirm you are not creating a duplicate. You can add a new holder from the next screen if they are not found.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Search for the holder — if not found, click "Add Holder"</div>
+            <div class="step-detail">Search the holder list. If the holder is not present, click the <strong style="color:var(--tan)">Add Holder</strong> button to add them as a new holder on this account.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Enter the holder name and address</div>
+            <div class="step-detail">Complete all required fields — holder name and full mailing address. The name and address must match exactly what the holder's contract specifies.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Consider the "One Time Only" selection</div>
+            <div class="step-detail">If the certificate holder only needs to be named this single time and will not require a renewal certificate, select <strong style="color:var(--tan)">One Time Only</strong>. This is typically used for special events and short-term policies. If selecting One Time Only, set the <strong style="color:var(--tan)">Date Interest Ends</strong> to the day after the contract ends.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check "Do they Receive Renewals?" if applicable</div>
+            <div class="step-detail">If the holder is not a One Time Only holder and will require renewal certificates, check the <strong style="color:var(--tan)">Do they Receive Renewals?</strong> box. When you set up the delivery section, you can elect to have renewal certificates emailed to them automatically.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">13</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Enter the number of Cancellation Days</div>
+            <div class="step-detail">Enter the required number of cancellation notice days for this holder. In most cases this is <strong style="color:var(--tan)">30 days</strong>.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">14</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Set Additional Insured and Waiver of Subrogation at the certificate line level</div>
+            <div class="step-detail">This is where you tell the certificate whether to include this holder as Additional Insured and/or Waiver of Subrogation at each coverage line. Set each line based on exactly what the holder's contract requires — no more, no less.</div>
+            <div class="step-tip"><strong>Example:</strong> If the holder needs to be named as Additional Insured on General Liability only and did not ask for Waiver of Subrogation on GL or Workers Comp: mark <strong>Y</strong> for GL Additional Insured, <strong>N</strong> for GL Subrogation Waiver, and <strong>N</strong> for Workers Comp Subrogation Waiver.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">15</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the Endorsements section and attach required documents</div>
+            <div class="step-detail">The Endorsements section controls which documents are attached with the certificate. If you marked Yes for Waiver of Subrogation or Additional Insured, include the corresponding endorsement documents here. Click <strong style="color:var(--tan)">View/Edit</strong>, find the correct documents in the list, and add them.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">16</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the Description of Operations — Certificate Portion</div>
+            <div class="step-detail">The <strong style="color:var(--tan)">Certificate Portion</strong> pulls from the template and applies to all holders. If wording appears here it is hardcoded from the template and cannot be edited at the holder level.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">17</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Complete the Description of Operations — Holder Specific Portion</div>
+            <div class="step-detail">The <strong style="color:var(--tan)">Holder Specific Portion</strong> is where you enter language specific to this holder. This text will auto-populate on all future certificates issued to this holder. Enter the agency-approved Additional Insured wording or any other required language here.</div>
+            <div class="step-tip"><strong>Use Library Lookup</strong> to access the agency's approved Description of Operations wording rather than typing it from scratch. Select the corresponding wording based on the certificate requirements.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">18</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the Delivery section options</div>
+            <div class="step-detail">The Delivery section allows you to send copies to up to three recipients. Important rules for this section:</div>
+            <ul class="step-list">
+              <li>A copy is automatically delivered to the Servicing Role CSR on file — an activity with the attachment is also created in Epic upon submission.</li>
+              <li>You can send delivery to up to 3 additional parties.</li>
+              <li>Do not enter the client's email here — delivery to the insured is controlled elsewhere in the account settings.</li>
+            </ul>
+            <div class="step-tip"><strong>Send Me Confirmation:</strong> Unless you personally want an email copy, leave this unchecked — the CSR on file already receives one automatically.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">19</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check "Supersedes Prior Certificate" if applicable</div>
+            <div class="step-detail">If this certificate replaces a previously issued certificate for this holder, select the <strong style="color:var(--tan)">Supersedes Prior Certificate</strong> option before submitting.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 3 -->
+
+      <!-- PHASE 4 -->
+      <div class="phase-header" id="phase-delivery">
+        <span class="phase-number">Phase 04</span>
+        <span class="phase-title">Delivery Recipient Setup, Submit &amp; Epic Verification</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">20</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Complete Recipient #1 — always the holder's delivery email</div>
+            <div class="step-detail">Enter the holder's delivery information in Recipient #1. Fill in the following fields:</div>
+            <ul class="step-list">
+              <li><strong style="color:var(--gold)">Attention</strong> — name of the person you are sending to</li>
+              <li><strong style="color:var(--gold)">Subject Line</strong> — keep vague and do not include a year, as this will be reused at renewal (e.g. <em>Proof of Insurance for [Company Name]</em>)</li>
+              <li><strong style="color:var(--gold)">Message</strong> — keep generic for the same reason; a professional template works well here</li>
+            </ul>
+            <div class="step-tip"><strong>Always enter the holder's delivery email in Recipient #1.</strong> Because we set the holder to receive renewals and email those renewals, having the delivery email on file here maximizes future automation at renewal issuance time.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">21</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select the email distribution checkboxes for Recipient #1</div>
+            <div class="step-detail">There are two email distribution options per recipient:</div>
+            <ul class="step-list">
+              <li><strong style="color:var(--gold)">Email Current Certificate</strong> — sends the certificate being issued now</li>
+              <li><strong style="color:var(--gold)">Email Renewal Cert</strong> — uses this same subject line, message, and email for all future certificates including renewals</li>
+            </ul>
+            <div class="step-tip"><strong>When in doubt, check both.</strong> If the holder is One Time Only, you do not need to check Email Renewal Cert since they will date off and won't need a future certificate. For all others, always select Email Renewal Cert.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">22</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Enter the holder's email address for Recipient #1</div>
+            <div class="step-detail">Type the holder's email address in the Recipient #1 email field. Double-check the address before proceeding — a wrong address means the holder never receives the certificate.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">23</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Complete Recipient #2 and #3 if required</div>
+            <div class="step-detail">If additional parties need a copy, complete Recipient #2 and Recipient #3 following the same steps as Recipient #1 — attention, subject, message, distribution checkboxes, and email address.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">24</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Preview"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Preview</strong> to download a PDF of the certificate as it will appear when issued. Review all fields — holder name and address, coverage limits, policy dates, AI/WVD selections, Description of Operations, and endorsement attachments — before submitting.</div>
+            <div class="step-tip"><strong>Preview is your last check.</strong> Once submitted, the certificate is a document of record. Correcting an error requires voiding the original and reissuing. Use Preview every time.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">25</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Submit"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Submit</strong> to issue the certificate. Delivery information will display showing all recipients who were emailed copies. The certificate is now a document of record and updates are written back to Epic immediately upon submission.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">26</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Return to Epic and verify the activity was created</div>
+            <div class="step-detail">Go back to the account in Applied Epic and click <strong style="color:var(--tan)">Activities</strong> → <strong style="color:var(--tan)">All</strong>. Sort by Entered On Date to bring the most recent activity to the top. Look for the <strong style="color:var(--tan)">4CER</strong> activity code — this is created automatically by CSR24 when it syncs the certificate to Epic.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">27</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Open the activity and access the certificate attachment</div>
+            <div class="step-detail">Highlight the 4CER activity, click <strong style="color:var(--tan)">Access</strong>, then click <strong style="color:var(--tan)">Attachments</strong>. The activity will filter and return a PDF copy of the issued certificate. Double-click to open and verify the certificate is correct.</div>
+            <div class="step-tip"><strong>Workflow complete.</strong> The certificate has been issued, delivered to all recipients, and a copy is now attached to the Epic activity record.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 4 -->
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <div class="section-label">Common Questions</div>
+        <div class="faq-list">
+
+          <div class="faq-item" id="faq1">
+            <div class="faq-q" onclick="togF('faq1')">"Issue a Certificate" isn't showing — or it's routing to a request form. Why?<span>▾</span></div>
+            <div class="faq-a"><p>There are two common reasons. First, the insured may not have an active certificate template — if no template exists or all templates are expired (showing red in the template list), the system cannot issue directly and will route to a Certificate of Insurance Request form instead. Second, the insured may not have been granted issuance permission in CSR24. Check the template status first, and if a valid template is in place, review the insured's account permissions in the CSR24 utilities.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq2">
+            <div class="faq-q" onclick="togF('faq2')">The policy limits on the certificate don't look right — what do I do?<span>▾</span></div>
+            <div class="faq-a"><p>CSR24 pulls policy data directly from Applied Epic via the data sync. If limits look wrong, the issue is almost certainly in the Epic policy record — not in CSR24. Cancel out, go to the policy in Applied Epic, confirm the limits are entered correctly, save, and then return to CSR24. The corrected data will pull through on the next sync (up to one hour). Do not manually override limits on the certificate — fix it at the source so Epic and CSR24 stay aligned.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq3">
+            <div class="faq-q" onclick="togF('faq3')">I submitted with an error — can I edit the issued certificate?<span>▾</span></div>
+            <div class="faq-a"><p>Issued certificates cannot be edited in CSR24. To correct an error, void or supersede the original and issue a corrected replacement — which will carry a new certificate number. If the holder already received the original, notify them that a corrected version is coming and ask them to disregard the prior one. This is exactly why the Preview step exists — catching errors before submission avoids the voiding process entirely.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq4">
+            <div class="faq-q" onclick="togF('faq4')">Does the insured automatically get a copy when I issue?<span>▾</span></div>
+            <div class="faq-a"><p>That depends on the account's CSR24 configuration. The <strong>Send a copy of all certificates to this insured</strong> setting controls whether the insured is automatically CC'd on every certificate issued. If it is on, the insured receives a copy every time. If this account also runs renewal batch processing, review that setting carefully before the batch — leaving it on during a batch run will send one email to the insured per holder, all at once, which can be a significant volume on large accounts.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq5">
+            <div class="faq-q" onclick="togF('faq5')">Where do I find a certificate after it has been issued?<span>▾</span></div>
+            <div class="faq-a"><p>All issued certificates are accessible under <strong>Reprint Certificates</strong> in the Manage Certificates menu. Use the search to locate a specific certificate by holder name, date, or certificate number. From there you can view, reprint, or use the issued certificate as a starting point for a new issuance to the same holder.</p></div>
+          </div>
+
+        </div>
+
+        <div class="section-label">Skills Used</div>
+        <div class="badge-section">
+          <div class="badge-row">
+            <span class="badge">CSR24</span>
+            <span class="badge">Applied Epic</span>
+            <span class="badge">Certificate Issuance</span>
+            <span class="badge">ACORD 25</span>
+            <span class="badge">Certificate Holders</span>
+            <span class="badge">Description of Operations</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /steps-column -->
+
+    <!-- SCRIBE PANEL -->
+    <div class="scribe-column">
+      <div class="scribe-panel">
+        <div class="scribe-panel-header">
+          <div class="scribe-panel-dot"></div>
+          <span class="scribe-panel-label">Interactive Walkthrough</span>
+        </div>
+        <iframe src="https://scribehow.com/embed/How_To_Issue_A_Certificate_Of_Insurance_In_CSR24__CHn8Gw0jRI2xuvJfzaCpfg?as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="How to Issue a Certificate of Insurance in CSR24 — Excelsure"></iframe>
+      </div>
+    </div>
+
+  </div><!-- /content-columns -->
+</main>
+</div>
+
+<footer>
+  <a class="footer-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2026 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+  function togF(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>
