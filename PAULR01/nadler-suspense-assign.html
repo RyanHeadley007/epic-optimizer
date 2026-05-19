@@ -67,9 +67,9 @@
     .workflow-content { padding:52px 52px 80px; min-width:0 }
 
     /* ── TWO-COLUMN CONTENT + FIXED SCRIBE ── */
-    .content-columns { position:relative; padding-right:520px }
+    .content-columns { position:relative; padding-right:calc(100vw * 0.57) }
     .steps-column { min-width:0 }
-    .scribe-column { position:fixed; top:calc(73px + 16px); right:0; width:468px; height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:52px; z-index:10 }
+    .scribe-column { position:fixed; top:89px; right:0; width:calc(100vw * 0.57); height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:32px; z-index:10 }
     .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
     .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
     .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
@@ -423,6 +423,21 @@
   function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
   document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
+  // Scribe panel: sit below hero when visible, lock to nav when scrolled past
+  function positionScribe() {
+    var hero = document.querySelector('.page-hero');
+    var col  = document.querySelector('.scribe-column');
+    if (!hero || !col) return;
+    var navH    = 73;
+    var heroBot = hero.getBoundingClientRect().bottom;
+    var top     = Math.max(navH + 16, heroBot + 16);
+    col.style.top    = top + 'px';
+    col.style.height = 'calc(100vh - ' + top + 'px - 16px)';
+  }
+  positionScribe();
+  window.addEventListener('scroll', positionScribe, { passive: true });
+  window.addEventListener('resize', positionScribe, { passive: true });
+
 </script>
 </body>
 </html>
