@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nadler Insurance — Assigning Download Files from Suspense | Epic Optimizer</title>
+  <title>Nadler Insurance — Exporting Issued Certs into a Zip Folder | Epic Optimizer</title>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
@@ -62,8 +62,6 @@
 
     /* ── OUTER LAYOUT ── */
     .workflow-layout { display:grid; grid-template-columns:1fr; min-height:calc(100vh - 200px) }
-
-    /* ── MAIN CONTENT ── */
     .workflow-content { padding:52px 52px 80px; min-width:0 }
 
     /* ── TWO-COLUMN CONTENT + FIXED SCRIBE ── */
@@ -101,9 +99,6 @@
     .step-body { padding:0 0 28px 16px }
     .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
     .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
-    .step-list { list-style:none; margin:6px 0 10px }
-    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
-    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
     .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
     .step-alert strong { color:var(--gold); font-weight:600 }
     .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
@@ -123,7 +118,7 @@
     .faq-item.open .faq-a { display:block }
 
     /* ── BADGES ── */
-    .badge-section { margin-bottom:0 }
+    .badge-section { margin-bottom:60px }
     .badge-row { display:flex; flex-wrap:wrap; gap:8px }
     .badge { border:1px solid var(--gold-border); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:2px }
 
@@ -136,10 +131,11 @@
     /* ── RESPONSIVE ── */
     @media (max-width:960px) {
       nav { padding:14px 24px } .nav-links,.nav-cta { display:none } .hamburger { display:flex }
-      .page-hero { padding:110px 24px 40px } .workflow-layout { grid-template-columns:1fr }
+      .page-hero { padding:110px 24px 40px }
       .workflow-content { padding:36px 24px 60px }
       .content-columns { padding-right:calc(50vw + 16px) }
-      .scribe-column { width:calc(50vw - 16px); padding-right:16px } footer { padding:36px 24px }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px }
+      footer { padding:36px 24px }
     }
     @media (max-width:600px) {
       .content-columns { padding-right:0 }
@@ -191,19 +187,19 @@
 <!-- HERO -->
 <div class="page-hero">
   <div class="hero-glow"></div>
-  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Download Processing · Applied Epic</span></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Certificate Management · CSR24</span></div>
   <div class="agency-badge">
     <span class="agency-badge-label">Agency</span>
     <span class="agency-badge-name">Nadler Insurance</span>
   </div>
-  <div class="page-title">Assigning Download Files<br><span>from Suspense</span></div>
-  <p class="page-sub">Once a suspense item is located, this workflow covers how to match and assign the downloaded file to the correct existing policy — from selecting the transaction through confirming the lookup code assignment.</p>
+  <div class="page-title">Exporting Issued Certs<br><span>into a Zip Folder</span></div>
+  <p class="page-sub">Access and download master general liability and workers compensation certificates through the CSR24 portal. This guide covers generating zip files with all required attachments for your records — from the account level through to the downloaded file.</p>
   <div class="hero-meta">
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Phases</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>9</strong>&nbsp;Steps</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>~3 Minutes</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Interface Management</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>11</strong>&nbsp;Steps</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>~5 Minutes</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Certificate Management</div>
   </div>
 </div>
 
@@ -221,104 +217,118 @@
       <div class="steps-column">
 
         <div class="scenario-box">
-          <div class="scenario-label">Before You Start</div>
-          <p>This workflow begins where <strong>Access Suspense Items</strong> leaves off — you should already be in the suspense queue with a filtered list of items for your carrier. Select the policy transaction you want to assign, then follow the steps below to match it to the correct existing policy and confirm the lookup code is properly attached.</p>
+          <div class="scenario-label">What This Guide Covers</div>
+          <p>Use this workflow whenever you need to bulk-export issued certificates for a client — typically as part of a certificate renewal or delivery cycle. The Zip Certs function in CSR24 packages all holder certificates and their attachments into a single downloadable zip file. Once downloaded, send the certificates to the insured, attach the sent item to the open CERR activity, update notes that certificates have been delivered, and close the CERR.</p>
         </div>
 
         <div class="jump-nav">
-          <a class="jump-btn" href="#phase-search">Account Search &amp; Filtering <span class="jump-btn-arrow">↓</span></a>
-          <a class="jump-btn" href="#phase-assign">Policy Selection &amp; Assignment <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-nav">Navigate to Zip Certs <span class="jump-btn-arrow">↓</span></a>
+          <a class="jump-btn" href="#phase-export">Configure &amp; Export <span class="jump-btn-arrow">↓</span></a>
         </div>
 
-        <!-- ═══════ PHASE 01 · ACCOUNT SEARCH AND FILTERING ═══════ -->
-        <div class="phase-header" id="phase-search">
+        <!-- ═══════ PHASE 01 · NAVIGATE TO ZIP CERTS ═══════ -->
+        <div class="phase-header" id="phase-nav">
           <span class="phase-number">Phase 01</span>
-          <span class="phase-title">Account Search and Filtering</span>
+          <span class="phase-title">Navigate to Zip Certs</span>
         </div>
         <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the policy transaction from the suspense list</div>
-              <div class="step-detail">Starting in the suspense area of Applied Epic, click the policy transaction you need to assign. This opens the account search panel where Epic will attempt to locate a matching policy to attach the download to.</div>
+              <div class="step-title">Start at the account level in CSR24</div>
+              <div class="step-detail">Open CSR24 and navigate to the client account you need to export certificates for. All steps in this workflow begin from the account-level view.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Select the "Prospective" and "History" checkboxes</div>
-              <div class="step-detail">Under <strong>Existing Clients/Policies</strong>, check both the <strong>Prospective</strong> and <strong>History</strong> checkboxes. This expands the search scope to include policies across all lifecycle stages — ensuring expired or non-renewed policies appear alongside active ones.</div>
-              <div class="step-tip"><strong>Why both?</strong> Download files may arrive after a policy has lapsed or been renewed. Checking History prevents the correct policy from being excluded from search results simply because it is no longer active.</div>
+              <div class="step-title">Click "Proofs"</div>
+              <div class="step-detail">From the account view, click the <strong>Proofs</strong> tab. This opens the certificate and proof of insurance section for the account, where issued certificates and holder lists are managed.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Find" to refresh the policy search results</div>
-              <div class="step-detail">Click <strong>Find</strong> to execute the updated search with the expanded scope. The results list will refresh to include all matching policies — prospective, active, and historical.</div>
+              <div class="step-title">Click "Zip Certs"</div>
+              <div class="step-detail">Inside the Proofs section, click <strong>Zip Certs</strong>. This opens the bulk certificate export tool, which will package all issued certificates for the selected holder template into a single zip file.</div>
             </div>
           </div>
-
-        </div>
-
-        <!-- ═══════ PHASE 02 · POLICY SELECTION AND ASSIGNMENT ═══════ -->
-        <div class="phase-header" id="phase-assign">
-          <span class="phase-number">Phase 02</span>
-          <span class="phase-title">Policy Selection and Assignment</span>
-        </div>
-        <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click the Expiration column header to sort the policies</div>
-              <div class="step-detail">Click the <strong>Expiration</strong> column header to sort the results by expiration date. This groups policies chronologically, making it much faster to locate the policy whose effective date range aligns with the downloaded file.</div>
+              <div class="step-title">Select the Holder Template to export from</div>
+              <div class="step-detail">Choose the <strong>Holder Template</strong> you want to export the holder list from. Templates typically correspond to a specific coverage type or certificate form — for example, a master GL template or a workers compensation template.</div>
+              <div class="step-alert"><strong>Multiple active templates:</strong> If more than one template is marked as active, you must repeat this download process for each active template separately. Exporting from only one will leave certificates from the other template out of your records.</div>
             </div>
           </div>
+
+        </div>
+
+        <!-- ═══════ PHASE 02 · CONFIGURE AND EXPORT ═══════ -->
+        <div class="phase-header" id="phase-export">
+          <span class="phase-number">Phase 02</span>
+          <span class="phase-title">Configure and Export</span>
+        </div>
+        <div class="steps">
 
           <div class="step">
             <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Find the policy with the matching effective date range</div>
-              <div class="step-detail">Scan the sorted list for the policy whose effective and expiration dates correspond to the period covered by the downloaded file. The dates on the download transaction should align with the policy term shown in the results.</div>
-              <div class="step-alert"><strong>Date matching is critical:</strong> Assigning a download to the wrong policy term creates incorrect coverage history and can cause billing discrepancies. Confirm the effective date on the download matches the policy term before proceeding.</div>
+              <div class="step-title">Click "Download"</div>
+              <div class="step-detail">Click the <strong>Download</strong> button to open the export configuration options. This is where you will set your attachment preference before generating the zip file.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Select Existing"</div>
-              <div class="step-detail">With the correct policy highlighted, click <strong>Select Existing</strong>. This tells Epic you are assigning the suspense item to an existing policy record rather than creating a new one.</div>
+              <div class="step-title">Check the "Include Attachments?" field</div>
+              <div class="step-detail">Click the <strong>Include Attachments?</strong> checkbox to mark it selected. This ensures all supporting documents — such as endorsements or additional insured forms attached to the certificates — are included in the zip file alongside the certificate PDFs.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Update Existing" in the Suspense Policy Line Detail window</div>
-              <div class="step-detail">The <strong>Suspense Policy Line Detail</strong> window will appear. Click <strong>Update Existing</strong> to confirm that the downloaded transaction should be merged into the selected policy record.</div>
+              <div class="step-title">Click "Submit"</div>
+              <div class="step-detail">Click <strong>Submit</strong> to begin generating the zip file. CSR24 will process the request and prepare the certificates and attachments for download.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Click "Yes" to confirm the policy update</div>
-              <div class="step-detail">A confirmation prompt will appear asking you to verify the policy update. Click <strong>Yes</strong> to proceed. Epic will write the downloaded data to the selected policy record.</div>
-              <div class="step-tip"><strong>No undo:</strong> Once confirmed, the assignment is applied to the policy record. Double-check the policy term in step 5 before clicking Yes.</div>
+              <div class="step-title">Click "Click here"</div>
+              <div class="step-detail">After submitting, a confirmation message will appear with a <strong>Click here</strong> link. Click it to proceed to the final download confirmation screen.</div>
             </div>
           </div>
 
           <div class="step">
             <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
             <div class="step-body">
-              <div class="step-title">Verify the Lookup Code is assigned to the policy</div>
-              <div class="step-detail">After confirming, verify that the <strong>Lookup Code</strong> has been assigned to the policy. This confirms the download has been successfully linked — the suspense item should no longer appear in the queue for this transaction.</div>
-              <div class="step-tip"><strong>Workflow complete.</strong> If the Lookup Code does not appear, the assignment may not have saved correctly. Refresh the suspense queue and attempt the assignment again from step 1.</div>
+              <div class="step-title">Click "Submit" again to confirm</div>
+              <div class="step-detail">Click <strong>Submit</strong> a second time to confirm and trigger the zip file download. This final submission tells CSR24 to deliver the packaged file to your browser.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Zip file downloads to your Downloads folder</div>
+              <div class="step-detail">The zip file will automatically download to your computer's <strong>Downloads folder</strong>. The file contains all issued certificates for the selected holder template, along with any attachments you selected to include.</div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Click "Close" to finish</div>
+              <div class="step-detail">Click <strong>Close</strong> to dismiss the export dialog and return to the account view. The workflow is complete.</div>
+              <div class="step-tip"><strong>Next steps:</strong> Send the certificates to the insured, attach the sent item to the open CERR activity, update the notes to confirm certificates have been delivered, and close the CERR activity.</div>
             </div>
           </div>
 
@@ -331,41 +341,41 @@
 
             <div class="faq-item" id="faq1">
               <div class="faq-q" onclick="togF('faq1')">
-                Why do I need to check both Prospective and History?
+                What is a Holder Template and why does it matter?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>By default, the policy search in the suspense assignment screen may only return active policies. Carrier downloads can arrive days or weeks after a policy term has ended — particularly for endorsements, audits, or final premium adjustments. Checking both Prospective and History ensures the full policy timeline is visible, so you can assign the download to the correct term even if that policy is no longer current.</p>
+                <p>A Holder Template defines the structure and coverage details used to generate certificates for a specific group of certificate holders. For example, a client may have one template for general liability certificates and another for workers compensation. Each template produces its own set of certificates, so exporting from the correct template ensures holders receive the right coverage information. If multiple templates are active, all of them need to be exported to capture the full set of issued certificates.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq2">
               <div class="faq-q" onclick="togF('faq2')">
-                What if no policy matches the effective date on the download?
+                Why should I check "Include Attachments?"
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>If no existing policy term aligns with the dates on the downloaded file, do not force an assignment to the closest match. Instead, check whether the policy was set up in Epic under a different account, or whether it was entered with incorrect dates. In some cases the policy genuinely does not exist in Epic yet and will need to be created before the download can be assigned. Contact your Epic administrator if you cannot locate the correct policy after checking History and Prospective.</p>
+                <p>Many certificates reference or require supporting documents — additional insured endorsements, waivers of subrogation, or other policy forms. These attachments are stored alongside the certificate in CSR24 and are often required by the certificate holder as part of proof of coverage. Checking Include Attachments ensures the zip file is complete and ready to send without having to locate and attach those documents manually after the fact.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq3">
               <div class="faq-q" onclick="togF('faq3')">
-                What does the Lookup Code confirm?
+                What should I do if more than one template is active?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>The Lookup Code is the carrier's identifier that links the downloaded transaction to a specific policy record in Epic. When it appears on the policy after assignment, it confirms that the IVANS download has been successfully attached and that future downloads from the same carrier for that policy will route automatically — bypassing the suspense queue. If the Lookup Code is missing after assignment, the link was not established and the next download will return to suspense.</p>
+                <p>If an account has multiple active holder templates — such as separate templates for GL and WC — you need to run the Zip Certs export once for each active template. Each run produces its own zip file. After downloading both, you will have the complete set of certificates and attachments for all coverage types. Exporting only one template will result in missing certificates for the holders covered under the other template.</p>
               </div>
             </div>
 
             <div class="faq-item" id="faq4">
               <div class="faq-q" onclick="togF('faq4')">
-                What is the difference between "Select Existing" and creating a new policy?
+                What are the next steps after downloading the zip file?
                 <span>▾</span>
               </div>
               <div class="faq-a">
-                <p>Select Existing attaches the downloaded file to a policy record that already exists in Epic. Creating a new policy would generate a new record from the download data — appropriate only when the policy is not yet in the system at all. In most suspense scenarios the policy already exists and Select Existing is the correct choice. Creating a duplicate policy record causes significant problems with billing, commission, and document history, so only use the new policy option when you have confirmed the policy does not exist anywhere in Epic.</p>
+                <p>Once the zip file is in your Downloads folder: (1) Send the certificates to the insured via email or the appropriate delivery method. (2) Attach the sent email or confirmation to the open CERR activity in Epic. (3) Update the activity notes to document that certificates have been delivered. (4) Close the CERR activity to complete the certificate issuance workflow. Keeping the CERR updated ensures a clear audit trail and prevents the activity from showing as outstanding in follow-up queues.</p>
               </div>
             </div>
 
@@ -374,13 +384,13 @@
           <div class="section-label">Skills Used</div>
           <div class="badge-section">
             <div class="badge-row">
-              <span class="badge">Applied Epic</span>
-              <span class="badge">Interface Management</span>
-              <span class="badge">Download Processing</span>
-              <span class="badge">Suspense Queue</span>
-              <span class="badge">Policy Assignment</span>
-              <span class="badge">Lookup Code</span>
-              <span class="badge">IVANS Download</span>
+              <span class="badge">CSR24</span>
+              <span class="badge">Certificate Management</span>
+              <span class="badge">Holder Templates</span>
+              <span class="badge">Zip Certs</span>
+              <span class="badge">GL Certificates</span>
+              <span class="badge">WC Certificates</span>
+              <span class="badge">CERR Activity</span>
             </div>
           </div>
         </div>
@@ -392,9 +402,9 @@
         <div class="scribe-panel">
           <div class="scribe-panel-header">
             <div class="scribe-panel-dot"></div>
-            <span class="scribe-panel-label">Interactive Walkthrough — 9 Steps</span>
+            <span class="scribe-panel-label">Interactive Walkthrough — 11 Steps</span>
           </div>
-          <iframe src="https://scribehow.com/embed/Assigning_Download_Files_from_Suspense__V_Rx42JNTFa6vNcJdGIoxA?removeLogo=true&as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="Assigning Download Files from Suspense — Nadler Insurance"></iframe>
+          <iframe src="https://scribehow.com/embed/Certificate_Exporting_Issued_Certs_into_a_Zip_Folder__2MlplgKQRwuLJLpF_PJdAQ?removeLogo=true&as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="Exporting Issued Certs into a Zip Folder — Nadler Insurance"></iframe>
         </div>
       </div>
 
@@ -420,8 +430,6 @@
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
   function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
-  function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
-  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
 </script>
 </body>
