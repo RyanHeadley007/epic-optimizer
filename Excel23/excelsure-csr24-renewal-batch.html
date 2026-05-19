@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Excelsure — How to Process a Renewal Batch for Commercial Insurance | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../Images/favicon_32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../Images/apple-touch-icon.png"/>
+  <style>
+    :root {
+      --dark:#171e26; --mid:#212c3a; --gold:#ca9d64;
+      --gold-dim:rgba(202,157,100,0.10); --gold-border:rgba(202,157,100,0.28);
+      --grey:#bdbbae; --tan:#fffdea; --tan-faint:rgba(255,253,234,0.04);
+      --border:rgba(189,187,174,0.10);
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body { background:var(--dark); color:var(--tan); font-family:'Outfit',sans-serif; font-size:17px; line-height:1.65; overflow-x:hidden }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 60px; background:rgba(23,30,38,0.96); backdrop-filter:blur(18px); border-bottom:1px solid var(--border) }
+    .nav-brand { display:flex; align-items:center; gap:13px; text-decoration:none }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.1 }
+    .nav-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    .nav-brand-sub { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:500 }
+    .nav-links { display:flex; gap:36px; list-style:none }
+    .nav-links a { text-decoration:none; color:var(--grey); font-size:14px; font-weight:400; transition:color 0.2s }
+    .nav-links a:hover { color:var(--tan) }
+    .nav-cta { border:1px solid var(--gold-border); color:var(--gold); padding:9px 24px; border-radius:2px; font-size:13px; font-weight:600; letter-spacing:1px; text-transform:uppercase; text-decoration:none; transition:background 0.2s,color 0.2s }
+    .nav-cta:hover { background:var(--gold); color:var(--dark) }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:6px; background:none; border:none; z-index:200 }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--tan); border-radius:2px; transition:transform 0.3s,opacity 0.3s }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg) }
+    .hamburger.open span:nth-child(2) { opacity:0 }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg) }
+    .mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(23,30,38,0.98); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center }
+    .mobile-menu.open { display:flex }
+    .mobile-menu ul { list-style:none; text-align:center; margin-bottom:40px }
+    .mobile-menu ul li { border-bottom:1px solid var(--border) }
+    .mobile-menu ul li:first-child { border-top:1px solid var(--border) }
+    .mobile-menu ul li a { display:block; padding:20px 48px; font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--tan); text-decoration:none; transition:color 0.2s }
+    .mobile-menu ul li a:hover { color:var(--gold) }
+    .mobile-menu .mobile-cta { border:1px solid var(--gold-border); color:var(--gold); padding:14px 40px; border-radius:2px; font-family:'Rajdhani',sans-serif; font-size:15px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none }
+    .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
+    .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
+    .eyebrow-line { width:36px; height:1px; background:var(--gold) }
+    .eyebrow-text { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold) }
+    .agency-badge { display:inline-flex; align-items:center; gap:8px; background:var(--gold-dim); border:1px solid var(--gold-border); border-radius:1px; padding:5px 14px; margin-bottom:14px }
+    .agency-badge-label { font-family:'Rajdhani',sans-serif; font-size:9px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--grey) }
+    .agency-badge-name { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold) }
+    .page-title { font-family:'Rajdhani',sans-serif; font-size:clamp(28px,4vw,52px); font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--tan); line-height:1.05; margin-bottom:16px }
+    .page-title span { color:var(--gold) }
+    .page-sub { color:var(--grey); font-size:16px; font-weight:300; max-width:620px; line-height:1.65; margin-bottom:28px }
+    .hero-meta { display:flex; gap:28px; flex-wrap:wrap; align-items:center }
+    .hero-meta-item { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:300; color:var(--grey) }
+    .hero-meta-dot { width:4px; height:4px; border-radius:50%; background:var(--gold) }
+    .hero-meta-item strong { color:var(--tan); font-weight:500 }
+    .workflow-layout { display:grid; grid-template-columns:1fr; min-height:calc(100vh - 200px) }
+    .workflow-content { padding:52px 52px 80px; min-width:0 }
+    .content-columns { position:relative; padding-right:calc((100% + 240px) * 0.48) }
+    .steps-column { min-width:0 }
+    .scribe-column { position:fixed; top:calc(73px + 16px); right:0; width:calc((100vw - 240px) * 0.48); height:calc(100vh - 73px - 32px); display:flex; flex-direction:column; padding-right:52px; z-index:10 }
+    .scribe-panel { border:1px solid var(--gold-border); border-radius:2px; overflow:hidden; background:var(--mid); display:flex; flex-direction:column; flex:1; min-height:0 }
+    .scribe-panel-header { display:flex; align-items:center; gap:10px; padding:12px 18px; border-bottom:1px solid var(--gold-border); background:var(--mid); flex-shrink:0 }
+    .scribe-panel-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0 }
+    .scribe-panel-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold) }
+    .scribe-panel iframe { display:block; width:100%; border:none; flex:1; min-height:0 }
+    .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:40px }
+    .scenario-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
+    .scenario-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+    .jump-nav { display:flex; gap:12px; margin-bottom:36px; flex-wrap:wrap }
+    .jump-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border:1px solid var(--gold-border); border-radius:2px; background:var(--gold-dim); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; text-decoration:none; transition:background 0.2s,color 0.2s,border-color 0.2s }
+    .jump-btn:hover { background:var(--gold); color:var(--dark); border-color:var(--gold) }
+    .jump-btn-arrow { font-size:14px; opacity:0.7 }
+    .phase-header { display:flex; align-items:center; gap:14px; margin:44px 0 20px; padding-bottom:12px; border-bottom:1px solid var(--border) }
+    .phase-header:first-of-type { margin-top:0 }
+    .phase-number { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background:var(--gold-dim); border:1px solid var(--gold-border); padding:3px 10px; border-radius:1px; white-space:nowrap }
+    .phase-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--tan) }
+    .steps { display:flex; flex-direction:column }
+    .step { display:grid; grid-template-columns:48px 1fr; position:relative }
+    .step-connector { display:flex; flex-direction:column; align-items:center; padding-top:4px }
+    .step-num { width:28px; height:28px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; color:var(--gold); flex-shrink:0; z-index:1 }
+    .step-line { width:1px; flex:1; background:var(--border); margin-top:6px; min-height:20px }
+    .step:last-child .step-line { display:none }
+    .step-body { padding:0 0 28px 16px }
+    .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
+    .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
+    .step-list { list-style:none; margin:6px 0 10px }
+    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
+    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
+    .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
+    .step-alert strong { color:var(--gold); font-weight:600 }
+    .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
+    .step-tip strong { color:var(--tan); font-weight:500 }
+    .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
+    .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
+    .faq-list { display:flex; flex-direction:column; gap:3px; margin-bottom:40px }
+    .faq-item { border:1px solid var(--border); border-radius:2px; overflow:hidden; transition:border-color 0.2s }
+    .faq-item:hover { border-color:var(--gold-border) }
+    .faq-q { padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:500; color:var(--tan); user-select:none }
+    .faq-q span { font-size:11px; color:var(--grey); flex-shrink:0; transition:transform 0.25s }
+    .faq-item.open .faq-q span { transform:rotate(180deg) }
+    .faq-a { display:none; padding:0 18px 16px; font-size:14px; color:var(--grey); font-weight:300; line-height:1.7; border-top:1px solid var(--border) }
+    .faq-a p { padding-top:12px }
+    .faq-item.open .faq-a { display:block }
+    .badge-section { margin-bottom:0 }
+    .badge-row { display:flex; flex-wrap:wrap; gap:8px }
+    .badge { border:1px solid var(--gold-border); color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:2px }
+    footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
+    .footer-brand { display:flex; align-items:center; gap:12px; text-decoration:none }
+    .footer-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:17px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    footer p { font-size:13px; color:var(--grey) }
+    @media (max-width:960px) {
+      nav { padding:14px 24px } .nav-links,.nav-cta { display:none } .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px } .workflow-layout { grid-template-columns:1fr }
+      .workflow-content { padding:36px 24px 60px }
+      .content-columns { padding-right:calc(50vw + 16px) }
+      .scribe-column { width:calc(50vw - 16px); padding-right:16px } footer { padding:36px 24px }
+    }
+    @media (max-width:600px) {
+      .content-columns { padding-right:0 }
+      .scribe-column { position:static; width:100%; height:auto; padding-right:0; margin-top:40px }
+      .scribe-panel iframe { height:580px }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#pillars">Services</a></li>
+    <li><a href="index.html#migration">Migration</a></li>
+    <li><a href="index.html#tools">Tools</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Insights</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Book a Session</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html#pillars" onclick="closeMobile()">Services</a></li>
+    <li><a href="index.html#migration" onclick="closeMobile()">Migration</a></li>
+    <li><a href="index.html#tools" onclick="closeMobile()">Tools</a></li>
+    <li><a href="dashboards.html" onclick="closeMobile()">Dashboards</a></li>
+    <li><a href="partners.html" onclick="closeMobile()">Partners</a></li>
+    <li><a href="index.html#process" onclick="closeMobile()">Process</a></li>
+    <li><a href="about.html" onclick="closeMobile()">About</a></li>
+    <li><a href="blog.html" onclick="closeMobile()">Insights</a></li>
+  </ul>
+  <a class="mobile-cta" href="index.html#contact" onclick="closeMobile()">Book a Session</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Certificate Process · CSR24</span></div>
+  <div class="agency-badge">
+    <span class="agency-badge-label">Agency</span>
+    <span class="agency-badge-name">Excelsure</span>
+  </div>
+  <div class="page-title">Process a Renewal Batch<br><span>for Commercial Insurance</span></div>
+  <p class="page-sub">Step-by-step walkthrough for generating and managing commercial insurance certificate renewals in CSR24 — covering holder reconciliation, copying the expiring template, linking renewed policies, updating endorsement attachments, and issuing the batch.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>4</strong>&nbsp;Phases</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>43</strong>&nbsp;Steps</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>CSR24</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Certificate Renewal</div>
+  </div>
+</div>
+
+<div class="workflow-layout">
+<main class="workflow-content">
+
+  <div style="margin-bottom:32px;">
+    <a href="index-excelsure.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:2px;color:var(--gold);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="this.style.background='var(--gold-dim)';this.style.color='var(--gold)'">
+      <span style="font-size:18px;line-height:1">←</span> Back to Excelsure Guide Library
+    </a>
+  </div>
+
+  <div class="content-columns">
+    <div class="steps-column">
+
+      <div class="scenario-box">
+        <div class="scenario-label">Before You Start</div>
+        <p>Before beginning the renewal batch, open the updated certificate holder list attached to the <strong>CERR activity</strong> in Epic. You will need this list to reconcile which holders should be included in the upcoming renewal — comparing it against the current holder list in CSR24 before starting the process. Also confirm that all renewed policies have synced from Applied Epic to CSR24 before proceeding.</p>
+      </div>
+
+      <div class="jump-nav">
+        <a class="jump-btn" href="#phase-start">Start Renewal <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-holders">Update Holders <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-template">Update Template <span class="jump-btn-arrow">↓</span></a>
+        <a class="jump-btn" href="#phase-renew">Attachments &amp; Renew <span class="jump-btn-arrow">↓</span></a>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="phase-header" id="phase-start">
+        <span class="phase-number">Phase 01</span>
+        <span class="phase-title">Start Renewal Process</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Start on the client account in CSR24</div>
+            <div class="step-detail">Open the insured's account in CSR24. Confirm you are on the correct account before proceeding — all renewal activity is account-specific.</div>
+            <div class="step-tip"><strong>Before you begin:</strong> Open the updated certificate holder list attached to the CERR activity in Epic. You will need to compare this list against the current holders in CSR24 during the next phase.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Proofs"</div>
+            <div class="step-detail">From the account navigation, click <strong style="color:var(--tan)">Proofs</strong> to access the certificate and renewal processing area.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Renewals / Batch"</div>
+            <div class="step-detail">Under Proofs, click <strong style="color:var(--tan)">Renewals / Batch</strong> to open the renewal processing screen for this account.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Start New Renewal"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Start New Renewal</strong> to begin the renewal batch process for this account.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 1 -->
+
+      <!-- PHASE 2 -->
+      <div class="phase-header" id="phase-holders">
+        <span class="phase-number">Phase 02</span>
+        <span class="phase-title">Update Holders &amp; Start Renewal Process</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Reconcile the holder list against the updated CERR list from Epic</div>
+            <div class="step-detail">Using the updated certificate holder list from the CERR activity in Epic, review each holder currently shown in CSR24. To remove a holder from the upcoming renewal batch, uncheck the box next to their name. Only holders that should receive a renewal certificate should remain checked.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Start Process"</div>
+            <div class="step-detail">Once the holder list is reconciled, click <strong style="color:var(--tan)">Start Process</strong> to initiate the renewal batch.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 2 -->
+
+      <!-- PHASE 3 -->
+      <div class="phase-header" id="phase-template">
+        <span class="phase-number">Phase 03</span>
+        <span class="phase-title">Copy Expiring Certificate &amp; Update Template</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Edit"</div>
+            <div class="step-detail">Click the <strong style="color:var(--tan)">Edit</strong> button to begin editing the expiring certificate template for the renewal.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select "Edit a Copy of This Template"</div>
+            <div class="step-detail">Select the radio button that says <strong style="color:var(--tan)">Edit a Copy of This Template</strong>. This preserves the original expiring template — allowing prior-year certificates to still be accessed — while creating a new copy to update with the renewed policy terms.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Enter the new Policy Year Description</div>
+            <div class="step-detail">Update the template description to reflect the new policy year. Use a clear naming convention that identifies the policy term (e.g. <strong style="color:var(--tan)">26/27 Master w/ AI endt</strong>).</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Edit Template"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Edit Template</strong> to open the copied template and begin updating it with the renewed policy information.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check "Enable holder level AI &amp; Subr WVD Status"</div>
+            <div class="step-detail">Confirm the <strong style="color:var(--tan)">Enable holder level AI &amp; Subr WVD Status</strong> checkbox is checked on the copied template. This ensures Additional Insured and Waiver of Subrogation remain controllable at the individual holder level.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select the current (expired) policy on the first line of business</div>
+            <div class="step-detail">Starting with the first line of business on the template, click on the currently attached policy to open its details. This will be the prior-year policy that has expired and needs to be replaced.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">13</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Delete" to remove the expired policy term</div>
+            <div class="step-detail">The expired policy details will appear. Click <strong style="color:var(--tan)">Delete</strong> to remove the prior-year policy from this coverage line so the renewed policy can be attached in its place.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">14</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Add Policy"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Add Policy</strong> to open the policy selection dropdown for this coverage line.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">15</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select the renewed policy for this line of business</div>
+            <div class="step-detail">Locate the renewed policy with the new term in the dropdown and select it. The new policy details — policy number, effective date, expiration date, and limits — will fill into the form from the Epic sync.</div>
+            <div class="step-alert"><strong>Policy not showing?</strong> If the renewed policy does not appear in the list, it has not yet synced from Applied Epic to CSR24. The sync can take up to one hour. Do not manually add a policy — wait for the sync and return to this step.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">16</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Save"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Save</strong> to attach the renewed policy to this coverage line on the template.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">17</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check Type of Insurance box and set AI / Waiver of Subrogation</div>
+            <div class="step-detail">Check the Type of Insurance checkbox for this coverage line. If the policy includes Additional Insured and Waiver of Subrogation, select <strong style="color:var(--tan)">Y</strong> for both fields.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">18</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Verify that coverages pulled in correctly</div>
+            <div class="step-detail">Review the coverage limits and fields populated from the renewed policy to confirm they are accurate. If any fields appear incorrect, the issue is in the Epic policy record — correct it there and wait for the sync rather than manually overriding in CSR24.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">19</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Repeat for all remaining policies on the template, then click "Save"</div>
+            <div class="step-detail">Work through each remaining coverage line on the copied template — delete the expired policy, add the renewed policy, set AI/WVD, verify coverages. When all lines are updated, click <strong style="color:var(--tan)">Save</strong>.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">20</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Update the Certificate Signature if needed</div>
+            <div class="step-detail">If the signing authority has changed since the prior year, update the <strong style="color:var(--tan)">Certificate Signature</strong> field to reflect the correct authorized signer for the new policy term.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">21</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Save"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Save</strong> to commit all template updates before moving to the endorsement attachments section.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 3 -->
+
+      <!-- PHASE 4 -->
+      <div class="phase-header" id="phase-renew">
+        <span class="phase-number">Phase 04</span>
+        <span class="phase-title">Assign Endorsement Documents &amp; Renew the Certificates</span>
+      </div>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">22</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Attachments"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Attachments</strong> to open the endorsement document attachment screen for the updated template.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">23</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check for endorsements in the available documents area</div>
+            <div class="step-detail">Review the available documents list to confirm the required endorsement documents are present. If the endorsements are already available, skip ahead to step 35 to select and attach them.</div>
+            <div class="step-alert"><strong>If endorsements are not in the list</strong> — they need to be imported from Epic before they can be attached. Continue through steps 24–34 to import them.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">24</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Save" and navigate to "Cert Attachments"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Save</strong>, then navigate to <strong style="color:var(--tan)">Cert Attachments</strong> to begin importing endorsement documents from Epic.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">25</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click the Add (+) icon</div>
+            <div class="step-detail">Click the <strong style="color:var(--tan)">Add (+)</strong> icon to open the attachment import dialog.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">26</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Click Section To Load Epic Attachments"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Click Section To Load Epic Attachments</strong> to connect to the Epic attachment library for this account.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">27</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Locate the folder "1. Certificates: #END Documents"</div>
+            <div class="step-detail">In the Epic attachment library, navigate to the folder called <strong style="color:var(--tan)">1. Certificates: #END Documents</strong>. This is where endorsement documents are stored for certificate use.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">28</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Locate and highlight the file to import</div>
+            <div class="step-detail">Find the endorsement document you need to attach and click to highlight it.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">29</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Import"</div>
+            <div class="step-detail">Click the <strong style="color:var(--tan)">Import</strong> button to bring the endorsement document into the CSR24 attachment library for this account.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">30</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the results page — repeat for any additional documents</div>
+            <div class="step-detail">The results page will confirm the import. If additional endorsement documents need to be imported, return to Cert Templates and repeat steps 25–29 for each document until all required endorsements are in the available documents list.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">31</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">When all attachments are imported, click "Renewals / Batch"</div>
+            <div class="step-detail">Once all endorsement documents are in the library, click <strong style="color:var(--tan)">Renewals / Batch</strong> to return to the renewal processing screen.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">32</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Continue / View Current Renewals"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Continue / View Current Renewals</strong> to return to the Renewal Cert Processing page where the updated template is waiting.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">33</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Attachments" on the Renewal Cert Processing page</div>
+            <div class="step-detail">Back on the Renewal Cert Processing page, click <strong style="color:var(--tan)">Attachments</strong> to open the endorsement selection list for the renewed template.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">34</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Select the attachments to include and click "Save"</div>
+            <div class="step-detail">Check the box next to each endorsement document that should be included with the renewed certificates. Click <strong style="color:var(--tan)">Save</strong> to link the selected attachments to the template.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">35</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Preview"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Preview</strong> to generate a PDF preview of the certificate and all attached endorsement documents. Review carefully for accuracy — holder information, coverage limits, policy dates, AI/WVD selections, Description of Operations, and attachments — before proceeding to issue.</div>
+            <div class="step-tip"><strong>Make corrections now.</strong> Any errors caught in preview can be fixed before issuing. Once you click Renew, certificates are distributed to all holders with email addresses on file.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">36</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">After approving the preview, click "Renew"</div>
+            <div class="step-detail">Once the preview looks correct, click <strong style="color:var(--tan)">Renew</strong> to begin the batch renewal process.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">37</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Set "Send Certificate with no Recipient Info" to No Destination</div>
+            <div class="step-detail">For holders who have no email address on file, set the delivery option to <strong style="color:var(--tan)">No Destination</strong>. A ZIP file containing all certificates will be downloaded after the batch completes — use this to manually distribute to any holders without email addresses.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">38</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Check "Start sending after Renewal Completes"</div>
+            <div class="step-detail">Check the <strong style="color:var(--tan)">Start sending after Renewal Completes</strong> checkbox. This ensures that all holders with a recipient email address on file will automatically receive their certificate by email once the renewal batch finishes processing.</div>
+            <div class="step-tip"><strong>How delivery works:</strong> Holders with a recipient email receive the certificate by email automatically. Holders without an email address are included in the downloaded ZIP file for manual distribution to the insured.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">39</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Click "Renew"</div>
+            <div class="step-detail">Click <strong style="color:var(--tan)">Renew</strong> to execute the batch. CSR24 will process and issue certificates to all holders in the renewal list.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">40</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Review the status page with results</div>
+            <div class="step-detail">Once the batch is complete, a status page will display showing the results for all holders — how many were processed, how many were emailed, and any that encountered an error. Review this page and address any failures before closing out the renewal.</div>
+            <div class="step-tip"><strong>Workflow complete.</strong> To reprint certificates or send the ZIP file to the insured for manual distribution, use the Reprint Certificates option under Manage Certificates.</div>
+          </div>
+        </div>
+
+      </div><!-- /steps phase 4 -->
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <div class="section-label">Common Questions</div>
+        <div class="faq-list">
+
+          <div class="faq-item" id="faq1">
+            <div class="faq-q" onclick="togF('faq1')">Why should I always select "Edit a Copy of This Template" rather than editing the original?<span>▾</span></div>
+            <div class="faq-a"><p>Editing a copy preserves the original expiring template exactly as it was, which means prior-year certificates can still be accessed and reprinted from the old template if a holder requests one. If you edited the original directly, those prior certificates would reference updated policy information that didn't exist when they were issued. Creating a copy for each renewal year also gives you a clean audit trail — one template per policy term.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq2">
+            <div class="faq-q" onclick="togF('faq2')">The renewed policy isn't showing in the Add Policy dropdown — what do I do?<span>▾</span></div>
+            <div class="faq-a"><p>The policy hasn't synced from Applied Epic to CSR24 yet. The sync can take up to one hour after the policy is entered or updated in Epic. Do not manually add or type in the policy — wait for the sync and then return to step 15. Manually added policies are not reflected anywhere in Epic and can cause coverage validation issues later.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq3">
+            <div class="faq-q" onclick="togF('faq3')">What happens to holders without an email address in the renewal batch?<span>▾</span></div>
+            <div class="faq-a"><p>Holders without a recipient email address on file do not receive an email when the batch runs. Their certificates are included in the ZIP file that downloads after the renewal completes. You then forward this ZIP (or the individual PDFs inside it) to the insured, who is responsible for distributing them to the relevant holders. This is also why setting "Send Certificate with no Recipient Info" to No Destination is important — it prevents the system from attempting delivery to a blank address.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq4">
+            <div class="faq-q" onclick="togF('faq4')">Should I turn off "Send a copy to insured" before running the batch?<span>▾</span></div>
+            <div class="faq-a"><p>Yes — this is one of the most important pre-batch checks. If the account's "Send a copy of all certificates to this insured" setting is turned on, the insured will receive one email for every single holder certificate issued during the batch. On a large account with 200+ holders, that's 200+ emails hitting the insured's inbox simultaneously. Turn this setting to No before running the batch, and restore it to By Email when daily certificate processing resumes afterward.</p></div>
+          </div>
+
+          <div class="faq-item" id="faq5">
+            <div class="faq-q" onclick="togF('faq5')">Where do I find issued certificates after the batch completes?<span>▾</span></div>
+            <div class="faq-a"><p>All issued certificates from the renewal batch are accessible under Reprint Certificates in the Manage Certificates menu. You can search by holder name, date, or certificate number to locate individual certificates. The batch results page also provides a summary immediately after processing completes — note any holders that show errors and reissue individually as needed.</p></div>
+          </div>
+
+        </div>
+
+        <div class="section-label">Skills Used</div>
+        <div class="badge-section">
+          <div class="badge-row">
+            <span class="badge">CSR24</span>
+            <span class="badge">Applied Epic</span>
+            <span class="badge">Certificate Renewal</span>
+            <span class="badge">Renewal Batch</span>
+            <span class="badge">Certificate Templates</span>
+            <span class="badge">Endorsement Attachments</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /steps-column -->
+
+    <!-- SCRIBE PANEL -->
+    <div class="scribe-column">
+      <div class="scribe-panel">
+        <div class="scribe-panel-header">
+          <div class="scribe-panel-dot"></div>
+          <span class="scribe-panel-label">Interactive Walkthrough — 43 Steps</span>
+        </div>
+        <iframe src="https://scribehow.com/embed/How_To_Process_A_Renewal_Batch_For_Commercial_Insurance__qfRhjh1fRF2ubkpgtOxucg?removeLogo=true&as=scrollable" width="100%" height="800" allow="fullscreen" style="border: 0; min-height: 640px" title="How to Process a Renewal Batch for Commercial Insurance — Excelsure"></iframe>
+      </div>
+    </div>
+
+  </div><!-- /content-columns -->
+</main>
+</div>
+
+<footer>
+  <a class="footer-brand" href="index.html">
+    <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>© 2026 Epic Optimizer · Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+  function togF(id) { document.getElementById(id).classList.toggle('open'); }
+</script>
+</body>
+</html>
