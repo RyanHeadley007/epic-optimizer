@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Excelsure — Commercial Renewal Workflow | Epic Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark:#171e26; --mid:#212c3a; --gold:#ca9d64;
+      --gold-dim:rgba(202,157,100,0.10); --gold-border:rgba(202,157,100,0.28);
+      --grey:#bdbbae; --tan:#fffdea; --tan-faint:rgba(255,253,234,0.04);
+      --border:rgba(189,187,174,0.10);
+      /* Role colours */
+      --am-bg:rgba(93,202,165,0.10); --am-border:rgba(93,202,165,0.28); --am-text:#5dcaa5;
+      --dm-bg:rgba(232,110,110,0.10); --dm-border:rgba(232,110,110,0.28); --dm-text:#e86e6e;
+      --rp-bg:rgba(169,157,236,0.10); --rp-border:rgba(169,157,236,0.28); --rp-text:#a99dec;
+      --mkt-bg:rgba(100,200,120,0.10); --mkt-border:rgba(100,200,120,0.28); --mkt-text:#64c878;
+      --sys-bg:rgba(189,187,174,0.08); --sys-border:rgba(189,187,174,0.10); --sys-text:#bdbbae;
+    }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+    html { scroll-behavior:smooth }
+    body { background:var(--dark); color:var(--tan); font-family:'Outfit',sans-serif; font-size:17px; line-height:1.65; overflow-x:hidden }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 60px; background:rgba(23,30,38,0.96); backdrop-filter:blur(18px); border-bottom:1px solid var(--border) }
+    .nav-brand { display:flex; align-items:center; gap:13px; text-decoration:none }
+    .nav-brand-text { display:flex; flex-direction:column; line-height:1.1 }
+    .nav-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:19px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    .nav-brand-sub { font-size:9px; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); font-weight:500 }
+    .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:6px; background:none; border:none; z-index:200 }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--tan); border-radius:2px; transition:transform 0.3s,opacity 0.3s }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg) }
+    .hamburger.open span:nth-child(2) { opacity:0 }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg) }
+    .mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(23,30,38,0.98); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center }
+    .mobile-menu.open { display:flex }
+    .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
+    .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
+    .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
+    .eyebrow-line { width:36px; height:1px; background:var(--gold) }
+    .eyebrow-text { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:3.5px; text-transform:uppercase; color:var(--gold) }
+    .agency-badge { display:inline-flex; align-items:center; gap:8px; background:var(--gold-dim); border:1px solid var(--gold-border); border-radius:1px; padding:5px 14px; margin-bottom:14px }
+    .agency-badge-label { font-family:'Rajdhani',sans-serif; font-size:9px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--grey) }
+    .agency-badge-name { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--gold) }
+    .page-title { font-family:'Rajdhani',sans-serif; font-size:clamp(28px,4vw,52px); font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--tan); line-height:1.05; margin-bottom:16px }
+    .page-title span { color:var(--gold) }
+    .page-sub { color:var(--grey); font-size:16px; font-weight:300; max-width:620px; line-height:1.65; margin-bottom:28px }
+    .hero-meta { display:flex; gap:28px; flex-wrap:wrap; align-items:center }
+    .hero-meta-item { display:flex; align-items:center; gap:7px; font-size:13px; font-weight:300; color:var(--grey) }
+    .hero-meta-dot { width:4px; height:4px; border-radius:50%; background:var(--gold) }
+    .hero-meta-item strong { color:var(--tan); font-weight:500 }
+    .workflow-content { padding:52px 60px 80px; max-width:860px; margin:0 auto }
+    .scenario-box { background:var(--gold-dim); border:1px solid var(--gold-border); border-left:3px solid var(--gold); border-radius:2px; padding:20px 24px; margin-bottom:24px }
+    .scenario-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:8px }
+    .scenario-box p { font-size:14px; font-weight:300; color:var(--tan); line-height:1.65 }
+    .phase-header { display:flex; align-items:center; gap:14px; margin:44px 0 20px; padding-bottom:12px; border-bottom:1px solid var(--border) }
+    .phase-header:first-of-type { margin-top:0 }
+    .phase-number { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); background:var(--gold-dim); border:1px solid var(--gold-border); padding:3px 10px; border-radius:1px; white-space:nowrap }
+    .phase-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:var(--tan) }
+    .steps { display:flex; flex-direction:column }
+    .step { display:grid; grid-template-columns:48px 1fr; position:relative }
+    .step-connector { display:flex; flex-direction:column; align-items:center; padding-top:4px }
+    .step-num { width:28px; height:28px; border-radius:50%; background:var(--gold-dim); border:1px solid var(--gold-border); display:flex; align-items:center; justify-content:center; font-family:'Rajdhani',sans-serif; font-size:12px; font-weight:700; color:var(--gold); flex-shrink:0; z-index:1 }
+    .step-line { width:1px; flex:1; background:var(--border); margin-top:6px; min-height:20px }
+    .step:last-child .step-line { display:none }
+    .step-body { padding:0 0 28px 16px }
+    .step-title { font-size:15px; font-weight:500; color:var(--tan); margin-bottom:6px; line-height:1.4; padding-top:3px }
+    .step-detail { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; margin-bottom:10px }
+    .step-list { list-style:none; margin:6px 0 10px }
+    .step-list li { font-size:13px; font-weight:300; color:var(--grey); padding:3px 0 3px 16px; position:relative; line-height:1.5 }
+    .step-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); font-size:14px }
+    .step-alert { background:rgba(202,157,100,0.08); border:1px solid var(--gold-border); border-left:2px solid var(--gold); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--tan); line-height:1.55; margin-top:8px }
+    .step-alert strong { color:var(--gold); font-weight:600 }
+    .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
+    .step-tip strong { color:var(--tan); font-weight:500 }
+    /* Role tag helper */
+    .tag { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; padding:2px 8px; border-radius:1px; white-space:nowrap }
+    .tag-am  { background:var(--am-bg);  border:1px solid var(--am-border);  color:var(--am-text)  }
+    .tag-dm  { background:var(--dm-bg);  border:1px solid var(--dm-border);  color:var(--dm-text)  }
+    .tag-rp  { background:var(--rp-bg);  border:1px solid var(--rp-border);  color:var(--rp-text)  }
+    .tag-mkt { background:var(--mkt-bg); border:1px solid var(--mkt-border); color:var(--mkt-text) }
+    .tag-sys { background:var(--sys-bg); border:1px solid var(--sys-border); color:var(--sys-text) }
+    .code { background:var(--gold-dim); border:1px solid var(--gold-border); color:var(--gold); font-family:monospace; font-size:11px; padding:1px 7px; border-radius:1px }
+    /* Split decision panels */
+    .split-box { border:1px solid var(--border); border-radius:2px; overflow:hidden; margin:14px 0 }
+    .split-header { background:rgba(202,157,100,0.06); border-bottom:1px solid var(--border); padding:8px 14px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold) }
+    .split-cols { display:grid; grid-template-columns:1fr 1fr }
+    .split-col { padding:14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.6; border-right:1px solid var(--border) }
+    .split-col:last-child { border-right:none }
+    .split-col-title { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:700; color:var(--tan); margin-bottom:6px }
+    /* Scenario panels */
+    .scenario-panel { border:1px solid var(--border); border-radius:2px; overflow:hidden; margin-bottom:10px }
+    .scenario-panel-header { padding:8px 14px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-bottom:1px solid var(--border) }
+    .scenario-panel-body { padding:12px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.6 }
+    .scenario-panel-body ol { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:8px }
+    .scenario-panel-body ol li { display:flex; gap:10px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.5 }
+    .scenario-panel-body ol li .n { color:var(--gold); font-weight:600; flex-shrink:0 }
+    /* Interactive buttons */
+    .path-btn { font-family:'Rajdhani',sans-serif; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:9px 20px; border-radius:1px; cursor:pointer; transition:all .2s; border:1px solid var(--gold-border); background:var(--gold-dim); color:var(--gold) }
+    .path-btn:hover { background:var(--gold); color:var(--dark) }
+    .path-btn.active { background:var(--gold); color:var(--dark); border-color:var(--gold) }
+    /* FAQ */
+    .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
+    .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
+    .faq-list { display:flex; flex-direction:column; gap:3px; margin-bottom:40px }
+    .faq-item { border:1px solid var(--border); border-radius:2px; overflow:hidden; transition:border-color 0.2s }
+    .faq-item:hover { border-color:var(--gold-border) }
+    .faq-q { padding:14px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:15px; font-weight:500; color:var(--tan); user-select:none }
+    .faq-q span { font-size:11px; color:var(--grey); flex-shrink:0; transition:transform 0.25s }
+    .faq-item.open .faq-q span { transform:rotate(180deg) }
+    .faq-a { display:none; padding:0 18px 16px; font-size:14px; color:var(--grey); font-weight:300; line-height:1.7; border-top:1px solid var(--border) }
+    .faq-a p { padding-top:12px }
+    .faq-item.open .faq-a { display:block }
+    footer { padding:36px 60px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px }
+    .footer-brand { display:flex; align-items:center; gap:12px; text-decoration:none }
+    .footer-brand-name { font-family:'Rajdhani',sans-serif; font-weight:700; font-size:17px; letter-spacing:2px; text-transform:uppercase; color:var(--tan) }
+    footer p { font-size:13px; color:var(--grey) }
+    @media (max-width:960px) {
+      nav { padding:14px 24px }
+      .hamburger { display:flex }
+      .page-hero { padding:110px 24px 40px }
+      .workflow-content { padding:36px 24px 60px }
+      footer { padding:36px 24px }
+      .split-cols { grid-template-columns:1fr }
+      .split-col { border-right:none; border-bottom:1px solid var(--border) }
+      .split-col:last-child { border-bottom:none }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Epic Optimizer</span>
+      <span class="nav-brand-sub">Business Process Automation</span>
+    </div>
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Renewal Management</span></div>
+  <div class="agency-badge">
+    <span class="agency-badge-label">Agency</span>
+    <span class="agency-badge-name">Excelsure</span>
+  </div>
+  <div class="page-title">Commercial<br><span>Renewal Workflow</span></div>
+  <p class="page-sub">Responsibilities by role across all commercial renewal stages — from the 127-day Department Manager review through binding and policy issuance. Select your billing path to follow the steps relevant to you.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Billing Paths</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>7</strong>&nbsp;Workflow Stages</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
+  </div>
+</div>
+
+<div class="workflow-content">
+
+  <div style="margin-bottom:32px;">
+    <a href="index-excelsure.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:2px;color:var(--gold);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="this.style.background='var(--gold-dim)';this.style.color='var(--gold)'">
+      <span style="font-size:18px;line-height:1">&#8592;</span> Back to Excelsure Guide Library
+    </a>
+  </div>
+
+  <!-- LEGEND -->
+  <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:14px 20px;background:var(--tan-faint);border:1px solid var(--border);border-radius:2px;margin-bottom:36px;">
+    <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:4px;">Key</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-am">Account Manager</span> Account Manager assigned to the policy</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-dm">Department Manager</span> Reviews &amp; provides marketing direction at 127 days</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-rp">Responsible Party</span> Producer or CSR who owns the account</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-mkt">Marketing Team</span> Handles remarketing submissions when directed</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-sys">System</span> Automated / Epic action</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="code">CODE</span> Epic activity code</span>
+  </div>
+
+  <!-- PHASE 01 -->
+  <div class="phase-header">
+    <span class="phase-number">Phase 01</span>
+    <span class="phase-title">127 Days Prior to Expiration — All Policies</span>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Daily policy check <span class="tag tag-am">Account Manager</span></div>
+        <div class="step-detail">Account managers check daily for policies renewing 120 days out. New policies populate the Renewal Manager list with a stage of <strong style="color:var(--tan)">"--"</strong> indicating the policy has not yet been renewed.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Initiate renewal <span class="tag tag-am">Account Manager</span></div>
+        <div class="step-detail">Select the policy in Renewal Manager and click the <strong style="color:var(--tan)">Renew</strong> button to start the renewal workflow.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Open policy header <span class="tag tag-sys">System</span></div>
+        <div class="step-detail">The workflow opens the policy header for the future policy, copying all information from the most recent Service Summary ACORD on the expiring policy — with only the effective dates changed.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Select RENR &amp; assign to Department Manager <span class="tag tag-am">Account Manager</span></div>
+        <div class="step-detail">A renewal activity is generated automatically. The account manager selects the <span class="code">RENR</span> activity code and assigns it to the <strong style="color:var(--tan)">Department Manager</strong>, set for 127 days prior to expiration. This initiates the Department Manager review window.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Department Manager review (127–120 days) <span class="tag tag-dm">Department Manager</span></div>
+        <div class="step-detail">Between 127 and 120 days prior to expiration, the Department Manager reviews the policy and updates the notes in the <span class="code">RENR</span> activity with a clear marketing decision:</div>
+        <div class="split-box" style="margin-top:12px;">
+          <div class="split-header">Marketing Decision — choose one</div>
+          <div class="split-cols">
+            <div class="split-col">
+              <div class="split-col-title">Wait for Incumbent Pricing</div>
+              Hold for the carrier renewal to arrive before taking action.
+            </div>
+            <div class="split-col">
+              <div class="split-col-title">Remarket</div>
+              Begin the remarketing process immediately — proceed to Phase 03.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Reassign RENR activity <span class="tag tag-dm">Department Manager</span></div>
+        <div class="step-detail">Once the <span class="code">RENR</span> notes have been updated with the marketing direction, the Department Manager reassigns the activity to the appropriate party:</div>
+        <div class="split-box" style="margin-top:12px;">
+          <div class="split-header">Reassign to</div>
+          <div class="split-cols">
+            <div class="split-col">
+              <div class="split-col-title">Account Manager</div>
+              If waiting for incumbent pricing — Account Manager monitors for delivery and continues with Phase 02.
+            </div>
+            <div class="split-col">
+              <div class="split-col-title">Marketing Team</div>
+              If remarketing — Marketing Team begins the remarketing process (Phase 03 onward).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 02 — BILLING PATH SPLIT -->
+  <div class="phase-header">
+    <span class="phase-number">Phase 02</span>
+    <span class="phase-title">Select Your Billing Path</span>
+  </div>
+
+  <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Billing Type</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
+    <button id="btn-direct" class="path-btn" onclick="selectPath('direct')">Direct Bill</button>
+    <button id="btn-agency" class="path-btn" onclick="selectPath('agency')">Agency Bill</button>
+  </div>
+
+  <!-- DIRECT BILL PATH -->
+  <div id="path-direct" style="display:none;">
+    <div class="scenario-box">
+      <div class="scenario-label">Direct Bill — What happens next</div>
+      <p>The <span class="code">RENR</span> activity is assigned to the <strong>Account Manager</strong> to monitor. The agency waits for the renewal policy or download from the carrier, set for 45 days prior to expiration.</p>
+    </div>
+
+    <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">How is the policy received?</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+      <button id="btn-download" class="path-btn" onclick="selectDelivery('download')">Carrier Download</button>
+      <button id="btn-email" class="path-btn" onclick="selectDelivery('email')">Email or Carrier Portal</button>
+    </div>
+
+    <!-- CARRIER DOWNLOAD -->
+    <div id="delivery-download" style="display:none;">
+      <div class="step-tip" style="margin-bottom:20px;"><strong>Carrier download received:</strong> The <span class="code">&gt;REN</span> activity is auto-assigned. The download automatically updates all ACORDs, estimated premiums, effective dates, and policy number.</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Verify policy details <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Open the <span class="code">&gt;REN</span> activity and verify/update: servicing role designations, line commission percentage, and PR/BR commissionable producer sections of the policy line details.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Secure policy documents <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail" style="margin-bottom:12px;">Check activities for a <span class="code">^POL</span> activity code — two scenarios apply:</div>
+            <div class="scenario-panel">
+              <div class="scenario-panel-header" style="background:var(--am-bg);color:var(--am-text);">Scenario A — ^POL Activity Exists</div>
+              <div class="scenario-panel-body">A <span class="code">^POL</span> has been received — the PDF is already attached to the policy in Epic and to the <span class="code">^POL</span> activity. Close the <span class="code">^POL</span> activity.</div>
+            </div>
+            <div class="scenario-panel">
+              <div class="scenario-panel-header" style="background:var(--gold-dim);color:var(--gold);">Scenario B — No ^POL Activity</div>
+              <div class="scenario-panel-body">The <span class="code">&gt;REN</span> download indicates documents are available on the carrier website. Complete the following:
+                <ol>
+                  <li><span class="n">1.</span> Log into the carrier website and find the renewal document.</li>
+                  <li><span class="n">2.</span> Download the policy document.</li>
+                  <li><span class="n">3.</span> Drag and drop the policy copy to the Active Policy Line in Epic.</li>
+                  <li><span class="n">4.</span> Create a <span class="code">#POL</span> activity code and attach the document.</li>
+                  <li><span class="n">5.</span> Close the <span class="code">#POL</span> activity.</li>
+                </ol>
+              </div>
+            </div>
+            <div class="step-tip"><strong>Note:</strong> For Direct Bill policies, the carrier delivers copies of the policy directly to the insured. No policy delivery email is required from the agency.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Update Renewal Manager <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Update the Renewal Manager stage to the <strong style="color:var(--tan)">final completed stage</strong> to remove the policy from the Renewal Manager list.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Close &gt;REN activity <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Close the <span class="code">&gt;REN</span> activity with a note stating the Renewal Manager stage has been updated.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Close RENR activity <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Close the original <span class="code">RENR</span> activity.</div>
+            <div class="step-alert"><strong>If the download does not arrive</strong> by 45 days prior to expiration, the Account Manager should contact the <strong>Department Manager</strong> for direction on next steps.</div>
+          </div>
+        </div>
+      </div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Did the responsible party decide to remarket?</div>
+      <button onclick="showRemarketing()" class="path-btn" style="border-color:var(--rp-border);background:var(--rp-bg);color:var(--rp-text);">Remarket the Policy &#8595;</button>
+    </div>
+
+    <!-- EMAIL OR CARRIER PORTAL -->
+    <div id="delivery-email" style="display:none;">
+      <div class="steps">
+        <div class="step">
+          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Add #POL activity <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Add a <span class="code">#POL</span> activity, attach a copy of the policy, and assign to the <strong style="color:var(--tan)">responsible party at the agency</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <div style="margin-bottom:16px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once the responsible party receives the #POL — choose an option:</div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <button id="btn-opt-a" class="path-btn" onclick="selectEmailOption('a')">Option A — Send to Account Manager</button>
+        <button id="btn-opt-b" class="path-btn" onclick="selectEmailOption('b')">Option B — Handle Directly</button>
+      </div>
+
+      <!-- OPTION A -->
+      <div id="email-opt-a" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option A — Send Back to Account Manager for Policy Detail &amp; Issuance</div>
+          <p>The responsible party reassigns the <span class="code">#POL</span> activity back to the <strong>Account Manager</strong>, directing them to detail the policy and issue it in Epic.</p>
+        </div>
+        <div style="margin-bottom:10px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Account Manager — Detail &amp; Issue Steps</div>
+        <div class="steps">
+          <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update ACORD applications <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update premiums <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Enter the renewed premium figures across all applicable lines.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Check policy header <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Issue the policy in Epic <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Issue the policy once all data has been verified and updated.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update Renewal Manager <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send policy delivery email <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach sent email to #POL <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span class="code">#POL</span> activity to complete the audit trail.</div></div></div>
+        </div>
+      </div>
+
+      <!-- OPTION B -->
+      <div id="email-opt-b" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option B — Responsible Party Details &amp; Issues Directly</div>
+          <p>The responsible party handles all detailing and issuance themselves, without reassigning to the Account Manager.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update ACORD applications <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update premiums <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Enter the renewed premium figures across all applicable lines.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Check policy header <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Issue the policy in Epic <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Issue the policy once all data has been verified and updated.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update Renewal Manager <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send policy delivery email <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach sent email to #POL <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span class="code">#POL</span> activity to complete the audit trail.</div></div></div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Did the responsible party decide to remarket instead?</div>
+      <button onclick="showRemarketing()" class="path-btn" style="border-color:var(--rp-border);background:var(--rp-bg);color:var(--rp-text);">Remarket the Policy &#8595;</button>
+    </div>
+  </div>
+
+  <!-- AGENCY BILL PATH -->
+  <div id="path-agency" style="display:none;">
+    <div class="scenario-box">
+      <div class="scenario-label">Agency Bill — What happens next</div>
+      <p>Per the Department Manager's direction from Phase 01, the <span class="code">RENR</span> activity has been reassigned to either the <strong>Account Manager</strong> (wait for incumbent pricing) or the <strong>Marketing Team</strong> (remarket immediately).</p>
+    </div>
+    <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">What is the next action?</div>
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <button id="btn-wait" class="path-btn active" onclick="selectAgencyAction('wait')">Wait for Incumbent Pricing</button>
+    </div>
+    <div id="action-wait">
+      <div class="step-tip">The Account Manager owns the <span class="code">RENR</span> activity and sets it for a future date — the point at which they want to take action if the policy has not yet been delivered to the agency.</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once pricing arrives, did they decide to remarket?</div>
+      <button onclick="showRemarketing()" class="path-btn" style="border-color:var(--rp-border);background:var(--rp-bg);color:var(--rp-text);">Remarket the Policy &#8595;</button>
+    </div>
+  </div>
+
+  <!-- REMARKETING -->
+  <div id="section-remarketing" style="display:none;">
+    <div class="phase-header" style="margin-top:44px;">
+      <span class="phase-number">Phase 03</span>
+      <span class="phase-title">Remarketing Process</span>
+    </div>
+    <div class="scenario-box">
+      <div class="scenario-label">Applies to both billing types</div>
+      <p>For Direct Bill policies, if the renewal is received and a decision is made to remarket, follow the same steps below. The process is identical regardless of billing type.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create master application <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Create the Master Application in Epic. This generates an <span class="code">MPOL</span> activity to track the submission process. Once the MPOL is created, close the <span class="code">RENR</span> activity.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update master application <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Update all ACORD data for the future renewal term across all lines being remarketed. Attach all supporting documents: loss runs, supplemental applications, and any other required underwriting data. The Master Application is the central repository for all data.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create carrier submissions <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Use the <strong style="color:var(--tan)">Actions</strong> button to create carrier submissions. Each submission replicates the Master Application for the selected carriers. Include or remove attachments as applicable per carrier.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Submit to carriers <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Two options:</div><ul class="step-list"><li><strong style="color:var(--tan)">Submit directly to underwriting:</strong> Actions &rarr; Submit to Carrier &rarr; generates <span class="code">SCAC</span> activity</li><li><strong style="color:var(--tan)">Quoted online:</strong> Actions &rarr; Update Stage to Submitted/Entered &rarr; generates <span class="code">SCAO</span> activity</li></ul><div class="step-tip"><strong>SCA activities</strong> track each individual submission and all underwriting correspondence until quotes are received.</div></div></div>
+    </div>
+
+    <div class="phase-header">
+      <span class="phase-number">Phase 04</span>
+      <span class="phase-title">Carrier Response — Quote or Declination</span>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create carrier response <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">As soon as a response is received, use Actions &rarr; <strong style="color:var(--tan)">Create Carrier Response</strong> to update the carrier's response, issuing paper, and all quote details.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach documentation <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Drag and drop the quote and accompanying documents to the carrier submission.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create #QUO activity <span class="tag tag-rp">Responsible Party</span></div><ul class="step-list"><li><strong style="color:var(--tan)">Quote received:</strong> Create <span class="code">#QUO</span> activity normally.</li><li><strong style="color:var(--tan)">Declination received:</strong> Create <span class="code">#QUO</span> with "Declined" added at the end of the description.</li></ul><div class="step-detail" style="margin-top:8px;">Assign to the responsible party for review. Close the <span class="code">SCA</span> activity.</div><div class="step-alert"><strong>Repeat</strong> this process for each carrier submission sent out.</div><div class="step-tip" style="margin-top:8px;">If you update the carrier response applications with the returned quote details and that carrier becomes the winning carrier, no further ACORD updates will be needed when the policy moves to the active screen.</div></div></div>
+    </div>
+
+    <div class="phase-header">
+      <span class="phase-number">Phase 05</span>
+      <span class="phase-title">Proposal Stage</span>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send proposal <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Create and send the proposal to the client with one or several quotes for review. From Outlook sent items, drag and drop the sent email with the proposal to the carrier submission.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create #PRO activity <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">The <span class="code">#PRO</span> activity tracks all correspondence between the agency and the client regarding the proposal — documents, questions, and emails all logged here.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Close prior activities <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Once #PRO is created and the proposal has been sent, close all <span class="code">#QUO</span> activities and the <span class="code">MPOL</span> activity. All tracking from this point is through <span class="code">#PRO</span>.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Client confirms — create #BIN <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Upon receipt of client confirmation to move forward: drag and drop the confirmation email to the carrier submission of the winning market. Create <span class="code">#BIN</span> activity and close <span class="code">#PRO</span>.</div></div></div>
+    </div>
+
+    <div class="phase-header">
+      <span class="phase-number">Phase 06</span>
+      <span class="phase-title">Binding</span>
+    </div>
+    <div class="scenario-box">
+      <div class="scenario-label">Required Documentation</div>
+      <p>The <span class="code">#BIN</span> activity is the complete record of all binding correspondence and must contain three documents: the client's binding request, the agency's request to the carrier, and the carrier's confirmation.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Client binding request</div><div class="step-detail">The original request from the insured — attached when the #BIN is created.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Agency request to carrier <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Documentation of the binding request sent to the carrier — either by sending directly to the carrier or by logging into the carrier portal to bind. Documented within the #BIN activity.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Carrier confirmation</div><div class="step-detail">When the carrier returns the binder, it is logged and attached to the #BIN activity. The #BIN should now contain all three documents as a complete audit trail.</div></div></div>
+    </div>
+
+    <div class="phase-header">
+      <span class="phase-number">Phase 07</span>
+      <span class="phase-title">Move to Active Screen &amp; Policy Issuance</span>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Complete binding in Epic <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Return to the winning carrier submission. Use the <strong style="color:var(--tan)">Actions</strong> menu &rarr; <strong style="color:var(--tan)">Move to Active Screen</strong>.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Set policy structure <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">The workflow moves the winning lines from Master Marketing to the active policy screen in Epic. This is the opportunity to structure the policy — move lines as a <strong style="color:var(--tan)">package</strong> or as <strong style="color:var(--tan)">mono lines</strong>.</div></div></div>
+      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Verify data and issue <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Verify all data on the active screen, then issue the policies.</div></div></div>
+    </div>
+  </div><!-- /remarketing -->
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="section-label">Common Questions</div>
+    <div class="faq-list">
+      <div class="faq-item" id="faq1">
+        <div class="faq-q" onclick="togF('faq1')">What is the difference between Direct Bill and Agency Bill in this workflow?<span>&#9660;</span></div>
+        <div class="faq-a"><p>For both billing types, the RENR activity is created at 120 days and routed to the Department Manager at 127 days for a marketing decision. Once the Department Manager updates the RENR notes and reassigns the activity, the path diverges: for Direct Bill, the account manager monitors for the carrier download; for Agency Bill, the account manager or marketing team takes action based on the Department Manager's direction.</p></div>
+      </div>
+      <div class="faq-item" id="faq2">
+        <div class="faq-q" onclick="togF('faq2')">What happens during the 127–120 day window?<span>&#9660;</span></div>
+        <div class="faq-a"><p>This is the Department Manager review window. The Department Manager reviews the policy, determines whether to wait for incumbent pricing or remarket, updates the RENR activity notes with that decision, and reassigns the activity to the appropriate party — the responsible account manager or the marketing team.</p></div>
+      </div>
+      <div class="faq-item" id="faq3">
+        <div class="faq-q" onclick="togF('faq3')">Can a Direct Bill policy be remarketed?<span>&#9660;</span></div>
+        <div class="faq-a"><p>Yes. If the account manager receives the renewal on a Direct Bill account and the Department Manager determines the pricing is not competitive, the policy can be remarketed. The remarketing process is identical for both billing types — follow the same steps from Phase 03 onward.</p></div>
+      </div>
+      <div class="faq-item" id="faq4">
+        <div class="faq-q" onclick="togF('faq4')">What happens if the carrier download never arrives on a Direct Bill policy?<span>&#9660;</span></div>
+        <div class="faq-a"><p>If the download does not arrive by 45 days prior to expiration, the account manager who holds the RENR activity should contact the Department Manager for direction on next steps.</p></div>
+      </div>
+      <div class="faq-item" id="faq5">
+        <div class="faq-q" onclick="togF('faq5')">Why does updating the carrier response applications matter?<span>&#9660;</span></div>
+        <div class="faq-a"><p>When you update the carrier response applications with the quote details returned by the carrier, that data carries forward if that carrier becomes the winning market. When you use Actions &rarr; Move to Active Screen, the ACORD data is already current — no additional updates are needed at issuance.</p></div>
+      </div>
+      <div class="faq-item" id="faq6">
+        <div class="faq-q" onclick="togF('faq6')">What three documents must be in the #BIN activity before binding is complete?<span>&#9660;</span></div>
+        <div class="faq-a"><p>The #BIN activity must contain: (1) the original binding request from the insured, (2) documentation of the agency's request sent to the carrier or a record of logging into the carrier portal to bind, and (3) the carrier's binder confirmation once returned. These three documents form the complete audit trail for the binding transaction.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <a class="footer-brand" href="index.html">
+    <span class="footer-brand-name">Epic Optimizer</span>
+  </a>
+  <p>&copy; 2026 Epic Optimizer &middot; Ryan Headley</p>
+  <p>Insurance Operations &amp; Technology Consulting</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function() { this.classList.toggle('open'); });
+
+  function togF(id) { document.getElementById(id).classList.toggle('open'); }
+
+  function selectEmailOption(opt) {
+    ['email-opt-a','email-opt-b'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-opt-a','btn-opt-b'].forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById('email-opt-'+opt).style.display='block';
+    document.getElementById('btn-opt-'+opt).classList.add('active');
+  }
+
+  function selectPath(path) {
+    ['path-direct','path-agency','section-remarketing','delivery-download','delivery-email','action-wait'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display='none';
+    });
+    ['btn-direct','btn-agency'].forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById('btn-'+path).classList.add('active');
+    document.getElementById('path-'+path).style.display='block';
+    if (path==='agency') {
+      document.getElementById('action-wait').style.display='block';
+      document.getElementById('btn-wait').classList.add('active');
+    }
+  }
+
+  function selectDelivery(type) {
+    ['delivery-download','delivery-email','section-remarketing'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-download','btn-email'].forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById('btn-'+type).classList.add('active');
+    document.getElementById('delivery-'+type).style.display='block';
+  }
+
+  function showRemarketing() {
+    const el = document.getElementById('section-remarketing');
+    el.style.display='block';
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);
+  }
+</script>
+</body>
+</html>
