@@ -201,8 +201,8 @@
   <div class="page-title">Applied Epic<br><span>Guide Library</span></div>
   <p class="page-sub">All Applied Epic guides and reference materials configured for Nadler Insurance. Select a guide below to access step-by-step workflows, activity code references, and carrier download data.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>13</strong>&nbsp;Guides</div>
-    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>5</strong>&nbsp;Categories</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>14</strong>&nbsp;Guides</div>
+    <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>6</strong>&nbsp;Categories</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div>Applied Epic</div>
   </div>
 </div>
@@ -213,7 +213,18 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
-    <div class="sidebar-section open" id="sb-activity">
+    <div class="sidebar-section" id="sb-renewal">
+      <div class="sidebar-section-header" onclick="toggleSidebar('sb-renewal')">
+        Renewal Processes <span class="sidebar-section-arrow">▶</span>
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="nadler-commercial-renewal-workflow.html">Commercial Renewal Workflow</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section" id="sb-activity">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-activity')">
         Activity Management <span class="sidebar-section-arrow">▶</span>
       </div>
@@ -225,7 +236,7 @@
 
     <div class="sidebar-divider"></div>
 
-    <div class="sidebar-section open" id="sb-ivans">
+    <div class="sidebar-section" id="sb-ivans">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-ivans')">
         IVANS Download <span class="sidebar-section-arrow">▶</span>
       </div>
@@ -236,7 +247,7 @@
 
     <div class="sidebar-divider"></div>
 
-    <div class="sidebar-section open" id="sb-certs">
+    <div class="sidebar-section" id="sb-certs">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-certs')">
         Certificate Processing <span class="sidebar-section-arrow">▶</span>
       </div>
@@ -252,7 +263,7 @@
 
     <div class="sidebar-divider"></div>
 
-    <div class="sidebar-section open" id="sb-downloads">
+    <div class="sidebar-section" id="sb-downloads">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-downloads')">
         Download Processing <span class="sidebar-section-arrow">▶</span>
       </div>
@@ -264,7 +275,7 @@
 
     <div class="sidebar-divider"></div>
 
-    <div class="sidebar-section open" id="sb-users">
+    <div class="sidebar-section" id="sb-users">
       <div class="sidebar-section-header" onclick="toggleSidebar('sb-users')">
         CSR24 User Management <span class="sidebar-section-arrow">▶</span>
       </div>
@@ -283,6 +294,41 @@
   <div class="info-box">
     <div class="info-box-label">About This Library</div>
     <p>These guides are configured specifically for Nadler Insurance — the activity codes, carrier connections, and workflows on these pages reflect your agency's current Applied Epic setup. If something appears incorrect or out of date, contact your Epic administrator.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 0 · RENEWAL PROCESSES             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="category-group">
+    <div class="category-header">
+      <div class="category-header-left">
+        <div class="category-icon">&#128260;</div>
+        <div>
+          <div class="category-title">Renewal Processes</div>
+          <div class="category-desc">End-to-end renewal workflows for commercial lines — from 120-day initiation through binding and policy issuance</div>
+        </div>
+      </div>
+      <div class="category-count">1 Guide</div>
+    </div>
+    <div class="guides-grid">
+
+      <a class="guide-card" href="nadler-commercial-renewal-workflow.html">
+        <div class="guide-card-header">
+          <div class="guide-card-icon">&#128260;</div>
+          <div class="guide-card-category">Renewal Processes</div>
+          <div class="guide-card-title">Commercial<br><span>Renewal Workflow</span></div>
+          <p class="guide-card-desc">Responsibilities by role across all commercial renewal stages — from the 120-day policy check through remarketing, carrier submissions, proposal, binding, and policy issuance. Covers both Direct Bill and Agency Bill paths with interactive step-by-step guidance.</p>
+        </div>
+        <div class="guide-card-footer">
+          <div class="guide-card-stats">
+            <div class="guide-card-stat"><strong>7</strong>&nbsp;Phases</div>
+            <div class="guide-card-stat"><strong>2</strong>&nbsp;Billing Paths</div>
+          </div>
+          <span class="guide-card-arrow">&rarr;</span>
+        </div>
+      </a>
+
+    </div>
   </div>
 
   <!-- ═══════════════════════════════════════════ -->
@@ -605,6 +651,9 @@
   <div class="section-divider"></div>
   <div class="section-label">Quick Jump</div>
   <div class="quick-links-grid">
+    <a class="quick-link" href="nadler-commercial-renewal-workflow.html">
+      <span class="quick-link-dot"></span>Commercial Renewal Workflow
+    </a>
     <a class="quick-link" href="nadler-insurance-activity-codes.html#refSections">
       <span class="quick-link-dot"></span>Activity Code Search Tool
     </a>
@@ -671,7 +720,6 @@
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
   function toggleSidebar(id) { document.getElementById(id).classList.toggle('open'); }
-  document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
   function closeMobile() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
