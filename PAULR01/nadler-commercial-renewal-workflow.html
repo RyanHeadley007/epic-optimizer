@@ -216,7 +216,7 @@
     <span class="agency-badge-name">Nadler Insurance</span>
   </div>
   <div class="page-title">Commercial<br><span>Renewal Workflow</span></div>
-  <p class="page-sub">Responsibilities by role across all renewal stages — from the 120-day check through binding and policy issuance. Select your billing path to follow the steps relevant to you.</p>
+  <p class="page-sub">Responsibilities by role across all commercial renewal stages — from the 120-day check through binding and policy issuance. Select your billing path to follow the steps relevant to you.</p>
   <div class="hero-meta">
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Billing Paths</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>7</strong>&nbsp;Workflow Stages</div>
@@ -229,7 +229,7 @@
 
   <div style="margin-bottom:32px;">
     <a href="index-nadler.html" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:2px;color:var(--gold);font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="this.style.background='var(--gold-dim)';this.style.color='var(--gold)'">
-      <span style="font-size:18px;line-height:1">←</span> Back to Nadler Guide Library
+      <span style="font-size:18px;line-height:1">&#8592;</span> Back to Nadler Guide Library
     </a>
   </div>
 
@@ -239,11 +239,11 @@
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span> Virtual Assistant Team</span>
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span> Agency staff</span>
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(189,187,174,0.08);border:1px solid rgba(189,187,174,0.10);color:var(--grey);">System</span> Automated / Epic action</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;">CODE</span> Epic activity code</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">CODE</span> Epic activity code</span>
   </div>
 
-  <!-- PHASE 1 -->
-  <div class="phase-header" style="margin-top:0">
+  
+  <div class="phase-header">
     <span class="phase-number">Phase 01</span>
     <span class="phase-title">120 Days Prior to Expiration</span>
   </div>
@@ -279,33 +279,35 @@
     </div>
   </div>
 
-  <!-- PHASE 2: PATH SELECTOR -->
+  
   <div class="phase-header">
     <span class="phase-number">Phase 02</span>
     <span class="phase-title">Select Your Billing Path</span>
   </div>
 
-  <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Billing Type</div>
+    <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Billing Type</div>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
-    <button id="btn-direct" onclick="selectPath('direct')" style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;border-radius:1px;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);cursor:pointer;transition:all .2s;" onmouseover="if(!this.classList.contains('path-active'))this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="if(!this.classList.contains('path-active')){this.style.background='var(--gold-dim)';this.style.color='var(--gold)';}">Direct Bill</button>
-    <button id="btn-agency" onclick="selectPath('agency')" style="font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px 28px;border-radius:1px;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);cursor:pointer;transition:all .2s;" onmouseover="if(!this.classList.contains('path-active'))this.style.background='var(--gold)';this.style.color='var(--dark)'" onmouseout="if(!this.classList.contains('path-active')){this.style.background='var(--gold-dim)';this.style.color='var(--gold)';}">Agency Bill</button>
+    <button id="btn-direct" onclick="selectPath('direct')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);font-size:14px;letter-spacing:2px;">Direct Bill</button>
+    <button id="btn-agency" onclick="selectPath('agency')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);font-size:14px;letter-spacing:2px;">Agency Bill</button>
   </div>
 
   <!-- DIRECT BILL PATH -->
   <div id="path-direct" style="display:none;">
-    <div class="scenario-box">
-      <div class="scenario-label">Direct Bill — What happens next</div>
-      <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity is assigned to the <strong>VA Workgroup</strong> and set for 45 days prior to expiration. The agency waits for the renewal policy or download from the carrier between 120 days and 45 days out.</p>
-    </div>
-    <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">How is the policy received?</div>
+      <div class="scenario-box">
+    <div class="scenario-label">Direct Bill — What happens next</div>
+    <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity is assigned to the <strong>VA Workgroup</strong> and set for 45 days prior to expiration. The agency waits for the renewal policy or download from the carrier between 120 days and 45 days out.</p>
+  </div>
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">How is the policy received?</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-      <button id="btn-download" onclick="selectDelivery('download')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);cursor:pointer;transition:all .2s;">Carrier Download</button>
-      <button id="btn-email" onclick="selectDelivery('email')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);cursor:pointer;transition:all .2s;">Email or Carrier Portal</button>
+      <button id="btn-download" onclick="selectDelivery('download')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);">Carrier Download</button>
+      <button id="btn-email" onclick="selectDelivery('email')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);">Email or Carrier Portal</button>
     </div>
 
+    <!-- CARRIER DOWNLOAD -->
     <div id="delivery-download" style="display:none;">
       <div class="step-tip" style="margin-bottom:20px;"><strong>Carrier download received:</strong> The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">&gt;REN</span> activity is auto-assigned to the <strong>VA Workgroup</strong>. The download automatically updates all ACORDs, estimated premiums, effective dates, and policy number.</div>
       <div class="steps">
+
         <div class="step">
           <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
           <div class="step-body">
@@ -313,34 +315,65 @@
             <div class="step-detail">Open the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">&gt;REN</span> activity and verify/update: servicing role designations, line commission percentage, and PR/BR commissionable producer sections of the policy line details.</div>
           </div>
         </div>
+
         <div class="step">
           <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Secure policy documents <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+            <div class="step-detail" style="margin-bottom:12px;">Check activities for a <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">^POL</span> activity code — two scenarios apply:</div>
+            <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:10px;">
+              <div style="background:rgba(93,202,165,0.07);border-bottom:1px solid var(--border);padding:8px 14px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#5dcaa5;">Scenario A — ^POL Activity Exists</div>
+              <div style="padding:12px 14px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.6;">A <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">^POL</span> has been received — the PDF document is already attached to the policy in Epic and to the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">^POL</span> activity. Close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">^POL</span> activity.</div>
+            </div>
+            <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:10px;">
+              <div style="background:rgba(202,157,100,0.07);border-bottom:1px solid var(--border);padding:8px 14px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);">Scenario B — No ^POL Activity</div>
+              <div style="padding:12px 14px;">
+                <div style="font-size:13px;font-weight:300;color:var(--grey);line-height:1.6;margin-bottom:10px;">The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">&gt;REN</span> download indicates documents are available on the carrier website. Complete the following:</div>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                  <li style="display:flex;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.5;"><span style="color:var(--gold);font-weight:600;flex-shrink:0;">1.</span> Log into the carrier website and find the renewal document.</li>
+                  <li style="display:flex;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.5;"><span style="color:var(--gold);font-weight:600;flex-shrink:0;">2.</span> Download the policy document.</li>
+                  <li style="display:flex;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.5;"><span style="color:var(--gold);font-weight:600;flex-shrink:0;">3.</span> Drag and drop the policy copy to the Active Policy Line in Epic.</li>
+                  <li style="display:flex;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.5;"><span style="color:var(--gold);font-weight:600;flex-shrink:0;">4.</span> Create a <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#POL</span> activity code and attach the document.</li>
+                  <li style="display:flex;gap:10px;font-size:13px;font-weight:300;color:var(--grey);line-height:1.5;"><span style="color:var(--gold);font-weight:600;flex-shrink:0;">5.</span> Close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#POL</span> activity.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step-tip"><strong>Note:</strong> For Direct Bill policies, the carrier delivers copies of the policy directly to the insured. No policy delivery email is required from the agency.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
           <div class="step-body">
             <div class="step-title">Update Renewal Manager <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
             <div class="step-detail">Update the Renewal Manager stage to the <strong style="color:var(--tan)">final completed stage</strong> to remove the policy from the Renewal Manager list.</div>
           </div>
         </div>
+
         <div class="step">
-          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
           <div class="step-body">
             <div class="step-title">Close &gt;REN activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
             <div class="step-detail">Close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">&gt;REN</span> activity with a note stating the Renewal Manager stage has been updated.</div>
           </div>
         </div>
+
         <div class="step">
-          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
           <div class="step-body">
             <div class="step-title">Close RENR activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
             <div class="step-detail">Close the original <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity created at 120 days.</div>
             <div class="step-alert"><strong>If the download does not arrive</strong> and the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity surfaces to the VA Workgroup at 45 days prior to expiration, the VA team will transfer the activity to the responsible party at the agency and ask for direction.</div>
           </div>
         </div>
+
       </div>
-      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+  <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
       <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Did the responsible party decide to remarket?</div>
-      <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;cursor:pointer;transition:all .2s;">Remarket the Policy ↓</button>
+      <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;">Remarket the Policy &#8595;</button>
     </div>
 
+    <!-- EMAIL OR CARRIER PORTAL -->
     <div id="delivery-email" style="display:none;">
       <div class="steps">
         <div class="step">
@@ -351,204 +384,344 @@
           </div>
         </div>
       </div>
+
       <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
-      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Did the responsible party decide to remarket?</div>
-      <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;cursor:pointer;transition:all .2s;">Remarket the Policy ↓</button>
+      <div style="margin-bottom:16px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once the responsible party receives the #POL — choose an option:</div>
+
+      <!-- OPTION SELECTOR -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <button id="btn-opt-a" onclick="selectEmailOption('a')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);">Option A — Send to VA Team</button>
+        <button id="btn-opt-b" onclick="selectEmailOption('b')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);">Option B — Handle Directly</button>
+      </div>
+
+      <!-- OPTION A -->
+      <div id="email-opt-a" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option A — Send Back to VA Team for Policy Detail &amp; Issuance</div>
+          <p>The responsible party reassigns the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#POL</span> activity back to the <strong>VA Workgroup</strong>, directing them to detail the policy and issue it in Epic.</p>
+        </div>
+        <div style="margin-bottom:10px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">VA Team — Detail &amp; Issue Steps</div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update ACORD applications <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update premiums <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Enter the renewed premium figures across all applicable lines.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check policy header <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Issue the policy in Epic <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Issue the policy once all data has been verified and updated.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update Renewal Manager <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Send policy delivery email <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Attach sent email to #POL <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(93,202,165,0.10);border:1px solid rgba(93,202,165,0.28);color:#5dcaa5;">VA Team</span></div>
+              <div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#POL</span> activity to complete the audit trail.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION B -->
+      <div id="email-opt-b" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option B — Responsible Party Details &amp; Issues Directly</div>
+          <p>The responsible party handles all detailing and issuance themselves, without reassigning to the VA Team.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update ACORD applications <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update premiums <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Enter the renewed premium figures across all applicable lines.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check policy header <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Issue the policy in Epic <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Issue the policy once all data has been verified and updated.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update Renewal Manager <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Send policy delivery email <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Attach sent email to #POL <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+              <div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#POL</span> activity to complete the audit trail.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Did the responsible party decide to remarket instead?</div>
+      <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;">Remarket the Policy &#8595;</button>
     </div>
   </div>
 
   <!-- AGENCY BILL PATH -->
   <div id="path-agency" style="display:none;">
-    <div class="scenario-box">
-      <div class="scenario-label">Agency Bill — What happens next</div>
-      <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity is assigned directly to the <strong>responsible party at the agency</strong> at 120 days. They must decide: wait for incumbent pricing or remarket the policy?</p>
-    </div>
-    <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">What is the next action?</div>
+      <div class="scenario-box">
+    <div class="scenario-label">Agency Bill — What happens next</div>
+    <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity is assigned directly to the <strong>responsible party at the agency</strong> at 120 days. They must decide: wait for incumbent pricing or remarket the policy?</p>
+  </div>
+      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">What is the next action?</div>
     <div style="display:flex;gap:8px;margin-bottom:20px;">
-      <button id="btn-wait" onclick="selectAgencyAction('wait')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);cursor:pointer;transition:all .2s;">Wait for Incumbent Pricing</button>
+      <button id="btn-wait" onclick="selectAgencyAction('wait')" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid var(--gold-border);background:var(--gold-dim);color:var(--gold);">Wait for Incumbent Pricing</button>
     </div>
     <div id="action-wait" style="display:none;">
       <div class="step-tip">The responsible party owns the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity and sets it for a future date — the point at which they want to take action if the policy has not yet been delivered to the agency.</div>
-      <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
-      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once pricing arrives, did they decide to remarket?</div>
-      <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;cursor:pointer;transition:all .2s;">Remarket the Policy ↓</button>
+  <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
+        <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once pricing arrives, did they decide to remarket?</div>
+        <button onclick="showRemarketing()" style="font-family:'Rajdhani',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:1px;cursor:pointer;transition:all .2s;border:1px solid rgba(169,157,236,0.28);background:rgba(169,157,236,0.10);color:#a99dec;">Remarket the Policy &#8595;</button>
     </div>
   </div>
 
   <!-- REMARKETING -->
   <div id="section-remarketing" style="display:none;">
 
-    <div class="phase-header" style="margin-top:44px">
-      <span class="phase-number">Phase 03</span>
-      <span class="phase-title">Remarketing Process</span>
-    </div>
-    <div class="scenario-box">
-      <div class="scenario-label">Applies to both billing types</div>
-      <p>For Direct Bill policies, if the renewal is received and a decision is made to remarket, follow the same steps below. The process is identical regardless of billing type.</p>
-    </div>
+    
+  <div class="phase-header" style="margin-top:44px">
+    <span class="phase-number">Phase 03</span>
+    <span class="phase-title">Remarketing Process</span>
+  </div>
+      <div class="scenario-box">
+    <div class="scenario-label">Applies to both billing types</div>
+    <p>For Direct Bill policies, if the renewal is received and a decision is made to remarket, follow the same steps below. The process is identical regardless of billing type.</p>
+  </div>
+
     <div class="steps">
-      <div class="step">
-        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Create master application <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Create the Master Application in Epic. This generates an <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">MPOL</span> activity to track the submission process. Once the MPOL is created, close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity.</div>
-        </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Create master application <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Create the Master Application in Epic. This generates an <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">MPOL</span> activity to track the submission process. Once the MPOL is created, close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">RENR</span> activity.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Update master application <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Update all ACORD data for the future renewal term across all lines being remarketed. Attach all supporting documents: loss runs, supplemental applications, and any other required underwriting data. The Master Application is the central repository for all data.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Update master application <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Update all ACORD data for the future renewal term across all lines being remarketed. Attach all supporting documents: loss runs, supplemental applications, and any other required underwriting data. The Master Application is the central repository for all data.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Create carrier submissions <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Use the <strong style="color:var(--tan)">Actions</strong> button to create carrier submissions. Each submission replicates the Master Application for the selected carriers. Include or remove attachments as applicable per carrier.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Create carrier submissions <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Use the <strong style="color:var(--tan)">Actions</strong> button to create carrier submissions. Each submission replicates the Master Application for the selected carriers. Include or remove attachments as applicable per carrier.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Submit to carriers <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Two options:</div>
-          <ul class="step-list">
-            <li><strong style="color:var(--tan)">Submit directly to underwriting:</strong> Actions → Submit to Carrier → generates <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCAC</span> activity</li>
-            <li><strong style="color:var(--tan)">Quoted online:</strong> Actions → Update Stage to Submitted/Entered → generates <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCAO</span> activity</li>
-          </ul>
-          <div class="step-tip"><strong>SCA activities</strong> track each individual submission and all underwriting correspondence until quotes are received.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Submit to carriers <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Two options:</div>
+        <ul class="step-list">
+          <li><strong style="color:var(--tan)">Submit directly to underwriting:</strong> Actions &rarr; Submit to Carrier &rarr; generates <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCAC</span> activity</li>
+          <li><strong style="color:var(--tan)">Quoted online:</strong> Actions &rarr; Update Stage to Submitted/Entered &rarr; generates <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCAO</span> activity</li>
+        </ul>
+        <div class="step-tip"><strong>SCA activities</strong> track each individual submission and all underwriting correspondence until quotes are received.</div>
       </div>
+    </div>
     </div>
 
-    <div class="phase-header">
-      <span class="phase-number">Phase 04</span>
-      <span class="phase-title">Carrier Response — Quote or Declination</span>
-    </div>
+    
+  <div class="phase-header">
+    <span class="phase-number">Phase 04</span>
+    <span class="phase-title">Carrier Response — Quote or Declination</span>
+  </div>
+
     <div class="steps">
-      <div class="step">
-        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Create carrier response <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">As soon as a response is received, use Actions → <strong style="color:var(--tan)">Create Carrier Response</strong> to update the carrier's response, issuing paper, and all quote details.</div>
-        </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Create carrier response <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">As soon as a response is received, use Actions &rarr; <strong style="color:var(--tan)">Create Carrier Response</strong> to update the carrier's response, issuing paper, and all quote details.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Attach documentation <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Drag and drop the quote and accompanying documents to the carrier submission.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Attach documentation <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Drag and drop the quote and accompanying documents to the carrier submission.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Create #QUO activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <ul class="step-list">
-            <li><strong style="color:var(--tan)">Quote received:</strong> Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> activity normally.</li>
-            <li><strong style="color:var(--tan)">Declination received:</strong> Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> with "Declined" added at the end of the description.</li>
-          </ul>
-          <div class="step-detail" style="margin-top:8px">Assign to the responsible party for review. Close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCA</span> activity.</div>
-          <div class="step-alert"><strong>Repeat</strong> this process for each carrier submission sent out.</div>
-          <div class="step-tip" style="margin-top:8px"><strong>Pro tip:</strong> If you update the carrier response applications with the returned quote details and that carrier becomes the winning carrier, no further ACORD updates will be needed when the policy moves to the active screen.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Create #QUO activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail"></div>
+        <ul class="step-list">
+          <li><strong style="color:var(--tan)">Quote received:</strong> Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> activity normally.</li>
+          <li><strong style="color:var(--tan)">Declination received:</strong> Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> with "Declined" added at the end of the description.</li>
+        </ul>
+        <div class="step-detail" style="margin-top:8px;">Assign to the responsible party for review. Close the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">SCA</span> activity.</div>
+        <div class="step-alert"><strong>Repeat</strong> this process for each carrier submission sent out.</div>
+        <div class="step-tip" style="margin-top:8px;">If you update the carrier response applications with the returned quote details and that carrier becomes the winning carrier, no further ACORD updates will be needed when the policy moves to the active screen.</div>
       </div>
+    </div>
     </div>
 
-    <div class="phase-header">
-      <span class="phase-number">Phase 05</span>
-      <span class="phase-title">Proposal Stage</span>
-    </div>
+    
+  <div class="phase-header">
+    <span class="phase-number">Phase 05</span>
+    <span class="phase-title">Proposal Stage</span>
+  </div>
+
     <div class="steps">
-      <div class="step">
-        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Send proposal <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Create and send the proposal to the client with one or several quotes for review. From Outlook sent items, drag and drop the sent email with the proposal to the carrier submission.</div>
-        </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Send proposal <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Create and send the proposal to the client with one or several quotes for review. From Outlook sent items, drag and drop the sent email with the proposal to the carrier submission.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Create #PRO activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span> activity tracks all correspondence between the agency and the client regarding the proposal — documents, questions, and emails all logged here.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Create #PRO activity <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span> activity tracks all correspondence between the agency and the client regarding the proposal — documents, questions, and emails all logged here.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Close prior activities <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Once #PRO is created and the proposal has been sent, close all <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> activities and the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">MPOL</span> activity. All tracking from this point is through <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span>.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Close prior activities <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Once #PRO is created and the proposal has been sent, close all <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#QUO</span> activities and the <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">MPOL</span> activity. All tracking from this point is through <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span>.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Client confirms — create #BIN <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Upon receipt of client confirmation: drag and drop the confirmation email to the carrier submission of the winning market. Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#BIN</span> activity and close <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span>.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Client confirms — create #BIN <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Upon receipt of client confirmation to move forward: drag and drop the confirmation email to the carrier submission of the winning market. Create <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#BIN</span> activity and close <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#PRO</span>.</div>
       </div>
+    </div>
     </div>
 
-    <div class="phase-header">
-      <span class="phase-number">Phase 06</span>
-      <span class="phase-title">Binding</span>
-    </div>
-    <div class="scenario-box">
-      <div class="scenario-label">Required Documentation</div>
-      <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#BIN</span> activity is the complete record of all binding correspondence and must contain three documents: the client's binding request, the agency's request to the carrier, and the carrier's confirmation.</p>
-    </div>
+    
+  <div class="phase-header">
+    <span class="phase-number">Phase 06</span>
+    <span class="phase-title">Binding</span>
+  </div>
+      <div class="scenario-box">
+    <div class="scenario-label">Required Documentation</div>
+    <p>The <span style="background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-family:monospace;font-size:11px;padding:1px 7px;border-radius:1px;">#BIN</span> activity is the complete record of all binding correspondence and must contain three documents: the client's binding request, the agency's request to the carrier, and the carrier's confirmation.</p>
+  </div>
+
     <div class="steps">
-      <div class="step">
-        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Client binding request</div>
-          <div class="step-detail">The original request from the insured — attached when the #BIN is created.</div>
-        </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Client binding request </div>
+        <div class="step-detail">The original request from the insured — attached when the #BIN is created.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Agency request to carrier <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Documentation of the binding request sent to the carrier — either directly or via the carrier portal. Documented within the #BIN activity.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Agency request to carrier <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Documentation of the binding request sent to the carrier — either by sending directly to the carrier or by logging into the carrier portal to bind. Documented within the #BIN activity.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Carrier confirmation</div>
-          <div class="step-detail">When the carrier returns the binder, it is logged and attached to the #BIN activity. The #BIN should now contain all three documents as a complete audit trail.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Carrier confirmation </div>
+        <div class="step-detail">When the carrier returns the binder, it is logged and attached to the #BIN activity. The #BIN should now contain all three documents as a complete audit trail.</div>
       </div>
+    </div>
     </div>
 
-    <div class="phase-header">
-      <span class="phase-number">Phase 07</span>
-      <span class="phase-title">Move to Active Screen &amp; Policy Issuance</span>
-    </div>
+    
+  <div class="phase-header">
+    <span class="phase-number">Phase 07</span>
+    <span class="phase-title">Move to Active Screen &amp; Policy Issuance</span>
+  </div>
+
     <div class="steps">
-      <div class="step">
-        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Complete binding in Epic <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Return to the winning carrier submission. Use the <strong style="color:var(--tan)">Actions</strong> menu → <strong style="color:var(--tan)">Move to Active Screen</strong>.</div>
-        </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Complete binding in Epic <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Return to the winning carrier submission. Use the <strong style="color:var(--tan)">Actions</strong> menu &rarr; <strong style="color:var(--tan)">Move to Active Screen</strong>.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Set policy structure <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">The workflow moves the winning lines from Master Marketing to the active policy screen in Epic. This is the opportunity to structure the policy — move lines as a <strong style="color:var(--tan)">package</strong> or as <strong style="color:var(--tan)">mono lines</strong>.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Set policy structure <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">The workflow moves the winning lines from Master Marketing to the active policy screen in Epic. This is the opportunity to structure the policy — move lines as a <strong style="color:var(--tan)">package</strong> or as <strong style="color:var(--tan)">mono lines</strong>.</div>
       </div>
-      <div class="step">
-        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Verify data and issue <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
-          <div class="step-detail">Verify all data on the active screen, then issue the policies.</div>
-        </div>
+    </div>
+    <div class="step">
+      <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body">
+        <div class="step-title">Verify data and issue <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;padding:2px 8px;border-radius:1px;background:rgba(169,157,236,0.10);border:1px solid rgba(169,157,236,0.28);color:#a99dec;">Responsible Party</span></div>
+        <div class="step-detail">Verify all data on the active screen, then issue the policies.</div>
       </div>
+    </div>
     </div>
 
   </div><!-- /remarketing -->
@@ -558,23 +731,23 @@
     <div class="section-label">Common Questions</div>
     <div class="faq-list">
       <div class="faq-item" id="faq1">
-        <div class="faq-q" onclick="togF('faq1')">What is the difference between Direct Bill and Agency Bill in this workflow?<span>▼</span></div>
+        <div class="faq-q" onclick="togF('faq1')">What is the difference between Direct Bill and Agency Bill in this workflow?<span>&#9660;</span></div>
         <div class="faq-a"><p>For Direct Bill, the RENR activity is assigned to the VA Workgroup at 120 days and set for 45 days out — the VA team monitors for the carrier download during that window. For Agency Bill, the RENR is assigned directly to the responsible party at 120 days, who must actively decide whether to wait for incumbent pricing or begin remarketing immediately.</p></div>
       </div>
       <div class="faq-item" id="faq2">
-        <div class="faq-q" onclick="togF('faq2')">Can a Direct Bill policy be remarketed?<span>▼</span></div>
+        <div class="faq-q" onclick="togF('faq2')">Can a Direct Bill policy be remarketed?<span>&#9660;</span></div>
         <div class="faq-a"><p>Yes. If the responsible party receives the renewal on a Direct Bill account and decides the pricing is not competitive, they can choose to remarket. The remarketing process is identical for both billing types — follow the same steps from Phase 03 onward.</p></div>
       </div>
       <div class="faq-item" id="faq3">
-        <div class="faq-q" onclick="togF('faq3')">What happens if the carrier download never arrives on a Direct Bill policy?<span>▼</span></div>
+        <div class="faq-q" onclick="togF('faq3')">What happens if the carrier download never arrives on a Direct Bill policy?<span>&#9660;</span></div>
         <div class="faq-a"><p>If the download does not arrive before the RENR activity surfaces to the VA Workgroup at 45 days prior to expiration, the VA team will transfer the activity to the responsible party at the agency and ask for direction.</p></div>
       </div>
       <div class="faq-item" id="faq4">
-        <div class="faq-q" onclick="togF('faq4')">Why does updating the carrier response applications matter?<span>▼</span></div>
-        <div class="faq-a"><p>When you update the carrier response applications with the quote details returned by the carrier, that data carries forward if that carrier becomes the winning market. When you use Actions → Move to Active Screen, the ACORD data is already current — no additional updates are needed at issuance.</p></div>
+        <div class="faq-q" onclick="togF('faq4')">Why does updating the carrier response applications matter?<span>&#9660;</span></div>
+        <div class="faq-a"><p>When you update the carrier response applications with the quote details returned by the carrier, that data carries forward if that carrier becomes the winning market. When you use Actions &rarr; Move to Active Screen, the ACORD data is already current — no additional updates are needed at issuance.</p></div>
       </div>
       <div class="faq-item" id="faq5">
-        <div class="faq-q" onclick="togF('faq5')">What three documents must be in the #BIN activity before binding is complete?<span>▼</span></div>
+        <div class="faq-q" onclick="togF('faq5')">What three documents must be in the #BIN activity before binding is complete?<span>&#9660;</span></div>
         <div class="faq-a"><p>The #BIN activity must contain: (1) the original binding request from the insured, (2) documentation of the agency's request sent to the carrier or a record of logging into the carrier portal to bind, and (3) the carrier's binder confirmation once returned. These three documents form the complete audit trail for the binding transaction.</p></div>
       </div>
     </div>
@@ -588,7 +761,7 @@
     <img src="../Images/logo_icon_gold_88.png" width="44" height="44" alt="Epic Optimizer" style="display:block"/>
     <span class="footer-brand-name">Epic Optimizer</span>
   </a>
-  <p>© 2026 Epic Optimizer · Ryan Headley</p>
+  <p>&copy; 2026 Epic Optimizer &middot; Ryan Headley</p>
   <p>Insurance Operations &amp; Technology Consulting</p>
 </footer>
 
@@ -603,55 +776,50 @@
   function closeMobile() { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
   function togF(id) { document.getElementById(id).classList.toggle('open'); }
 
+  function selectEmailOption(opt) {
+    ['email-opt-a','email-opt-b'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-opt-a','btn-opt-b'].forEach(id => { const b=document.getElementById(id); b.style.background='var(--gold-dim)'; b.style.color='var(--gold)'; b.style.borderColor='var(--gold-border)'; });
+    document.getElementById('email-opt-'+opt).style.display='block';
+    const active=document.getElementById('btn-opt-'+opt);
+    active.style.background='var(--gold)'; active.style.color='var(--dark)'; active.style.borderColor='var(--gold)';
+  }
+
   function selectPath(path) {
-    document.getElementById('path-direct').style.display = 'none';
-    document.getElementById('path-agency').style.display = 'none';
-    document.getElementById('section-remarketing').style.display = 'none';
-    document.getElementById('delivery-download').style.display = 'none';
-    document.getElementById('delivery-email').style.display = 'none';
-    document.getElementById('action-wait').style.display = 'none';
-    ['btn-direct','btn-agency'].forEach(id => {
-      const b = document.getElementById(id);
-      b.style.background = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.borderColor = 'var(--gold-border)';
-    });
-    const active = document.getElementById('btn-' + path);
-    active.style.background = 'var(--gold)'; active.style.color = 'var(--dark)'; active.style.borderColor = 'var(--gold)';
-    document.getElementById('path-' + path).style.display = 'block';
-    if (path === 'agency') {
-      document.getElementById('action-wait').style.display = 'block';
-      const bw = document.getElementById('btn-wait');
-      bw.style.background = 'var(--gold)'; bw.style.color = 'var(--dark)'; bw.style.borderColor = 'var(--gold)';
+    ['path-direct','path-agency','section-remarketing','delivery-download','delivery-email','action-wait'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-direct','btn-agency'].forEach(id => { const b=document.getElementById(id); b.style.background='var(--gold-dim)'; b.style.color='var(--gold)'; b.style.borderColor='var(--gold-border)'; });
+    const active = document.getElementById('btn-'+path);
+    active.style.background='var(--gold)'; active.style.color='var(--dark)'; active.style.borderColor='var(--gold)';
+    document.getElementById('path-'+path).style.display='block';
+    if (path==='agency') {
+      document.getElementById('action-wait').style.display='block';
+      const bw=document.getElementById('btn-wait');
+      bw.style.background='var(--gold)'; bw.style.color='var(--dark)'; bw.style.borderColor='var(--gold)';
     }
   }
 
   function selectDelivery(type) {
-    document.getElementById('delivery-download').style.display = 'none';
-    document.getElementById('delivery-email').style.display = 'none';
-    document.getElementById('section-remarketing').style.display = 'none';
-    ['btn-download','btn-email'].forEach(id => {
-      const b = document.getElementById(id);
-      b.style.background = 'var(--gold-dim)'; b.style.color = 'var(--gold)'; b.style.borderColor = 'var(--gold-border)';
-    });
-    const active = document.getElementById('btn-' + type);
-    active.style.background = 'var(--gold)'; active.style.color = 'var(--dark)'; active.style.borderColor = 'var(--gold)';
-    document.getElementById('delivery-' + type).style.display = 'block';
+    ['delivery-download','delivery-email','section-remarketing'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-download','btn-email'].forEach(id => { const b=document.getElementById(id); b.style.background='var(--gold-dim)'; b.style.color='var(--gold)'; b.style.borderColor='var(--gold-border)'; });
+    const active=document.getElementById('btn-'+type);
+    active.style.background='var(--gold)'; active.style.color='var(--dark)'; active.style.borderColor='var(--gold)';
+    document.getElementById('delivery-'+type).style.display='block';
   }
 
   function selectAgencyAction(action) {
-    document.getElementById('action-wait').style.display = 'none';
-    document.getElementById('section-remarketing').style.display = 'none';
-    const bw = document.getElementById('btn-wait');
-    bw.style.background = 'var(--gold-dim)'; bw.style.color = 'var(--gold)'; bw.style.borderColor = 'var(--gold-border)';
-    if (action === 'wait') {
-      document.getElementById('action-wait').style.display = 'block';
-      bw.style.background = 'var(--gold)'; bw.style.color = 'var(--dark)'; bw.style.borderColor = 'var(--gold)';
+    document.getElementById('action-wait').style.display='none';
+    document.getElementById('section-remarketing').style.display='none';
+    const bw=document.getElementById('btn-wait');
+    bw.style.background='var(--gold-dim)'; bw.style.color='var(--gold)'; bw.style.borderColor='var(--gold-border)';
+    if (action==='wait') {
+      document.getElementById('action-wait').style.display='block';
+      bw.style.background='var(--gold)'; bw.style.color='var(--dark)'; bw.style.borderColor='var(--gold)';
     }
   }
 
   function showRemarketing() {
-    const el = document.getElementById('section-remarketing');
-    el.style.display = 'block';
-    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    const el=document.getElementById('section-remarketing');
+    el.style.display='block';
+    setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);
   }
 </script>
 </body>
