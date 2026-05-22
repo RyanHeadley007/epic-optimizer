@@ -14,6 +14,7 @@
       /* Role colours */
       --am-bg:rgba(93,202,165,0.10); --am-border:rgba(93,202,165,0.28); --am-text:#5dcaa5;
       --dm-bg:rgba(232,110,110,0.10); --dm-border:rgba(232,110,110,0.28); --dm-text:#e86e6e;
+      --er-bg:rgba(100,160,240,0.10); --er-border:rgba(100,160,240,0.28); --er-text:#64a0f0;
       --rp-bg:rgba(169,157,236,0.10); --rp-border:rgba(169,157,236,0.28); --rp-text:#a99dec;
       --mkt-bg:rgba(100,200,120,0.10); --mkt-border:rgba(100,200,120,0.28); --mkt-text:#64c878;
       --sys-bg:rgba(189,187,174,0.08); --sys-border:rgba(189,187,174,0.10); --sys-text:#bdbbae;
@@ -31,8 +32,6 @@
     .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg) }
     .hamburger.open span:nth-child(2) { opacity:0 }
     .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg) }
-    .mobile-menu { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(23,30,38,0.98); backdrop-filter:blur(20px); z-index:150; flex-direction:column; align-items:center; justify-content:center }
-    .mobile-menu.open { display:flex }
     .page-hero { padding:130px 60px 52px; background:var(--mid); border-bottom:1px solid var(--gold-border); position:relative; overflow:hidden }
     .hero-glow { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(202,157,100,0.07) 0%,transparent 65%) }
     .eyebrow { display:flex; align-items:center; gap:12px; margin-bottom:14px }
@@ -72,15 +71,16 @@
     .step-alert strong { color:var(--gold); font-weight:600 }
     .step-tip { background:rgba(189,187,174,0.06); border:1px solid var(--border); border-left:2px solid var(--grey); border-radius:1px; padding:10px 14px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.55; margin-top:8px }
     .step-tip strong { color:var(--tan); font-weight:500 }
-    /* Role tag helper */
+    /* Role tags */
     .tag { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; padding:2px 8px; border-radius:1px; white-space:nowrap }
     .tag-am  { background:var(--am-bg);  border:1px solid var(--am-border);  color:var(--am-text)  }
     .tag-dm  { background:var(--dm-bg);  border:1px solid var(--dm-border);  color:var(--dm-text)  }
+    .tag-er  { background:var(--er-bg);  border:1px solid var(--er-border);  color:var(--er-text)  }
     .tag-rp  { background:var(--rp-bg);  border:1px solid var(--rp-border);  color:var(--rp-text)  }
     .tag-mkt { background:var(--mkt-bg); border:1px solid var(--mkt-border); color:var(--mkt-text) }
     .tag-sys { background:var(--sys-bg); border:1px solid var(--sys-border); color:var(--sys-text) }
     .code { background:var(--gold-dim); border:1px solid var(--gold-border); color:var(--gold); font-family:monospace; font-size:11px; padding:1px 7px; border-radius:1px }
-    /* Split decision panels */
+    /* Split panels */
     .split-box { border:1px solid var(--border); border-radius:2px; overflow:hidden; margin:14px 0 }
     .split-header { background:rgba(202,157,100,0.06); border-bottom:1px solid var(--border); padding:8px 14px; font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold) }
     .split-cols { display:grid; grid-template-columns:1fr 1fr }
@@ -94,10 +94,15 @@
     .scenario-panel-body ol { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:8px }
     .scenario-panel-body ol li { display:flex; gap:10px; font-size:13px; font-weight:300; color:var(--grey); line-height:1.5 }
     .scenario-panel-body ol li .n { color:var(--gold); font-weight:600; flex-shrink:0 }
-    /* Interactive buttons */
+    /* Buttons */
     .path-btn { font-family:'Rajdhani',sans-serif; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:9px 20px; border-radius:1px; cursor:pointer; transition:all .2s; border:1px solid var(--gold-border); background:var(--gold-dim); color:var(--gold) }
     .path-btn:hover { background:var(--gold); color:var(--dark) }
     .path-btn.active { background:var(--gold); color:var(--dark); border-color:var(--gold) }
+    /* Handoff callout */
+    .handoff-box { display:flex; align-items:flex-start; gap:14px; background:rgba(100,160,240,0.07); border:1px solid rgba(100,160,240,0.28); border-left:3px solid #64a0f0; border-radius:2px; padding:14px 18px; margin:8px 0 }
+    .handoff-box-icon { font-size:18px; flex-shrink:0; margin-top:1px }
+    .handoff-box-text { font-size:13px; font-weight:300; color:var(--grey); line-height:1.6 }
+    .handoff-box-text strong { color:var(--tan); font-weight:500 }
     /* FAQ */
     .faq-section { margin-top:52px; border-top:1px solid var(--border); padding-top:36px }
     .section-label { font-family:'Rajdhani',sans-serif; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px }
@@ -146,7 +151,7 @@
     <span class="agency-badge-name">Excelsure</span>
   </div>
   <div class="page-title">Commercial<br><span>Renewal Workflow</span></div>
-  <p class="page-sub">Responsibilities by role across all commercial renewal stages — from the 127-day Department Manager review through binding and policy issuance. Select your billing path to follow the steps relevant to you.</p>
+  <p class="page-sub">Responsibilities by role across all commercial renewal stages — from the 120-day check through binding and policy issuance. Select your billing path to follow the steps relevant to you.</p>
   <div class="hero-meta">
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>2</strong>&nbsp;Billing Paths</div>
     <div class="hero-meta-item"><div class="hero-meta-dot"></div><strong>7</strong>&nbsp;Workflow Stages</div>
@@ -165,8 +170,9 @@
   <!-- LEGEND -->
   <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:14px 20px;background:var(--tan-faint);border:1px solid var(--border);border-radius:2px;margin-bottom:36px;">
     <span style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-right:4px;">Key</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-am">Account Manager</span> Account Manager assigned to the policy</span>
-    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-dm">Department Manager</span> Reviews &amp; provides marketing direction at 127 days</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-am">Account Manager</span> Daily renewal processing, proposal &amp; bind</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-dm">Department Manager</span> Responds to task inside -REN between 127–120 days with marketing direction</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-er">Edge Rep</span> Carrier submissions &amp; responses (Phase 03–04)</span>
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-rp">Responsible Party</span> Producer or CSR who owns the account</span>
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-mkt">Marketing Team</span> Handles remarketing submissions when directed</span>
     <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:300;color:var(--grey);"><span class="tag tag-sys">System</span> Automated / Epic action</span>
@@ -204,15 +210,15 @@
     <div class="step">
       <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
       <div class="step-body">
-        <div class="step-title">Select RENR &amp; assign to Department Manager <span class="tag tag-am">Account Manager</span></div>
-        <div class="step-detail">A renewal activity is generated automatically. The account manager selects the <span class="code">RENR</span> activity code and assigns it to the <strong style="color:var(--tan)">Department Manager</strong>, set for 127 days prior to expiration. This initiates the Department Manager review window.</div>
+        <div class="step-title">Select -REN, keep with Account Manager, create task for Department Manager <span class="tag tag-am">Account Manager</span></div>
+        <div class="step-detail">A renewal activity is generated automatically. The account manager selects the <span class="code">-REN</span> activity code and keeps it assigned to <strong style="color:var(--tan)">themselves</strong>. Within the -REN activity, the account manager creates a <strong style="color:var(--tan)">task assigned to the Department Manager</strong>, set for 127 days prior to expiration. The -REN activity stays owned by the account manager throughout — the task is the Department Manager's prompt to provide direction.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
       <div class="step-body">
-        <div class="step-title">Department Manager review (127–120 days) <span class="tag tag-dm">Department Manager</span></div>
-        <div class="step-detail">Between 127 and 120 days prior to expiration, the Department Manager reviews the policy and updates the notes in the <span class="code">RENR</span> activity with a clear marketing decision:</div>
+        <div class="step-title">Department Manager responds to task (127–120 days) <span class="tag tag-dm">Department Manager</span></div>
+        <div class="step-detail">Between 127 and 120 days prior to expiration, the Department Manager responds to the task inside the <span class="code">-REN</span> activity with a clear marketing decision. The -REN activity itself remains owned by the account manager — the Department Manager is responding to the task only:</div>
         <div class="split-box" style="margin-top:12px;">
           <div class="split-header">Marketing Decision — choose one</div>
           <div class="split-cols">
@@ -231,18 +237,18 @@
     <div class="step">
       <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
       <div class="step-body">
-        <div class="step-title">Reassign RENR activity <span class="tag tag-dm">Department Manager</span></div>
-        <div class="step-detail">Once the <span class="code">RENR</span> notes have been updated with the marketing direction, the Department Manager reassigns the activity to the appropriate party:</div>
+        <div class="step-title">Account Manager reads task response and takes action <span class="tag tag-am">Account Manager</span></div>
+        <div class="step-detail">Once the Department Manager has responded to the task, the account manager reads the direction and acts accordingly. The <span class="code">-REN</span> activity remains with the account manager throughout:</div>
         <div class="split-box" style="margin-top:12px;">
-          <div class="split-header">Reassign to</div>
+          <div class="split-header">Based on the Department Manager's task response</div>
           <div class="split-cols">
             <div class="split-col">
-              <div class="split-col-title">Account Manager</div>
-              If waiting for incumbent pricing — Account Manager monitors for delivery and continues with Phase 02.
+              <div class="split-col-title">Wait for Incumbent Pricing</div>
+              Account Manager monitors the -REN for policy delivery and continues with Phase 02.
             </div>
             <div class="split-col">
-              <div class="split-col-title">Marketing Team</div>
-              If remarketing — Marketing Team begins the remarketing process (Phase 03 onward).
+              <div class="split-col-title">Remarket</div>
+              Account Manager (or Marketing Team, if directed) begins the remarketing process — Phase 03 onward.
             </div>
           </div>
         </div>
@@ -266,7 +272,7 @@
   <div id="path-direct" style="display:none;">
     <div class="scenario-box">
       <div class="scenario-label">Direct Bill — What happens next</div>
-      <p>The <span class="code">RENR</span> activity is assigned to the <strong>Account Manager</strong> to monitor. The agency waits for the renewal policy or download from the carrier, set for 45 days prior to expiration.</p>
+      <p>The <span class="code">-REN</span> activity is assigned to the <strong>Account Manager</strong> to monitor. The agency waits for the renewal policy or download from the carrier, set for 45 days prior to expiration.</p>
     </div>
 
     <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">How is the policy received?</div>
@@ -327,8 +333,8 @@
         <div class="step">
           <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
           <div class="step-body">
-            <div class="step-title">Close RENR activity <span class="tag tag-am">Account Manager</span></div>
-            <div class="step-detail">Close the original <span class="code">RENR</span> activity.</div>
+            <div class="step-title">Close -REN activity <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Close the original <span class="code">-REN</span> activity.</div>
             <div class="step-alert"><strong>If the download does not arrive</strong> by 45 days prior to expiration, the Account Manager should contact the <strong>Department Manager</strong> for direction on next steps.</div>
           </div>
         </div>
@@ -354,32 +360,32 @@
       <div style="margin-bottom:16px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once the responsible party receives the #POL — choose an option:</div>
 
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
-        <button id="btn-opt-a" class="path-btn" onclick="selectEmailOption('a')">Option A — Send to Account Manager</button>
-        <button id="btn-opt-b" class="path-btn" onclick="selectEmailOption('b')">Option B — Handle Directly</button>
+        <button id="btn-opt-a" class="path-btn" onclick="selectEmailOption('a')">Option A — Send to Edge Rep</button>
+        <button id="btn-opt-b" class="path-btn" onclick="selectEmailOption('b')">Option B — Handle Themselves</button>
       </div>
 
       <!-- OPTION A -->
       <div id="email-opt-a" style="display:none;">
         <div class="scenario-box">
-          <div class="scenario-label">Option A — Send Back to Account Manager for Policy Detail &amp; Issuance</div>
-          <p>The responsible party reassigns the <span class="code">#POL</span> activity back to the <strong>Account Manager</strong>, directing them to detail the policy and issue it in Epic.</p>
+          <div class="scenario-label">Option A — Send to Edge Rep for Policy Detail &amp; Issuance</div>
+          <p>The responsible party reassigns the <span class="code">#POL</span> activity to the <strong>Edge Rep</strong>, directing them to detail the policy and issue it in Epic.</p>
         </div>
-        <div style="margin-bottom:10px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Account Manager — Detail &amp; Issue Steps</div>
+        <div style="margin-bottom:10px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Edge Rep — Detail &amp; Issue Steps</div>
         <div class="steps">
-          <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update ACORD applications <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update premiums <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Enter the renewed premium figures across all applicable lines.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Check policy header <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Issue the policy in Epic <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Issue the policy once all data has been verified and updated.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update Renewal Manager <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send policy delivery email <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div></div></div>
-          <div class="step"><div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach sent email to #POL <span class="tag tag-am">Account Manager</span></div><div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span class="code">#POL</span> activity to complete the audit trail.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update ACORD applications <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update premiums <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Enter the renewed premium figures across all applicable lines.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Check policy header <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Issue the policy in Epic <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Issue the policy once all data has been verified and updated.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update Renewal Manager <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send policy delivery email <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div></div></div>
+          <div class="step"><div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach sent email to #POL <span class="tag tag-er">Edge Rep</span></div><div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span class="code">#POL</span> activity to complete the audit trail.</div></div></div>
         </div>
       </div>
 
       <!-- OPTION B -->
       <div id="email-opt-b" style="display:none;">
         <div class="scenario-box">
-          <div class="scenario-label">Option B — Responsible Party Details &amp; Issues Directly</div>
+          <div class="scenario-label">Option B — Responsible Party Handles Themselves</div>
           <p>The responsible party handles all detailing and issuance themselves, without reassigning to the Account Manager.</p>
         </div>
         <div class="steps">
@@ -403,22 +409,147 @@
   <div id="path-agency" style="display:none;">
     <div class="scenario-box">
       <div class="scenario-label">Agency Bill — What happens next</div>
-      <p>Per the Department Manager's direction from Phase 01, the <span class="code">RENR</span> activity has been reassigned to either the <strong>Account Manager</strong> (wait for incumbent pricing) or the <strong>Marketing Team</strong> (remarket immediately).</p>
+      <p>Per the Department Manager's direction from Phase 01, the <span class="code">-REN</span> activity has been reassigned to either the <strong>Account Manager</strong> (wait for incumbent pricing) or the <strong>Marketing Team</strong> (remarket immediately).</p>
     </div>
     <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">What is the next action?</div>
     <div style="display:flex;gap:8px;margin-bottom:20px;">
       <button id="btn-wait" class="path-btn active" onclick="selectAgencyAction('wait')">Wait for Incumbent Pricing</button>
     </div>
+
     <div id="action-wait">
-      <div class="step-tip">The Account Manager owns the <span class="code">RENR</span> activity and sets it for a future date — the point at which they want to take action if the policy has not yet been delivered to the agency.</div>
+      <div class="step-tip" style="margin-bottom:20px;">The Account Manager owns the <span class="code">-REN</span> activity and sets it for <strong>90 days prior to expiration</strong> — the point at which they take action if renewal terms have not yet been delivered.</div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Need Quote outreach (90 days prior) <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">At 90 days, the Account Manager reaches out to the General Agent (GA) to request the renewal application. Update the <span class="code">-REN</span> activity with a note indicating outreach has been made and set a follow-up date.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Send renewal app to insured via Indio <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Once the renewal application is received from the GA, send it to the insured through <strong style="color:var(--tan)">Indio</strong> for completion. Log the send in the <span class="code">-REN</span> activity.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Wait for signed app return <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Monitor Indio for the signed application return from the insured. The <span class="code">-REN</span> activity holds the status during this wait period.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Submit app and ACORDs to GA <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Once the signed application is received, send the completed application and all relevant ACORDs to the GA. Attach the outbound submission to the <span class="code">-REN</span> activity and note the date sent.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+          <div class="step-body">
+            <div class="step-title">Set -REN to 30 days and wait for renewal terms <span class="tag tag-am">Account Manager</span></div>
+            <div class="step-detail">Move the <span class="code">-REN</span> activity forward to <strong style="color:var(--tan)">30 days prior to expiration</strong> and wait for the GA to return renewal terms. No further action is required until terms are received or the 30-day date surfaces.</div>
+          </div>
+        </div>
+      </div>
+
       <hr style="border:none;border-top:1px solid var(--border);margin:20px 0;">
-      <div style="margin-bottom:12px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Once pricing arrives, did they decide to remarket?</div>
-      <button onclick="showRemarketing()" class="path-btn" style="border-color:var(--rp-border);background:var(--rp-bg);color:var(--rp-text);">Remarket the Policy &#8595;</button>
+      <div style="background:rgba(189,187,174,0.06);border:1px solid var(--border);border-left:3px solid var(--grey);border-radius:2px;padding:16px 18px;margin-bottom:24px;">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:8px;">&#9432;&nbsp;&nbsp;If the Policy Arrives During Steps 1–5</div>
+        <div style="font-size:13px;font-weight:300;color:var(--grey);line-height:1.6;">The carrier may deliver the renewed policy document while the Account Manager is still working through the GA process above. If this happens, whoever receives the policy should create a <span class="code">#POL</span> activity, attach the policy document, and assign it to the Account Manager. The Account Manager can then proceed directly to Option A or Option B below.</div>
+      </div>
+
+      <div style="margin-bottom:16px;font-family:'Rajdhani',sans-serif;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);">Renewal terms received — what happens next?</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+        <button id="btn-ab-opt-a" class="path-btn" onclick="selectAgencyTerms('a')">Option A — Accept &amp; Issue</button>
+        <button id="btn-ab-opt-b" class="path-btn" onclick="selectAgencyTerms('b')">Option B — Remarket</button>
+      </div>
+
+      <!-- AGENCY BILL OPTION A — ACCEPT & ISSUE -->
+      <div id="ab-opt-a" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option A — Accept Incumbent Terms &amp; Issue Policy</div>
+          <p>The Account Manager is satisfied with the renewal terms received from the GA. The policy is detailed and issued in Epic.</p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update ACORD applications <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Detail all policy ACORD applications to reflect the renewed policy terms received from the GA.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update premiums <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Enter the renewed premium figures across all applicable lines.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Check policy header <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">9</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Generate invoice &amp; send via Applied Pay <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">In Epic, build and generate the invoice. This creates an <span class="code">INVC</span> activity code and auto-attaches a copy of the agency invoice. Once the INVC has been generated, email the <strong style="color:var(--tan)">Applied Pay</strong> payment link to the insured for payment.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">10</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Issue the policy in Epic <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Issue the policy once all data has been verified and updated.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">11</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Update Renewal Manager <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">12</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Send policy delivery email <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Using the Policy Delivery email template, send a copy of the policy to the insured.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-num">13</div><div class="step-line"></div></div>
+            <div class="step-body">
+              <div class="step-title">Attach sent email to -REN <span class="tag tag-am">Account Manager</span></div>
+              <div class="step-detail">Drag and drop the sent email from Outlook sent items back to the <span class="code">-REN</span> activity to complete the audit trail. Close the <span class="code">-REN</span> activity.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENCY BILL OPTION B — REMARKET -->
+      <div id="ab-opt-b" style="display:none;">
+        <div class="scenario-box">
+          <div class="scenario-label">Option B — Terms Not Acceptable, Remarket the Policy</div>
+          <p>The Account Manager determines the incumbent renewal terms are not competitive. The policy moves to the remarketing process.</p>
+        </div>
+        <button onclick="showRemarketing()" class="path-btn" style="border-color:var(--rp-border);background:var(--rp-bg);color:var(--rp-text);">Continue to Remarketing — Phase 03 &#8595;</button>
+      </div>
+
     </div>
   </div>
 
   <!-- REMARKETING -->
   <div id="section-remarketing" style="display:none;">
+
     <div class="phase-header" style="margin-top:44px;">
       <span class="phase-number">Phase 03</span>
       <span class="phase-title">Remarketing Process</span>
@@ -428,10 +559,49 @@
       <p>For Direct Bill policies, if the renewal is received and a decision is made to remarket, follow the same steps below. The process is identical regardless of billing type.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create master application <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Create the Master Application in Epic. This generates an <span class="code">MPOL</span> activity to track the submission process. Once the MPOL is created, close the <span class="code">RENR</span> activity.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Update master application <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Update all ACORD data for the future renewal term across all lines being remarketed. Attach all supporting documents: loss runs, supplemental applications, and any other required underwriting data. The Master Application is the central repository for all data.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create carrier submissions <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Use the <strong style="color:var(--tan)">Actions</strong> button to create carrier submissions. Each submission replicates the Master Application for the selected carriers. Include or remove attachments as applicable per carrier.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Submit to carriers <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Two options:</div><ul class="step-list"><li><strong style="color:var(--tan)">Submit directly to underwriting:</strong> Actions &rarr; Submit to Carrier &rarr; generates <span class="code">SCAC</span> activity</li><li><strong style="color:var(--tan)">Quoted online:</strong> Actions &rarr; Update Stage to Submitted/Entered &rarr; generates <span class="code">SCAO</span> activity</li></ul><div class="step-tip"><strong>SCA activities</strong> track each individual submission and all underwriting correspondence until quotes are received.</div></div></div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Create master application <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">The Account Manager creates the Master Application in Epic. This generates an <span class="code">MPOL</span> activity to track the submission process. The Account Manager also sets up the Indio activity at this point. Once the MPOL is created, close the <span class="code">-REN</span> activity.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Update master application <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">The Account Manager updates all ACORD data for the future renewal term across all lines being remarketed. Attach all supporting documents: loss runs, supplemental applications, and any other required underwriting data. The Master Application is the central repository for all data.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Reassign to Edge Rep <span class="tag tag-am">Account Manager</span> <span style="color:var(--grey);font-size:12px;font-weight:300;margin:0 4px;">→</span> <span class="tag tag-er">Edge Rep</span></div>
+          <div class="handoff-box" style="margin-top:10px;">
+            <div class="handoff-box-icon">&#8594;</div>
+            <div class="handoff-box-text">Once the Master Application is built and the Indio activity is set up, the Account Manager reassigns the <span class="code">MPOL</span> activity to their <strong>dedicated Edge Rep</strong>. Each Account Manager works with one assigned Edge Rep. The Edge Rep takes ownership of the submission process from this point forward.</div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Create carrier submissions <span class="tag tag-er">Edge Rep</span></div>
+          <div class="step-detail">The Edge Rep uses the <strong style="color:var(--tan)">Actions</strong> button to create carrier submissions. Each submission replicates the Master Application for the selected carriers. Include or remove attachments as applicable per carrier.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Submit to carriers <span class="tag tag-er">Edge Rep</span></div>
+          <div class="step-detail">Two options:</div>
+          <ul class="step-list">
+            <li><strong style="color:var(--tan)">Submit directly to underwriting:</strong> Actions &rarr; Submit to Carrier &rarr; generates <span class="code">SCAC</span> activity</li>
+            <li><strong style="color:var(--tan)">Quoted online:</strong> Actions &rarr; Update Stage to Submitted/Entered &rarr; generates <span class="code">SCAO</span> activity</li>
+          </ul>
+          <div class="step-tip"><strong>SCA activities</strong> track each individual submission and all underwriting correspondence until quotes are received.</div>
+        </div>
+      </div>
     </div>
 
     <div class="phase-header">
@@ -439,9 +609,33 @@
       <span class="phase-title">Carrier Response — Quote or Declination</span>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create carrier response <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">As soon as a response is received, use Actions &rarr; <strong style="color:var(--tan)">Create Carrier Response</strong> to update the carrier's response, issuing paper, and all quote details.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Attach documentation <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Drag and drop the quote and accompanying documents to the carrier submission.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create #QUO activity <span class="tag tag-rp">Responsible Party</span></div><ul class="step-list"><li><strong style="color:var(--tan)">Quote received:</strong> Create <span class="code">#QUO</span> activity normally.</li><li><strong style="color:var(--tan)">Declination received:</strong> Create <span class="code">#QUO</span> with "Declined" added at the end of the description.</li></ul><div class="step-detail" style="margin-top:8px;">Assign to the responsible party for review. Close the <span class="code">SCA</span> activity.</div><div class="step-alert"><strong>Repeat</strong> this process for each carrier submission sent out.</div><div class="step-tip" style="margin-top:8px;">If you update the carrier response applications with the returned quote details and that carrier becomes the winning carrier, no further ACORD updates will be needed when the policy moves to the active screen.</div></div></div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Create carrier response <span class="tag tag-er">Edge Rep</span></div>
+          <div class="step-detail">As soon as a response is received, use Actions &rarr; <strong style="color:var(--tan)">Create Carrier Response</strong> to update the carrier's response, issuing paper, and all quote details.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Attach documentation <span class="tag tag-er">Edge Rep</span></div>
+          <div class="step-detail">Drag and drop the quote and accompanying documents to the carrier submission.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Create #QUO activity <span class="tag tag-er">Edge Rep</span></div>
+          <ul class="step-list">
+            <li><strong style="color:var(--tan)">Quote received:</strong> Create <span class="code">#QUO</span> activity normally.</li>
+            <li><strong style="color:var(--tan)">Declination received:</strong> Create <span class="code">#QUO</span> with "Declined" added at the end of the description.</li>
+          </ul>
+          <div class="step-detail" style="margin-top:8px;">Assign the <span class="code">#QUO</span> to the <strong style="color:var(--tan)">Account Manager</strong> for review. Close the <span class="code">SCA</span> activity.</div>
+          <div class="step-alert"><strong>Repeat</strong> this process for each carrier submission sent out.</div>
+          <div class="step-tip" style="margin-top:8px;">If you update the carrier response applications with the returned quote details and that carrier becomes the winning carrier, no further ACORD updates will be needed when the policy moves to the active screen.</div>
+        </div>
+      </div>
     </div>
 
     <div class="phase-header">
@@ -449,10 +643,34 @@
       <span class="phase-title">Proposal Stage</span>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Send proposal <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Create and send the proposal to the client with one or several quotes for review. From Outlook sent items, drag and drop the sent email with the proposal to the carrier submission.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Create #PRO activity <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">The <span class="code">#PRO</span> activity tracks all correspondence between the agency and the client regarding the proposal — documents, questions, and emails all logged here.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Close prior activities <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Once #PRO is created and the proposal has been sent, close all <span class="code">#QUO</span> activities and the <span class="code">MPOL</span> activity. All tracking from this point is through <span class="code">#PRO</span>.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Client confirms — create #BIN <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Upon receipt of client confirmation to move forward: drag and drop the confirmation email to the carrier submission of the winning market. Create <span class="code">#BIN</span> activity and close <span class="code">#PRO</span>.</div></div></div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Send proposal <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Create and send the proposal to the client with one or several quotes for review. From Outlook sent items, drag and drop the sent email with the proposal to the carrier submission.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Create #PRO activity <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">The <span class="code">#PRO</span> activity tracks all correspondence between the agency and the client regarding the proposal — documents, questions, and emails all logged here.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Close prior activities <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Once #PRO is created and the proposal has been sent, close all <span class="code">#QUO</span> activities and the <span class="code">MPOL</span> activity. All tracking from this point is through <span class="code">#PRO</span>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Client confirms — create #BIN <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Upon receipt of client confirmation to move forward: drag and drop the confirmation email to the carrier submission of the winning market. Create <span class="code">#BIN</span> activity and close <span class="code">#PRO</span>.</div>
+        </div>
+      </div>
     </div>
 
     <div class="phase-header">
@@ -464,9 +682,27 @@
       <p>The <span class="code">#BIN</span> activity is the complete record of all binding correspondence and must contain three documents: the client's binding request, the agency's request to the carrier, and the carrier's confirmation.</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Client binding request</div><div class="step-detail">The original request from the insured — attached when the #BIN is created.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Agency request to carrier <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Documentation of the binding request sent to the carrier — either by sending directly to the carrier or by logging into the carrier portal to bind. Documented within the #BIN activity.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Carrier confirmation</div><div class="step-detail">When the carrier returns the binder, it is logged and attached to the #BIN activity. The #BIN should now contain all three documents as a complete audit trail.</div></div></div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Client binding request</div>
+          <div class="step-detail">The original request from the insured — attached when the #BIN is created.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Agency request to carrier <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Documentation of the binding request sent to the carrier — either by sending directly to the carrier or by logging into the carrier portal to bind. Documented within the #BIN activity.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Carrier confirmation</div>
+          <div class="step-detail">When the carrier returns the binder, it is logged and attached to the #BIN activity. The #BIN should now contain all three documents as a complete audit trail.</div>
+        </div>
+      </div>
     </div>
 
     <div class="phase-header">
@@ -474,10 +710,64 @@
       <span class="phase-title">Move to Active Screen &amp; Policy Issuance</span>
     </div>
     <div class="steps">
-      <div class="step"><div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Complete binding in Epic <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Return to the winning carrier submission. Use the <strong style="color:var(--tan)">Actions</strong> menu &rarr; <strong style="color:var(--tan)">Move to Active Screen</strong>.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Set policy structure <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">The workflow moves the winning lines from Master Marketing to the active policy screen in Epic. This is the opportunity to structure the policy — move lines as a <strong style="color:var(--tan)">package</strong> or as <strong style="color:var(--tan)">mono lines</strong>.</div></div></div>
-      <div class="step"><div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div><div class="step-body"><div class="step-title">Verify data and issue <span class="tag tag-rp">Responsible Party</span></div><div class="step-detail">Verify all data on the active screen, then issue the policies.</div></div></div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Complete binding in Epic <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Return to the winning carrier submission. Use the <strong style="color:var(--tan)">Actions</strong> menu &rarr; <strong style="color:var(--tan)">Move to Active Screen</strong>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Set policy structure <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">The workflow moves the winning lines from Master Marketing to the active policy screen in Epic. This is the opportunity to structure the policy — move lines as a <strong style="color:var(--tan)">package</strong> or as <strong style="color:var(--tan)">mono lines</strong>.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Verify data and issue <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Verify all data on the active screen, then issue the policies.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Update ACORD applications <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Detail all policy ACORD applications on the active screen to reflect the bound policy terms.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Update premiums <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Enter the final bound premium figures across all applicable lines.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">6</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Check policy header <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Verify and update the policy header, including: servicing role designations, line commission percentage, and PR/BR commissionable producer sections.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">7</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Generate invoice &amp; send via Applied Pay <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">In Epic, build and generate the invoice. This creates an <span class="code">INVC</span> activity code and auto-attaches a copy of the agency invoice. Once the INVC has been generated, email the <strong style="color:var(--tan)">Applied Pay</strong> payment link to the insured for payment.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-connector"><div class="step-num">8</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <div class="step-title">Update Renewal Manager <span class="tag tag-am">Account Manager</span></div>
+          <div class="step-detail">Update the Renewal Manager stage to the final completed stage to remove the policy from the list.</div>
+        </div>
+      </div>
     </div>
+
   </div><!-- /remarketing -->
 
   <!-- FAQ -->
@@ -486,11 +776,11 @@
     <div class="faq-list">
       <div class="faq-item" id="faq1">
         <div class="faq-q" onclick="togF('faq1')">What is the difference between Direct Bill and Agency Bill in this workflow?<span>&#9660;</span></div>
-        <div class="faq-a"><p>For both billing types, the RENR activity is created at 120 days and routed to the Department Manager at 127 days for a marketing decision. Once the Department Manager updates the RENR notes and reassigns the activity, the path diverges: for Direct Bill, the account manager monitors for the carrier download; for Agency Bill, the account manager or marketing team takes action based on the Department Manager's direction.</p></div>
+        <div class="faq-a"><p>For both billing types, the -REN activity is created at 120 days and stays assigned to the Account Manager. At 127 days, the Account Manager creates a task inside the -REN and assigns it to the Department Manager, who has until 120 days to respond with a marketing decision. Once the Account Manager reads that direction, the path diverges: for Direct Bill, the account manager monitors for the carrier download; for Agency Bill, the account manager takes the Need Quote steps at 90 days and works through the GA to gather the renewal application before waiting for terms at 30 days.</p></div>
       </div>
       <div class="faq-item" id="faq2">
         <div class="faq-q" onclick="togF('faq2')">What happens during the 127–120 day window?<span>&#9660;</span></div>
-        <div class="faq-a"><p>This is the Department Manager review window. The Department Manager reviews the policy, determines whether to wait for incumbent pricing or remarket, updates the RENR activity notes with that decision, and reassigns the activity to the appropriate party — the responsible account manager or the marketing team.</p></div>
+        <div class="faq-a"><p>The Account Manager creates a task inside the -REN activity and assigns it to the Department Manager. The Department Manager has from 127 down to 120 days to respond to that task with their marketing decision — wait for incumbent pricing or remarket. The -REN activity itself stays with the account manager the entire time. Once the task response is received, the account manager reads it and acts on the direction.</p></div>
       </div>
       <div class="faq-item" id="faq3">
         <div class="faq-q" onclick="togF('faq3')">Can a Direct Bill policy be remarketed?<span>&#9660;</span></div>
@@ -498,14 +788,18 @@
       </div>
       <div class="faq-item" id="faq4">
         <div class="faq-q" onclick="togF('faq4')">What happens if the carrier download never arrives on a Direct Bill policy?<span>&#9660;</span></div>
-        <div class="faq-a"><p>If the download does not arrive by 45 days prior to expiration, the account manager who holds the RENR activity should contact the Department Manager for direction on next steps.</p></div>
+        <div class="faq-a"><p>If the download does not arrive by 45 days prior to expiration, the account manager who holds the -REN activity should contact the Department Manager for direction on next steps.</p></div>
       </div>
       <div class="faq-item" id="faq5">
-        <div class="faq-q" onclick="togF('faq5')">Why does updating the carrier response applications matter?<span>&#9660;</span></div>
-        <div class="faq-a"><p>When you update the carrier response applications with the quote details returned by the carrier, that data carries forward if that carrier becomes the winning market. When you use Actions &rarr; Move to Active Screen, the ACORD data is already current — no additional updates are needed at issuance.</p></div>
+        <div class="faq-q" onclick="togF('faq5')">What is the Agency Bill "Need Quote" process at 90 days?<span>&#9660;</span></div>
+        <div class="faq-a"><p>At 90 days, the Account Manager reaches out to the General Agent to request the renewal application, then sends it to the insured via Indio. Once the signed app is returned, the Account Manager sends the app and ACORDs back to the GA, then moves the -REN activity forward to 30 days to wait for renewal terms. This sequence replaces the prior 45-day "contact Department Manager" step for Agency Bill policies.</p></div>
       </div>
       <div class="faq-item" id="faq6">
-        <div class="faq-q" onclick="togF('faq6')">What three documents must be in the #BIN activity before binding is complete?<span>&#9660;</span></div>
+        <div class="faq-q" onclick="togF('faq6')">Why does updating the carrier response applications matter?<span>&#9660;</span></div>
+        <div class="faq-a"><p>When you update the carrier response applications with the quote details returned by the carrier, that data carries forward if that carrier becomes the winning market. When you use Actions &rarr; Move to Active Screen, the ACORD data is already current — no additional updates are needed at issuance.</p></div>
+      </div>
+      <div class="faq-item" id="faq7">
+        <div class="faq-q" onclick="togF('faq7')">What three documents must be in the #BIN activity before binding is complete?<span>&#9660;</span></div>
         <div class="faq-a"><p>The #BIN activity must contain: (1) the original binding request from the insured, (2) documentation of the agency's request sent to the carrier or a record of logging into the carrier portal to bind, and (3) the carrier's binder confirmation once returned. These three documents form the complete audit trail for the binding transaction.</p></div>
       </div>
     </div>
@@ -533,12 +827,22 @@
     document.getElementById('btn-opt-'+opt).classList.add('active');
   }
 
+  function selectAgencyTerms(opt) {
+    ['ab-opt-a','ab-opt-b'].forEach(id => document.getElementById(id).style.display='none');
+    ['btn-ab-opt-a','btn-ab-opt-b'].forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById('ab-opt-'+opt).style.display='block';
+    document.getElementById('btn-ab-opt-'+opt).classList.add('active');
+  }
+
   function selectPath(path) {
-    ['path-direct','path-agency','section-remarketing','delivery-download','delivery-email','action-wait'].forEach(id => {
+    ['path-direct','path-agency','section-remarketing','delivery-download','delivery-email','action-wait','ab-opt-a','ab-opt-b'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display='none';
     });
-    ['btn-direct','btn-agency'].forEach(id => document.getElementById(id).classList.remove('active'));
+    ['btn-direct','btn-agency','btn-ab-opt-a','btn-ab-opt-b'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active');
+    });
     document.getElementById('btn-'+path).classList.add('active');
     document.getElementById('path-'+path).style.display='block';
     if (path==='agency') {
